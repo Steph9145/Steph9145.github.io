@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio</title>
     <style>
-        /* Styles généraux pour tous les écrans */
+        /* Styles généraux pour tout le site */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -30,71 +30,174 @@
             display: flex;
         }
 
+        /* Styles pour les liens de navigation */
         nav a {
-            color: #6ee7b7;
+            color: white; /* Couleur par défaut du texte */
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
+            position: relative; /* Nécessaire pour les effets de survol */
+            transition: color 0.3s ease; /* Transition pour le changement de couleur */
         }
 
+        nav a::after {
+            content: ''; /* Pseudo-élément pour le soulignement */
+            position: absolute;
+            left: 0;
+            bottom: -2px; /* Positionne le soulignement */
+            width: 100%;
+            height: 2px;
+            background-color: #6ee7b7; /* Couleur du soulignement */
+            transform: scaleX(0); /* Réduit le soulignement à 0 par défaut */
+            transform-origin: left; /* Fait partir l'animation de la gauche */
+            transition: transform 0.3s ease; /* Animation pour l'étendre */
+        }
+
+        nav a:hover::after {
+            transform: scaleX(1); /* Étend le soulignement au survol */
+        }
+
+        nav a:hover {
+            color: #6ee7b7; /* Change la couleur du texte au survol */
+        }
+
+        nav a.active {
+            color: #6ee7b7; /* Couleur pour l'élément actif */
+        }
+
+        /* Styles pour la section hero */
         .hero {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-image: url('image.jpg');
-            background-size: contain;
+            height: 80vh;
+            background-image: url('DataWall1.jpg');
+            background-size: contain; /* Change pour cover pour couvrir toute la zone */
             background-position: center;
             background-repeat: no-repeat;
             text-align: center;
+            padding: 20px;
+            position: relative; /* Nécessaire pour la position absolue des éléments internes */
         }
 
         .hero h2 {
             font-size: 48px;
-            margin-bottom: 150px;
+            margin-bottom: 20px; /* Réduit l'espace au lieu de 100px pour un rendu plus propre */
         }
 
-        .hero p {
+        .hero p:first-of-type {
             font-size: 22px;
             font-style: italic;
             color: #ffffff;
-            margin-bottom: 200px;
+            margin-bottom: 30px; /* Réduit l'espace au lieu de 50px pour un rendu plus propre */
         }
 
         .buttons {
-            margin-bottom: 200px;
+            margin-bottom: 20px;
         }
 
         .buttons a {
+            display: inline-flex; /* Pour aligner les icônes avec le texte */
+            align-items: center; /* Centre l'icône et le texte verticalement */
             text-decoration: none;
             padding: 15px 30px;
-            background-color: #6ee7b7;
-            color: #ffffff;
+            background-color: #6ee7b7aa;
+            color: #000000;
             border-radius: 5px;
             font-size: 18px;
             margin: 0 10px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            box-shadow: 5px 4px 6px rgba(133, 118, 118, 0.5); /* Ombre légère pour effet de profondeur */
         }
 
         .buttons a:hover {
-            background-color: #00000000;
+            background-color: transparent;
+            color: #ffffff;
+            box-shadow: none;
         }
 
-        footer {
-            text-align: left;
-            padding: 20px;
-            background-color: #1a1a1a;
-        }
-
-        footer p {
-            font-size: 14px;
+        .hero p:last-of-type {
+            position: absolute; /* Permet de positionner précisément cet élément */
+            bottom: 20px; /* Ajuste la distance depuis le bas */
+            left: 10%; /* Ajuste la position depuis la gauche */
+            transform: translateX(-40%); /* Centre le texte par rapport à la position gauche */
+            font-size: 16px;
             font-style: italic;
-            color: #ffc0cb;
+            color: #ffffff;
+            text-align: left; /* Aligne le texte à gauche */
+        }
+
+        /* Styles pour le footer */
+        .footer {
+            background-color: #0a0a14;
+            padding: 10px 50px;
+            color: #6ee7b7;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
+        }
+
+        .footer-section h2 {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section p {
+            font-size: 12px;
+            margin-bottom: 10px;
+            padding-left: 10px; /* Ajoute du padding gauche pour décaler le texte du bord gauche */
+
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0; /* Réinitialise la marge */
+            padding-left: 10px; /* Ajoute du padding gauche pour décaler les éléments de la liste */
+        }
+
+        .footer-section ul li {
+            font-size: 12px;
+            margin-bottom: 10px; /* Espace entre les éléments de la liste */
+        }
+
+        .footer-section ul li a {
+            color: #6ee7b7;
+            text-decoration: none; /* Supprime le soulignement des liens */
+            display: block; /* Rend les liens des éléments de liste blocs pour plus de contrôle */
+            padding-left: 2px; /* Ajoute du padding gauche pour décaler le texte du bord gauche */
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline; /* Soulignement au survol */
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons a img {
+            width: 32px;
+            height: 32px;
         }
 
         /* Styles pour les petits écrans (smartphones) */
-        @media only screen and (max-width: 600px) {
+        @media (max-width: 600px) {
             header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -117,16 +220,16 @@
 
             .hero h2 {
                 font-size: 36px;
-                margin-bottom: 50px;
+                margin-bottom: 20px; /* Ajuste l'espace pour une meilleure apparence */
             }
 
-            .hero p {
+            .hero p:first-of-type {
                 font-size: 18px;
-                margin-bottom: 50px;
+                margin-bottom: 30px; /* Ajuste l'espace pour une meilleure apparence */
             }
 
             .buttons {
-                margin-bottom: 50px;
+                margin-bottom: 30px; /* Réduit l'espace pour une meilleure apparence */
                 flex-direction: column;
                 align-items: center;
             }
@@ -137,8 +240,13 @@
                 padding: 10px 20px;
             }
 
-            footer {
-                text-align: center;
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-section {
+                margin-bottom: 30px;
             }
 
             footer p {
@@ -151,8 +259,8 @@
     <header>
         <h1>En développement</h1>
         <nav>
-            <a href="#">Bienvenue sur mon Portfolio</a>
-            <a href="#">A propos de nous</a>
+            <a href="#" class="active">Accueil</a>
+            <a href="portfolio.html">Portfolio</a>
             <a href="#">Services</a>
             <a href="#">Contact</a>
         </nav>
@@ -165,10 +273,41 @@
             <a href="#">Portfolio</a>
             <a href="#">Cliquez ici</a>
         </div>
+        <p>*Des données aux insights, tout coule de source.</p>
     </div>
 
-    <footer>
-        <p>*Des données aux insights, tout coule de source.</p>
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Section A propos -->
+            <div class="footer-section">
+                <h2>A PROPOS</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>(c) 2024 Tous droits réservés.</p>
+            </div>
+            <!-- Section Menu -->
+            <div class="footer-section">
+                <h2>MENU</h2>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Porfolio</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Section Réseaux sociaux -->
+            <div class="footer-section">
+                <h2>RÉSEAUX SOCIAUX</h2>
+                <div class="social-icons">
+                    <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer">
+                        <img src="linkedin.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer">
+                        <img src="GHLog.png" alt="GitHub">
+                    </a>
+                    <!-- Ajoutez d'autres icônes de réseaux sociaux ici si nécessaire -->
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
-</html>
+</html>      
