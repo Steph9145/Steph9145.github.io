@@ -69,7 +69,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 50vh;
+            height: 20vh;
             background-image: url('DataWall1.jpg');
             background-size: cover;
             background-position: center;
@@ -81,14 +81,23 @@
 
         .hero h2 {
             font-size: 48px;
-            margin-bottom: 20px;
-        }
+            margin: 0; /* Retirer les marges par défaut */
+            position: absolute; /* Utiliser la position absolue */
+            top: 20px; /* Ajuster la distance depuis le haut */
+            left: 50%; /* Centrer horizontalement */
+            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
+}
 
         .hero p:first-of-type {
             font-size: 22px;
             font-style: italic;
             color: #ffffff;
-            margin-bottom: 30px;
+            margin: 0; /* Retirer les marges par défaut */
+            position: absolute; /* Utiliser la position absolue */
+            top: 100px; /* Ajuster la distance depuis le haut */
+            left: 50%; /* Centrer horizontalement */
+            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
+            text-align: center; /* Assurer que le texte est centré */
         }
 
         .buttons {
@@ -117,15 +126,16 @@
         }
 
         .hero p:last-of-type {
-            position: absolute;
-            bottom: 20px;
-            left: 10%;
-            transform: translateX(-40%);
             font-size: 16px;
             font-style: italic;
             color: #ffffff;
-            text-align: left;
-        }
+            position: absolute; /* Utiliser la position absolue */
+            bottom: -10px; /* Positionner en bas */
+            left: 10%; /* Centrer horizontalement */
+            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
+            text-align: left; /* Alignement du texte à gauche */
+            max-width: 80%; /* Limiter la largeur pour éviter les débordements */
+}
 
         .two-column-section {
             display: flex;
@@ -177,6 +187,7 @@
             left: 0;
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            cursor: pointer; /* Curseur pour indiquer que l'image est cliquable */
         }
 
         .carousel img.active {
@@ -344,17 +355,15 @@
         </nav>
     </header>
 
-    <!-- Contenu principal de la page Portfolio -->
     <div class="hero">
         <h2>Mes Projets</h2>
         <p>Let's make sense of your data !*</p>
-        <p>*Ceci est un site web fictif à des fins de développement</p>
+        <p>*Donnons du sens à vos données</p>
     </div>
 
     <div class="two-column-section">
         <div class="column">
-            <h3>Projets</h3>
-            <p>liste</p>
+            <h3 id="project-title">Titre du Projet</h3>
             <div class="carousel">
                 <img src="Crazy chicken-min.png" alt="Projet Crazy Chicken - Analyse des données du jeu" class="active">
                 <img src="Eau Afrique.png" alt="Projet Eau Afrique - Gestion de l'eau en Afrique">
@@ -377,12 +386,10 @@
             </div>
         </div>
         <div class="column">
-            <h3>Texte de la colonne droite</h3>
-            <p>Ceci est la colonne de texte de droite. Vous pouvez ajouter tout type de contenu ici, tel que du texte, des images supplémentaires, des vidéos, etc.</p>
+            <p id="project-description">Description du projet...</p>
         </div>
     </div>
 
-    <!-- Section pied de page -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
@@ -416,8 +423,30 @@
     <!-- JavaScript pour le carrousel d'images -->
     <script>
         let currentIndex = 0;
+        let isPlaying = true;
+        let interval;
         const images = document.querySelectorAll('.carousel img');
         const dots = document.querySelectorAll('.carousel-indicators .dot');
+        const titles = [
+            "Projet Crazy Chicken - Analyse des données du jeu",
+            "Projet Eau Afrique - Gestion de l'eau en Afrique",
+            "Projet Nutrition Mondiale - Analyse des besoins nutritionnels",
+            "Projet Indicateurs d'Égalité - Analyse des inégalités",
+            "Projet Boutique Vins - Gestion d'une boutique de vins",
+            "Projet Vente Librairie - Gestion des ventes dans une librairie",
+            "Projet Faux Billets - Détection des faux billets",
+            "Projet GHLog - Gestion des logs"
+        ];
+        const descriptions = [
+            "Analyse des données du jeu Crazy Chicken.",
+            "Gestion de l'eau en Afrique pour améliorer l'accès à l'eau potable.",
+            "Analyse des besoins nutritionnels à l'échelle mondiale pour mieux cibler les interventions.",
+            "Analyse des indicateurs d'égalité pour identifier les disparités.",
+            "Gestion des ventes et de l'inventaire dans une boutique de vins.",
+            "Optimisation des processus de vente dans une librairie.",
+            "Détection des faux billets pour lutter contre la contrefaçon.",
+            "Gestion des logs pour le suivi des opérations et la détection des problèmes."
+        ];
 
         function showNextImage() {
             images[currentIndex].classList.remove('active');
@@ -425,6 +454,7 @@
             currentIndex = (currentIndex + 1) % images.length;
             images[currentIndex].classList.add('active');
             dots[currentIndex].classList.add('active');
+            updateProjectInfo(currentIndex);
         }
 
         function currentSlide(index) {
@@ -433,9 +463,47 @@
             currentIndex = index;
             images[currentIndex].classList.add('active');
             dots[currentIndex].classList.add('active');
+            updateProjectInfo(currentIndex);
         }
 
-        setInterval(showNextImage, 5000); // Change toutes les 5 secondes
+        function updateProjectInfo(index) {
+            document.getElementById('project-title').textContent = titles[index];
+            document.getElementById('project-description').textContent = descriptions[index];
+        }
+
+        function startCarousel() {
+            if (isPlaying) return;
+            interval = setInterval(showNextImage, 2000);
+            isPlaying = true;
+        }
+
+        function stopCarousel() {
+            clearInterval(interval);
+            isPlaying = false;
+        }
+
+        images.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                if (isPlaying) {
+                    stopCarousel();
+                } else {
+                    startCarousel();
+                }
+            });
+        });
+
+        // Initial start of the carousel
+        startCarousel();
+        images.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            if (isPlaying) {
+                stopCarousel();
+            } else {
+                startCarousel();
+            }
+        });
+    });
+
     </script>
 </body>
 </html>
