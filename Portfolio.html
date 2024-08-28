@@ -365,13 +365,13 @@
         <div class="column">
             <h3 id="project-title">Titre du Projet</h3>
             <div class="carousel">
-                <img src="Crazy chicken-min.png" alt="Projet Crazy Chicken - Analyse des données du jeu" class="active">
-                <img src="Eau Afrique.png" alt="Projet Eau Afrique - Gestion de l'eau en Afrique">
-                <img src="Nutrition mondiale.png" alt="Projet Nutrition Mondiale - Analyse des besoins nutritionnels mondiaux">
-                <img src="Indicarteurs égalités-min.png" alt="Projet Indicateurs d'Égalité - Analyse des inégalités">
-                <img src="Boutique vins.png" alt="Projet Boutique Vins - Gestion d'une boutique de vins">
-                <img src="Vente Librairie.png" alt="Projet Vente Librairie - Gestion des ventes dans une librairie">
-                <img src="Faux billets.png" alt="Projet Faux Billets - Détection des faux billets">
+                <img src="Crazy chicken-min.png" alt="Projet : Marketing - Import" class="active">
+                <img src="Eau Afrique.png" alt="Projet : Gestion de l'eau en Afrique">
+                <img src="Nutrition mondiale.png" alt="Projet : Analyse des besoins nutritionnels mondiaux">
+                <img src="Indicarteurs égalités-min.png" alt="Projet : Indicateurs d'Égalité en Entreprise">
+                <img src="Boutique vins.png" alt="Projet : Gestion de site internet">
+                <img src="Vente Librairie.png" alt="Projet : Gestion des ventes dans une librairie">
+                <img src="Faux billets.png" alt="Projet : Détection des faux billets">
                 <img src="GHLog.png" alt="Projet GHLog - Gestion des logs">
             </div>
             <div class="carousel-indicators">
@@ -428,14 +428,14 @@
         const images = document.querySelectorAll('.carousel img');
         const dots = document.querySelectorAll('.carousel-indicators .dot');
         const titles = [
-            "Projet Crazy Chicken - Analyse des données du jeu",
-            "Projet Eau Afrique - Gestion de l'eau en Afrique",
-            "Projet Nutrition Mondiale - Analyse des besoins nutritionnels",
-            "Projet Indicateurs d'Égalité - Analyse des inégalités",
-            "Projet Boutique Vins - Gestion d'une boutique de vins",
-            "Projet Vente Librairie - Gestion des ventes dans une librairie",
-            "Projet Faux Billets - Détection des faux billets",
-            "Projet GHLog - Gestion des logs"
+            "Projet : Analyse des données du jeu",
+            "Projet : Gestion de l'eau en Afrique",
+            "Projet : Analyse des besoins nutritionnels",
+            "Projet : Analyse des inégalités",
+            "Projet : Gestion d'une boutique de vins",
+            "Projet : Gestion des ventes dans une librairie",
+            "Projet : Détection des faux billets",
+            "Projet : Gestion des logs"
         ];
         const descriptions = [
             "Analyse des données du jeu Crazy Chicken.",
@@ -473,7 +473,7 @@
 
         function startCarousel() {
             if (isPlaying) return;
-            interval = setInterval(showNextImage, 2000);
+            interval = setInterval(showNextImage, 1000);
             isPlaying = true;
         }
 
@@ -481,16 +481,6 @@
             clearInterval(interval);
             isPlaying = false;
         }
-
-        images.forEach((img, index) => {
-            img.addEventListener('click', () => {
-                if (isPlaying) {
-                    stopCarousel();
-                } else {
-                    startCarousel();
-                }
-            });
-        });
 
         // Initial start of the carousel
         startCarousel();

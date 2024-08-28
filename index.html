@@ -83,18 +83,33 @@
 
         .hero h2 {
             font-size: 48px;
-            margin-bottom: 20px; /* Réduit l'espace au lieu de 100px pour un rendu plus propre */
+            margin: 0; /* Retirer les marges par défaut */
+            position: absolute; /* Utiliser la position absolue */
+            top: 40px; /* Ajuster la distance depuis le haut */
+            left: 50%; /* Centrer horizontalement */
+            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
         }
 
         .hero p:first-of-type {
             font-size: 22px;
             font-style: italic;
             color: #ffffff;
-            margin-bottom: 30px; /* Réduit l'espace au lieu de 50px pour un rendu plus propre */
+            margin: 0; /* Retirer les marges par défaut */
+            position: absolute; /* Utiliser la position absolue */
+            top: 330px; /* Ajuster la distance depuis le haut */
+            left: 50%; /* Centrer horizontalement */
+            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
+            text-align: center; /* Assurer que le texte est centré */
         }
 
         .buttons {
-            margin-bottom: 20px;
+            display: flex; /* Utiliser flexbox pour l'alignement horizontal des boutons */
+            justify-content: center; /* Centrer les boutons horizontalement */
+            margin: 0; /* Retirer les marges par défaut */
+            position: absolute; /* Utiliser la position absolue */
+            bottom: 150px; /* Positionner à 20px du bas du conteneur parent */
+            left: 50%; /* Centrer horizontalement */
+            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
         }
 
         .buttons a {
