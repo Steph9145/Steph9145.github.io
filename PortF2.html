@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio - Page 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>En développement</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="portfolio.html" class="active">Portfolio</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>Mes Projets</h2>
+        <p>Let's make sense of your data !*</p>
+        <p>*Donnons du sens à vos données</p>
+    </div>
+
+    <div class="two-column-section">
+        <div class="column">
+            <h3 id="project-title">Titre du Projet</h3>
+            <div class="carousel">
+                <img src="Crazy chicken-min.png" alt="Projet : Marketing - Import" class="active">
+                <img src="Eau Afrique.png" alt="Projet : Gestion de l'eau en Afrique">
+                <img src="Nutrition mondiale.png" alt="Projet : Analyse des besoins nutritionnels mondiaux">
+                <img src="Indicarteurs égalités-min.png" alt="Projet : Indicateurs d'Égalité en Entreprise">
+                <img src="Boutique vins.png" alt="Projet : Gestion de site internet">
+                <img src="Vente Librairie.png" alt="Projet : Gestion des ventes dans une librairie">
+                <img src="Faux billets.png" alt="Projet : Détection des faux billets">
+                <img src="GHLog.png" alt="Projet GHLog - Gestion des logs">
+                
+                <!-- Ajout des icônes de play et stop -->
+                <div class="carousel-controls">
+                    <span id="play-icon">&#9658;</span> <!-- Icône Play -->
+                    <span id="stop-icon" style="display: none;">&#10074;&#10074;</span> <!-- Icône Stop -->
+                </div>
+            </div>
+            <div class="carousel-indicators">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+            </div>
+        </div>
+        <div class="column">
+            <p id="project-description">Description du projet...</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h2>A PROPOS</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>&copy; 2024 All Rights Reserved.</p>
+            </div>
+            <div class="footer-section">
+                <h2>MENU</h2>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h2>RÉSEAUX SOCIAUX</h2>
+                <div class="social-icons">
+                    <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer">
+                        <img src="linkedin.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer">
+                        <img src="GHLog.png" alt="GitHub">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
