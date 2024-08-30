@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     ],
     [
         { src: "Images/python-logo.png", alt: "Logo 7" },
-        { src: "Images/knime-logo", alt: "Logo 8" }
+        { src: "Images/knime-logo.png", alt: "Logo 8" }
     ],
     [
         { src: "Images/sklearn-logo.png", alt: "Logo 9" },
