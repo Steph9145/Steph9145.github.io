@@ -123,17 +123,48 @@ nav a.active {
     background-color: #2a2a2a;
     border-radius: 8px;
 }
-  
-.two-column-section .column h3 {
+
+/* Styles pour le titre de la section des outils utilisés */
+#tools-title {
     margin-top: 0;
     font-size: 20px;
     color: #6ee7b7;
+    margin-bottom: 15px;
+}
+
+/* Styles pour le titre de la section des outils utilisés */
+#libraries-title {
+    margin-top: 0;
+    font-size: 20px;
+    color: #6ee7b7;
+    margin-bottom: 10px;
 }
   
-.two-column-section .column p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 20px;
+/* Styles pour le conteneur des logos */
+#project-logos-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    align-items: flex-start; /* Aligne les logos à gauche */
+}
+
+/* Styles pour les logos des outils et librairies */
+.project-logos {
+    display: flex;
+    gap: 40px; /* Augmentez l'espacement entre les logos si nécessaire */
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Aligne les logos à gauche */
+}
+
+.project-logos img.logo {
+    width: 100px !important; /* Force la taille des logos */
+    height: 100px !important; /* Assurez-vous que la hauteur est proportionnelle à la largeur */
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.project-logos img.logo:hover {
+    transform: scale(1.1);
 }
   
 /* Styles pour le carrousel d'images */
@@ -300,6 +331,20 @@ nav a.active {
     }
 }
   
+@media (max-width: 768px) {
+    .project-logos img.logo {
+        width: 80px; /* Réduit la taille des logos pour les petits écrans */
+        height: 80px;
+    }
+}
+
+@media (max-width: 600px) {
+    .project-logos img.logo {
+        width: 60px; /* Réduit encore plus la taille pour les très petits écrans */
+        height: 60px;
+    }
+}
+
 @media (max-width: 600px) {
     header {
         flex-direction: column;

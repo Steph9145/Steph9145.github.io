@@ -128,6 +128,41 @@ document.addEventListener('DOMContentLoaded', (event) => {
         { src: "Images/excel-logo.png", alt: "Logo 16" }
     ]
 ];
+    // Librairies associées à chaque projet
+    const libraries = [
+    [
+        { src: "Images/powerbi-Logo.png", alt: "Logo 1" },
+        { src: "Images/excel-logo.png", alt: "Logo 2" }
+    ],
+    [
+        { src: "Images/Matplot-logo.png", alt: "Logo 3" },
+        { src: "Images/sklearn-logo.png", alt: "Logo 4" }
+    ],
+    [
+        { src: "Images/powerbi-Logo.png", alt: "Logo 5" },
+        { src: "Images/sklearn-logo.png", alt: "Logo 6" }
+    ],
+    [
+        { src: "Images/plotly-logo.png", alt: "Logo 7" },
+        { src: "Images/knime-logo.png", alt: "Logo 8" }
+    ],        [
+        { src: "Images/sklearn-logo.png", alt: "Logo 9" },
+        { src: "Images/plotly-logo.png", alt: "Logo 10" }
+    ],
+    [
+        { src: "Images/sql-logo.png", alt: "Logo 11" },
+        { src: "Images/powerbi-Logo.png", alt: "Logo 12" }
+    ],
+    [
+        { src: "Images/python-logo.png", alt: "Logo 13" },
+        { src: "Images/sql-logo.png", alt: "Logo 14" }
+    ],
+    [
+        { src: "Images/sql-logo.png", alt: "Logo 15" },
+        { src: "Images/excel-logo.png", alt: "Logo 16" }
+    ]
+];
+
 
     function showSlide(index) {
         images.forEach(img => img.classList.remove('active'));
@@ -149,7 +184,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
             img.classList.add('logo');
             projectLogosContainer.appendChild(img);
         });
-    }
+        // Mise à jour des logos des librairies
+        const projectLibrariesContainer = document.getElementById('project-libraries');
+        projectLibrariesContainer.innerHTML = ''; // Vider le conteneur de librairies actuel
+
+        libraries[index].forEach(library => {
+            const img = document.createElement('img');
+            img.src = library.src;
+            img.alt = library.alt;
+            img.classList.add('logo');
+            projectLibrariesContainer.appendChild(img);
+    });
+}
 
     function showNextImage() {
         currentIndex = (currentIndex + 1) % images.length;
