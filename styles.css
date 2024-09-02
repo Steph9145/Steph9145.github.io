@@ -64,7 +64,7 @@ nav a.active {
     justify-content: center;
     align-items: center;
     height: 20vh;
-    background-image: url('DataWall1.jpg');
+    background-image: url('Images/DataWall1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -157,8 +157,8 @@ nav a.active {
 }
 
 .project-logos img.logo {
-    width: 100px !important; /* Force la taille des logos */
-    height: 100px !important; /* Assurez-vous que la hauteur est proportionnelle à la largeur */
+    width: 50px !important; /* Force la taille des logos */
+    height: 50px !important; /* Assurez-vous que la hauteur est proportionnelle à la largeur */
     object-fit: contain;
     transition: transform 0.2s ease;
 }
