@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectDescription = document.getElementById('project-description');
     const toolsContainer = document.getElementById('project-tools-logos');
     const librariesContainer = document.getElementById('project-libraries-logos');
+    const documentLink = document.getElementById('project-document-link');
+    const documentContainer = document.getElementById('document-container');
 
     // Titres des projets
     const titles = [
@@ -97,6 +99,17 @@ document.addEventListener('DOMContentLoaded', () => {
          </ul>`
     ];
 
+    const projectDocuments = [
+        "OCSS_P4_DA-GITHUB.html",  // Document pour le premier projet
+        "OCSS_P6_DA-GITHUB1.html",  // Document pour le deuxième projet
+        "OCSS_P5_DA-GITHUB.html", // Document pour le troisième projet
+        "OCSS_P4_DA-GITHUB.html",     // Document pour le quatrième projet
+        "OCSS_P10_DA_GITHUB.html",        // Document pour le cinquième projet
+        "OCSS_P6_DA-GITHUB1.html",      // Document pour le sixième projet
+        "OCSS_P10_DA_GITHUB.html", // Document pour le septième projet
+        "OCSS_P5_DA-GITHUB.html"     // Document pour le huitième projet
+    ];
+
     // Logos des outils pour chaque projet
     const toolsLogos = [
         [
@@ -152,17 +165,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         [
             { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
-            { src: "Images/plotly-logo.png", alt: "Plotly" }
+            { src: "Images/python-logo.png", alt: "Python" }
         ],
         [
             { src: "Images/sql-logo.png", alt: "SQL" },
-            { src: "Images/powerbi-Logo.png", alt: "Power BI" }
+            { src: "Images/knime-logo.png", alt: "KNIME" }
         ],
         [
             { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
-            { src: "Images/Statsmodels-logo.png", alt: "Statsmodels" },
-            { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
-            { src: "Images/seaborn-logo.png", alt: "Seaborn" }
+            { src: "Images/Matplot-logo.png", alt: "Matplotlib" }
         ],
         [
             { src: "Images/sql-logo.png", alt: "SQL" },
@@ -181,6 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
         projectTitle.textContent = titles[index];
         projectDescription.innerHTML = descriptions[index];
         updateLogos(index);
+
+        // Met à jour le lien du document
+        documentLink.href = projectDocuments[index];
+        // Met à jour l'état du lien
+        toggleDocumentLink();
     }
 
     // Met à jour les logos des outils et librairies
@@ -222,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isPlaying = true;
             playIcon.style.display = 'none';
             stopIcon.style.display = 'inline';
+            toggleDocumentLink();
         }
     }
 
@@ -232,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isPlaying = false;
             playIcon.style.display = 'inline';
             stopIcon.style.display = 'none';
+            toggleDocumentLink();
         }
     }
 
@@ -243,6 +261,26 @@ document.addEventListener('DOMContentLoaded', () => {
         stopIcon.style.display = 'none';
         currentIndex = index;
         updateSlide(currentIndex);
+    }
+
+    // Affiche ou masque le conteneur du document du projet
+    function toggleDocumentContainer() {
+        if (documentContainer.classList.contains('hidden')) {
+            documentContainer.classList.remove('hidden');
+        } else {
+            documentContainer.classList.add('hidden');
+        }
+    }
+
+    // Fonction pour activer ou désactiver le lien et modifier son texte
+    function toggleDocumentLink() {
+        if (isPlaying) {
+            documentLink.classList.add('disabled-link');
+            documentLink.textContent = 'Choisissez un projet'; // Texte quand désactivé
+        } else {
+            documentLink.classList.remove('disabled-link');
+            documentLink.textContent = 'Voir le document du projet'; // Texte quand activé
+        }
     }
 
     // Gestion des clics sur les images pour démarrer/arrêter le carrousel
@@ -263,7 +301,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialisation du carrousel
+    // Gestion du clic sur le lien pour afficher/masquer le document
+    documentLink.addEventListener('click', (event) => {
+        if (isPlaying) {
+            event.preventDefault(); // Empêche le comportement par défaut du lien
+        } else {
+            event.preventDefault(); // Empêche le comportement par défaut du lien
+            toggleDocumentContainer();
+            // Assure-toi que l'iframe pointe vers le bon document
+            document.querySelector('#document-container iframe').src = projectDocuments[currentIndex];
+        }
+    });
+
+    // Met à jour le lien du document à chaque changement de diapositive
+    document.addEventListener('visibilitychange', toggleDocumentLink);
+
+    // Initialisation de la diapositive actuelle
     updateSlide(currentIndex);
     startCarousel();
 });
