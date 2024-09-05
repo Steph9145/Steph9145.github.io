@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- En-tête du site -->
     <header>
         <h1>En développement</h1>
         <nav>
@@ -17,16 +18,24 @@
         </nav>
     </header>
 
-    <div class="hero">
-        <h2>Mes Projets</h2>
-        <p>Let's make sense of your data !*</p>
-        <p>*Donnons du sens à vos données</p>
-    </div>
+    <!-- Section héroïque -->
+    <section class="hero">
+        <p class="hero-main">Let's make sense of your data !*</p>
+        <p class="hero-sub">*Donnons du sens à vos données</p>
+    </section>
 
-   <div class="two-column-section">
-        <div class="column">
+    <div class="first-container">
+        <h2 class="section-title">Portfolio</h2>
+        <!-- Autre contenu du conteneur -->
+      </div>
+
+    <!-- Section à deux colonnes pour les projets -->
+    <section class="two-column-section">
+        <!-- Colonne de gauche : Carrousel des projets -->
+        <div class="column column-40">
             <h3 id="project-title">Titre du Projet</h3>
             <div class="carousel">
+                <!-- Images du carrousel -->
                 <img src="Images/Crazy chicken-min.png" alt="Projet : Marketing - Export" class="active">
                 <img src="Images/Eau Afrique.png" alt="Projet : Gestion de l'eau en Afrique">
                 <img src="Images/Nutrition mondiale.png" alt="Projet : Analyse des besoins nutritionnels mondiaux">
@@ -34,14 +43,15 @@
                 <img src="Images/Boutique vins.png" alt="Projet : Gestion de site internet">
                 <img src="Images/Vente Librairie.png" alt="Projet : Gestion des ventes dans une librairie">
                 <img src="Images/Faux billets.png" alt="Projet : Détection des faux billets">
-                <img src="Images/GHLog.png" alt="Projet GHLog - Gestion des logs">
+                <img src="Images/Legislatives2024.png" alt="Projet : Legislatives2024">
                 
-                <!-- Ajout des icônes de play et stop -->
+                <!-- Contrôles du carrousel -->
                 <div class="carousel-controls">
-                    <span id="play-icon">&#9658;</span> <!-- Icône Play -->
-                    <span id="stop-icon" style="display: none;">&#10074;&#10074;</span> <!-- Icône Stop -->
+                    <span id="play-icon" class="control-icon" title="Démarrer le carrousel">&#9658;</span>
+                    <span id="stop-icon" class="control-icon" title="Arrêter le carrousel" style="display: none;">&#10074;&#10074;</span>
                 </div>
             </div>
+            <!-- Indicateurs du carrousel -->
             <div class="carousel-indicators">
                 <span class="dot active" onclick="currentSlide(0)"></span>
                 <span class="dot" onclick="currentSlide(1)"></span>
@@ -53,33 +63,36 @@
                 <span class="dot" onclick="currentSlide(7)"></span>
             </div>
         </div>
-        <div class="column">
-            <!-- Conteneur pour la description du projet -->
-            <p id="project-description">Description du projet...</p>
-            <!-- Conteneur pour les logos des outils et librairies avec un titre -->
-            <div id="project-logos-container">
-                <h3 id="tools-title">Outils utilisés :</h3>
-                <div id="project-logos" class="project-logos">
-                </div>
-                <h3 id="libraries-title">Librairies utilisées :</h3>
-                <div id="project-libraries" class="project-logos">
-                </div>
+
+        <!-- Colonne de droite : Description du projet -->
+        <div class="column column-60">
+            <div class="description-container">
+                <p id="project-description">Description du projet...</p>
+            </div>
+            <div class="outils-container">
+                <h3>Outils</h3>
+                <div id="project-tools-logos" class="project-logos"></div>
+            </div>
+            <div class="librairies-container">
+                <h3>Librairies</h3>
+                <div id="project-libraries-logos" class="project-logos"></div>
             </div>
         </div>
-    </div> 
+    </section> 
 
+    <!-- Pied de page -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
                 <h2>A PROPOS</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p>&copy; 2024 All Rights Reserved.</p>
+                <p>&copy; 2024 Tous droits réservés.</p>
             </div>
             <div class="footer-section">
                 <h2>MENU</h2>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="PortF2.html">Portfolio</a></li>
                     <li><a href="#">Services</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
@@ -90,7 +103,7 @@
                     <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer" title="Voir mon profil LinkedIn">
                         <img src="Images/linkedin.png" alt="LinkedIn">
                     </a>
-                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer" title="Voir mon profil GitHub">
                         <img src="Images/GHLog.png" alt="GitHub">
                     </a>
                 </div>
@@ -98,6 +111,9 @@
         </div>
     </footer>
 
+    <!-- Inclusion du script JavaScript -->
     <script src="scripts.js"></script>
 </body>
 </html>
+
+
