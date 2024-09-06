@@ -79,13 +79,20 @@
             </div>
         </div>
     </section> 
-
+    
     <div class="project-document-container">
         <a id="project-document-link" href="#" target="_blank">Voir le document du projet</a>
-
+    
         <!-- Conteneur caché pour le document du projet -->
         <div id="document-container" class="hidden">
-            <iframe src="URL_DU_DOCUMENT" width="70%" height="500" frameborder="0"></iframe>
+            <div class="document-column-left">
+                <div id="project-description-container">
+                    <!-- Description du projet sera injectée ici -->
+                </div>
+            </div>
+            <div class="document-column-right">
+                <iframe src="URL_DU_DOCUMENT" height="600" frameborder="0"></iframe>
+            </div>
         </div>
     </div>
     
