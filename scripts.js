@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let isPlaying = false; // État du carrousel
     let interval;
+    let isDocumentOpen = false; // Nouveau - Pour gérer l'état du document
     
     // Sélection des éléments du DOM
     const images = document.querySelectorAll('.carousel img');
@@ -107,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "OCSS_P10_DA_GITHUB.html",        // Document pour le cinquième projet
         "OCSS_P6_DA-GITHUB1.html",      // Document pour le sixième projet
         "OCSS_P10_DA_GITHUB.html", // Document pour le septième projet
-        "OCSS_P5_DA-GITHUB.html"     // Document pour le huitième projet
+        "carte_Legis_1erTour.html"     // Document pour le huitième projet
     ];
 
     // Logos des outils pour chaque projet
@@ -173,7 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         [
             { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
-            { src: "Images/Matplot-logo.png", alt: "Matplotlib" }
+            { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+            { src: "Images/seaborn-logo.png", alt: "Matplotlib" },
+            { src: "Images/Numpy-logo.png", alt: "Matplotlib" }
         ],
         [
             { src: "Images/sql-logo.png", alt: "SQL" },
@@ -263,23 +266,44 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlide(currentIndex);
     }
 
-    // Affiche ou masque le conteneur du document du projet
+    // Fonction pour ouvrir/fermer le document et désactiver/activer les fonctionnalités
     function toggleDocumentContainer() {
-        if (documentContainer.classList.contains('hidden')) {
-            documentContainer.classList.remove('hidden');
+        if (isDocumentOpen) {
+            // Fermer le document
+            documentContainer.style.visibility = 'hidden';
+            documentContainer.style.opacity = '0';
+            isDocumentOpen = false;
+            // Réactiver le carrousel et les points
+            images.forEach(img => img.style.pointerEvents = 'auto');
+            dots.forEach(dot => dot.style.pointerEvents = 'auto');
+            toggleDocumentLink();
         } else {
-            documentContainer.classList.add('hidden');
+            // Ouvrir le document
+            document.querySelector('#document-container iframe').src = projectDocuments[currentIndex];
+            documentContainer.style.visibility = 'visible';
+            documentContainer.style.opacity = '1';
+            isDocumentOpen = true;
+            // Désactiver le carrousel et les points
+            images.forEach(img => img.style.pointerEvents = 'none');
+            dots.forEach(dot => dot.style.pointerEvents = 'none');
+            stopCarousel(); // Arrêter le carrousel si un document est ouvert
+            toggleDocumentLink();
         }
     }
+    
+    
 
     // Fonction pour activer ou désactiver le lien et modifier son texte
     function toggleDocumentLink() {
-        if (isPlaying) {
-            documentLink.classList.add('disabled-link');
-            documentLink.textContent = 'Choisissez un projet'; // Texte quand désactivé
-        } else {
+        if (isDocumentOpen) {
+            documentLink.textContent = 'Fermer le document';
             documentLink.classList.remove('disabled-link');
+        } else if (isPlaying) {
+            documentLink.textContent = 'Choisissez un projet'; // Texte quand désactivé
+            documentLink.classList.add('disabled-link');
+        } else {
             documentLink.textContent = 'Voir le document du projet'; // Texte quand activé
+            documentLink.classList.remove('disabled-link');
         }
     }
 

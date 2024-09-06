@@ -299,7 +299,6 @@ nav a.active {
 
 .project-document-container {
     margin-top: 20px;
-    height: 600px;
     text-align: center;
 }
 
@@ -327,17 +326,47 @@ nav a.active {
     cursor: not-allowed;
 }
 
+
+
+#document-container {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    height: 600px;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute; /* Permet de ne pas affecter la mise en page */
+    top: 700px;
+    left: 0;
+    z-index: 10; /* S'assure que le conteneur reste au-dessus des autres éléments */
+}
+
+.document-column-left {
+    flex: 0 0 25%; /* 30% de la largeur */
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-right: 1px solid #ddd; /* Optionnel : ligne de séparation */
+    box-sizing: border-box;
+}
+
+.document-column-right {
+    flex: 0 0 72%; /* 70% de la largeur */
+    box-sizing: border-box;
+}
+
+#document-container iframe {
+    width: 100%;
+    height: 100%; /* S'adapte à la hauteur du container */
+}
+
 .hidden {
     display: none;
 }
 
-#document-container {
-    margin-top: 20px; /* Ajuste l'espace au-dessus du conteneur */
-    padding: 20px;
-    background-color: var(--section-background); /* Choisis une couleur de fond appropriée */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(217, 41, 41, 0.1); /* Ajoute une ombre légère pour un effet visuel */
-}
 
 /* Styles pour le pied de page */
 .footer {
