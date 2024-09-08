@@ -180,6 +180,10 @@ nav a.active {
     line-height: 1.6; /* Ajustez la valeur selon vos besoins */
 }
 
+.comment-text {
+    white-space: pre-wrap; /* Optionnel pour les espaces et retours à la ligne */
+}
+
 /* Styles pour les containers Outils et Librairies */
 .outils-container,
 .librairies-container {

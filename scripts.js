@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Scroll automatiquement en haut de la page avec un léger délai
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 100); // 10 millisecondes
     let currentIndex = 0;
     let isPlaying = false; // État du carrousel
     let interval;
@@ -14,13 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const toolsContainer = document.getElementById('project-tools-logos');
     const librariesContainer = document.getElementById('project-libraries-logos');
     const documentLink = document.getElementById('project-document-link');
+    const projectCommentElement = document.getElementById('project-comment');
     const documentContainer = document.getElementById('document-container');
+    const documentFrame = document.getElementById('document-frame');
+    const documentVideo = document.getElementById('document-video');
+    const videoSource = document.getElementById('video-source');
 
     // Titres des projets
     const titles = [
         "Etude de marché - Export",
         "Gestion de l'eau en Afrique",
-        "Analyse des besoins nutritionnels",
+        "Etude Médecins Généralistes Libéraux",
         "Analyse des inégalités",
         "Gestion d'une boutique de vins",
         "Gestion des ventes dans une librairie",
@@ -40,16 +48,62 @@ document.addEventListener('DOMContentLoaded', () => {
         "<p>Analyse des résultats des élections législatives 2024</p><ul><li class='line-spacing'>Collecte des résultats par circonscription</li><li class='line-spacing'>Analyse des tendances de vote</li><li class='line-spacing'>Visualisation des résultats par région</li><li class='line-spacing'>Comparaison avec les élections précédentes</li><li class='line-spacing'>Élaboration de prévisions et recommandations</li></ul>"
     ];
     
-
     const projectDocuments = [
         "Projets/OCSS_P4_DA-GITHUB.html",
         "Projets/OCSS_P6_DA-GITHUB1.html",
-        "Projets/OCSS_P5_DA-GITHUB.html",
+        "Projets/Medecins.mp4",
         "Projets/OCSS_P4_DA-GITHUB.html",
         "Projets/OCSS_P10_DA_GITHUB.html",
         "Projets/OCSS_P6_DA-GITHUB1.html",
         "Projets/OCSS_P10_DA_GITHUB.html",
         "Projets/Results2024_Legis_circonscriptions.html"
+    ];
+
+    const projectComments = [
+        "Commentaires pour le projet d'étude de marché - Export.",
+        "Commentaires pour la gestion de l'eau en Afrique.",
+        `<p>Les Chiffres Clés, ce que je voulais voir:</p>
+    <ul>
+        <li>👉 Evolution de 2012 à 2023 des médecins et de la population</li>
+        <li>👉 Evolution de N-1 à N (année choisie) des médecins et de la population</li>
+    </ul>
+    <p>👉 Comparer 2012 à l'année choisie:</p>
+    <ul>
+        <li>➡ Population</li>
+        <li>➡ Médecin</li>
+        <li>➡ Patientèle moyenne par médecin</li>
+        <li>➡ Parité Femmes/Hommes médecins</li>
+    </ul>
+    <p>🖼️ Utilisation de visuels en courbe, en histogramme et géographique pour illustrer les chiffres et les lieux concernés.</p>
+    <p>🪄 Utilisation de filtres pour l'année, la région et le département pour affiner l'analyse.</p>
+    <p>🎁 J'ai également ajouté une animation montrant l'évolution de la sélection (Régions + Départements) entre 2012 et 2023 (pour le fun 😁)</p>
+    <p>Je ne vais pas mettre mon analyse complète dans ce post, juste 2 ou 3 faits à retenir sur la période 2012-2023:</p>
+    <ul>
+        <li>👉 La France a perdu 7 400 médecins (-11,5%) pendant que la population augmentait de 4% et est passée de 1020 Habs à 1200 Habs par médecins</li>
+        <li>👉 Si le bassin méditerranéen reste bien couvert (PACA+ Occitanie), l'évolution des médecins a baissé de plus de 14% et est passée de 830 Habs à 1030 Habs par médecins</li>
+        <li>👉 La côte Atlantique (Bretagne, Pays de la Loire et Nouvelle-Aquitaine) reste stable, passant de 980 Habs à 1061 Habs par médecins</li>
+    </ul>
+    <p>La bonne nouvelle, d'une façon générale, est que la France a quasiment atteint la parité dans cette profession.</p>
+    <p>La seconde partie de mon projet concerne la présence géolocalisée d'une base de 48,5k médecins généralistes et leur densité par cantons (plus pertinent que les communes) en 2024.</p>`,
+        "Commentaires sur les inégalités de genre en entreprise.",
+        "Commentaires pour la gestion d'une boutique de vins en ligne.",
+        "Commentaires pour la gestion des ventes dans une librairie.",
+        "Commentaires sur la détection de faux billets avec Machine Learning.",
+        `<p>👉 La démarche pour le 1er Tour:</p>
+    <ul>
+        <li>Utilisation des résultats des législatives 2022 et surtout des Européennes 2024.</li>
+        <li>Choix de prévoir les résultats du 1er tour par circonscription.</li>
+        <li>Prise en compte des divisions intra-parti (split des LR entre Ensemble et RN, split de la liste "RÉVEILLER L'EUROPE" entre Ensemble et UG).</li>
+        <li>Estimation de +30% de participation par circonscription par rapport aux Européennes.</li>
+    </ul>
+    <p>➕ Avantage :</p>
+    <ul>
+        <li>Les choix pris permettent d'obtenir des prévisions cohérentes comparées aux résultats réels du 1er tour.</li>
+    </ul>
+    <p>➖ Biais :</p>
+    <ul>
+        <li>J'ai "sacrifié" les LR en les splittant sur 3 listes (Ensemble, LR et RN) pour toutes les circonscriptions, ce qui a eu pour effet de minimiser les résultats des candidats LR sans alliance.</li>
+    </ul>`
     ];
 
     // Logos des outils pour chaque projet
@@ -127,18 +181,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Met à jour la diapositive active
     function updateSlide(index) {
-        images.forEach((img, i) => {
-            img.classList.toggle('active', i === index);
-        });
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
+        images.forEach((img, i) => img.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
         projectTitle.textContent = titles[index];
         projectDescription.innerHTML = descriptions[index];
         updateLogos(index);
-
-        // Met à jour le lien du document
         documentLink.href = projectDocuments[index];
+        projectCommentElement.innerHTML = projectComments[index];
         updateDocumentLinkText();
     }
 
@@ -181,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isPlaying = true;
             playIcon.style.display = 'none';
             stopIcon.style.display = 'inline';
-            updateDocumentLinkText(); // Met à jour le texte du lien
+            updateDocumentLinkText();
         }
     }
 
@@ -192,13 +241,13 @@ document.addEventListener('DOMContentLoaded', () => {
             isPlaying = false;
             playIcon.style.display = 'inline';
             stopIcon.style.display = 'none';
-            updateDocumentLinkText(); // Met à jour le texte du lien
+            updateDocumentLinkText();
         }
     }
 
     // Affiche une diapositive spécifique
     function currentSlide(index) {
-        if (isDocumentOpen) return; // Ne fait rien si le document est ouvert
+        if (isDocumentOpen) return;
         clearInterval(interval);
         isPlaying = false;
         playIcon.style.display = 'inline';
@@ -212,90 +261,73 @@ document.addEventListener('DOMContentLoaded', () => {
         if (documentContainer.classList.contains('hidden')) {
             documentContainer.classList.remove('hidden');
             isDocumentOpen = true;
-            stopCarousel(); // Arrête le carrousel lorsqu'un document est ouvert
-            disableCarouselControls(true); // Désactive les contrôles du carrousel
-            
-            // Calculer la position du document-container avec un espace au bas de la page pour éviter le pied de page
-            const containerOffset = documentContainer.getBoundingClientRect().top + window.scrollY;
-            const offsetAdjustment = 100; // Ajuster cette valeur si nécessaire pour un espace supplémentaire
+            stopCarousel();
+            disableCarouselControls(true);
             window.scrollTo({
-                top: containerOffset - offsetAdjustment,
+                top: documentContainer.getBoundingClientRect().top + window.scrollY - 100,
                 behavior: 'smooth'
             });
         } else {
             documentContainer.classList.add('hidden');
             isDocumentOpen = false;
-            startCarousel(); // Relance le carrousel lorsqu'on ferme le document
-            disableCarouselControls(false); // Réactive les contrôles du carrousel
-            // Scroll vers le haut de la page quand le document est fermé
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+            startCarousel();
+            disableCarouselControls(false);
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
-        updateDocumentLinkText(); // Met à jour le texte du lien après modification de isDocumentOpen
+        updateDocumentLinkText();
     }
 
     // Fonction pour activer ou désactiver le lien et modifier son texte
     function updateDocumentLinkText() {
         if (isDocumentOpen) {
             documentLink.textContent = 'Fermer le document';
-            documentLink.classList.remove('active-link');
             documentLink.classList.add('default-link');
+            documentLink.classList.remove('active-link', 'disabled-link');
         } else if (isPlaying) {
             documentLink.textContent = 'Choisir un projet';
-            documentLink.classList.remove('active-link');
             documentLink.classList.add('disabled-link');
+            documentLink.classList.remove('active-link', 'default-link');
         } else {
             documentLink.textContent = 'Voir le document du projet';
-            documentLink.classList.remove('disabled-link');
             documentLink.classList.add('active-link');
+            documentLink.classList.remove('disabled-link', 'default-link');
         }
     }
 
     // Fonction pour activer ou désactiver les contrôles du carrousel
     function disableCarouselControls(disable) {
-        images.forEach(img => {
-            img.style.pointerEvents = disable ? 'none' : 'auto';
-        });
-        dots.forEach(dot => {
-            dot.style.pointerEvents = disable ? 'none' : 'auto';
-        });
+        images.forEach(img => img.style.pointerEvents = disable ? 'none' : 'auto');
+        dots.forEach(dot => dot.style.pointerEvents = disable ? 'none' : 'auto');
     }
 
     // Gestion des clics sur les images pour démarrer/arrêter le carrousel
-    images.forEach(img => {
-        img.addEventListener('click', () => {
-            if (isDocumentOpen) return; // Ignore les clics si le document est ouvert
-            if (isPlaying) {
-                stopCarousel();
-            } else {
-                startCarousel();
-            }
-        });
-    });
+    images.forEach(img => img.addEventListener('click', () => {
+        if (!isDocumentOpen) {
+            isPlaying ? stopCarousel() : startCarousel();
+        }
+    }));
 
     // Gestion des clics sur les points pour afficher la diapositive correspondante
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-            currentSlide(i);
-        });
-    });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => {
+        currentSlide(i);
+    }));
 
     // Gestion du clic sur le lien pour afficher/masquer le document
     documentLink.addEventListener('click', (event) => {
         if (isDocumentOpen) {
-            event.preventDefault(); // Empêche le comportement par défaut du lien
-            toggleDocumentContainer(); // Ferme le document
-            
+            event.preventDefault();
+            toggleDocumentContainer();
         } else if (!isPlaying) {
-            event.preventDefault(); // Empêche le comportement par défaut du lien
-            toggleDocumentContainer(); // Ouvre le document
+            event.preventDefault();
+            toggleDocumentContainer();
             document.querySelector('#document-container iframe').src = projectDocuments[currentIndex];
         }
     });
 
-    // Initialisation de la diapositive actuelle
+    // Initialisation de la diapositive actuelle et démarrage du carrousel
     updateSlide(currentIndex);
     startCarousel();
 });
