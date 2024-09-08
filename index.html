@@ -1,9 +1,11 @@
- <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
-        /* Styles généraux pour tout le site */
         :root {
             --primary-color: #6ee7b7;
             --secondary-color: #000000;
@@ -13,9 +15,6 @@
 
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
             font-family: 'Roboto', sans-serif;
             background: #000;
             background-color: var(--background-color);
@@ -28,48 +27,35 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background-color: #1a1a1a;
             background-color: var(--secondary-color);
         }
 
         header h1 {
-            color: #69d6ab;
             color: var(--primary-color);
             font-family: 'Roboto', sans-serif;
             font-size: 24px;
         }
 
-
-@@ -30,42 +40,40 @@
+        nav {
             display: flex;
         }
 
-        /* Styles pour les liens de navigation */
         nav a {
-            color: white; /* Couleur par défaut du texte */
             color: var(--text-color);
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
-            position: relative; /* Nécessaire pour les effets de survol */
-            transition: color 0.3s ease; /* Transition pour le changement de couleur */
             position: relative;
             transition: color 0.3s ease;
         }
 
         nav a::after {
-            content: ''; /* Pseudo-élément pour le soulignement */
             content: '';
             position: absolute;
             left: 0;
-            bottom: -2px; /* Positionne le soulignement */
             bottom: -2px;
             width: 100%;
             height: 2px;
-            background-color: #6ee7b7; /* Couleur du soulignement */
-            transform: scaleX(0); /* Réduit le soulignement à 0 par défaut */
-            transform-origin: left; /* Fait partir l'animation de la gauche */
-            transition: transform 0.3s ease; /* Animation pour l'étendre */
             background-color: var(--primary-color);
             transform: scaleX(0);
             transform-origin: left;
@@ -77,48 +63,35 @@
         }
 
         nav a:hover::after {
-            transform: scaleX(1); /* Étend le soulignement au survol */
             transform: scaleX(1);
         }
 
         nav a:hover {
-            color: #6ee7b7; /* Change la couleur du texte au survol */
             color: var(--primary-color);
         }
 
         nav a.active {
-            color: #6ee7b7; /* Couleur pour l'élément actif */
             color: var(--primary-color);
         }
 
-        /* Styles pour la section hero */
         .hero {
             display: flex;
             flex-direction: column;
-
-@@ -73,82 +81,83 @@
+            justify-content: center;
             align-items: center;
             height: 80vh;
             background-image: url('Images/DataWall1.jpg');
-            background-size: contain; /* Change pour cover pour couvrir toute la zone */
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             text-align: center;
-            padding: 20px;
-            position: relative; /* Nécessaire pour la position absolue des éléments internes */
             padding: 0px;
             position: relative;
         }
 
         .hero h2 {
             font-size: 48px;
-            margin: 0; /* Retirer les marges par défaut */
-            position: absolute; /* Utiliser la position absolue */
-            top: 40px; /* Ajuster la distance depuis le haut */
-            left: 50%; /* Centrer horizontalement */
-            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
             margin: 0;
             position: absolute;
             top: 40px;
@@ -129,13 +102,6 @@
         .hero p:first-of-type {
             font-size: 22px;
             font-style: italic;
-            color: #ffffff;
-            margin: 0; /* Retirer les marges par défaut */
-            position: absolute; /* Utiliser la position absolue */
-            top: 330px; /* Ajuster la distance depuis le haut */
-            left: 50%; /* Centrer horizontalement */
-            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
-            text-align: center; /* Assurer que le texte est centré */
             color: var(--text-color);
             margin: 0;
             position: absolute;
@@ -146,13 +112,6 @@
         }
 
         .buttons {
-            display: flex; /* Utiliser flexbox pour l'alignement horizontal des boutons */
-            justify-content: center; /* Centrer les boutons horizontalement */
-            margin: 0; /* Retirer les marges par défaut */
-            position: absolute; /* Utiliser la position absolue */
-            bottom: 150px; /* Positionner à 20px du bas du conteneur parent */
-            left: 50%; /* Centrer horizontalement */
-            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
             display: flex;
             justify-content: center;
             gap: 160px;
@@ -164,102 +123,82 @@
         }
 
         .buttons a {
-            display: inline-flex; /* Pour aligner les icônes avec le texte */
-            align-items: center; /* Centre l'icône et le texte verticalement */
             display: inline-flex;
             align-items: center;
             text-decoration: none;
-            padding: 15px 30px;
-            background-color: #6ee7b7aa;
-            color: #000000;
-            border-radius: 5px;
             padding: 10px 35px;
             background-color: rgba(110, 231, 183, 0.67);
             color: #000;
             border-radius: 5px 20px 40px 40px;
             font-size: 18px;
-            margin: 0 10px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
             font-weight: bold;
-            box-shadow: 5px 4px 6px rgba(133, 118, 118, 0.5); /* Ombre légère pour effet de profondeur */
             box-shadow: 3px 2px 4px rgba(133, 118, 118, 0.5);
         }
 
         .buttons a:hover {
             background-color: transparent;
-            color: #ffffff;
             color: var(--text-color);
             box-shadow: none;
             transform: scale(1.05);
         }
 
         .hero p:last-of-type {
-            position: absolute; /* Permet de positionner précisément cet élément */
-            bottom: 20px; /* Ajuste la distance depuis le bas */
-            left: 10%; /* Ajuste la position depuis la gauche */
-            transform: translateX(-40%); /* Centre le texte par rapport à la position gauche */
             position: absolute;
             bottom: 0px;
             left: 12%;
             transform: translateX(-40%);
             font-size: 16px;
             font-style: italic;
-            color: #ffffff;
-            text-align: left; /* Aligne le texte à gauche */
             color: var(--text-color);
             text-align: left;
         }
 
-        /* Styles pour le footer */
         .footer {
             background-color: #0a0a14;
             padding: 10px 50px;
-            color: #6ee7b7;
             color: var(--primary-color);
         }
 
         .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
 
-@@ -166,7 +175,7 @@
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
         }
 
         .footer-section h2 {
-            color: #fff;
             color: var(--text-color);
             font-size: 14px;
             margin-bottom: 10px;
         }
 
-@@ -174,31 +183,30 @@
         .footer-section p {
             font-size: 12px;
             margin-bottom: 10px;
-            padding-left: 10px; /* Ajoute du padding gauche pour décaler le texte du bord gauche */
-
             padding-left: 10px;
         }
 
         .footer-section ul {
             list-style: none;
             padding: 0;
-            margin: 0; /* Réinitialise la marge */
-            padding-left: 10px; /* Ajoute du padding gauche pour décaler les éléments de la liste */
             margin: 0;
             padding-left: 10px;
         }
 
         .footer-section ul li {
             font-size: 12px;
-            margin-bottom: 10px; /* Espace entre les éléments de la liste */
             margin-bottom: 10px;
         }
 
         .footer-section ul li a {
-            color: #6ee7b7;
-            text-decoration: none; /* Supprime le soulignement des liens */
-            display: block; /* Rend les liens des éléments de liste blocs pour plus de contrôle */
-            padding-left: 2px; /* Ajoute du padding gauche pour décaler le texte du bord gauche */
             color: var(--primary-color);
             text-decoration: none;
             display: block;
@@ -267,46 +206,19 @@
         }
 
         .footer-section ul li a:hover {
-            text-decoration: underline; /* Soulignement au survol */
             text-decoration: underline;
         }
 
         .social-icons {
+            display: flex;
+            gap: 10px;
+        }
 
-@@ -211,85 +219,99 @@
+        .social-icons a img {
+            width: 32px;
             height: 32px;
         }
 
-        /* Styles pour les petits écrans (smartphones) */
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            header h1 {
-                font-size: 20px;
-            }
-
-            nav {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav a {
-                font-size: 16px;
-                margin: 5px 0;
-            }
-
-            .hero h2 {
-                font-size: 36px;
-                margin-bottom: 20px; /* Ajuste l'espace pour une meilleure apparence */
-            }
-
-            .hero p:first-of-type {
-                font-size: 18px;
-                margin-bottom: 30px; /* Ajuste l'espace pour une meilleure apparence */
         .container {
             position: absolute;
             width: 300px;
@@ -343,46 +255,26 @@
                 transform: translateY(-100px);
                 opacity: 0.5;
             }
-
-            .buttons {
-                margin-bottom: 30px; /* Réduit l'espace pour une meilleure apparence */
-                flex-direction: column;
-                align-items: center;
             to {
                 transform: translateY(600px);
                 opacity: 0;
             }
-
-            .buttons a {
-                font-size: 16px;
-                margin: 10px 0;
-                padding: 10px 20px;
         }
         @keyframes cascadeWords {
             from {
                 transform: translateY(-100px);
                 opacity: 1;
             }
-
-            .footer-container {
-                flex-direction: column;
-                align-items: center;
             to {
                 transform: translateY(600px);
                 opacity: 0;
             }
-
-            .footer-section {
-                margin-bottom: 30px;
         }
         @keyframes cascadeImages {
             from {
                 transform: translateY(-100px);
                 opacity: 1;
             }
-
-            footer p {
-                font-size: 12px;
             to {
                 transform: translateY(600px);
                 opacity: 0;
@@ -398,13 +290,8 @@
 </head>
 <body>
     <header>
-        <h1>En développement</h1>
         <h1>Data Analyst & Scientist</h1>
         <nav>
-            <a href="#" class="active">Accueil</a>
-            <a href="PortF2.html">Portfolio</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
             <a href="#" class="active" aria-label="Accueil">Accueil</a>
             <a href="PortF2.html" aria-label="Portfolio">Portfolio</a>
             <a href="#" aria-label="Services">Services</a>
@@ -412,12 +299,6 @@
         </nav>
     </header>
 
-    <div class="hero">
-        <h2>Bienvenue sur mon Portfolio</h2>
-        <p>From data to insights, everything flows naturally*</p>
-        <div class="buttons">
-            <a href="#">Portfolio</a>
-            <a href="#">Cliquez ici</a>
     <main>
         <div class="hero">
             <h2>Bienvenue</h2>
@@ -430,32 +311,39 @@
             <div id="words-container" class="container"></div>
             <div id="images-container" class="container"></div>
         </div>
-        <p>*Des données aux insights, tout coule de source.</p>
-    </div>
     </main>
 
     <footer class="footer">
         <div class="footer-container">
-
-@@ -313,16 +335,154 @@
+            <!-- Section A propos -->
+            <div class="footer-section">
+                <h2>A PROPOS</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>(c) 2024 Tous droits réservés.</p>
+            </div>
+            <!-- Section Menu -->
+            <div class="footer-section">
+                <h2>MENU</h2>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="PortF2.html">Portfolio</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Section Réseaux sociaux -->
             <div class="footer-section">
                 <h2>RÉSEAUX SOCIAUX</h2>
                 <div class="social-icons">
-                    <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer">
-                        <img src="Images/linkedin.png" alt="LinkedIn">
                     <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                         <img src="Images/linkedin.png" alt="Icône LinkedIn">
                     </a>
-                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer">
-                        <img src="Images/GHLog.png" alt="GitHub">
                     <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                         <img src="Images/GHLog.png" alt="Icône GitHub">
                     </a>
-                    <!-- Ajoutez d'autres icônes de réseaux sociaux ici si nécessaire -->
                 </div>
             </div>
         </div>
-    </footer>
     </footer> 
    
    <script>
@@ -515,9 +403,9 @@
         // Pour les images
         const imagesContainer = document.getElementById('images-container');
         const images = [
-            'output_11.png', 'output_21.png', 'output_31.png', 
-            'output_41.png', 'output_51.png', 'output_61.png', 
-            'output_71.png', 'output_81.png', 'output_91.png'
+            'Images/output_11.png', 'Images/output_21.png', 'Images/output_31.png', 
+            'Images/output_41.png', 'Images/output_51.png', 'Images/output_61.png', 
+            'Images/output_71.png', 'Images/output_81.png', 'Images/output_91.png'
         ];
         const imageInterval = 3000;
         const maxImages = 3;
@@ -597,5 +485,4 @@
         animateWaterfalls();
     </script>
 </body>
-</html>      
 </html>
