@@ -1,1 +1,601 @@
-<h1>Mon premier site</h1>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        /* Styles généraux pour tout le site */
+        :root {
+            --primary-color: #6ee7b7;
+            --secondary-color: #000000;
+            --text-color: #fff;
+            --background-color: #000;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            background: #000;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #1a1a1a;
+            background-color: var(--secondary-color);
+        }
+
+        header h1 {
+            color: #69d6ab;
+            color: var(--primary-color);
+            font-family: 'Roboto', sans-serif;
+            font-size: 24px;
+        }
+
+
+@@ -30,42 +40,40 @@
+            display: flex;
+        }
+
+        /* Styles pour les liens de navigation */
+        nav a {
+            color: white; /* Couleur par défaut du texte */
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            position: relative; /* Nécessaire pour les effets de survol */
+            transition: color 0.3s ease; /* Transition pour le changement de couleur */
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: ''; /* Pseudo-élément pour le soulignement */
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px; /* Positionne le soulignement */
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            background-color: #6ee7b7; /* Couleur du soulignement */
+            transform: scaleX(0); /* Réduit le soulignement à 0 par défaut */
+            transform-origin: left; /* Fait partir l'animation de la gauche */
+            transition: transform 0.3s ease; /* Animation pour l'étendre */
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover::after {
+            transform: scaleX(1); /* Étend le soulignement au survol */
+            transform: scaleX(1);
+        }
+
+        nav a:hover {
+            color: #6ee7b7; /* Change la couleur du texte au survol */
+            color: var(--primary-color);
+        }
+
+        nav a.active {
+            color: #6ee7b7; /* Couleur pour l'élément actif */
+            color: var(--primary-color);
+        }
+
+        /* Styles pour la section hero */
+        .hero {
+            display: flex;
+            flex-direction: column;
+
+@@ -73,82 +81,83 @@
+            align-items: center;
+            height: 80vh;
+            background-image: url('Images/DataWall1.jpg');
+            background-size: contain; /* Change pour cover pour couvrir toute la zone */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            text-align: center;
+            padding: 20px;
+            position: relative; /* Nécessaire pour la position absolue des éléments internes */
+            padding: 0px;
+            position: relative;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin: 0; /* Retirer les marges par défaut */
+            position: absolute; /* Utiliser la position absolue */
+            top: 40px; /* Ajuster la distance depuis le haut */
+            left: 50%; /* Centrer horizontalement */
+            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
+            margin: 0;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hero p:first-of-type {
+            font-size: 22px;
+            font-style: italic;
+            color: #ffffff;
+            margin: 0; /* Retirer les marges par défaut */
+            position: absolute; /* Utiliser la position absolue */
+            top: 330px; /* Ajuster la distance depuis le haut */
+            left: 50%; /* Centrer horizontalement */
+            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
+            text-align: center; /* Assurer que le texte est centré */
+            color: var(--text-color);
+            margin: 0;
+            position: absolute;
+            top: 230px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex; /* Utiliser flexbox pour l'alignement horizontal des boutons */
+            justify-content: center; /* Centrer les boutons horizontalement */
+            margin: 0; /* Retirer les marges par défaut */
+            position: absolute; /* Utiliser la position absolue */
+            bottom: 150px; /* Positionner à 20px du bas du conteneur parent */
+            left: 50%; /* Centrer horizontalement */
+            transform: translateX(-50%); /* Ajuster pour centrer parfaitement */
+            display: flex;
+            justify-content: center;
+            gap: 160px;
+            margin: 0;
+            position: absolute;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .buttons a {
+            display: inline-flex; /* Pour aligner les icônes avec le texte */
+            align-items: center; /* Centre l'icône et le texte verticalement */
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 15px 30px;
+            background-color: #6ee7b7aa;
+            color: #000000;
+            border-radius: 5px;
+            padding: 10px 35px;
+            background-color: rgba(110, 231, 183, 0.67);
+            color: #000;
+            border-radius: 5px 20px 40px 40px;
+            font-size: 18px;
+            margin: 0 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            box-shadow: 5px 4px 6px rgba(133, 118, 118, 0.5); /* Ombre légère pour effet de profondeur */
+            box-shadow: 3px 2px 4px rgba(133, 118, 118, 0.5);
+        }
+
+        .buttons a:hover {
+            background-color: transparent;
+            color: #ffffff;
+            color: var(--text-color);
+            box-shadow: none;
+            transform: scale(1.05);
+        }
+
+        .hero p:last-of-type {
+            position: absolute; /* Permet de positionner précisément cet élément */
+            bottom: 20px; /* Ajuste la distance depuis le bas */
+            left: 10%; /* Ajuste la position depuis la gauche */
+            transform: translateX(-40%); /* Centre le texte par rapport à la position gauche */
+            position: absolute;
+            bottom: 0px;
+            left: 12%;
+            transform: translateX(-40%);
+            font-size: 16px;
+            font-style: italic;
+            color: #ffffff;
+            text-align: left; /* Aligne le texte à gauche */
+            color: var(--text-color);
+            text-align: left;
+        }
+
+        /* Styles pour le footer */
+        .footer {
+            background-color: #0a0a14;
+            padding: 10px 50px;
+            color: #6ee7b7;
+            color: var(--primary-color);
+        }
+
+        .footer-container {
+
+@@ -166,7 +175,7 @@
+        }
+
+        .footer-section h2 {
+            color: #fff;
+            color: var(--text-color);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+@@ -174,31 +183,30 @@
+        .footer-section p {
+            font-size: 12px;
+            margin-bottom: 10px;
+            padding-left: 10px; /* Ajoute du padding gauche pour décaler le texte du bord gauche */
+
+            padding-left: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0; /* Réinitialise la marge */
+            padding-left: 10px; /* Ajoute du padding gauche pour décaler les éléments de la liste */
+            margin: 0;
+            padding-left: 10px;
+        }
+
+        .footer-section ul li {
+            font-size: 12px;
+            margin-bottom: 10px; /* Espace entre les éléments de la liste */
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #6ee7b7;
+            text-decoration: none; /* Supprime le soulignement des liens */
+            display: block; /* Rend les liens des éléments de liste blocs pour plus de contrôle */
+            padding-left: 2px; /* Ajoute du padding gauche pour décaler le texte du bord gauche */
+            color: var(--primary-color);
+            text-decoration: none;
+            display: block;
+            padding-left: 2px;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline; /* Soulignement au survol */
+            text-decoration: underline;
+        }
+
+        .social-icons {
+
+@@ -211,85 +219,99 @@
+            height: 32px;
+        }
+
+        /* Styles pour les petits écrans (smartphones) */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header h1 {
+                font-size: 20px;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav a {
+                font-size: 16px;
+                margin: 5px 0;
+            }
+
+            .hero h2 {
+                font-size: 36px;
+                margin-bottom: 20px; /* Ajuste l'espace pour une meilleure apparence */
+            }
+
+            .hero p:first-of-type {
+                font-size: 18px;
+                margin-bottom: 30px; /* Ajuste l'espace pour une meilleure apparence */
+        .container {
+            position: absolute;
+            width: 300px;
+            height: 600px;
+            overflow: hidden;
+            border: 2px solid rgba(43, 47, 43, 0);
+        }
+        .waterfall {
+            position: absolute;
+            width: 2px;
+            height: 150px;
+            background: linear-gradient(to bottom, rgba(0, 255, 255, 0.8), rgba(0, 255, 255, 0.6), rgba(0, 0, 255, 0.4), rgba(255, 255, 255, 0.2));
+            border-radius: 3px;
+            opacity: 0;
+            animation: cascade 7s linear infinite;
+        }
+        .word {
+            position: absolute;
+            text-align: center;
+            white-space: nowrap;
+            opacity: 0;
+            font-size: 18px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            text-shadow: 2px 2px 4px rgb(0, 0, 0);
+        }
+        .image {
+            position: absolute;
+            opacity: 1;
+        }
+        @keyframes cascade {
+            from {
+                transform: translateY(-100px);
+                opacity: 0.5;
+            }
+
+            .buttons {
+                margin-bottom: 30px; /* Réduit l'espace pour une meilleure apparence */
+                flex-direction: column;
+                align-items: center;
+            to {
+                transform: translateY(600px);
+                opacity: 0;
+            }
+
+            .buttons a {
+                font-size: 16px;
+                margin: 10px 0;
+                padding: 10px 20px;
+        }
+        @keyframes cascadeWords {
+            from {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            to {
+                transform: translateY(600px);
+                opacity: 0;
+            }
+
+            .footer-section {
+                margin-bottom: 30px;
+        }
+        @keyframes cascadeImages {
+            from {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+
+            footer p {
+                font-size: 12px;
+            to {
+                transform: translateY(600px);
+                opacity: 0;
+            }
+        }
+        #words-container {
+            left: 0;
+        }
+        #images-container {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>En développement</h1>
+        <h1>Data Analyst & Scientist</h1>
+        <nav>
+            <a href="#" class="active">Accueil</a>
+            <a href="PortF2.html">Portfolio</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <a href="#" class="active" aria-label="Accueil">Accueil</a>
+            <a href="PortF2.html" aria-label="Portfolio">Portfolio</a>
+            <a href="#" aria-label="Services">Services</a>
+            <a href="#" aria-label="Contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>Bienvenue sur mon Portfolio</h2>
+        <p>From data to insights, everything flows naturally*</p>
+        <div class="buttons">
+            <a href="#">Portfolio</a>
+            <a href="#">Cliquez ici</a>
+    <main>
+        <div class="hero">
+            <h2>Bienvenue</h2>
+            <p>From data to insights, everything flows naturally*</p>
+            <div class="buttons">
+                <a href="#">A propos</a>
+                <a href="PortF2.html">Portfolio</a>
+            </div>
+            <p>*Des données à la connaissance, tout coule de source.</p>
+            <div id="words-container" class="container"></div>
+            <div id="images-container" class="container"></div>
+        </div>
+        <p>*Des données aux insights, tout coule de source.</p>
+    </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+@@ -313,16 +335,154 @@
+            <div class="footer-section">
+                <h2>RÉSEAUX SOCIAUX</h2>
+                <div class="social-icons">
+                    <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer">
+                        <img src="Images/linkedin.png" alt="LinkedIn">
+                    <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="Images/linkedin.png" alt="Icône LinkedIn">
+                    </a>
+                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer">
+                        <img src="Images/GHLog.png" alt="GitHub">
+                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <img src="Images/GHLog.png" alt="Icône GitHub">
+                    </a>
+                    <!-- Ajoutez d'autres icônes de réseaux sociaux ici si nécessaire -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    </footer> 
+   
+   <script>
+        // Pour les mots
+        const wordsContainer = document.getElementById('words-container');
+        const words = [
+            "Insights", "Ethique", "Empathie", "Analyse exploratoire", "Univarié", 
+            "Bivarié", "Crédibilité", "Focus Métiers", "Prédictions", "Curiosité", 
+            "Pragmatisme", "Rigueur", "Passionné", "Mathématiques", "Probabilités", "Statistiques", "Clustering"
+        ];
+        const wordProbability = 0.0001;
+        let activeWords = [];
+
+        function createWord(word) {
+            const element = document.createElement('div');
+            element.className = 'word';
+            element.textContent = word;
+
+            wordsContainer.appendChild(element);
+            const wordWidth = element.offsetWidth;
+            wordsContainer.removeChild(element);
+
+            const maxWidth = 300;
+            const positionLeft = Math.random() * (maxWidth - wordWidth);
+            element.style.left = `${positionLeft}px`;
+            element.style.animation = `cascadeWords ${Math.random() * 7 + 5}s linear infinite`;
+
+            element.addEventListener('animationend', () => {
+                wordsContainer.removeChild(element);
+                activeWords = activeWords.filter(el => el !== element);
+            });
+
+            wordsContainer.appendChild(element);
+            activeWords.push(element);
+        }
+
+        function animateWords() {
+            let usedWords = new Set();
+
+            words.forEach((word, index) => {
+                setTimeout(() => {
+                    createWord(word);
+                    usedWords.add(word);
+                }, index * 1000);
+            });
+
+            setInterval(() => {
+                if (Math.random() < wordProbability) {
+                    const randomWord = words[Math.floor(Math.random() * words.length)];
+                    createWord(randomWord);
+                }
+            }, 200);
+        }
+
+        animateWords();
+
+        // Pour les images
+        const imagesContainer = document.getElementById('images-container');
+        const images = [
+            'output_11.png', 'output_21.png', 'output_31.png', 
+            'output_41.png', 'output_51.png', 'output_61.png', 
+            'output_71.png', 'output_81.png', 'output_91.png'
+        ];
+        const imageInterval = 3000;
+        const maxImages = 3;
+        const imageWidth = 250;
+        let activeImagesCount = 0;
+        let currentImageIndex = 0;
+
+        function getNextImage() {
+            const image = images[currentImageIndex];
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            return image;
+        }
+
+        function createImage(image) {
+            const element = document.createElement('div');
+            element.className = 'image';
+            const img = document.createElement('img');
+            img.src = image;
+            img.style.width = `${imageWidth}px`;
+            img.style.height = 'auto';
+            element.appendChild(img);
+
+            imagesContainer.appendChild(element);
+            const imgWidth = img.offsetWidth;
+            imagesContainer.removeChild(element);
+
+            const maxWidth = 300;
+            const positionLeft = Math.random() * (maxWidth - imgWidth);
+            element.style.left = `${positionLeft}px`;
+
+            const animationDuration = Math.random() * 5 + 5;
+            element.style.animation = `cascadeImages ${animationDuration}s linear`;
+
+            element.addEventListener('animationend', () => {
+                imagesContainer.removeChild(element);
+                activeImagesCount--;
+            });
+
+            imagesContainer.appendChild(element);
+            activeImagesCount++;
+        }
+
+        function animateImages() {
+            setInterval(() => {
+                if (activeImagesCount < maxImages) {
+                    const nextImage = getNextImage();
+                    createImage(nextImage);
+                }
+            }, imageInterval);
+        }
+
+        animateImages();
+
+        // Ajouter des jets d'eau dans les deux conteneurs
+        function createWaterfall(container) {
+            const element = document.createElement('div');
+            element.className = 'waterfall';
+            element.style.left = `${Math.random() * 300}px`;
+            element.style.animation = `cascade ${Math.random() * 7 + 5}s linear infinite`;
+
+            element.addEventListener('animationend', () => {
+                container.removeChild(element);
+            });
+
+            container.appendChild(element);
+        }
+
+        function animateWaterfalls() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createWaterfall(wordsContainer);
+                    createWaterfall(imagesContainer);
+                }, i * 200);
+            }
+        }
+
+        animateWaterfalls();
+    </script>
+</body>
+</html>      
+</html>
