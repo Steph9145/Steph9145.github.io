@@ -26,8 +26,7 @@
 
     <div class="first-container">
         <h2 class="section-title">Portfolio</h2>
-        <!-- Autre contenu du conteneur -->
-      </div>
+    </div>
 
     <!-- Section à deux colonnes pour les projets -->
     <section class="two-column-section">
@@ -35,7 +34,6 @@
         <div class="column column-40">
             <h3 id="project-title">Titre du Projet</h3>
             <div class="carousel">
-                <!-- Images du carrousel -->
                 <img src="Images/Crazy chicken-min.png" alt="Projet : Marketing - Export" class="active">
                 <img src="Images/Eau Afrique.png" alt="Projet : Gestion de l'eau en Afrique">
                 <img src="Images/Nutrition mondiale.png" alt="Projet : Analyse des besoins nutritionnels mondiaux">
@@ -62,6 +60,11 @@
                 <span class="dot" onclick="currentSlide(6)"></span>
                 <span class="dot" onclick="currentSlide(7)"></span>
             </div>
+            
+            <!-- Lien pour voir le document du projet sous le carrousel -->
+            <div class="project-document-container">
+                <a id="project-document-link" href="#" target="_blank">Voir le document du projet</a>
+            </div>
         </div>
 
         <!-- Colonne de droite : Description du projet -->
@@ -78,24 +81,20 @@
                 <div id="project-libraries-logos" class="project-logos"></div>
             </div>
         </div>
-    </section> 
-    
-    <div class="project-document-container">
-        <a id="project-document-link" href="#" target="_blank">Voir le document du projet</a>
-    
-        <!-- Conteneur caché pour le document du projet -->
-        <div id="document-container" class="hidden">
-            <div class="document-column-left">
-                <div id="project-description-container">
-                    <!-- Description du projet sera injectée ici -->
-                </div>
-            </div>
-            <div class="document-column-right">
-                <iframe src="URL_DU_DOCUMENT" height="600" frameborder="0"></iframe>
-            </div>
+    </section>
+
+    <!-- Conteneur caché pour le document du projet -->
+    <div id="document-container" class="hidden">
+        <div class="left-column">
+            
+            <p>Ajoutez ici tout autre contenu que vous souhaitez dans la colonne de droite.</p>
+        </div>
+        <div class="right-column">
+            <!-- Tout autre contenu ou description supplémentaire -->
+            <iframe src="URL_DU_DOCUMENT" width="70%" height="700" frameborder="0"></iframe>
         </div>
     </div>
-    
+
     <!-- Pied de page -->
     <footer class="footer">
         <div class="footer-container">

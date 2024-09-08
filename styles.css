@@ -135,7 +135,9 @@ nav a.active {
 /* Styles pour la section à deux colonnes */
 .two-column-section {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    margin: 20px 0;
     gap: 10px;
     padding: 0px;
     background-color: var(--background-color);
@@ -153,25 +155,29 @@ nav a.active {
     flex: 0 0 33%;
     background-color: black;
     max-width: 33%;
-    max-height: 350px;
+    max-height: 400px;
 }
 
 .column-60 {
     flex: 0 0 62%;
     background-color: black;
     max-width: 62%;
-    max-height: 350px;
+    max-height: 400px;
 }
 
 /* Styles pour les containers */
 /* Styles pour le conteneur Description */
 .description-container {
-    height: 200px; /* Ajuste la hauteur selon tes besoins */
+    height: 270px; /* Ajuste la hauteur selon tes besoins */
     
-    padding: 10px 10px;
+    padding: 5px 10px;
     background-color: var(--container-background);
     border-radius: 8px;
     margin-bottom: 20px;
+}
+
+.line-spacing {
+    line-height: 1.6; /* Ajustez la valeur selon vos besoins */
 }
 
 /* Styles pour les containers Outils et Librairies */
@@ -213,7 +219,7 @@ nav a.active {
     font-size: 22px;
     font-style: italic;
     text-align: center; /* Centre le texte */
-    margin-top: 0;
+    margin-top: 10px;
 }
 
 /* Styles pour le carrousel d'images */
@@ -224,7 +230,7 @@ nav a.active {
     height: 250px;
     overflow: hidden;
     margin: 0 auto;
-    border: 2px solid var(--nav-hover);
+    border: 0px solid var(--nav-hover);
     border-radius: 10px;
 }
 
@@ -298,7 +304,7 @@ nav a.active {
 }
 
 .project-document-container {
-    margin-top: 20px;
+    margin-top: 0px;
     text-align: center;
 }
 
@@ -315,56 +321,61 @@ nav a.active {
     transition: background-color 0.3s ease;
 }
 
+/* Classe par défaut */
+#project-document-link.default-link {
+    background-color: rgb(98, 18, 18);
+    color: white;
+}
+
+/* Classe pour le lien désactivé */
+#project-document-link.disabled-link {
+    pointer-events: none;
+    background-color: rgb(98, 18, 18); /* Couleur de fond pour le lien désactivé */
+    cursor: not-allowed;
+    color: white; /* Assurez-vous que le texte est lisible sur le fond désactivé */
+}
+
+/* Classe pour le lien actif */
+#project-document-link.active-link {
+    background-color: #6ee7b7;
+    color: rgb(0, 0, 0);
+}
+
+/* État de survol */
 #project-document-link:hover {
     background-color: rgb(0, 0, 0);
     color: #fff;
 }
 
-#project-document-link.disabled-link {
-    pointer-events: none;
-    background-color: rgb(146, 50, 50) !important; /* Ajout de `!important` pour forcer la couleur de fond */
-    cursor: not-allowed;
-}
-
-
+#document-container.hidden {
+    display: none; /* Masque le conteneur entier quand la classe "hidden" est ajoutée */
+  }
 
 #document-container {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s ease;
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    padding: 20px;
-    height: 600px;
     width: 100%;
-    box-sizing: border-box;
-    position: absolute; /* Permet de ne pas affecter la mise en page */
-    top: 700px;
-    left: 0;
-    z-index: 10; /* S'assure que le conteneur reste au-dessus des autres éléments */
+    margin-top: 20px;
+    padding: 20px;
 }
 
-.document-column-left {
-    flex: 0 0 25%; /* 30% de la largeur */
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-right: 1px solid #ddd; /* Optionnel : ligne de séparation */
-    box-sizing: border-box;
+#document-container .left-column {
+    width: 28%;
+    padding-right: 20px;
 }
 
-.document-column-right {
-    flex: 0 0 72%; /* 70% de la largeur */
-    box-sizing: border-box;
+#document-container .right-column {
+    width: 68%;
+    border-top-right-radius: 35px; /* Ajuste cette valeur selon tes préférences */
+    border-bottom-right-radius: 35px; /* Ajuste cette valeur selon tes préférences */
+    /* Autres styles pour la colonne droite */
 }
 
+/* Optionnel : styles pour les iframes et autres contenus */
 #document-container iframe {
     width: 100%;
-    height: 100%; /* S'adapte à la hauteur du container */
-}
-
-.hidden {
-    display: none;
+    height: 600px;
+    border: none;
 }
 
 
