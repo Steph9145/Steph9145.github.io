@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "Projets/OCSS_P4_DA-GITHUB.html",
         "Projets/OCSS_P6_DA-GITHUB1.html",
         "Projets/Medecins.mp4",
-        "Projets/OCSS_P4_DA-GITHUB.html",
+        "Projets/Egal_Hom_Fem.mp4",
         "Projets/OCSS_P10_DA_GITHUB.html",
         "Projets/OCSS_P6_DA-GITHUB1.html",
         "Projets/OCSS_P10_DA_GITHUB.html",
