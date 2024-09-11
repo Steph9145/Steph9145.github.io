@@ -74,24 +74,22 @@ nav a.active {
 /* Styles pour la section héroïque */
 .hero {
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 10vh;
-    background-image: url('Images/Image5.jpg');
+    height: 33vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('Images/Nature.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    text-align: center;
-    padding: 20px;
-    position: relative;
 }
 
 .hero h2 {
     font-size: 48px;
     margin: 0;
     position: absolute;
-    top: 20px;
+    top: 60px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -102,8 +100,8 @@ nav a.active {
     color: var(--hero-text);
     margin: 0;
     position: absolute;
-    top: 20px;
-    left: 50%;
+    top: 140px;
+    left: 54%;
     transform: translateX(-50%);
     text-align: center;
 }
@@ -113,67 +111,55 @@ nav a.active {
     font-style: italic;
     color: var(--hero-text);
     position: absolute;
-    bottom: -10px;
-    left: 10%;
+    bottom: 30px;
+    left: 7%;
     transform: translateX(-50%);
     text-align: left;
     max-width: 80%;
 }
 
-.first-container {
-    padding: 20px;
-    background-color: #000000;
-    text-align: center; /* Centre le contenu horizontalement */
-  }
-  
-  .section-title {
-    font-size: 3rem; /* Ajustez la taille de la police selon vos besoins */
-    color: #ffffff; /* Ajustez la couleur selon vos besoins */
-    margin: 0; /* Élimine les marges par défaut si nécessaire */
-  }
 
 /* Styles pour la section à deux colonnes */
 .two-column-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 20px 0;
+    margin: 00px 0;
     gap: 10px;
     padding: 0px;
-    background-color: var(--background-color);
+    background: linear-gradient(to right, rgb(0, 0, 0), var(--container-background), white); /* Dégradé */
     color: var(--nav-link);
-    margin-bottom: 0; /* Assure qu'il n'y a pas d'espace sous la section */
+    margin-top: 0px;
 }
 
 .column {
     padding: 10px;
-    background-color: var(--column-background);
     border-radius: 8px;
 }
 
 .column-40 {
     flex: 0 0 33%;
-    background-color: black;
+    background-color: #33333300;
     max-width: 33%;
-    max-height: 400px;
+    height: 400px;
 }
 
 .column-60 {
-    flex: 0 0 62%;
-    background-color: black;
+    flex: 0 0 65%;
+    background-color: rgba(255, 255, 255, 0);
+    height: 420px;
+    padding: 0px 10px;
     max-width: 62%;
-    max-height: 400px;
 }
 
 /* Styles pour les containers */
 /* Styles pour le conteneur Description */
 .description-container {
-    height: 270px; /* Ajuste la hauteur selon tes besoins */
-    
+    height: 300px; /* Ajuste la hauteur selon tes besoins */
     padding: 5px 10px;
-    background-color: var(--container-background);
+    
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .line-spacing {
@@ -191,9 +177,9 @@ nav a.active {
     justify-content: space-between; /* Sépare le titre à gauche et les logos à droite */
     align-items: center; /* Centre verticalement le contenu */
     padding: 0px; /* Ajuste le padding */
-    background: linear-gradient(to right, var(--container-background), #ffffff 60%);
+    background: linear-gradient(to right, #1c1c1c, rgb(146, 146, 146) 60%, white);
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: var(--nav-hover); /* Couleur verte pour les titres */
 }
 
@@ -219,7 +205,7 @@ nav a.active {
 /* Styles pour les titres des sections */
 #project-title,
 .container h3 {
-    color: #6cd6aa; /* Change la couleur du texte en noir */
+    color: #6cd6aa; /* Change la couleur */
     font-size: 22px;
     font-style: italic;
     text-align: center; /* Centre le texte */
@@ -284,7 +270,7 @@ nav a.active {
     height: 15px;
     width: 15px;
     margin: 0 2px;
-    background-color: #353333;
+    background-color: #dbdada;
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
@@ -316,7 +302,7 @@ nav a.active {
     display: inline-flex;
     padding: 10px 20px;
     background-color: var(--nav-hover);
-    margin-top: 0;
+    margin-top: 10px;
     color: #000;
     font-weight: bold;
     font-size: 18px;
@@ -327,7 +313,7 @@ nav a.active {
 
 /* Classe par défaut */
 #project-document-link.default-link {
-    background-color: rgb(98, 18, 18);
+    background-color: rgb(170, 51, 73);
     color: white;
 }
 
@@ -351,6 +337,50 @@ nav a.active {
     color: #fff;
 }
 
+.Title-Close-container {
+    height: 40px;               /* Hauteur fixe de 80px */
+    background-color: #f0f0f0;
+    padding: 10px;              /* Espacement interne */
+    margin-top: 20px;           /* Espacement externe */
+    border: 1px solid #ccc;     /* Bordure personnalisée */
+    border-radius: 10px;        /* Coins arrondis */
+    display: flex;              /* Utilisation de flexbox pour aligner le contenu */
+    align-items: center;        /* Centrer verticalement le contenu */
+    justify-content: space-between; /* Répartir le contenu horizontalement */
+    box-sizing: border-box;     /* Inclure le padding et la bordure dans la hauteur totale */
+    overflow: hidden;           /* Cacher le contenu qui dépasse la hauteur de 80px */
+}
+
+.Title-Close-container h3 {
+    font-size: 1em;             /* Taille de police adaptée pour tenir dans 80px */
+    margin: 0;                  /* Supprimer les marges par défaut */
+    color: #333;
+}
+
+.Title-Close-container p {
+    font-size: 0.9em;           /* Taille de police réduite */
+    margin: 0;
+    color: #666;
+}
+
+#close-button {
+    background-color: #007BFF;  /* Couleur du bouton */
+    color: white;
+    padding: 5px 10px;          /* Espacement réduit pour s'adapter à la hauteur */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;           /* Taille de police réduite pour le bouton */
+}
+
+
+#close-button:hover {
+    background-color: #0056b3; /* Changement de couleur au survol */
+}
+
+
+
+
 #document-container.hidden {
     display: none; /* Masque le conteneur entier quand la classe "hidden" est ajoutée */
   }
@@ -359,13 +389,14 @@ nav a.active {
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 0px;
     padding: 20px;
 }
 
 #document-container .left-column {
     width: 28%;
     padding-right: 20px;
+    background-color: rgb(0, 0, 0);
 }
 
 #document-container .right-column {
@@ -378,7 +409,8 @@ nav a.active {
 /* Optionnel : styles pour les iframes et autres contenus */
 #document-container iframe {
     width: 100%;
-    height: 600px;
+    height: 700px;
+    background-color: rgb(0, 0, 0);
     border: none;
 }
 

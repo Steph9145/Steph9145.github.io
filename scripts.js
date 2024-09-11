@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const documentVideo = document.getElementById('document-video');
     const videoSource = document.getElementById('video-source');
 
+
+ 
     // Titres des projets
     const titles = [
         "Etude de marché - Export",
@@ -49,19 +51,20 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
     
     const projectDocuments = [
-        "Projets/OCSS_P4_DA-GITHUB.html",
+        "Projets/SS_OC_P9_Clustering.html",
         "Projets/OCSS_P6_DA-GITHUB1.html",
         "Projets/Medecins.mp4",
         "Projets/Egal_Hom_Fem.mp4",
         "Projets/OCSS_P10_DA_GITHUB.html",
         "Projets/OCSS_P6_DA-GITHUB1.html",
         "Projets/OCSS_P10_DA_GITHUB.html",
-        "Projets/Results2024_Legis_circonscriptions.html"
+        "Projets/Leg2024.html"
     ];
 
     const projectComments = [
         "Commentaires pour le projet d'étude de marché - Export.",
         "Commentaires pour la gestion de l'eau en Afrique.",
+
         `<p>Les Chiffres Clés, ce que je voulais voir:</p>
     <ul>
         <li>👉 Evolution de 2012 à 2023 des médecins et de la population</li>
@@ -85,10 +88,15 @@ document.addEventListener('DOMContentLoaded', () => {
     </ul>
     <p>La bonne nouvelle, d'une façon générale, est que la France a quasiment atteint la parité dans cette profession.</p>
     <p>La seconde partie de mon projet concerne la présence géolocalisée d'une base de 48,5k médecins généralistes et leur densité par cantons (plus pertinent que les communes) en 2024.</p>`,
+
         "Commentaires sur les inégalités de genre en entreprise.",
+
         "Commentaires pour la gestion d'une boutique de vins en ligne.",
+
         "Commentaires pour la gestion des ventes dans une librairie.",
+
         "Commentaires sur la détection de faux billets avec Machine Learning.",
+
         `<p>👉 La démarche pour le 1er Tour:</p>
     <ul>
         <li>Utilisation des résultats des législatives 2022 et surtout des Européennes 2024.</li>
@@ -137,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         [
             { src: "Images/sql-logo.png", alt: "SQL" },
-            { src: "Images/excel-logo.png", alt: "Excel" }
+            { src: "Images/python-logo.png", alt: "Excel" }
         ]
     ];
 
@@ -264,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
             stopCarousel();
             disableCarouselControls(true);
             window.scrollTo({
-                top: documentContainer.getBoundingClientRect().top + window.scrollY - 100,
+                top: documentContainer.getBoundingClientRect().top + window.scrollY - 60,
                 behavior: 'smooth'
             });
         } else {
@@ -309,6 +317,10 @@ document.addEventListener('DOMContentLoaded', () => {
             isPlaying ? stopCarousel() : startCarousel();
         }
     }));
+
+    document.getElementById('close-button').addEventListener('click', function() {
+        document.querySelector('.Title-Close-container').style.display = 'none';
+    });
 
     // Gestion des clics sur les points pour afficher la diapositive correspondante
     dots.forEach((dot, i) => dot.addEventListener('click', () => {
