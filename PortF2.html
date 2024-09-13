@@ -82,26 +82,19 @@
 
     <!-- Nouveau container personnalisé -->
     <div class="Title-Close-container">
-        <h3 id="custom-title">Titre Personnalisé</h3>
-        <p id="custom-content">Ce texte peut être personnalisé selon vos préférences.</p>
+        <h2 id="document-title"></h2>
+        <p id="custom-content"></p>
         <button id="close-button">Fermer</button>
     </div>
 
     <!-- Conteneur caché pour le document du projet -->
     <div id="document-container" class="hidden" style="width: 100%;">
-        <div class="left-column">
-            <div id="project-comment" class="column-left">
-                <!-- Le commentaire personnalisé sera inséré ici -->
-            </div>
-        </div>
-        <div class="right-column">
             <!-- Tout autre contenu ou description supplémentaire -->
             <iframe id="document-frame" style="display: none;" width="600" height="400"></iframe>
             <video id="document-video" style="display: none;" width="600" height="400" controls>
             <source id="video-source" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-        </div>
     </div>
 
     <!-- Pied de page -->

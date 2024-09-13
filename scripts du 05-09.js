@@ -20,11 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const librariesContainer = document.getElementById('project-libraries-logos');
     const documentLink = document.getElementById('project-document-link');
     const closeButton = document.getElementById('close-button');
-    const projectCommentElement = document.getElementById('project-comment');
     const documentContainer = document.getElementById('document-container');
     const documentFrame = document.getElementById('document-frame');
     const documentVideo = document.getElementById('document-video');
     const videoSource = document.getElementById('video-source');
+
+    const documentTitleElement = document.getElementById('document-title'); // Sélectionne l'élément du titre
 
 
     // Tableau des projets
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li class='line-spacing'>Choix du cluster et présentation des résultats</li>
                 </ul>
             `,
-            document: "Projets/EMexp_poulet/SS_OC_P9_Clustering.html",
+            document: "Projets/EMexp_poulet/Export_Poul.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
                 { src: "Images/python-logo.png", alt: "Python" },
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li class='line-spacing'>Coordination avec les autorités locales</li>
                 </ul>
                 `,
-            document: "Projets/Eau_potable/Eau Potable.mp4",
+            document: "Projets/Eau_potable/Eau_potable.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
                 { src: "Images/powerbi-Logo.png", alt: "Power BI" },
@@ -88,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <li class='line-spacing'>Collaboration avec des organisations internationales</li>
             </ul>
                 `,
-            document: "Projets/MedecinsG/Medecins.mp4",
+            document: "Projets/MedecinsG/MedecinsG.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
                 { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
@@ -111,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li class='line-spacing'>Suivi des progrès et recommandations</li>
                 </ul>
                 `,
-            document: "Projets/EgaliteHF/Egal_Hom_Fem.mp4",
+            document: "Projets/EgaliteHF/EgalitésFH.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
                 { src: "Images/sql-logo.png", alt: "SQL" },
@@ -134,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li class='line-spacing'>Analyse des tendances de vente et retour client</li>
                 </ul>
                 `,
-            document: "Projets/BoutiqueVin/OCSS_P5_DA-GITHUB.html",
+            document: "Projets/BoutiqueVin/Vins.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
                 { src: "Images/python-logo.png", alt: "Python" },
@@ -157,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li class='line-spacing'>Création de promotions ciblées</li>
                 </ul>
                 `,
-            document: "Projets/Librairie/OCSS_P6_DA-GITHUB1.html",
+            document: "Projets/Librairie/Librairie.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
                 { src: "Images/python-logo.png", alt: "Python" },
@@ -181,9 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li class='line-spacing'>Régression Logistique Statsmodels et Sklearn</li>
                     <li class='line-spacing'>Algorithme: Analyse des résultats et ajustements</li>
                     <li class='line-spacing'>Outil de définition du seuil d’acceptation</li>
-                </ul>,
+                </ul>
                 `,
-            document: "Projets/Billets/OCSS_P10_DA_GITHUB.html",
+            document: "Projets/Billets/Billet.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
                 { src: "Images/python-logo.png", alt: "Python" },
@@ -232,7 +233,6 @@ document.addEventListener('DOMContentLoaded', () => {
             projectDescription.innerHTML = projects[index].description;
             updateLogos(index);
             documentLink.href = projects[index].document;
-            projectCommentElement.innerHTML = projects[index].comment;
             updateDocumentLinkText();
             updateCloseButtonState();
         }
@@ -302,7 +302,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 isDocumentOpen = true;
                 stopCarousel();
                 disableCarouselControls(true);
-        
+    
+                // Met à jour le titre du document dans .Title-Close-container
+                const currentProject = projects[currentIndex];
+                if (documentTitleElement) {
+                    documentTitleElement.textContent = currentProject.title;
+                }
+    
                 // Ajoute un délai avant d'exécuter le défilement
                 setTimeout(() => {
                     window.scrollTo({
@@ -310,13 +316,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         behavior: 'smooth'
                     });
                 }, 100); // Ajuste le délai si nécessaire
-        
+    
             } else {
                 documentContainer.classList.add('hidden');
                 isDocumentOpen = false;
                 startCarousel();
                 disableCarouselControls(false);
-        
+    
+                // Efface le titre dans .Title-Close-container
+                if (documentTitleElement) {
+                    documentTitleElement.textContent = '';
+                }
+    
                 // Défilement vers le haut après la fermeture du document
                 window.scrollTo({
                     top: 0,
@@ -326,7 +337,6 @@ document.addEventListener('DOMContentLoaded', () => {
             updateDocumentLinkText();
             updateCloseButtonState();
         }
-        
     
         function loadDocument() {
             const currentProject = projects[currentIndex];
@@ -363,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 documentLink.classList.add('disabled-link');
                 documentLink.classList.remove('active-link', 'default-link');
             } else {
-                documentLink.textContent = 'Voir le document du projet';
+                documentLink.textContent = 'En savoir plus';
                 documentLink.classList.add('active-link');
                 documentLink.classList.remove('disabled-link', 'default-link');
             }
