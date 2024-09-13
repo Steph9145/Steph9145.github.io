@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio - Page 2</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles du 05-09 - Copie.css">
 </head>
 <body>
     <!-- En-tête du site -->
@@ -88,7 +88,7 @@
     </div>
 
     <!-- Conteneur caché pour le document du projet -->
-    <div id="document-container" class="hidden">
+    <div id="document-container" class="hidden" style="width: 100%;">
         <div class="left-column">
             <div id="project-comment" class="column-left">
                 <!-- Le commentaire personnalisé sera inséré ici -->
@@ -96,9 +96,9 @@
         </div>
         <div class="right-column">
             <!-- Tout autre contenu ou description supplémentaire -->
-            <iframe src="URL_DU_DOCUMENT" width="70%" height="900" frameborder="0"></iframe>
-            <video id="document-video" controls style="width: 100%; height: 100%; display: none;">
-                <source id="video-source" src="" type="video/mp4">
+            <iframe id="document-frame" style="display: none;" width="600" height="400"></iframe>
+            <video id="document-video" style="display: none;" width="600" height="400" controls>
+            <source id="video-source" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -136,6 +136,6 @@
     </footer>
 
     <!-- Inclusion du script JavaScript -->
-    <script src="scripts.js"></script>
+    <script src="scripts du 05-09.js"></script>
 </body>
 </html>

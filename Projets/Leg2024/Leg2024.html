@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deux containers avec boutons et contenu dynamique</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: rgb(0, 0, 0);
+        }
+
+        .page-wrapper {
+            display: flex;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .container-left {
+            width: 30%;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            padding: 50px 20px;
+            box-sizing: border-box;
+            border-right: 2px solid #000;
+        }
+
+        .main-content {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .container-1, .container-2 {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            padding: 20px;
+            margin-bottom: 0;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .container-1 {
+            background-color: rgb(0, 0, 0);
+            height: 50px;
+            position: relative;
+            z-index: 1;
+            padding: 5px 0;
+        }
+
+        .container-2 {
+            background-color: rgb(0, 0, 0);
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 0;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .buttons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            padding: 5px;
+            background-color: #6ee7b7;
+            color: #000000;
+            border-radius: 5px 20px 40px 40px;
+            font-size: 14px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            box-shadow: 3px 2px 4px rgba(133, 118, 118, 0.5);
+            width: 150px;
+            text-align: center;
+        }
+
+        .buttons a:hover {
+            background-color: transparent;
+            color: #ffffff;
+            box-shadow: none;
+            transform: scale(1.05);
+        }
+
+        .buttons a.active {
+            background-color: black;
+            color: #ffffff;
+        }
+
+        .dynamic-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .dynamic-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .dynamic-content {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            color: white;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: opacity 0.5s ease;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container-left" id="container-left">
+            <div class="title">👉 Législatives 2024 👈</div>
+            <!-- Contenu par défaut affiché ici -->
+        </div>
+
+        <div class="main-content">
+            <div class="container container-1">
+                <div class="buttons">
+                    <a href="#" id="button1" class="active">Résultats</a>
+                    <a href="#" id="button2">1er Tour</a>
+                    <a href="#" id="button3">2nd Tour</a>
+                    <a href="#" id="button4">Analyse erreurs</a>
+                    <a href="#" id="button5">Notebook 1er tour</a>
+                    <a href="#" id="button6">Notebook 2nd tour</a>
+                </div>
+            </div>
+
+            <div class="container container-2">
+                <div id="dynamic-content" class="dynamic-content">
+                    <!-- Le contenu sera chargé ici -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.buttons a');
+        const dynamicContent = document.getElementById('dynamic-content');
+        const containerLeft = document.getElementById('container-left');
+
+        function changeContent(content) {
+            dynamicContent.innerHTML = content;
+        }
+
+        function setActiveButton(selectedButton) {
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            selectedButton.classList.add('active');
+        }
+
+        function loadDefaultContent() {
+            const defaultButton = document.getElementById('button1');
+            setActiveButton(defaultButton);
+            changeContent('<img src="RésultatLeg.jpg" alt="Résultats des Législatives">');
+            containerLeft.innerHTML = `
+                <div class="title">👉 Législatives 2024 👈</div><br><br><br>
+                Face aux résultats des Européennes et à l'organisation d'élections législatives,
+                j'ai décidé de réaliser une étude prédictive des résultats pour les 1er et 2nd tour de l'élection.<br><br>
+
+                Vous pouvez, en naviguant, découvrir les notebooks, prédictions et analyses de l'étude.<br><br>
+                Seuls les fichiers Excel comportant les règles de report de votes utilisant des techniques d'analyses comportementales resteront privés!
+            `;
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                setActiveButton(button);
+                const id = button.id;
+
+                switch (id) {
+                    case 'button1':
+                        changeContent('<img src="RésultatLeg.jpg" alt="Résultats des Législatives">');
+                        containerLeft.innerHTML = `
+                            <div class="title">👉 Législatives 2024 👈</div><br><br><br>
+                            Face aux résultats des Européennes et à l'organisation d'élections législatives,
+                            j'ai décidé de réaliser une étude prédictive des résultats pour les 1er et 2nd tour de l'élection.<br><br>
+
+                            Vous pouvez, en naviguant, découvrir les notebooks, prédictions et analyses de l'étude.<br><br>
+                            Seuls les fichiers Excel comportant les règles de report de votes utilisant des techniques d'analyses comportementales resteront privés!
+                        `;
+                        break;
+                    case 'button2':
+                        changeContent('<iframe src="carte_Legis_1erTour.html" title="Carte du 1er Tour"></iframe>');
+                        containerLeft.innerHTML = `
+                            <div class="title">👉 Démarches pour le 1er Tour 👈</div><br><br><br>
+                            - Utilisation des résultats des Législatives 2022 et surtout des Européennes 2024.<br><br>
+                            - Choix de prévoir les résultats du 1er tour par circonscription.<br><br>
+                            - Prise en compte des divisions intra-parti (split des LR entre Ensemble et RN, split de la liste "RÉVEILLER L'EUROPE" entre Ensemble et UG).<br><br>
+                            - Estimation de +30% de participation par circonscription par rapport aux Européennes.<br><br>
+                            ➕ <b>Avantage</b>:<br>
+                            Les choix pris permettent d'obtenir des prévisions cohérentes comparées aux résultats réels du 1er tour.<br><br>
+                            ➖ <b>Biais</b>:<br>
+                            J'ai "sacrifié" les LR en les splittant sur 3 listes (Ensemble, LR et RN) pour toutes les circonscriptions, ce qui a eu pour effet de minimiser les résultats des candidats LR sans alliance.
+                        `;
+                        break;
+                    case 'button3':
+                        changeContent('<iframe src="Results2024_Legis_circonscriptions.html" title="Résultats des Circonscriptions"></iframe>');
+                        containerLeft.innerHTML = `
+                            <div class="title">👉 Démarches pour le 2nd Tour 👈</div><br><br><br>
+                            J'ai expliqué ma démarche basée sur les résultats du 1er tour (data.gouv.fr), les désistements, les différentes répartitions des voix en fonction des duels….<br><br>
+                            Je n’ai hélas pas eu le temps d’analyser les circonscriptions pour lesquelles les deux premiers candidats étaient au coude à coude.<br>
+                            Il est possible que cela explique la quarantaine de sièges manquantes au RN et à priori reportés sur l’UG!<br><br>
+                            <div class="title">- voir "Analyse erreurs" -</div><br>
+                            <b>Le bilan :</b><br>
+                            👉 Mes projections positionnent les 3 principales listes dans le bon ordre.<br>
+                            👉 Elles sont plus proches de la réalité que celles annoncées par les médias (230 sièges pour le RN)<br>
+                            👉 Analyse comportementale/Electorale cohérente
+                        `;
+                        break;
+                    case 'button4':
+                        changeContent('<img src="AnaERR.png" alt="Analyse des Erreurs">');
+                        containerLeft.innerHTML = `
+                            <div class="title">👉 Analyse des erreurs 👈</div><br><br><br>
+                            <b>Démarches basées sur :</b><br><br>
+                                    - Les résultats du 2nd tour, (data.gouv.fr)<br>
+                                    - Les prévisions inexactes RN/UG, <br>
+                                    - Vérification / comparaison entre prévisions et résultats réels<br><br><br>
+                            <b>Conclusions :</b><br><br>
+                            👉 Unions de Gauches: 219 - 43 = 176 sièges <br> réel = 178 sièges.<br><br>
+                            👉 RN et UXD : 93 +5 + 43 = 141 sièges <br>réel = 142 sièges<br>
+                        `;
+                        break;
+                    case 'button5':
+                        changeContent('<iframe src="Legislatives2024_1erTour.html" title="Notebook 1er Tour"></iframe>');
+                        containerLeft.innerHTML = `
+                            <div class="title">👉 Notebook 1er Tour 👈</div><br><br><br>
+                            - Présentation des résultats détaillés du 1er tour.<br><br>
+                            - Analyse des données et prévisions des résultats par circonscription.<br><br>
+                            - Outils et méthodes utilisés pour obtenir les prévisions.
+                        `;
+                        break;
+                    case 'button6':
+                        changeContent('<iframe src="Legislatives2024_2ndTour.html" title="Notebook 2nd Tour"></iframe>');
+                        containerLeft.innerHTML = `
+                            <div class="title">👉 Notebook 2nd Tour 👈</div><br><br><br>
+                            - Analyse des résultats du 2nd tour.<br><br>
+                            - Comparaison avec les prévisions du 1er tour.<br><br>
+                            - Méthodes d’ajustement et analyse des écarts.
+                        `;
+                        break;
+                }
+            });
+        });
+
+        // Charger le contenu par défaut à l'ouverture de la page
+        window.onload = loadDefaultContent;
+    </script>
+</body>
+</html>
