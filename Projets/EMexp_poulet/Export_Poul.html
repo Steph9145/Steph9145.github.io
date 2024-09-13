@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Description et Contenu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 100px); /* Hauteur de la page - 100px */
+        }
+
+        .left-container {
+            width: 30%;
+            padding: 20px;
+            color: white;
+            background-color: #000000;
+            overflow-y: auto;
+        }
+
+        .right-container {
+            width: 70%;
+            padding: 00px;
+            background-color: #09090900;
+            overflow-y: auto;
+        }
+
+        /* Styles optionnels pour l'esthétique */
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Conteneur Gauche: Description du projet -->
+        <div class="left-container">
+            <h2>Description du Projet</h2>
+            <p>
+                Voici la description du projet. Elle occupe 30% de la largeur de la page.
+                Vous pouvez décrire les aspects principaux du projet ici.
+            </p>
+        </div>
+
+        <!-- Conteneur Droit: Fichier HTML ou MP4 -->
+        <div class="right-container">
+            <!-- <h2>Contenu du Projet</h2> -->
+            <!-- Insérer un fichier HTML -->
+            <iframe src="SS_OC_P9_Clustering.html" frameborder="0" width="100%" height="100%"></iframe>
+            <!-- Ou Insérer un fichier MP4 -->
+            <!-- <video controls width="100%" height="100%">
+                <source src="project-video.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+            </video> -->
+        </div>
+    </div>
+</body>
+</html>
