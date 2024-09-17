@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio - Page 2</title>
+    
+    <!-- Style CSS intégré -->
+    <style>
+        /* Styles généraux */
+        :root {
+    --background-color: #000;
+    --header-background: #000000;
+    --header-text: #6ee7b7;
+    --nav-link: #fff;
+    --nav-hover: #6ee7b7;
+    --hero-text: #fff;
+    --section-background: #050505;
+    --column-background: #141414;
+    --container-background: #333;
+    --footer-background: #000000;
+    --footer-text: #6ee7b7;
+    --dot-active: #41886b;
+}
+
+/* Styles généraux pour tout le site */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--nav-link);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--header-background);
+}
+
+header h1 {
+    color: var(--header-text);
+    font-size: 24px;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    color: var(--nav-link);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--nav-hover);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    transform: scaleX(1);
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--nav-hover);
+}
+
+        /* Styles pour la section héroïque */
+.hero {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 31vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('Images/Nature.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero h2 {
+    font-size: clamp(2rem, 4vw, 4rem); /* Ajuste la taille selon la largeur de l'écran */
+    margin: 0;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hero p.hero-main {
+    font-size: 22px;
+    font-style: italic;
+    color: var(--hero-text);
+    margin: 0;
+    position: absolute;
+    top: 140px;
+    left: 54%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.hero p.hero-sub {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--hero-text);
+    position: absolute;
+    bottom: 30px;
+    left: 7%;
+    transform: translateX(-50%);
+    text-align: left;
+    max-width: 80%;
+}
+        
+
+        /* Section à deux colonnes */
+        .three-column-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 20px;
+        }
+
+        .column {
+            padding: 0 5px ;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(244, 243, 243, 0.1);
+        }
+
+        .column-15 {
+            width: 15%;
+            height: auto;
+            background-color: #000000;
+        }
+        .column-25 {
+            width: 45%;
+            background-color: #2f2c2c;
+        }
+        .column-55 {
+            width: 35%;
+            color: #ede6e6;
+            background-color: #2f2c2c;
+        }
+
+        .column h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        #description-container {
+    background-color: #ffffff80;  /* Couleur de fond douce */
+    border-radius: 8px;  /* Bords arrondis */
+    padding: 0px;  /* Espacement intérieur */
+    margin-top: 20px;  /* Espace au-dessus du conteneur */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Légère ombre pour le relief */
+    font-family: 'Roboto', sans-serif;  /* Police simple */
+    font-size: 16px;  /* Taille de police confortable */
+    text-align: center;
+    font-weight: bold;
+    color: #4b0c0c;  /* Couleur de texte */
+    line-height: 1.6;  /* Espacement des lignes */
+    display: none;  /* Le conteneur est masqué par défaut */
+    transition: all 0.3s ease;  /* Transition douce pour l'apparition */
+}
+
+#description-container p {
+    margin: 0;  /* Pas d'espacement entre les paragraphes */
+}
+
+#description-container.show {
+    display: block;  /* Affiche le conteneur quand la classe "show" est ajoutée */
+}
+
+#comment-container {
+    background-color: #0d0d0d00;  /* Couleur de fond douce */
+    padding: 10px;  /* Espacement intérieur */
+    margin-top: 20px;  /* Espace au-dessus du conteneur */
+    font-family: 'Roboto', sans-serif;  /* Police simple */
+    font-size: 16px;  /* Taille de police confortable */
+    color: #ffffff;  /* Couleur de texte */
+    text-align: left;
+    line-height: 1.6;  /* Espacement des lignes */
+    display: none;  /* Le conteneur est masqué par défaut */
+    transition: all 0.3s ease;  /* Transition douce pour l'apparition */
+}
+
+#comment-container p {
+    margin: 0;  /* Pas d'espacement entre les paragraphes */
+}
+
+
+a {
+    color: var(--nav-hover);  /* Couleur des liens */
+    line-height: 1.5;  /* Ajuste l'interligne */
+    text-decoration: none;  /* Enlève la décoration par défaut */
+}
+
+a:hover {
+    color: white;
+}
+
+
+        /* Styles pour le pied de page */
+.footer {
+    position: relative; /* Assurez-vous que le footer a une position relative */
+    background-color: var(--footer-background);
+    padding: 10px 50px;
+    color: var(--footer-text);
+}
+
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; /* Hauteur du trait */
+    background: linear-gradient(to left, black,#efedec, #000000); /* Dégradé de droite à gauche */
+    z-index: 1; /* Pour être au-dessus du contenu du footer */
+}
+
+/* Autres styles */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 20px;
+}
+
+.footer-section h2 {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul li {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-left: 10px;
+}
+
+.footer-section ul li a {
+    color: var(--footer-text);
+    text-decoration: none;
+    display: block;
+    padding-left: 2px;
+    transition: text-decoration 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a img {
+    width: 32px;
+    height: 32px;
+}
+
+        /* Responsive */
+        /* Responsive */
+@media (max-width: 768px) {
+    .column-15, .column-25, .column-55 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .column {
+        padding: 10px;
+    }
+    .footer-section {
+        margin: 10px;
+    }
+}
+
+
+            .footer-container {
+                flex-direction: column;
+            }
+
+            .footer-section {
+                width: 100%;
+            }
+        
+
+    </style>
+</head>
+<body>
+    <!-- En-tête du site -->
+    <header>
+        <h1>En développement</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="Services.html" class="active">Savoirs-faire</a>
+            <a href="PortF2.html">Portfolio</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Section héroïque -->
+    <section class="hero">
+        <h2 class="section-title">Savoirs-faire</h2>
+        <p class="hero-main">Work forward together !*</p>
+        <p class="hero-sub">*Ensemble, allons de l'avant !</p>
+    </section>
+
+<!-- Section à trois colonnes pour les projets -->
+<section class="three-column-section">
+    <!-- Colonne de gauche : Carrousel des projets -->
+    <div class="column column-15">
+        <img src="Mur optimise.gif" alt="GIF descriptif" style="width:100%; height:auto;">
+    </div>
+
+    <!-- Colonne de droite : Description du projet -->
+    <div class="column column-55">
+        <ul>
+            <li><a href="#" id="item1">Gestion de données / bases de données</a></li>
+            <li><a href="#" id="item2">Préparation et Analyse de Données</a></li>
+            <li><a href="#" id="item3">Interrogation et extraction de données (SQL, NoSQL)</a></li>
+            <li><a href="#" id="item4">Visualisation et Reporting</a></li>
+            <li><a href="#" id="item5">Analyse de données exploratoire (EDA)</a></li>
+            <li><a href="#" id="item6">Analyse Statistique et Modélisation</a></li>
+            <li><a href="#" id="item7">Optimisation et Performance</a></li>
+            <li><a href="#" id="item8">Analyse des Risques et Fraude</a></li>
+            <li><a href="#" id="item9">Segmentation de la clientèle et analyse comportementale</a></li>
+            <li><a href="#" id="item10">Optimisation des campagnes marketing</a></li>
+            <li><a href="#" id="item11">Automatisation des processus de reporting</a></li>
+            <li><a href="#" id="item12">Analyse des risques et détection de fraudes</a></li>
+            <li><a href="#" id="item13">Business Intelligence (BI) et Stratégie</a></li>
+        </ul>
+
+    </div>
+
+    <!-- Colonne de gauche : Autre contenu -->
+    <div class="column column-25">
+        <!-- Container pour la description -->
+        <div id="description-container" >
+            <p id="description-text"></p>
+        </div>
+        <!-- Container pour les commentaires -->
+        <div id="comment-container">
+            <p id="comment-text"></p>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Pied de page -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h2>A PROPOS</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>&copy; 2024 Tous droits réservés.</p>
+            </div>
+            <div class="footer-section">
+                <h2>MENU</h2>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="PortF2.html">Portfolio</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h2>RÉSEAUX SOCIAUX</h2>
+                <div class="social-icons">
+                    <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer" title="Voir mon profil LinkedIn">
+                        <img src="Images/linkedin.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer" title="Voir mon profil GitHub">
+                        <img src="Images/GHLog.png" alt="GitHub">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const descriptions = {
+                item1: "Description de la gestion des bases de données...",
+                item2: "Description de la conception et optimisation des bases de données...",
+                item3: "Description de l'interrogation et extraction de données (SQL, NoSQL)...",
+                item4: "Description de la migration et intégration de données...",
+                item5: "Description de l'analyse de données exploratoire (EDA)...",
+                item6: "Description de la préparation et nettoyage des données...",
+                item7: "Description de la création de tableaux de bord interactifs...",
+                item8: "Description de la modélisation statistique et prévisionnelle...",
+                item9: "Description de la segmentation de la clientèle et analyse comportementale...",
+                item10: "Description de l'optimisation des campagnes marketing...",
+                item11: "Description de l'automatisation des processus de reporting...",
+                item12: "Description de l'analyse des risques et détection de fraudes...",
+                item13: "Description de l'optimisation des performances..."
+            };
+    
+            const comments = {
+                item1: `
+                        <p><strong>• Gestion des bases de données :</strong> Administration, maintenance et surveillance des systèmes de gestion de bases de données (SGBD).</p><br>
+                        <p><strong>• Conception et optimisation de bases de données :</strong> Création de bases de données adaptées aux besoins spécifiques et optimisation de leur performance.</p><br>
+                        <p><strong>• Interrogation et extraction de données (SQL, NoSQL) :</strong> Utilisation de langages de requêtes (SQL, NoSQL) pour extraire et manipuler les données.</p><br>
+                        <p><strong>• Migration et intégration de données :</strong> Transfert de données entre systèmes différents et intégration de sources de données multiples.</p>
+                    `,
+                item2: `
+                        <p><strong>• Analyse de données exploratoire (EDA) :</strong> Exploration initiale des données pour découvrir des tendances et anomalies.</p><br>
+                        <p><strong>• Préparation et nettoyage des données :</strong> Transformation des données brutes en données prêtes à l'analyse (suppression des erreurs, gestion des valeurs manquantes).</p>
+                     `,    
+                
+                
+                item3: "Commentaire spécifique pour l'interrogation et extraction de données (SQL, NoSQL)...",
+                item4: "Commentaire spécifique pour la migration et intégration de données...",
+                item5: "Commentaire spécifique pour l'analyse de données exploratoire (EDA)...",
+                item6: "Commentaire spécifique pour la préparation et nettoyage des données...",
+                item7: "Commentaire spécifique pour la création de tableaux de bord interactifs...",
+                item8: "Commentaire spécifique pour la modélisation statistique et prévisionnelle...",
+                item9: "Commentaire spécifique pour la segmentation de la clientèle et analyse comportementale...",
+                item10: "Commentaire spécifique pour l'optimisation des campagnes marketing...",
+                item11: "Commentaire spécifique pour l'automatisation des processus de reporting...",
+                item12: "Commentaire spécifique pour l'analyse des risques et détection de fraudes...",
+                item13: "Commentaire spécifique pour l'optimisation des performances..."
+            };
+    
+            document.querySelectorAll('a[id^="item"]').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const id = this.id;
+                    document.getElementById('description-text').innerHTML = descriptions[id] || '';
+                    document.getElementById('comment-text').innerHTML = comments[id] || '';
+                    document.getElementById('description-container').style.display = 'block';
+                    document.getElementById('comment-container').style.display = 'block';
+                });
+            });
+    
+            // Optionnel : fermer le conteneur de description lorsque vous cliquez en dehors
+            document.addEventListener('click', function (e) {
+                if (!document.getElementById('description-container').contains(e.target) && !e.target.matches('a[id^="item"]')) {
+                    document.getElementById('description-container').style.display = 'none';
+                    document.getElementById('comment-container').style.display = 'none';
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

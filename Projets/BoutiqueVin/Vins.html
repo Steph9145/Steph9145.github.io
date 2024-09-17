@@ -13,12 +13,13 @@
 
         body, html {
             height: 100%;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         .container {
             display: flex;
             height: calc(100vh - 100px); /* Hauteur de la page - 100px */
+            position: relative;
         }
 
         .left-container {
@@ -27,6 +28,7 @@
             color: white;
             background-color: #000000;
             overflow-y: auto;
+            position: relative;
         }
 
         .right-container {
@@ -36,9 +38,65 @@
             overflow-y: auto;
         }
 
+        /* Styles pour le bouton pop-up */
+        #showPopupBtn {
+            position: absolute;
+            bottom: 20px; /* Place le bouton à 20px du bas */
+            left: 50%; /* Centre horizontalement */
+            transform: translateX(-50%); /* Centre parfaitement le bouton */
+            padding: 10px 20px; /* Taille du bouton */
+            background-color: #780d20; /* Couleur de fond du bouton */
+            color: white; /* Couleur du texte */
+            border: none; /* Pas de bordure */
+            border-radius: 5px; /* Coins arrondis */
+            font-size: 16px; /* Taille du texte */
+            cursor: pointer; /* Curseur en forme de main */
+        }
+
+        #showPopupBtn:hover {
+            background-color: #2980b9; /* Couleur au survol */
+        }
+
+        /* Styles pour le pop-up */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Effet semi-transparent */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 50%;
+            max-height: 50%;
+            overflow: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
         /* Styles optionnels pour l'esthétique */
         h2 {
             margin-bottom: 10px;
+            text-align: center; 
+        }
+        .title-color {
+            color: rgb(32, 115, 167);
+            font-family: Roboto, sans-serif;
         }
 
         p {
@@ -50,11 +108,14 @@
     <div class="container">
         <!-- Conteneur Gauche: Description du projet -->
         <div class="left-container">
-            <h2>Description du Projet</h2>
+            <h2 class="title-color">Projet certifiant OpenClassrooms (RNCP)</h2><br>
+            <h2>Boutique de Vins</h2>
             <p>
                 Voici la description du projet. Elle occupe 30% de la largeur de la page.
                 Vous pouvez décrire les aspects principaux du projet ici.
             </p>
+            <!-- Bouton pour ouvrir le pop-up, placé en bas et centré -->
+            <button id="showPopupBtn">Commentaires Evaluateur</button>
         </div>
 
         <!-- Conteneur Droit: Fichier HTML ou MP4 -->
@@ -69,5 +130,40 @@
             </video> -->
         </div>
     </div>
+
+    <!-- Pop-up pour afficher un PDF ou une image -->
+    <div id="popup" class="popup-container">
+        <div class="popup-content">
+            <span id="closePopupBtn" class="close-btn">&times;</span>
+            <!-- Contenu du pop-up: Image ou PDF -->
+            <img id="popupImage" src="Commentsp5.png" alt="Document" style="width:100%;" />
+            <!-- Pour un PDF, vous pouvez utiliser un iframe -->
+            <!-- <iframe id="popupPDF" src="votre-document.pdf" style="width:100%; height:600px;"></iframe> -->
+        </div>
+    </div>
+
+    <script>
+        // Obtenir les éléments
+        const showPopupBtn = document.getElementById("showPopupBtn");
+        const popup = document.getElementById("popup");
+        const closePopupBtn = document.getElementById("closePopupBtn");
+
+        // Afficher le pop-up lorsque le bouton est cliqué
+        showPopupBtn.addEventListener("click", function() {
+            popup.style.display = "flex"; // Afficher le pop-up
+        });
+
+        // Fermer le pop-up lorsque l'utilisateur clique sur la croix
+        closePopupBtn.addEventListener("click", function() {
+            popup.style.display = "none"; // Cacher le pop-up
+        });
+
+        // Fermer le pop-up si l'utilisateur clique en dehors de celui-ci
+        window.addEventListener("click", function(event) {
+            if (event.target == popup) {
+                popup.style.display = "none"; // Cacher le pop-up
+            }
+        });
+    </script>
 </body>
 </html>

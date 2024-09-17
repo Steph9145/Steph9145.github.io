@@ -31,6 +31,104 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tableau des projets
     const projects = [
         {
+            title: "Législatives 2024",
+            description: `
+                <p>Analyse des résultats des élections législatives 2024</p>
+                <ul>
+                    <li class='line-spacing'>Collecte des résultats par circonscription</li>
+                    <li class='line-spacing'>Analyse des tendances de vote</li>
+                    <li class='line-spacing'>Visualisation des résultats par région</li>
+                    <li class='line-spacing'>Comparaison avec les élections précédentes</li>
+                    <li class='line-spacing'>Élaboration de prévisions et recommandations</li>
+                    </ul>
+                `,
+                document: "Projets/Leg2024/Leg2024.html",
+            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            toolsLogos: [
+                { src: "Images/excel-logo.png", alt: "Excel" },
+                { src: "Images/python-logo.png", alt: "Excel" }
+            ],
+            librariesLogos: [
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" },
+                { src: "Images/Numpy-logo.png", alt: "Numpy" }
+            ]
+        },
+        {
+            title: "Etude Médecins Généralistes Libéraux",
+            description: `
+            <p>Analyse des besoins nutritionnels à l'échelle mondiale</p>
+            <ul>
+                <li class='line-spacing'>Collecte de données nutritionnelles globales</li>
+                <li class='line-spacing'>Analyse des carences en micronutriments</li>
+                <li class='line-spacing'>Modélisation des besoins alimentaires par région</li>
+                <li class='line-spacing'>Élaboration de recommandations pour les politiques alimentaires</li>
+                <li class='line-spacing'>Collaboration avec des organisations internationales</li>
+            </ul>
+                `,
+            document: "Projets/MedecinsG/MedecinsG.html",
+            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            toolsLogos: [
+                { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
+            { src: "Images/python-logo.png", alt: "Python" }
+            ],
+            librariesLogos: [
+                { src: "Images/powerbi-Logo.png", alt: "Power BI" },
+                { src: "Images/excel-logo.png", alt: "Excel" }
+            ]
+        },
+        {
+            title: "Détection des faux billets",
+            description: `
+                <p>Détection de faux billets - Machine Learning</p>
+                <ul>
+                    <li class='line-spacing'>Collecte de données sur les caractéristiques des billets</li>
+                    <li class='line-spacing'>Analyse exploratoire (EDA)</li>
+                    <li class='line-spacing'>Régression linéaire : Modèle prédictif pour remplacer valeurs manquantes</li>
+                    <li class='line-spacing'>Analyses et métriques le modèle</li>
+                    <li class='line-spacing'>Création modèle K-means + PCA</li>
+                    <li class='line-spacing'>Régression Logistique Statsmodels et Sklearn</li>
+                    <li class='line-spacing'>Algorithme: Analyse des résultats et ajustements</li>
+                    <li class='line-spacing'>Outil de définition du seuil d’acceptation</li>
+                </ul>
+                `,
+            document: "Projets/Billets/Billet.html",
+            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            toolsLogos: [
+                { src: "Images/python-logo.png", alt: "Python" },
+                { src: "Images/python-logo.png", alt: "Python" }
+            ],
+            librariesLogos: [
+                { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" },
+                { src: "Images/Numpy-logo.png", alt: "Numpy" }
+            ]
+        },
+        {
+            title: "Analyse des inégalités",
+            description: `
+                <p>Analyse des inégalités de genre en entreprise</p>
+                <ul>
+                    <li class='line-spacing'>Collecte de données sur les écarts de salaire</li>
+                    <li class='line-spacing'>Évaluation des opportunités de carrière</li>
+                    <li class='line-spacing'>Analyse des politiques d'équité en entreprise</li>
+                    <li class='line-spacing'>Proposition de stratégies pour améliorer l'égalité des sexes</li>
+                    <li class='line-spacing'>Suivi des progrès et recommandations</li>
+                </ul>
+                `,
+            document: "Projets/EgaliteHF/EgalitésFH.html",
+            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            toolsLogos: [
+                { src: "Images/sql-logo.png", alt: "SQL" },
+                { src: "Images/knime-logo.png", alt: "KNIME" }
+            ],
+            librariesLogos: [
+                { src: "Images/powerbi-Logo.png", alt: "Power BI" },
+                { src: "Images/excel-logo.png", alt: "Excel" }
+            ]
+        },
+        {
             title: "Etude de marché - Export",
             description: `
                 <p>Analyse des groupements de pays cibles pour exporter nos poulets</p>
@@ -71,52 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
             toolsLogos: [
                 { src: "Images/powerbi-Logo.png", alt: "Power BI" },
                 { src: "Images/python-logo.png", alt: "Python" } 
-            ],
-            librariesLogos: [
-                { src: "Images/powerbi-Logo.png", alt: "Power BI" },
-                { src: "Images/excel-logo.png", alt: "Excel" }
-            ]
-        },
-        {
-            title: "Etude Médecins Généralistes Libéraux",
-            description: `
-            <p>Analyse des besoins nutritionnels à l'échelle mondiale</p>
-            <ul>
-                <li class='line-spacing'>Collecte de données nutritionnelles globales</li>
-                <li class='line-spacing'>Analyse des carences en micronutriments</li>
-                <li class='line-spacing'>Modélisation des besoins alimentaires par région</li>
-                <li class='line-spacing'>Élaboration de recommandations pour les politiques alimentaires</li>
-                <li class='line-spacing'>Collaboration avec des organisations internationales</li>
-            </ul>
-                `,
-            document: "Projets/MedecinsG/MedecinsG.html",
-            comment: "Commentaires pour le projet d'étude de marché - Export.",
-            toolsLogos: [
-                { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
-            { src: "Images/python-logo.png", alt: "Python" }
-            ],
-            librariesLogos: [
-                { src: "Images/powerbi-Logo.png", alt: "Power BI" },
-                { src: "Images/excel-logo.png", alt: "Excel" }
-            ]
-        },
-        {
-            title: "Analyse des inégalités",
-            description: `
-                <p>Analyse des inégalités de genre en entreprise</p>
-                <ul>
-                    <li class='line-spacing'>Collecte de données sur les écarts de salaire</li>
-                    <li class='line-spacing'>Évaluation des opportunités de carrière</li>
-                    <li class='line-spacing'>Analyse des politiques d'équité en entreprise</li>
-                    <li class='line-spacing'>Proposition de stratégies pour améliorer l'égalité des sexes</li>
-                    <li class='line-spacing'>Suivi des progrès et recommandations</li>
-                </ul>
-                `,
-            document: "Projets/EgaliteHF/EgalitésFH.html",
-            comment: "Commentaires pour le projet d'étude de marché - Export.",
-            toolsLogos: [
-                { src: "Images/sql-logo.png", alt: "SQL" },
-                { src: "Images/knime-logo.png", alt: "KNIME" }
             ],
             librariesLogos: [
                 { src: "Images/powerbi-Logo.png", alt: "Power BI" },
@@ -168,59 +220,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
                 { src: "Images/python-logo.png", alt: "Python" }
             ]
-        },
-        {
-            title: "Détection des faux billets",
-            description: `
-                <p>Détection de faux billets - Machine Learning</p>
-                <ul>
-                    <li class='line-spacing'>Collecte de données sur les caractéristiques des billets</li>
-                    <li class='line-spacing'>Analyse exploratoire (EDA)</li>
-                    <li class='line-spacing'>Régression linéaire : Modèle prédictif pour remplacer valeurs manquantes</li>
-                    <li class='line-spacing'>Analyses et métriques le modèle</li>
-                    <li class='line-spacing'>Création modèle K-means + PCA</li>
-                    <li class='line-spacing'>Régression Logistique Statsmodels et Sklearn</li>
-                    <li class='line-spacing'>Algorithme: Analyse des résultats et ajustements</li>
-                    <li class='line-spacing'>Outil de définition du seuil d’acceptation</li>
-                </ul>
-                `,
-            document: "Projets/Billets/Billet.html",
-            comment: "Commentaires pour le projet d'étude de marché - Export.",
-            toolsLogos: [
-                { src: "Images/python-logo.png", alt: "Python" },
-                { src: "Images/python-logo.png", alt: "Python" }
-            ],
-            librariesLogos: [
-                { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
-                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
-                { src: "Images/seaborn-logo.png", alt: "Seaborn" },
-                { src: "Images/Numpy-logo.png", alt: "Numpy" }
-            ]
-        },
-        {
-            title: "Législatives 2024",
-            description: `
-                <p>Analyse des résultats des élections législatives 2024</p>
-                <ul>
-                    <li class='line-spacing'>Collecte des résultats par circonscription</li>
-                    <li class='line-spacing'>Analyse des tendances de vote</li>
-                    <li class='line-spacing'>Visualisation des résultats par région</li>
-                    <li class='line-spacing'>Comparaison avec les élections précédentes</li>
-                    <li class='line-spacing'>Élaboration de prévisions et recommandations</li>
-                    </ul>
-                `,
-                document: "Projets/Leg2024/Leg2024.html",
-            comment: "Commentaires pour le projet d'étude de marché - Export.",
-            toolsLogos: [
-                { src: "Images/excel-logo.png", alt: "Excel" },
-                { src: "Images/python-logo.png", alt: "Excel" }
-            ],
-            librariesLogos: [
-                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
-                { src: "Images/seaborn-logo.png", alt: "Seaborn" },
-                { src: "Images/Numpy-logo.png", alt: "Numpy" }
-            ]
-        }]
+        }
+    ]
 
         function updateSlide(index) {
             if (!projects[index]) {
