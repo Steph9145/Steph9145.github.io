@@ -149,11 +149,13 @@ nav a.active {
         .column-25 {
             width: 45%;
             background-color: #2f2c2c;
+            
         }
         .column-55 {
             width: 35%;
             color: #ede6e6;
             background-color: #2f2c2c;
+            line-height: 1.6;  /* Espacement des lignes */
         }
 
         .column h3 {
@@ -350,17 +352,12 @@ a:hover {
         <ul>
             <li><a href="#" id="item1">Gestion de données / bases de données</a></li>
             <li><a href="#" id="item2">Préparation et Analyse de Données</a></li>
-            <li><a href="#" id="item3">Interrogation et extraction de données (SQL, NoSQL)</a></li>
-            <li><a href="#" id="item4">Visualisation et Reporting</a></li>
-            <li><a href="#" id="item5">Analyse de données exploratoire (EDA)</a></li>
-            <li><a href="#" id="item6">Analyse Statistique et Modélisation</a></li>
-            <li><a href="#" id="item7">Optimisation et Performance</a></li>
-            <li><a href="#" id="item8">Analyse des Risques et Fraude</a></li>
-            <li><a href="#" id="item9">Segmentation de la clientèle et analyse comportementale</a></li>
-            <li><a href="#" id="item10">Optimisation des campagnes marketing</a></li>
-            <li><a href="#" id="item11">Automatisation des processus de reporting</a></li>
-            <li><a href="#" id="item12">Analyse des risques et détection de fraudes</a></li>
-            <li><a href="#" id="item13">Business Intelligence (BI) et Stratégie</a></li>
+            <li><a href="#" id="item3">Analyse de données exploratoire (EDA)</a></li>
+            <li><a href="#" id="item4">Analyses Statistiques</a></li>
+            <li><a href="#" id="item5">Modélisations</a></li>
+            <li><a href="#" id="item6">Segmentation de clientèle et analyse comportementale</a></li>
+            <li><a href="#" id="item7">Automatisation des processus de reporting</a></li>
+            <li><a href="#" id="item8">Business Intelligence (BI) et Stratégie</a></li>
         </ul>
 
     </div>
@@ -412,19 +409,15 @@ a:hover {
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const descriptions = {
-                item1: "Description de la gestion des bases de données...",
-                item2: "Description de la conception et optimisation des bases de données...",
-                item3: "Description de l'interrogation et extraction de données (SQL, NoSQL)...",
-                item4: "Description de la migration et intégration de données...",
-                item5: "Description de l'analyse de données exploratoire (EDA)...",
-                item6: "Description de la préparation et nettoyage des données...",
-                item7: "Description de la création de tableaux de bord interactifs...",
-                item8: "Description de la modélisation statistique et prévisionnelle...",
-                item9: "Description de la segmentation de la clientèle et analyse comportementale...",
-                item10: "Description de l'optimisation des campagnes marketing...",
-                item11: "Description de l'automatisation des processus de reporting...",
-                item12: "Description de l'analyse des risques et détection de fraudes...",
-                item13: "Description de l'optimisation des performances..."
+                item1: "Gestion de données / bases de données",
+                item2: "Préparation et Analyse de Données",
+                item3: "Analyse de données exploratoire (EDA)",
+                item4: "Analyses Statistiques",
+                item5: "Modélisations",
+                item6: "Segmentation de clientèle et analyse comportementale",
+                item7: "Automatisation des processus de reporting",
+                item8: "Business Intelligence (BI) et Stratégie",
+
             };
     
             const comments = {
@@ -435,22 +428,54 @@ a:hover {
                         <p><strong>• Migration et intégration de données :</strong> Transfert de données entre systèmes différents et intégration de sources de données multiples.</p>
                     `,
                 item2: `
-                        <p><strong>• Analyse de données exploratoire (EDA) :</strong> Exploration initiale des données pour découvrir des tendances et anomalies.</p><br>
-                        <p><strong>• Préparation et nettoyage des données :</strong> Transformation des données brutes en données prêtes à l'analyse (suppression des erreurs, gestion des valeurs manquantes).</p>
-                     `,    
+                        <p>Avant toute analyse, une phase de préparation des données est nécessaire.<br> Cela inclut la collecte, le nettoyage, et la transformation des données brutes pour les rendre utilisables.</p><br>
+                        <p><strong>• Nettoyage des données :</strong> Identification et suppression des données erronées, dupliquées ou manquantes.</p><br>
+                        <p><strong>• Transformation :</strong> Conversion des données pour les rendre exploitables, par exemple en regroupant des valeurs, en normalisant ou en créant de nouvelles variables.</p><br>
+                        <p><strong>• Enrichissement des données :</strong> Ajout de sources externes ou croisement des données internes pour améliorer la richesse des analyses.</p>
+                    `,    
                 
                 
-                item3: "Commentaire spécifique pour l'interrogation et extraction de données (SQL, NoSQL)...",
-                item4: "Commentaire spécifique pour la migration et intégration de données...",
-                item5: "Commentaire spécifique pour l'analyse de données exploratoire (EDA)...",
-                item6: "Commentaire spécifique pour la préparation et nettoyage des données...",
-                item7: "Commentaire spécifique pour la création de tableaux de bord interactifs...",
-                item8: "Commentaire spécifique pour la modélisation statistique et prévisionnelle...",
-                item9: "Commentaire spécifique pour la segmentation de la clientèle et analyse comportementale...",
-                item10: "Commentaire spécifique pour l'optimisation des campagnes marketing...",
-                item11: "Commentaire spécifique pour l'automatisation des processus de reporting...",
-                item12: "Commentaire spécifique pour l'analyse des risques et détection de fraudes...",
-                item13: "Commentaire spécifique pour l'optimisation des performances..."
+                item3: `
+                    <p>L’EDA est une étape critique pour obtenir une première compréhension des données. Elle permet de découvrir des patterns cachés, de vérifier des hypothèses et de déterminer la bonne approche d’analyse.</p><br>
+                    <p><strong>• Visualisation des données :</strong> Utilisation de graphiques pour explorer les distributions, les relations entre variables et identifier des tendances initiales.</p><br>
+                    <p><strong>• Analyse des distributions :</strong> Évaluer la symétrie, la concentration et les écarts types des données pour ajuster les approches statistiques.</p><br>
+                    <p><strong>• Détection d’anomalies :</strong> Identifier les valeurs aberrantes ou les incohérences dans les données qui pourraient fausser les analyses.</p>
+                `,
+                item4: `
+                    <p>Comprendre les relations entre les variables, leurs distribution, identifier des tendances et vérifier des hypothèses. L'objectif est de résumer et interpréter les informations pour en extraire des insights sans forcément utiliser de modèles prédictifs complexes.</p><br>
+                    <p>Les techniques courantes incluent :</p><br>
+                    <p><strong>• Statistiques descriptives</strong> (moyenne, médiane, écart-type, etc.)</p>
+                    <p><strong>• Tests d'hypothèses</strong> (tests t, chi-carré, etc.)</p>
+                    <p><strong>• Corrélations et analyse de la variance</strong> (ANOVA)</p>
+                    <p><strong>• Analyse de régression linéaire simple</strong></p><br>
+               `,
+                item5: `
+                    <p>Créer des modèles prédictifs ou explicatifs pour prévoir des résultats futurs ou décrire des comportements complexes.</p>
+                    <p>Il s'agit d'un processus itératif où des algorithmes mathématiques sont utilisés pour établir des relations précises entre les variables indépendantes et la variable cible.</p><br>
+                    <p>Les techniques courantes incluent :</p><br>
+                    <p><strong>• Régressions multivariées</strong> (linéaire, logistique)
+                    <p><strong>• Modèles de classification</strong> (arbres de décision, random forest, SVM)
+                    <p><strong>• Modèles de clustering</strong> (k-means, DBSCAN)
+                    <p><strong>• Réseaux de neurones et autres algorithmes d’apprentissage automatique</strong></p><br>
+                `,
+                item6: `
+                    <p>L'objectif ici est de regrouper les clients en segments homogènes afin de mieux comprendre leurs comportements et personnaliser les actions marketing.</p><br>
+                    <p><strong>• Analyse des données démographiques :</strong> Identification de caractéristiques clés telles que l'âge, le sexe, le revenu, qui peuvent servir à la segmentation.</p><br>
+                    <p><strong>• Segmentation par comportement :</strong> Regroupement des clients selon leurs interactions (achats, visites, canaux utilisés), ce qui permet de cibler les clients en fonction de leur comportement.</p><br>
+                    <p><strong>• Analyse prédictive :</strong> Utilisation de modèles prédictifs pour anticiper les comportements futurs, comme l'attrition ou la probabilité d'achat d'un produit.</p>
+                `,
+                item7: `
+                    <p>L'automatisation permet de générer des rapports rapidement et de manière fiable, tout en minimisant les interventions humaines.</p><br>
+                    <p><strong>• Définition des métriques :</strong> Identification des KPIs clés à automatiser pour un suivi régulier (hebdomadaire, mensuel).</p><br>
+                    <p><strong>• Construction de pipelines automatisés :</strong> Mettre en place des scripts qui collectent, nettoient et mettent à jour les données à intervalle régulier.</p><br>
+                    <p><strong>• Génération automatique de rapports :</strong> Mise en forme des rapports (PDF, Excel, Dashboards en ligne) prêts à être distribués aux décideurs.</p>
+                `,
+                item8: `
+                        <p>Fourniture d'outils et de rapports BI permettant aux décideurs d’avoir une vision complète et rapide des performances de l'entreprise.</p><br>
+                        <p><strong>• Construction de tableaux de bord :</strong> Création de rapports interactifs permettant de visualiser les KPIs clés en temps réel.</p><br>
+                        <p><strong>• Analyse des performances : </strong>Utilisation de données historiques pour évaluer les performances passées et détecter les opportunités d’amélioration.</p><br>
+                        <p><strong>• Support à la décision stratégique : </strong>Traduire les données en insights concrets pour orienter les décisions stratégiques (ex. identifier de nouvelles opportunités de marché ou ajuster les stratégies marketing).</p>
+                    `,
             };
     
             document.querySelectorAll('a[id^="item"]').forEach(function (link) {
