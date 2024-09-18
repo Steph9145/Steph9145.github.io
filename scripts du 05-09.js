@@ -394,6 +394,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('document-container').addEventListener('click', function(event) {
             event.stopPropagation(); // Évite les comportements indésirables
         });
+        document.querySelector('#document-container').addEventListener('click', function(event) {
+            event.preventDefault(); // Empêche le scroll ou tout comportement inattendu
+        });
         
     
         dots.forEach((dot, i) => dot.addEventListener('click', () => {

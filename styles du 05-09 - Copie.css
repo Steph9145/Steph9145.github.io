@@ -338,7 +338,7 @@ nav a.active {
 }
 
 .Title-Close-container {
-    position: relative;
+    position: fixed;
     height: 40px;               /* Hauteur fixe de 80px */
     background: linear-gradient(to right, #000000, rgb(146, 146, 146) 60%, white);
     color: var(--header-text);
@@ -350,6 +350,7 @@ nav a.active {
     justify-content: space-between; /* Répartir le contenu horizontalement */
     box-sizing: border-box;     /* Inclure le padding et la bordure dans la hauteur totale */
     overflow: hidden;           /* Cacher le contenu qui dépasse la hauteur de 80px */
+    z-index: 10; /* Pour s'assurer qu'il reste au-dessus */
 }
 
 .Title-Close-container h3 {
@@ -407,6 +408,7 @@ nav a.active {
     flex-direction: row;
     width: 100%;
     margin-top: 0px;
+    overflow: auto;
     padding: 20px 0px;
     background-color: rgba(0, 0, 0, 0);
     color: #fff; /* Assurez-vous que le texte est lisible sur le fond noir */
