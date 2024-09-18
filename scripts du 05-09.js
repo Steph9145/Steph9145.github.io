@@ -391,22 +391,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }));
 
-        document.getElementById('document-container').addEventListener('click', function(event) {
-            event.stopPropagation(); // Évite les comportements indésirables
-        });
-        document.querySelector('#document-container').addEventListener('click', function(event) {
-            event.preventDefault(); // Empêche le scroll ou tout comportement inattendu
-        });
-        document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();  // Empêche le comportement par défaut
-                document.querySelector(link.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-
         dots.forEach((dot, i) => dot.addEventListener('click', () => {
             currentSlide(i);
         }));
