@@ -397,7 +397,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#document-container').addEventListener('click', function(event) {
             event.preventDefault(); // Empêche le scroll ou tout comportement inattendu
         });
-        
     
         dots.forEach((dot, i) => dot.addEventListener('click', () => {
             currentSlide(i);
