@@ -158,6 +158,141 @@
             text-align: left;
         }
 
+/* Style du conteneur Profil */
+#profil {
+    padding: 10px 10px;
+    background-color: #000000; /* Couleur de fond, ajustez selon vos préférences */
+    color: #fff; /* Couleur du texte */
+    text-align: center; /* Centrer le texte */
+    margin: 0px auto; /* Centrer le conteneur et ajouter des marges */
+    max-width: 90%; /* Largeur maximale du conteneur */
+    border-radius: 8px; /* Coins arrondis pour un effet plus doux */
+}
+
+#profil h2 {
+    font-size: 28px; /* Taille de police du titre */
+    margin-bottom: 45px; /* Marge en dessous du titre */
+    color: var(--primary-color);
+}
+
+#profil p {
+    font-size: 16px; /* Taille de police du texte */
+    text-align: justify;
+}
+    /* Style pour le bouton */
+    .open-popup-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: rgb(0, 0, 0);
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    /* Style pour le pop-up */
+    .popup {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Style pour le contenu du pop-up */
+    .popup-content {
+        position: relative;
+        width: 80%;
+        max-width: 600px;
+        background-color: rgba(163, 31, 31, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .popup-content img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+
+
+/* Conteneur du formulaire de contact */
+#contact {
+    padding: 20px;
+    height: 70vh;
+    background-color: #222;
+    color: #fff;
+    text-align: left; /* Alignement du texte à gauche */
+}
+
+/* Style du formulaire */
+#contact form {
+    max-width: 600px;
+    margin: 0; /* Supprime le centrage automatique */
+    padding-left: 20px; /* Ajoute un peu d'espace à gauche */
+}
+
+/* Style des groupes de formulaire */
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Style des labels */
+.form-group label {
+    width: 120px; /* Ajustez la largeur en fonction de vos besoins */
+    margin-right: 20px;
+    text-align: right; /* Alignement du texte à droite */
+}
+
+/* Style des champs de saisie et textarea */
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    max-width: 1000px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Style pour centrer le bouton uniquement */
+#contact .submit-button {
+    display: block;
+    padding: 10px 20px; 
+    width: 300px; 
+    height: 100px; 
+    background: radial-gradient(ellipse, #1d8da4bc, #ffffffbd, transparent 35%); 
+    color: #000; 
+    font-size: 18px;
+    border: none;
+    margin: 20px auto; /* Centre le bouton horizontalement */
+}
+.email-link {
+    color: #17b1d0; /* Changez la couleur selon vos besoins */
+    text-decoration: none; /* Enlevez le soulignement si vous le souhaitez */
+    text-align: center;
+}
+
+.email-link:hover {
+    color: #f6efed; /* Couleur de survol, ajustez selon vos préférences */
+}
+
+
+
         .footer {
             position: relative; /* Assurez-vous que le footer a une position relative */
             background-color: var(--footer-background);
@@ -308,7 +443,7 @@
             <a href="#" class="active" aria-label="Accueil">Accueil</a>
             <a href="Services.html" aria-label="Services">Savoirs-faire</a>
             <a href="PortF2.html" aria-label="Portfolio">Portfolio</a>
-            <a href="#" aria-label="Contact">Contact</a>
+            <a href="#contact" aria-label="Contact">Contact</a>
         </nav>
     </header>
 
@@ -326,19 +461,83 @@
         </div>
     </main>
 
+    <!-- Conteneur Profil -->
+<section id="profil">
+    <h2>Profil</h2>
+    <p>Ma formation et mon expérience professionnelle m'ont permis de développer des compétences approfondies en analyse de données, combinées à une solide compréhension des enjeux commerciaux et technologiques.</p><br>
+    <p style="color: var(--primary-color); font-size: 20px;"><strong>Expérience Professionnelle Solide :</strong></p>
+    <p>Mon expérience en tant qu'Attaché de Direction Commercial et Ingénieur Commercial a renforcé mes compétences en communication et en compréhension des besoins des clients. J'ai travaillé avec divers clients, allant des banques aux organismes publics, ce qui me permet de comprendre les besoins métiers et de les traduire en solutions analytiques efficaces.</p><br>
+    <p style="color: var(--primary-color); font-size: 20px;"><strong>Formation Rigoureuse en Analyse de Données :</strong></p>
+    <p>Certification en Data Analyst chez OpenClassrooms : J'ai acquis des compétences avancées en manipulation de DataFrames, en création et gestion de bases de données avec SQL, et en analyse prédictive. Par exemple, j'ai réalisé une étude de santé publique en utilisant des méthodologies d'exploration et d'analyse de données. J'ai aussi conçu un Dashboard avec PowerBI pour une étude sur l'eau potable, démontrant ma capacité à transformer des données complexes en insights clairs pour les clients.</p><br>
+    <!-- Bouton pour ouvrir le pop-up -->
+    <button class="open-popup-btn" onclick="openPopup()">Jury comments</button><br>
+    <p style="color: var(--primary-color); font-size: 20px;"><strong>Des Projets Concrets et Réels :</strong></p>
+    <p>J'ai travaillé sur des projets concrets tels que la détection de faux billets en utilisant des techniques de régression linéaire et logistique, et la mise en place de systèmes de classification automatique pour partitionner les données. Ces projets montrent ma capacité à appliquer des modèles analytiques avancés à des problèmes réels.</p><br> 
+    <p style="color: var(--primary-color); font-size: 20px;"><strong>Compétences Techniques Avancées :</strong></p>
+    <p>Manipulation des Données et Utilisation des Outils : J'ai maîtrisé des outils spécialisés comme Knime pour analyser des indicateurs de genre en conformité avec le RGPD, et j'ai utilisé des librairies pour la manipulation de données dans des environnements de développement modernes.</p><br> 
+    <p style="color: var(--primary-color); font-size: 20px;"><strong>Passion et Engagement :</strong></p>
+    <p>Mon intérêt pour la science des données est alimenté par une passion pour l'exploration et l'analyse des données, ainsi que par une curiosité naturelle pour les nouvelles technologies et les méthodes innovantes. Je suis également engagé dans la continuité de mon développement professionnel, ce qui me permet de rester à la pointe des tendances et des pratiques dans le domaine.</p><br> 
+    <p><strong> </strong></p>
+    <p>En somme, ma combinaison de compétences techniques, d'expérience pratique et d'engagement envers l'excellence fait de moi un candidat particulièrement qualifié pour tout rôle de Data Analyst ou Scientist.</p> 
+    
+    <!-- Pop-up pour l'image -->
+    <div id="image-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <img src="Images/Comments-JuryFinal.png" alt="Description de l'image">
+        </div>
+    </div>
+
+</section>
+
+<!-- Formulaire de contact -->
+<!-- Formulaire de contact -->
+<section id="contact">
+    <h2 style="text-align: center; color: var(--primary-color);">Contactez-moi</h2><br>
+    <p style="text-align: center;">Email : <a href="mailto:stephane.srsa@gmail.com" class="email-link" >stephane.srsa@gmail.com</a></p><br><br><br><br>
+
+    <form action="https://formspree.io/f/xqazorqe" method="POST">
+        <div class="form-group">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="Nom" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="Email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message :</label>
+            <textarea id="message" name="Message" rows="4" required></textarea>
+        </div>
+
+        <!-- Champ caché pour rediriger après soumission -->
+        <input type="hidden" name="_next" value="https://steph9145.github.io/merci.html">
+
+        <!-- Champ caché pour éviter les robots -->
+        <input type="text" name="_gotcha" style="display:none">
+
+        <button type="submit" class="submit-button">Envoyer</button>
+    </form>
+</section>
+
+
+
+
     <footer class="footer">
         <div class="footer-container">
             <!-- Section A propos -->
             <div class="footer-section">
                 <h2>A PROPOS</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Conseils et solutions business via l'expertise de données.</p>
                 <p>(c) 2024 Tous droits réservés.</p>
             </div>
             <!-- Section Menu -->
             <div class="footer-section">
                 <h2>MENU</h2>
                 <ul>
-                    <li><a href="#">Accueil</a></li>
+                    <li><a href="index.html">Accueil</a></li>
                     <li><a href="Services.html">Savoirs-faire</a></li>
                     <li><a href="PortF2.html">Portfolio</a></li>
                     <li><a href="#">Contact</a></li>
@@ -363,8 +562,8 @@
         // Pour les mots
         const wordsContainer = document.getElementById('words-container');
         const words = [
-            "Insights", "Ethique", "Empathie", "Analyse exploratoire", "Univarié", 
-            "Bivarié", "Crédibilité", "Focus Métiers", "Prédictions", "Curiosité", 
+            "Insights", "Ethique", "Empathie", "Analyse exploratoire - EDA", "Modélisation", 
+            "Collaboratif", "Crédibilité", "Focus Métiers", "Prévisions", "Curiosité", "Régression log",
             "Pragmatisme", "Rigueur", "Passionné", "Mathématiques", "Probabilités", "Statistiques", "Clustering"
         ];
         const wordProbability = 0.0001;
@@ -496,6 +695,31 @@
         }
 
         animateWaterfalls();
+
+    
+            // Animation douce pour le scroll vers la section Contact
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        function openPopup() {
+        document.getElementById('image-popup').style.display = 'flex';
+    }
+
+    function closePopup() {
+        document.getElementById('image-popup').style.display = 'none';
+    }
+
+    // Fermer le pop-up en cliquant en dehors de la zone
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('image-popup')) {
+            closePopup();
+        }
+    }
     </script>
 </body>
 </html>
