@@ -390,6 +390,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 isPlaying ? stopCarousel() : startCarousel();
             }
         }));
+
+        document.getElementById('document-container').addEventListener('click', function(event) {
+            event.stopPropagation(); // Évite les comportements indésirables
+        });
+        
     
         dots.forEach((dot, i) => dot.addEventListener('click', () => {
             currentSlide(i);

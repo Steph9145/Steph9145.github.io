@@ -338,6 +338,7 @@ nav a.active {
 }
 
 .Title-Close-container {
+    position: relative;
     height: 40px;               /* Hauteur fixe de 80px */
     background: linear-gradient(to right, #000000, rgb(146, 146, 146) 60%, white);
     color: var(--header-text);
@@ -401,6 +402,7 @@ nav a.active {
 }
 
 #document-container {
+    position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
