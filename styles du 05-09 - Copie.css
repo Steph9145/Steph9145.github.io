@@ -14,6 +14,10 @@
     --dot-active: #41886b;
 }
 
+/* Bloque le scroll */
+.no-scroll {
+    overflow: hidden;
+  }
 /* Styles généraux pour tout le site */
 body {
     margin: 0;
@@ -307,7 +311,7 @@ nav a.active {
     font-weight: bold;
     font-size: 18px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 50px;
     transition: background-color 0.3s ease;
 }
 
@@ -320,20 +324,25 @@ nav a.active {
 /* Classe pour le lien désactivé */
 #project-document-link.disabled-link {
     pointer-events: none;
-    background-color: rgb(98, 18, 18); /* Couleur de fond pour le lien désactivé */
+    background: linear-gradient(to bottom, #b82a2abc, #ec6767bc, #5b1818bc);
+    box-shadow: 5px 5px 10px #000000bc;  
     cursor: not-allowed;
-    color: white; /* Assurez-vous que le texte est lisible sur le fond désactivé */
+    color: rgb(0, 0, 0); /* Assurez-vous que le texte est lisible sur le fond désactivé */
 }
 
 /* Classe pour le lien actif */
 #project-document-link.active-link {
     background-color: #6ee7b7;
+    background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
+    box-shadow: 5px 5px 10px #000000bc;
     color: rgb(0, 0, 0);
 }
 
 /* État de survol */
 #project-document-link:hover {
     background-color: rgb(0, 0, 0);
+    background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
+    box-shadow: 5px 5px 10px #000000bc; 
     color: #fff;
 }
 
@@ -364,13 +373,15 @@ nav a.active {
 }
 
 #close-button {
-    background-color: #832432;  /* Couleur du bouton */
-    color: rgb(255, 255, 255);
+    background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
+    box-shadow: 5px 5px 10px #000000bc;
+    color: rgb(3, 3, 3);
     padding: 5px 10px;          /* Espacement réduit pour s'adapter à la hauteur */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.8em;           /* Taille de police réduite pour le bouton */
+    font-size: 1em;           /* Taille de police réduite pour le bouton */
+    font-weight: bold;
     transition: background-color 0.3s; /* Transition fluide pour le changement de couleur */
 }
 
@@ -404,6 +415,7 @@ nav a.active {
     display: flex;
     flex-direction: row;
     width: 100%;
+    height: 80%;
     margin-top: 0px;
     padding: 20px 0px;
     background-color: rgba(0, 0, 0, 0);
@@ -420,7 +432,7 @@ nav a.active {
 
 #document-container video {
     width: 100%;
-    height: 650px; /* Ajuste la hauteur automatiquement en fonction de la largeur */
+    height: 80%; /* Ajuste la hauteur automatiquement en fonction de la largeur */
     display: block; /* Assurez-vous que la vidéo est visible lorsqu'elle est affichée */
 }
 

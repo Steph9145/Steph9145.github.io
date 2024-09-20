@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tableau des projets
     const projects = [
         {
-            title: "Législatives 2024",
+            title: "Prévisions Législatives 2024",
             description: `
                 <p>Analyse des résultats des élections législatives 2024</p>
                 <ul>
@@ -45,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 document: "Projets/Leg2024/Leg2024.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
+                { src: "Images/Jupyter-logo.png", alt: "Jupyter" },
+                { src: "Images/Logo_Python_NP.png", alt: "Python" },
                 { src: "Images/excel-logo.png", alt: "Excel" },
                 { src: "Images/python-logo.png", alt: "Excel" }
             ],
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         {
-            title: "Détection des faux billets",
+            title: "Détection de faux billets - Machine Learning",
             description: `
                 <p>Détection de faux billets - Machine Learning</p>
                 <ul>
@@ -95,14 +97,15 @@ document.addEventListener('DOMContentLoaded', () => {
             document: "Projets/Billets/Billet.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
-                { src: "Images/python-logo.png", alt: "Python" },
-                { src: "Images/python-logo.png", alt: "Python" }
+                { src: "Images/Logo_Python_NP.png", alt: "Python" },
+                { src: "Images/Statsmodels-logo.png", alt: "Statsmodels" },
+                { src: "Images/sklearn-logo.png", alt: "Scikit-learn" }
             ],
             librariesLogos: [
-                { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
-                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/Logo_SciPy.png", alt: "SciPy" },
                 { src: "Images/seaborn-logo.png", alt: "Seaborn" },
-                { src: "Images/Numpy-logo.png", alt: "Numpy" }
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/plotly-logo.png", alt: "plotly" }
             ]
         },
         {
@@ -144,12 +147,16 @@ document.addEventListener('DOMContentLoaded', () => {
             document: "Projets/EMexp_poulet/Export_Poul.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
-                { src: "Images/python-logo.png", alt: "Python" },
-                { src: "Images/python-logo.png", alt: "Python" }
+                
+                { src: "Images/Jupyter-logo.png", alt: "Jupyter" },
+                { src: "Images/Logo_Python_NP.png", alt: "Python" },
+                { src: "Images/Logo_Geopandas.png", alt: "Logo_Geopandas" }
             ],
             librariesLogos: [
-                { src: "Images/powerbi-Logo.png", alt: "Power BI" },
-                { src: "Images/excel-logo.png", alt: "Excel" }
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" },
+                { src: "Images/plotly-logo.png", alt: "plotly" },
+                { src: "Images/Logo_folium.png", alt: "Folium" }
             ]
         },
         {
@@ -190,12 +197,12 @@ document.addEventListener('DOMContentLoaded', () => {
             document: "Projets/BoutiqueVin/Vins.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
-                { src: "Images/python-logo.png", alt: "Python" },
-                { src: "Images/python-logo.png", alt: "Python" }
+                { src: "Images/Jupyter-logo.png", alt: "Jupyter" },
+                { src: "Images/Logo_Python_NP.png", alt: "Python" }
             ],
             librariesLogos: [
-                { src: "Images/powerbi-Logo.png", alt: "Power BI" },
-                { src: "Images/excel-logo.png", alt: "Excel" }
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" }
             ]
         },
         {
@@ -213,12 +220,16 @@ document.addEventListener('DOMContentLoaded', () => {
             document: "Projets/Librairie/Librairie.html",
             comment: "Commentaires pour le projet d'étude de marché - Export.",
             toolsLogos: [
-                { src: "Images/python-logo.png", alt: "Python" },
-                { src: "Images/python-logo.png", alt: "Python" }
+                { src: "Images/Jupyter-logo.png", alt: "Jupyter" },
+                { src: "Images/Logo_Python_NP.png", alt: "Python" },
+                { src: "Images/Statsmodels-logo.png", alt: "Statsmodels" },
+                { src: "Images/sklearn-logo.png", alt: "Scikit-learn" }
             ],
             librariesLogos: [
-                { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
-                { src: "Images/python-logo.png", alt: "Python" }
+                { src: "Images/Logo_Prophet.png", alt: "Prophet" },
+                { src: "Images/Logo_SciPy.png", alt: "SciPy" },
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" }
             ]
         }
     ]
@@ -303,6 +314,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 isDocumentOpen = true;
                 stopCarousel();
                 disableCarouselControls(true);
+
+                // Désactive le scroll en ajoutant la classe no-scroll au body
+                document.body.classList.add('no-scroll');
     
                 // Met à jour le titre du document dans .Title-Close-container
                 const currentProject = projects[currentIndex];
@@ -323,7 +337,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 isDocumentOpen = false;
                 startCarousel();
                 disableCarouselControls(false);
-    
+                
+                document.body.classList.remove('no-scroll'); // Débloque le scroll
+
                 // Efface le titre dans .Title-Close-container
                 if (documentTitleElement) {
                     documentTitleElement.textContent = '';
