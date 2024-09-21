@@ -33,56 +33,62 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Prévisions Législatives 2024",
             description: `
-                <p>Analyse des résultats des élections législatives 2024</p>
+                
+                <p style="text-align: center; font-size: 20px;"><strong>Prévisions basées sur l'analyse comportementale de l'électorat</strong></p>
                 <ul>
-                    <li class='line-spacing'>Collecte des résultats par circonscription</li>
-                    <li class='line-spacing'>Analyse des tendances de vote</li>
-                    <li class='line-spacing'>Visualisation des résultats par région</li>
-                    <li class='line-spacing'>Comparaison avec les élections précédentes</li>
-                    <li class='line-spacing'>Élaboration de prévisions et recommandations</li>
+                    <li class='line-spacing'>Collecte résultats Elections Européennes 2024 et Elections Législatives 2022</li>
+                    <li class='line-spacing'>Reprise des résultats définitifs du 1er tour (pour le second tour)</li>
+                    <li class='line-spacing'>Mise en place des hypothèses</li>
+                    <li class='line-spacing'>Mise en concordance des listes électorales</li>
+                    <li class='line-spacing'>Analyses et créations des règles de calcul des prévisions</li>
+                    <li class='line-spacing'>Créations des règles de repport de votes</li>
+                    <li class='line-spacing'>Visualisation des résultats par circonscription</li>   
+                    <li class='line-spacing'>Analyse des erreurs de prévisions</li>
                     </ul>
                 `,
                 document: "Projets/Leg2024/Leg2024.html",
-            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            comment: "Commentaires Législatives 2024",
             toolsLogos: [
                 { src: "Images/Jupyter-logo.png", alt: "Jupyter" },
                 { src: "Images/Logo_Python_NP.png", alt: "Python" },
                 { src: "Images/excel-logo.png", alt: "Excel" },
-                { src: "Images/python-logo.png", alt: "Excel" }
+                { src: "Images/power-query-banner.png", alt: "Excel" }
             ],
             librariesLogos: [
                 { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
                 { src: "Images/seaborn-logo.png", alt: "Seaborn" },
-                { src: "Images/Numpy-logo.png", alt: "Numpy" }
+                { src: "Images/Logo_folium.png", alt: "Folium" }
             ]
         },
         {
-            title: "Etude Médecins Généralistes Libéraux",
+            title: "Etude Médecins Généralistes",
             description: `
-            <p>Analyse des besoins nutritionnels à l'échelle mondiale</p>
+            <p style="text-align: center; font-size: 20px;"><strong>Etat des lieux - Médecins Généralistes Libéraux</strong></p>
             <ul>
-                <li class='line-spacing'>Collecte de données nutritionnelles globales</li>
-                <li class='line-spacing'>Analyse des carences en micronutriments</li>
-                <li class='line-spacing'>Modélisation des besoins alimentaires par région</li>
-                <li class='line-spacing'>Élaboration de recommandations pour les politiques alimentaires</li>
-                <li class='line-spacing'>Collaboration avec des organisations internationales</li>
+                <li class='line-spacing'>Collecte de données Multi-sources</li>
+                <li class='line-spacing'>Analyse préparatoire des fichiers - EDA</li>
+                <li class='line-spacing'>Analyse de l'évolution démographiques de 2012 à 2023</li>
+                <li class='line-spacing'>Présence sur le territoire en Mars 2024</li>
+                <li class='line-spacing'>Mise en relief d'inisghts</li>
+                <li class='line-spacing'>Restitution des analyses via dashboard Power BI</li>
             </ul>
                 `,
             document: "Projets/MedecinsG/MedecinsG.html",
-            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            comment: "Commentaires Médecins",
             toolsLogos: [
-                { src: "Images/sklearn-logo.png", alt: "Scikit-learn" },
-            { src: "Images/python-logo.png", alt: "Python" }
+                { src: "Images/powerbi-Logo.png", alt: "Power BI"},
+                
+                { src: "Images/excel-logo.png", alt: "Excel" }
             ],
             librariesLogos: [
-                { src: "Images/powerbi-Logo.png", alt: "Power BI" },
-                { src: "Images/excel-logo.png", alt: "Excel" }
+                { src: "Images/Logo_PBI_DAX.png", alt: "Power BI"},
+                { src: "Images/power-query-banner.png", alt: "Excel"}
             ]
         },
         {
             title: "Détection de faux billets - Machine Learning",
             description: `
-                <p>Détection de faux billets - Machine Learning</p>
+                <p style="text-align: center; font-size: 20px;"><strong>Détection de faux billets - Machine Learning</strong></p>
                 <ul>
                     <li class='line-spacing'>Collecte de données sur les caractéristiques des billets</li>
                     <li class='line-spacing'>Analyse exploratoire (EDA)</li>
@@ -111,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Analyse des inégalités",
             description: `
-                <p>Analyse des inégalités de genre en entreprise</p>
+                <p style="text-align: center; font-size: 20px;"><strong>Analyse des inégalités de genre en entreprise</strong></p>
                 <ul>
                     <li class='line-spacing'>Collecte de données sur les écarts de salaire</li>
                     <li class='line-spacing'>Évaluation des opportunités de carrière</li>
@@ -134,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Etude de marché - Export",
             description: `
-                <p>Analyse des groupements de pays cibles pour exporter nos poulets</p>
+                <p style="text-align: center; font-size: 20px;"><strong>Analyse des groupements de pays cibles pour exporter nos poulets</strong></p>
                 <ul>
                     <li class='line-spacing'>Sélection des données pertinentes sur FAO (open source)</li>
                     <li class='line-spacing'>Préparation, nettoyage et analyse exploratoire des données</li>
@@ -162,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Gestion de l'eau en Afrique",
             description: `
-                <p>Gestion de l'eau en Afrique pour améliorer l'accès</p>
+                <p style="text-align: center; font-size: 20px;"><strong>Gestion de l'eau en Afrique pour améliorer l'accès</strong></p>
                 <ul>
                     <li class='line-spacing'>Analyse des besoins en eau potable</li>
                     <li class='line-spacing'>Conception de systèmes de distribution</li>
@@ -185,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Gestion d'une boutique de vins",
             description: `
-                <p>Gestion d'une boutique de vins en ligne</p>
+                <p style="text-align: center; font-size: 20px;"><strong>Gestion d'une boutique de vins en ligne</strong></p>
                 <ul>
                     <li class='line-spacing'>Création d'un catalogue de produits</li
                     ><li class='line-spacing'>Développement de fonctionnalités de recherche</li>
@@ -208,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Gestion des ventes dans une librairie",
             description: `
-                <p>Gestion des ventes et inventaire dans une librairie</p>
+                <p style="text-align: center; font-size: 20px;"><strong>Gestion des ventes et inventaire dans une librairie</strong></p>
                 <ul>
                     <li class='line-spacing'>Suivi des ventes et des inventaires</li>
                     <li class='line-spacing'>Mise en place d'un système de gestion des commandes</li>
