@@ -6,7 +6,7 @@
     <title>Deux containers avec boutons et contenu dynamique</title>
     <style>
         html, body {
-            height: 100%;
+            height: 85vh;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -15,24 +15,26 @@
 
         .page-wrapper {
             display: flex;
-            height: 100%;
+            height: 85vh;
             overflow: hidden;
         }
 
         .container-left {
             width: 30%;
+            height: 85vh;
             background-color: rgb(0, 0, 0);
-            color: white;
-            padding: 50px 20px;
+            color: rgb(255, 255, 255);
+            font-size: 17px;
+            padding: 20px;
+            border-right: 2px solid darkturquoise;
             box-sizing: border-box;
-            border-right: 2px solid #000;
+            overflow-y: auto;
         }
 
         .main-content {
             width: 70%;
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
 
         .container-1, .container-2 {
@@ -45,7 +47,7 @@
             padding: 20px;
             margin-bottom: 0;
             border-radius: 8px;
-            box-sizing: border-box;
+            box-sizing: border-box
         }
 
         .container-1 {
@@ -65,12 +67,14 @@
             position: relative;
             overflow: hidden;
         }
+        
+    
 
         .buttons {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin: 0;
+            gap: 100px;
+            margin: 0px;
             position: relative;
             left: 50%;
             transform: translateX(-50%);
@@ -81,28 +85,29 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            padding: 5px;
-            background-color: #6ee7b7;
-            color: #000000;
-            border-radius: 5px 20px 40px 40px;
-            font-size: 14px;
+            padding: 10px 25px;
+            background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
+            color: #ffffff;
+            border-radius: 50px;
+            box-shadow: 5px 5px 10px #305a62bc;
+            font-size: 20px;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
             font-weight: bold;
-            box-shadow: 3px 2px 4px rgba(133, 118, 118, 0.5);
-            width: 150px;
             text-align: center;
         }
 
         .buttons a:hover {
             background-color: transparent;
-            color: #ffffff;
+            color: #000000;
             box-shadow: none;
             transform: scale(1.05);
         }
 
         .buttons a.active {
-            background-color: black;
-            color: #ffffff;
+            background-color: transparent;
+            background: none;
+            box-shadow:none;
+            color: #20cea8;
         }
 
         .dynamic-content img {
@@ -152,8 +157,7 @@
 <body>
     <div class="page-wrapper">
         <div class="container-left" id="container-left">
-            <div class="title">👉 Médecins Généralistes Libéraux en 2024 👈</div>
-            <!-- Contenu par défaut affiché ici -->
+            
         </div>
 
         <div class="main-content">
@@ -161,7 +165,7 @@
                 <div class="buttons">
                     <a href="#" id="button1" class="active">Dashboard PowerBI</a>
                     <a href="#" id="button2">Evolution 2012-2023</a>
-                    <a href="#" id="button3">Présence 2024</a>
+                    <a href="#" id="button3">Cartographie</a>
                 </div>
             </div>
 
@@ -178,6 +182,12 @@
         const dynamicContent = document.getElementById('dynamic-content');
         const containerLeft = document.getElementById('container-left');
 
+        // Activer button3 au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            const button3 = document.getElementById('button1');
+            button3.click(); // Simule un clic sur button3
+        });
+
         function changeContent(content) {
             dynamicContent.innerHTML = content;
         }
@@ -189,47 +199,18 @@
             selectedButton.classList.add('active');
         }
 
-        function loadDefaultContent() {
-            const defaultButton = document.getElementById('button1');
-            setActiveButton(defaultButton);
-            changeContent(`
-                        <video controls>
-                            <source src="Medecins.mp4" type="video/mp4">
-                            Votre navigateur ne supporte pas la vidéo.
-                        </video>
-                    `);
-            containerLeft.innerHTML = `
-                <div class="title">👉 Médecins Généralistes 👈</div>
-                <div class="title"> Libéraux </div><br><br><br>
-                            <p>Les Chiffres Clés, ce que je voulais voir:</p>
-                            <ul>
-                                <li>👉 Evolution de 2012 à 2023 des médecins et de la population</li>
-                                <li>👉 Evolution de N-1 à N (année choisie) des médecins et de la population</li>
-                            </ul>
-                            <p>👉 Comparer 2012 à l'année choisie:</p>
-                            <ul>
-                                <li>➡ Population</li>
-                                <li>➡ Médecin</li>
-                                <li>➡ Patientèle moyenne par médecin</li>
-                                <li>➡ Parité Femmes/Hommes médecins</li>
-                            </ul>`;
-        }
 
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                setActiveButton(button);
-                const id = button.id;
 
-                switch (id) {
-                    case 'button1':
-                    changeContent(`
-                        <video controls>
-                            <source src="Medecins.mp4" type="video/mp4">
-                            Votre navigateur ne supporte pas la vidéo.
-                        </video>
-                    `);
-                        containerLeft.innerHTML = `
-                            <div class="title">👉 Médecins Généralistes 👈</div>
+        const contentMap = {
+            button1: {
+                dynamic: `
+                    <video controls>
+                        <source src="Medecins.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
+                `,
+                left: `
+                    <div class="title">👉 Médecins Généralistes 👈</div>
                             <div class="title"> Libéraux </div><br><br><br>
                             <p>Les Chiffres Clés, ce que je voulais voir:</p>
                             <ul>
@@ -246,13 +227,17 @@
                             <p>🖼️ Utilisation de visuels en courbe, en histogramme et géographique pour illustrer les chiffres et les lieux concernés.</p>
                             <p>🪄 Utilisation de filtres pour l'année, la région et le département pour affiner l'analyse.</p>
                             <p>🎁 Ajout d'une animation montrant l'évolution de la sélection (Régions + Départements) entre 2012 et 2023</p>
-                            `;
-                            break;
-                            
-                    case 'button2':
-                        changeContent('<iframe src="carte_Legis_1erTour.html" title="Carte du 1er Tour"></iframe>');
-                        containerLeft.innerHTML = `
-                            <div class="title">👉 Evolution 2012-2023 👈</div><br><br><br>
+                `
+            },
+            button2: {
+                dynamic: `
+                    <video controls>
+                        <source src="Medecins.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
+                `,
+                left: `
+                    <div class="title">👉 Evolution 2012-2023 👈</div><br><br><br>
                             <p>Je ne vais pas mettre mon analyse complète dans ce post, juste 2 ou 3 faits à retenir sur la période 2012-2023:</p>
                             <ul>
                                 <li>👉 La France a perdu 7 400 médecins (-11,5%) pendant que la population augmentait de 4% et est passée de 1020 Habs à 1200 Habs par médecins</li>
@@ -266,12 +251,18 @@
                             Les choix pris permettent d'obtenir des prévisions cohérentes comparées aux résultats réels du 1er tour.<br><br>
                             ➖ <b>Biais</b>:<br>
                             J'ai "sacrifié" les LR en les splittant sur 3 listes (Ensemble, LR et RN) pour toutes les circonscriptions, ce qui a eu pour effet de minimiser les résultats des candidats LR sans alliance.
-                        `;
-                        break;
-                    case 'button3':
-                        changeContent('<iframe src="Results2024_Legis_circonscriptions.html" title="Résultats des Circonscriptions"></iframe>');
-                        containerLeft.innerHTML = `
-                            <div class="title">👉 Présence - Mars 2024 👈</div><br><br><br>
+                        
+                `
+            },
+            button3: {
+                dynamic: `
+                    <video controls>
+                        <source src="Medecins.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la vidéo.
+                    </video>
+                `,
+                left: `
+                    <div class="title">👉 Présence - Mars 2024 👈</div><br><br><br>
                             J'ai expliqué ma démarche basée sur les résultats du 1er tour (data.gouv.fr), les désistements, les différentes répartitions des voix en fonction des duels….<br><br>
                             Je n’ai hélas pas eu le temps d’analyser les circonscriptions pour lesquelles les deux premiers candidats étaient au coude à coude.<br>
                             Il est possible que cela explique la quarantaine de sièges manquantes au RN et à priori reportés sur l’UG!<br><br>
@@ -279,15 +270,23 @@
                             <b>Le bilan :</b><br>
                             👉 Mes projections positionnent les 3 principales listes dans le bon ordre.<br>
                             👉 Elles sont plus proches de la réalité que celles annoncées par les médias (230 sièges pour le RN)<br>
-                            👉 Analyse comportementale/Electorale cohérente
-                        `;
-                        break;
-                }
+                            👉 Analyse comportementale/Electorale cohérente`
+            }
+        };
+
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                const selectedButton = event.target;
+                const buttonId = selectedButton.id;
+                setActiveButton(selectedButton);
+                changeContent(contentMap[buttonId].dynamic);
+                containerLeft.innerHTML = contentMap[buttonId].left;
             });
         });
 
-        // Charger le contenu par défaut à l'ouverture de la page
-        window.onload = loadDefaultContent;
+        
+
     </script>
 </body>
 </html>
