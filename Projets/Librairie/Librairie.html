@@ -1,71 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet Description et Contenu</title>
+    <title>Deux containers avec boutons et contenu dynamique</title>
     <style>
-        * {
+        html, body {
+            height: 85vh;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            background-color: rgb(0, 0, 0);
         }
 
-        body, html {
-            height: 100%;
-            font-family: 'Roboto', sans-serif;
+        .page-wrapper {
+            display: flex;
+            height: 85vh;
+            overflow: hidden;
+        }
+
+        .container-left {
+            width: 30%;
+            height: 85vh;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            font-size: 18px;
+            padding: 20px;
+            border-right: 2px solid darkturquoise;
+            box-sizing: border-box;
+            overflow-y: auto;
+            line-height: 1.4; /* Ajuste ici l'interligne */
+        }
+
+        .main-content {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container-1, .container-2 {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .container {
-            display: flex;
-            height: calc(100vh - 100px); /* Hauteur de la page - 100px */
-            position: relative;
-        }
-
-        .left-container {
-            width: 30%;
             padding: 20px;
-            color: white;
-            background-color: #000000;
-            overflow-y: auto;
+            margin-bottom: 0;
+            border-radius: 8px;
+            box-sizing: border-box
+        }
+
+        .container-1 {
+            background-color: rgb(0, 0, 0);
+            height: 50px;
             position: relative;
+            z-index: 1;
+            padding: 5px 0;
         }
 
-        .right-container {
-            width: 70%;
-            padding: 00px;
-            background-color: #09090900;
-            overflow-y: auto;
+        .container-2 {
+            background-color: rgb(0, 0, 0);
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
-
-        /* Styles pour le bouton pop-up */
-        #showPopupBtn {
-            position: absolute;
-            bottom: 20px; /* Place le bouton à 20px du bas */
-            left: 50%; /* Centre horizontalement */
-            transform: translateX(-50%); /* Centre parfaitement le bouton */
-            padding: 10px 20px; /* Taille du bouton */
-            background-color: #780d20; /* Couleur de fond du bouton */
-            color: white; /* Couleur du texte */
+        
+        /* Nouveau style pour le bouton popup */
+        #popup-button {
+            position: relative; /* Gardez le bouton visible */
+            bottom: 10px;
+            left: 15%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);   
+            box-shadow: 5px 5px 10px #000000bc;         
+            color: rgb(255, 255, 255); /* Couleur du texte */
             border: none; /* Pas de bordure */
-            border-radius: 5px; /* Coins arrondis */
+            border-radius: 50px; /* Coins arrondis */
             font-size: 16px; /* Taille du texte */
+            font-weight: bold;
             cursor: pointer; /* Curseur en forme de main */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        #showPopupBtn:hover {
-            background-color: #2980b9; /* Couleur au survol */
+        #popup-button:hover {
+            background-color: transparent;
+            color: #000000;
         }
 
-        /* Styles pour le pop-up */
-        .popup-container {
-            display: none;
+        .popup {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Effet semi-transparent */
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -75,93 +110,237 @@
             background-color: white;
             padding: 20px;
             border-radius: 8px;
-            max-width: 50%;
+            max-width: 40%;
             max-height: 50%;
             overflow: auto;
             position: relative;
         }
 
-        .close-btn {
+        .close {
             position: absolute;
             top: 10px;
-            right: 20px;
-            font-size: 24px;
+            right: 10px;
             cursor: pointer;
+            font-size: 24px;
         }
 
-        /* Styles optionnels pour l'esthétique */
-        h2 {
-            margin-bottom: 10px;
-            text-align: center; 
-        }
-        .title-color {
-            color: rgb(32, 115, 167);
-            font-family: Roboto, sans-serif;
+        .popup img {
+            max-width: 100%;
+            max-height: 100%;
         }
 
-        p {
-            line-height: 1.6;
+        
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            margin: 0px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .buttons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            padding: 10px 25px;
+            background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
+            color: #ffffff;
+            border-radius: 50px;
+            box-shadow: 5px 5px 10px #305a62bc;
+            font-size: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .buttons a:hover {
+            background-color: transparent;
+            color: #000000;
+            box-shadow: none;
+            transform: scale(1.05);
+        }
+
+        .buttons a.active {
+            background-color: transparent;
+            background: none;
+            box-shadow:none;
+            color: #20cea8;
+        }
+
+        .dynamic-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .dynamic-content video {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            width: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .dynamic-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .dynamic-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            color: white;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: opacity 0.5s ease;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Conteneur Gauche: Description du projet -->
-        <div class="left-container">
-            <h2 class="title-color">Projet certifiant OpenClassrooms (RNCP)</h2><br>
-            <h2>Librairie</h2>
-            <p>
-                Voici la description du projet. Elle occupe 30% de la largeur de la page.
-                Vous pouvez décrire les aspects principaux du projet ici.
-            </p>
-            <!-- Bouton pour ouvrir le pop-up, placé en bas et centré -->
-            <button id="showPopupBtn">Commentaires Evaluateur</button>
+    <div class="page-wrapper">
+        <div class="container-left" id="container-left">
+            
         </div>
 
-        <!-- Conteneur Droit: Fichier HTML ou MP4 -->
-        <div class="right-container">
-            <!-- <h2>Contenu du Projet</h2> -->
-            <!-- Insérer un fichier HTML -->
-            <iframe src="OCSS_P6_DA-GITHUB1.html" frameborder="0" width="100%" height="100%"></iframe>
-            <!-- Ou Insérer un fichier MP4 -->
-            <!-- <video controls width="100%" height="100%">
-                <source src="project-video.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la lecture de vidéos.
-            </video> -->
+        <div class="main-content">
+            <div class="container container-1">
+                <div class="buttons">
+                    <a href="#" id="button1" class="active">Présentation</a>
+                    <a href="#" id="button2">Notebook</a>
+                </div>
+            </div>
+
+            <div class="container container-2">
+                <div id="dynamic-content" class="dynamic-content">
+                    <!-- Le contenu sera chargé ici -->
+                </div>
+            </div>
         </div>
-     <!-- Pop-up pour afficher un PDF ou une image -->
-    <div id="popup" class="popup-container">
-        <div class="popup-content">
-            <span id="closePopupBtn" class="close-btn">&times;</span>
-            <!-- Contenu du pop-up: Image ou PDF -->
-            <img id="popupImage" src="Commentsp6.png" alt="Document" style="width:100%;" />
-            <!-- Pour un PDF, vous pouvez utiliser un iframe -->
-            <!-- <iframe id="popupPDF" src="votre-document.pdf" style="width:100%; height:600px;"></iframe> -->
-        </div>   
     </div>
-
+    <button id="popup-button">Commentaires Evaluateur</button>
     <script>
-        // Obtenir les éléments
-        const showPopupBtn = document.getElementById("showPopupBtn");
-        const popup = document.getElementById("popup");
-        const closePopupBtn = document.getElementById("closePopupBtn");
+        const buttons = document.querySelectorAll('.buttons a');
+        const dynamicContent = document.getElementById('dynamic-content');
+        const containerLeft = document.getElementById('container-left');
 
-        // Afficher le pop-up lorsque le bouton est cliqué
-        showPopupBtn.addEventListener("click", function() {
-            popup.style.display = "flex"; // Afficher le pop-up
+        // Activer button3 au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            const button3 = document.getElementById('button1');
+            button3.click(); // Simule un clic sur button3
         });
 
-        // Fermer le pop-up lorsque l'utilisateur clique sur la croix
-        closePopupBtn.addEventListener("click", function() {
-            popup.style.display = "none"; // Cacher le pop-up
-        });
+        function changeContent(content) {
+            dynamicContent.innerHTML = content;
+        }
 
-        // Fermer le pop-up si l'utilisateur clique en dehors de celui-ci
-        window.addEventListener("click", function(event) {
-            if (event.target == popup) {
-                popup.style.display = "none"; // Cacher le pop-up
+        function setActiveButton(selectedButton) {
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            selectedButton.classList.add('active');
+        }
+
+        const contentMap = {
+            button1: {
+                dynamic: '<iframe src="Srsa_Stéphane_6_Analyses des ventes d une librairiePPT_062023.pdf" title="Présentation Billet"></iframe>',
+                left: `
+                    <div style="font-size:24px; font-weight: bold ;color: rgb(32, 115, 167); font-family: Roboto, sans-serif; text-align: center">Projet certifiant OpenClassrooms (RNCP)</div><br><br>
+                    <div class="title">👉 Librairie 👈</div><br>
+                
+                    Construisez un modèle de prédiction pour détecter des faux billets grâce à du clustering et de la régression logistique.<br><br><br>
+                    <strong>Compétences cibles</strong> <br><br>
+                    <ul>
+                        <li>Entraîner un modèle d'apprentissage non supervisé pour exploiter le modèle.</li>
+                        <li>Utiliser un modèle d'apprentissage supervisé afin de réaliser une prédiction d'un phénomène.</li>
+                    </ul>
+                `
+            },
+            button2: {
+                dynamic: '<iframe src="OCSS_P6_DA-GITHUB1.html" title="Notebook"></iframe>',
+                left: `
+                    <div style="font-size:24px; font-weight: bold; color: rgb(32, 115, 167); font-family: Roboto, sans-serif; text-align: center">Projet certifiant OpenClassrooms (RNCP)</div><br><br>
+                    <div class="title">👉 Librairie 👈</div><br>
+                    Construisez un modèle de prédiction pour détecter des faux billets grâce à du clustering et de la régression logistique.<br><br><br>
+                    <strong>Compétences cibles</strong> <br><br>
+                    <ul>
+                        <li>Entraîner un modèle d'apprentissage non supervisé pour exploiter le modèle.</li>
+                        <li>Utiliser un modèle d'apprentissage supervisé afin de réaliser une prédiction d'un phénomène.</li>
+                    </ul>
+                    
+                `
             }
+        };
+
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                const selectedButton = event.target;
+                const buttonId = selectedButton.id;
+                setActiveButton(selectedButton);
+                changeContent(contentMap[buttonId].dynamic);
+                containerLeft.innerHTML = contentMap[buttonId].left;
+            });
         });
+
+        const popupButton = document.getElementById('popup-button');
+
+// Événement de clic pour ouvrir le pop-up
+popupButton.addEventListener('click', () => {
+    // Création du conteneur du pop-up
+    const popup = document.createElement('div');
+    popup.className = 'popup';
+
+    // Contenu du pop-up avec une image et un bouton de fermeture
+    popup.innerHTML = `
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <img src="Commentsp6.png" alt="Commentaires">
+        </div>
+    `;
+    
+    // Ajout du pop-up au document
+    document.body.appendChild(popup);
+
+    // Fonction pour fermer le pop-up
+    const closePopup = () => {
+        document.body.removeChild(popup);
+        window.removeEventListener('click', outsideClickHandler); // Retirer l'écouteur
+    };
+
+    // Événement de clic pour fermer le pop-up
+    const closeButton = popup.querySelector('.close');
+    closeButton.addEventListener('click', closePopup);
+
+    // Fonction pour fermer le pop-up si l'utilisateur clique à l'extérieur
+    const outsideClickHandler = (event) => {
+        if (event.target === popup) {
+            closePopup();
+        }
+    };
+
+    // Ajout de l'écouteur d'événements pour les clics extérieurs
+    window.addEventListener('click', outsideClickHandler);
+});
+
     </script>
 </body>
 </html>
