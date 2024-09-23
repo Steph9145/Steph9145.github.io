@@ -80,7 +80,9 @@
             justify-content: center;
             align-items: center;
             height: 90vh;
-            background-image: url('Images/DataWall1.jpg');
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.221), rgba(0, 0, 0, 0.648), rgba(0, 0, 0, 1)), 
+                      url('Images/DataWall1.jpg'); /* Superposition du dégradé et de l'image */
+    
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
@@ -112,32 +114,46 @@
         }
 
         .buttons {
-            display: flex;
-            justify-content: center;
-            
-            gap: 100px;
-            margin: 0;
-            position: absolute;
-            bottom: 150px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+    position: relative; /* Permet à chaque bouton d'utiliser un positionnement absolu relatif à ce conteneur */
+    height: 400px; /* Ajuste la hauteur pour donner assez d'espace vertical */
+    width: 100%; /* S'assure que les boutons restent centrés horizontalement */
+}
 
         .buttons a {
+    position: absolute;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     padding: 20px 0;
-    width: 300px;
+    width: 350px;
     height: 100px;
-    background: radial-gradient(ellipse, #1d8da4bc, #ffffffbd, transparent 35%);
-    color: #000000; /* Couleur par défaut du texte */
+    background: radial-gradient(ellipse, #b4c5c8bc, #ffffff78, transparent 35%);
+    color: #ffffff; /* Couleur par défaut du texte */
     border-radius: 50px; /* Forme elliptique */
     font-size: 18px;
     transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
     font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); /* Ajout de l'ombre au texte */
     text-align: center;
+}
+/* Positionnement du premier bouton */
+.buttons a:nth-child(1) {
+    top: 200px;   /* Position verticale */
+    left: 20%;   /* Position horizontale */
+}
+
+/* Positionnement du deuxième bouton */
+.buttons a:nth-child(2) {
+    top: 280px;  /* Position verticale */
+    left: 37%;   /* Position horizontale (centré) */
+    
+}
+
+/* Positionnement du troisième bouton */
+.buttons a:nth-child(3) {
+    top: 230px;  /* Position verticale */
+    left: 55%;   /* Position horizontale */
 }
 
 .buttons a:hover {
@@ -160,29 +176,64 @@
 
 /* Style du conteneur Profil */
 #profil {
+    position: relative;
+    padding: 30px 10px 10px; /* Augmenté le padding-top pour laisser de la place pour la ligne */
+    background-color: #000000;
+    color: #fff;
+    margin: 20px auto 0; /* Ajouté une marge en haut */
+    max-width: 80%;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#profil::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to left, black, #efedec, #000000);
+    z-index: 1;
+}
+
+#profil .profile-image {
+    width: 25%; /* Colonne de gauche prend 30% de la largeur */
     padding: 10px 10px;
-    background-color: #000000; /* Couleur de fond, ajustez selon vos préférences */
-    color: #fff; /* Couleur du texte */
-    text-align: center; /* Centrer le texte */
-    margin: 0px auto; /* Centrer le conteneur et ajouter des marges */
-    max-width: 90%; /* Largeur maximale du conteneur */
-    border-radius: 8px; /* Coins arrondis pour un effet plus doux */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#profil .profile-image .left-image {
+    max-width: 150%;
+    height: auto;
+    border-radius: 8px; /* Ajoute des coins arrondis à l'image */
+    mask-image: linear-gradient(to right, black 0%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 0%, transparent 100%);
+}
+
+#profil .profile-content {
+    width: 70%; /* Colonne de droite prend 65% de la largeur */
+    text-align: left; /* Aligner le texte à gauche */
 }
 
 #profil h2 {
-    font-size: 28px; /* Taille de police du titre */
-    margin-bottom: 45px; /* Marge en dessous du titre */
+    font-size: 28px;
+    margin-bottom: 45px;
     color: var(--primary-color);
 }
 
 #profil p {
-    font-size: 16px; /* Taille de police du texte */
+    font-size: 16px;
     text-align: justify;
 }
     /* Style pour le bouton */
     .open-popup-btn {
         padding: 10px 20px;
         font-size: 16px;
+        font-weight: bolder;
         color: rgb(0, 0, 0);
         background-color: var(--primary-color);
         border: none;
@@ -231,11 +282,30 @@
 
 /* Conteneur du formulaire de contact */
 #contact {
-    padding: 20px;
-    height: 70vh;
+    position: relative;
+    padding: 10px 10px 10px; /* Augmenté le padding-top pour laisser de la place pour la ligne */
     background-color: #222;
     color: #fff;
-    text-align: left; /* Alignement du texte à gauche */
+    text-align: left;
+    margin-top: 20px; /* Ajouté une marge en haut */
+}
+#contact h2 {
+    margin-bottom: 10px; /* Réduit l'espace sous le titre */
+}
+
+#contact p {
+    margin-bottom: 15px; /* Réduit l'espace sous le paragraphe */
+}
+
+#contact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to left, black, #efedec, #000000);
+    z-index: 1;
 }
 
 /* Style du formulaire */
@@ -250,12 +320,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 /* Style des labels */
 .form-group label {
-    width: 120px; /* Ajustez la largeur en fonction de vos besoins */
+    width: 100px; /* Ajustez la largeur en fonction de vos besoins */
     margin-right: 20px;
     text-align: right; /* Alignement du texte à droite */
 }
@@ -263,8 +333,8 @@
 /* Style des champs de saisie et textarea */
 .form-group input, 
 .form-group textarea {
-    width: 100%;
-    max-width: 1000px;
+    width: calc(100% - 140px); /* Augmente la largeur en soustrayant l'espace pour le label */
+    max-width: 1000px; /* Ajuste cette valeur selon vos besoins */
     padding: 10px;
     box-sizing: border-box;
 }
@@ -274,12 +344,14 @@
     display: block;
     padding: 10px 20px; 
     width: 300px; 
-    height: 100px; 
-    background: radial-gradient(ellipse, #1d8da4bc, #ffffffbd, transparent 35%); 
+    height: 70px; 
+    background: radial-gradient(ellipse, #ffffffbc, #ffffff78, transparent 35%);
     color: #000; 
     font-size: 18px;
+    font-weight: bolder;
     border: none;
-    margin: 20px auto; /* Centre le bouton horizontalement */
+    margin: 0px auto; /* Centre le bouton horizontalement */
+    margin-left: 190px;
 }
 .email-link {
     color: #17b1d0; /* Changez la couleur selon vos besoins */
@@ -434,11 +506,32 @@
         #images-container {
             right: 0;
         }
+
+        #scrollTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* Masqué par défaut */
+    background-color: #24bbaaca; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border: black;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 2px 4px 5px rgba(253, 253, 253, 0.8); /* Effet d'ombre */
+    z-index: 1000; /* Assurez-vous que le bouton est au-dessus du contenu */
+}
+
+#scrollTopBtn:hover {
+    background-color: #1b383c; /* Changement de couleur au survol */
+}
+
     </style>
 </head>
 <body>
     <header>
-        <h1>Data Analyst & Scientist</h1>
+        <h1>Expertise de données: Conseils et solutions Business</h1>
         <nav>
             <a href="#" class="active" aria-label="Accueil">Accueil</a>
             <a href="Services.html" aria-label="Services">Savoirs-faire</a>
@@ -452,6 +545,7 @@
             <h2>Bienvenue</h2>
             <p>From data to insights, everything flows naturally*</p>
             <div class="buttons">
+                <a href="#profil">Ce que je suis..</a>
                 <a href="Services.html">Savoirs-faire</a>
                 <a href="PortF2.html">Portfolio</a>
             </div>
@@ -460,26 +554,42 @@
             <div id="images-container" class="container"></div>
         </div>
     </main>
+    <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Remonter en haut de page">▲</button>
 
     <!-- Conteneur Profil -->
-<section id="profil">
-    <h2>Profil</h2>
-    <p>Ma formation et mon expérience professionnelle m'ont permis de développer des compétences approfondies en analyse de données, combinées à une solide compréhension des enjeux commerciaux et technologiques.</p><br>
-    <p style="color: var(--primary-color); font-size: 20px;"><strong>Expérience Professionnelle Solide :</strong></p>
-    <p>Mon expérience en tant qu'Attaché de Direction Commercial et Ingénieur Commercial a renforcé mes compétences en communication et en compréhension des besoins des clients. J'ai travaillé avec divers clients, allant des banques aux organismes publics, ce qui me permet de comprendre les besoins métiers et de les traduire en solutions analytiques efficaces.</p><br>
+    <section id="profil">
+        <div class="profile-image">
+            <img src="Images/Left_Image.jpg" alt="Profile Image" class="left-image">
+        </div>
+        <div class="profile-content">
+            <h2>Ce que je suis...</h2>
+            <p style="text-align: center;">Ma formation et mon expérience professionnelle m'ont permis de développer des compétences approfondies en analyse de données, combinées à une solide compréhension des enjeux commerciaux et technologiques.</p><br>
+            <p style="color: var(--primary-color); font-size: 20px;"><strong>Expérience Professionnelle Solide :</strong></p>
+            <p>Avec un background commercial réussi en tant que :<br>
+        • Attaché de Direction Commercial dans la GED, le marketing, l'imprimerie, le développement informatique<br>
+        • Ingénieur Commercial pour la Pharmaceutique et la Cosmétique ...<br><br>
+        j'ai développé mes compétences en communication et en compréhension des besoins clients.<br>
+        Le pluralisme des clients rencontrés, allant des banques aux organismes publics en passant par les Agences de communication,  me permet de comprendre les besoins métiers et de les traduire en solutions analytiques efficaces.</p><br>
     <p style="color: var(--primary-color); font-size: 20px;"><strong>Formation Rigoureuse en Analyse de Données :</strong></p>
-    <p>Certification en Data Analyst chez OpenClassrooms : J'ai acquis des compétences avancées en manipulation de DataFrames, en création et gestion de bases de données avec SQL, et en analyse prédictive. Par exemple, j'ai réalisé une étude de santé publique en utilisant des méthodologies d'exploration et d'analyse de données. J'ai aussi conçu un Dashboard avec PowerBI pour une étude sur l'eau potable, démontrant ma capacité à transformer des données complexes en insights clairs pour les clients.</p><br>
+    <p>Certification en Data Analyst chez OpenClassrooms : <br>
+        J'ai acquis des compétences avancées en manipulation de DataFrames, en création et gestion de bases de données avec SQL, et en analyse prédictive.<br>
+        Par exemple, j'ai réalisé une étude de santé publique en utilisant des méthodologies d'exploration et d'analyse de données.<br>
+        J'ai aussi conçu un Dashboard avec PowerBI pour une étude sur l'eau potable, démontrant ma capacité à transformer des données complexes en insights clairs pour les clients.</p><br>
     <!-- Bouton pour ouvrir le pop-up -->
-    <button class="open-popup-btn" onclick="openPopup()">Jury comments</button><br>
+    <button class="open-popup-btn" onclick="openPopup()">Jury comments</button><br><br>
     <p style="color: var(--primary-color); font-size: 20px;"><strong>Des Projets Concrets et Réels :</strong></p>
-    <p>J'ai travaillé sur des projets concrets tels que la détection de faux billets en utilisant des techniques de régression linéaire et logistique, et la mise en place de systèmes de classification automatique pour partitionner les données. Ces projets montrent ma capacité à appliquer des modèles analytiques avancés à des problèmes réels.</p><br> 
+    <p>J'ai travaillé sur des projets concrets tels que la détection de faux billets en utilisant des techniques de régression linéaire et logistique, et la mise en place de systèmes de classification automatique pour partitionner les données.<br>
+        Ces projets montrent ma capacité à appliquer des modèles analytiques avancés à des problèmes réels.</p><br> 
     <p style="color: var(--primary-color); font-size: 20px;"><strong>Compétences Techniques Avancées :</strong></p>
-    <p>Manipulation des Données et Utilisation des Outils : J'ai maîtrisé des outils spécialisés comme Knime pour analyser des indicateurs de genre en conformité avec le RGPD, et j'ai utilisé des librairies pour la manipulation de données dans des environnements de développement modernes.</p><br> 
-    <p style="color: var(--primary-color); font-size: 20px;"><strong>Passion et Engagement :</strong></p>
-    <p>Mon intérêt pour la science des données est alimenté par une passion pour l'exploration et l'analyse des données, ainsi que par une curiosité naturelle pour les nouvelles technologies et les méthodes innovantes. Je suis également engagé dans la continuité de mon développement professionnel, ce qui me permet de rester à la pointe des tendances et des pratiques dans le domaine.</p><br> 
-    <p><strong> </strong></p>
-    <p>En somme, ma combinaison de compétences techniques, d'expérience pratique et d'engagement envers l'excellence fait de moi un candidat particulièrement qualifié pour tout rôle de Data Analyst ou Scientist.</p> 
+    <p>Manipulation des Données et Utilisation des Outils :<br>
+        J'ai maîtrisé des outils spécialisés comme Knime pour analyser des indicateurs de genre en conformité avec le RGPD, et j'ai utilisé des librairies pour la manipulation de données dans des environnements de développement modernes.</p><br> 
+            <p style="color: var(--primary-color); font-size: 20px;"><strong>Passion et Engagement :</strong></p>
+            <p>Mon intérêt pour la science des données est alimenté par une passion pour l'exploration et l'analyse des données, ainsi que par une curiosité naturelle pour les nouvelles technologies et les méthodes innovantes.<br>
+        Je suis également engagé dans la continuité de mon développement professionnel, ce qui me permet de rester à la pointe des tendances et des pratiques dans le domaine.</p><br> 
+            <p><strong> </strong></p><br>
+            <p style="text-align: center;">En somme, ma combinaison de compétences techniques, d'expérience pratique et d'engagement envers l'excellence fait de moi un acteur particulièrement qualifié pour tout rôle de Data Analyst ou Scientist.</p> 
     
+
     <!-- Pop-up pour l'image -->
     <div id="image-popup" class="popup">
         <div class="popup-content">
@@ -493,8 +603,8 @@
 <!-- Formulaire de contact -->
 <!-- Formulaire de contact -->
 <section id="contact">
-    <h2 style="text-align: center; color: var(--primary-color);">Contactez-moi</h2><br>
-    <p style="text-align: center;">Email : <a href="mailto:stephane.srsa@gmail.com" class="email-link" >stephane.srsa@gmail.com</a></p><br><br><br><br>
+    <h2 style="text-align: center; color: var(--primary-color);">Contactez-moi</h2>
+    <p style="text-align: center;">Email : <a href="mailto:stephane.srsa@gmail.com" class="email-link" >stephane.srsa@gmail.com</a></p><br>
 
     <form action="https://formspree.io/f/xqazorqe" method="POST">
         <div class="form-group">
@@ -522,9 +632,6 @@
     </form>
 </section>
 
-
-
-
     <footer class="footer">
         <div class="footer-container">
             <!-- Section A propos -->
@@ -540,7 +647,7 @@
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="Services.html">Savoirs-faire</a></li>
                     <li><a href="PortF2.html">Portfolio</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             <!-- Section Réseaux sociaux -->
@@ -720,6 +827,26 @@
             closePopup();
         }
     }
+
+    // Fonction pour remonter en haut de la page
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+// Afficher le bouton seulement quand le header n'est plus visible
+window.onscroll = function() {
+    let scrollBtn = document.getElementById("scrollTopBtn");
+    let header = document.querySelector('header');
+    let headerHeight = header.offsetHeight;
+
+    // Afficher le bouton si l'utilisateur a défilé sous le header
+    if (window.pageYOffset > headerHeight) {
+        scrollBtn.style.display = "block";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+};
+
     </script>
 </body>
 </html>
