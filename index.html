@@ -16,39 +16,39 @@
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background: #000;
             background-color: var(--background-color);
             color: var(--text-color);
         }
 
-
+        /* ----------------------------------------------------------------------------------HEADER */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 0px 20px;
             background-color: var(--secondary-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
-
         header h1 {
             color: var(--primary-color);
-            font-family: 'Roboto', sans-serif;
-            font-size: 24px;
+            font-size: 22px;
         }
-
         nav {
             display: flex;
+            margin-right: 4%;
+            position: relative;
         }
-
         nav a {
             color: var(--text-color);
             text-decoration: none;
-            margin: 0 15px;
+            margin: 5px 15px;
             font-size: 18px;
             position: relative;
             transition: color 0.3s ease;
         }
-
         nav a::after {
             content: '';
             position: absolute;
@@ -61,65 +61,146 @@
             transform-origin: left;
             transition: transform 0.3s ease;
         }
-
         nav a:hover::after {
             transform: scaleX(1);
         }
-
         nav a:hover {
             color: var(--primary-color);
         }
-
         nav a.active {
             color: var(--primary-color);
         }
-
-        .hero {
-            display: flex;
+        /* Styles pour le bouton burger et le menu mobile */
+        .burger {
+            display: none;
+            cursor: pointer;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 90vh;
-            background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.221), rgba(0, 0, 0, 0.648), rgba(0, 0, 0, 1)), 
-                      url('Images/DataWall1.jpg'); /* Superposition du dégradé et de l'image */
-    
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            text-align: center;
-            padding: 0px;
-            position: relative;
+            justify-content: space-between;
+            margin-right: 15%;
+            width: 30px;
+            height: 18px;
         }
-
-        .hero h2 {
-            font-size: 48px;
-            margin: 0;
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
+        .burger div {
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary-color);
         }
-
-        .hero p:first-of-type {
-            font-size: 22px;
-            font-style: italic;
-            color: var(--text-color);
-            margin: 0;
-            position: absolute;
-            top: 230px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
+        .nav-links {
+            display: flex;
+            list-style: none;
         }
+        .nav-links.show {
+            display: flex;
+        }
+        /* Responsivité HEADER*/
+        @media (max-width: 768px) {
+            header {
+                width: 100%;
+            }
+            header h1 {
+                font-size: 18px; /* Réduction de la taille du titre pour les mobiles */
+                text-align: left;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 60px;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0);
+                width: 200px;
+                text-align: right;
+                z-index: 1001; /* Un z-index plus élevé que le header */
+                max-height: calc(100vh - 60px); /* Hauteur maximale du menu */
+                overflow-y: auto; /* Permet le défilement si le menu est trop long */
+            }
+            .nav-links a {
+                padding: 10px;
+                margin: 0;
+                font-size: 14px; /* Taille plus petite pour les liens */
+                border-bottom: 1px solid var(--primary-color); /* Ligne de séparation */
+                background-color: rgba(36, 34, 34, 0.812);
+                display: block;
+                width: calc(100% - 120px); /* Réduit la largeur pour diminuer la longueur du trait */
+                margin-left: 90px; /* Ajuste la marge à gauche pour centrer les liens */
+            }
+            .nav-links a:last-child {
+                border-bottom: none; /* Supprime la ligne sous le dernier élément */
+            }
+            .burger {
+                display: flex;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+        }
+        @media (max-width: 460px) {
+            header h1 {
+                font-size: 14px; /* Réduction de la taille du titre pour les mobiles */
+            }
+            .nav-links a {
+                font-size: 12px;
+            }
+            .nav-links a:last-child {
+                border-bottom: none; /* Supprime la ligne sous le dernier élément */
+            }
+            .burger {
+                display: flex;
+            }
+            .nav-links.show {
+                display: flex;
+            }            
+        }     
 
-        .buttons {
-    position: relative; /* Permet à chaque bouton d'utiliser un positionnement absolu relatif à ce conteneur */
-    height: 400px; /* Ajuste la hauteur pour donner assez d'espace vertical */
-    width: 100%; /* S'assure que les boutons restent centrés horizontalement */
+ /* ------------------------------------------------------------------------Main avec Images et Cascades */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.221), rgba(0, 0, 0, 0.648), rgba(0, 0, 0, 1)), 
+                  url('Images/DataWall1.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+    padding: 0;
+    position: relative;
+    overflow: hidden; /* Pour contenir les éléments de cascade */
 }
 
-        .buttons a {
+.hero h2 {
+    font-size: 48px;
+    margin: 0;
+    color: white;
+    position: absolute; /* Relatif au conteneur parent */
+    top: 20%; /* Ajustez cette valeur pour ajuster l'espacement */
+    z-index: 10;
+}
+
+.hero p:first-of-type {
+    font-size: 22px;
+    font-style: italic;
+    color: var(--text-color);
+    margin: 0;
+    white-space: normal;
+    top: 35%;
+    position: absolute;
+    text-align: center;
+}
+.hero p:first-of-type::after {
+    content: "From data to insights, everything flows naturally*";
+}
+.buttons {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.buttons a {
     position: absolute;
     display: inline-flex;
     justify-content: center;
@@ -129,249 +210,583 @@
     width: 350px;
     height: 100px;
     background: radial-gradient(ellipse, #b4c5c8bc, #ffffff78, transparent 35%);
-    color: #ffffff; /* Couleur par défaut du texte */
-    border-radius: 50px; /* Forme elliptique */
+    color: #ffffff;
+    border-radius: 50px;
     font-size: 18px;
     transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
     font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); /* Ajout de l'ombre au texte */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
     text-align: center;
 }
-/* Positionnement du premier bouton */
-.buttons a:nth-child(1) {
-    top: 200px;   /* Position verticale */
-    left: 20%;   /* Position horizontale */
-}
 
-/* Positionnement du deuxième bouton */
-.buttons a:nth-child(2) {
-    top: 280px;  /* Position verticale */
-    left: 37%;   /* Position horizontale (centré) */
-    
-}
-
-/* Positionnement du troisième bouton */
-.buttons a:nth-child(3) {
-    top: 230px;  /* Position verticale */
-    left: 55%;   /* Position horizontale */
-}
+.buttons a:nth-child(1) { top: 60%; left: 20%; }
+.buttons a:nth-child(2) { top: 50%; left: 37%; }
+.buttons a:nth-child(3) { top: 70%; left: 55%; }
 
 .buttons a:hover {
-    background: transparent; /* Rendre le fond transparent au survol */
-    color: #ffffff; /* Couleur du texte noir au survol */
-    box-shadow: none; /* Désactive l'ombre au survol */
-    transform: scale(1.05); /* Légère augmentation de la taille */
+    background: transparent;
+    color: #ffffff;
+    box-shadow: none;
+    transform: scale(1.05);
 }
 
-        .hero p:last-of-type {
-            position: absolute;
-            bottom: 0px;
-            left: 8%;
-            transform: translateX(-40%);
-            font-size: 12px;
-            font-style: italic;
-            color: var(--text-color);
-            text-align: left;
+.hero p:last-of-type {
+    position: absolute; /* Positionnement absolu par rapport à .hero */
+    bottom: 0; /* Toujours en bas */
+    left: 0; /* Toujours à gauche */
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-color);
+    text-align: left;
+    margin: 10px; /* Optionnel : ajoute un peu de marge par rapport aux bords */
+}
+
+
+/* Styles pour la cascade d'images et de mots */
+#words-container, #images-container {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    overflow: hidden; 
+    pointer-events: none; /* Pour ne pas interférer avec les interactions utilisateur */
+}
+
+#words-container { left: 0; }
+#images-container { right: 0; }
+
+.waterfall, .word, .image {
+    position: absolute;
+    opacity: 0;
+}
+
+.waterfall {
+    width: 2px;
+    height: 150px;
+    background: linear-gradient(to bottom, rgba(0, 255, 255, 0.8), rgba(0, 255, 255, 0.6), rgba(0, 0, 255, 0.4), rgba(255, 255, 255, 0.2));
+    border-radius: 3px;
+}
+
+.word {
+    text-align: center;
+    white-space: nowrap;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+}
+
+@keyframes cascade {
+    from { transform: translateY(-100px); opacity: 0.5; }
+    to { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes cascadeWords {
+    from { transform: translateY(-100px); opacity: 1; }
+    to { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes cascadeImages {
+    from { transform: translateY(-100px); opacity: 1; }
+    to { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Media queries pour la réactivité */
+@media screen and (min-width: 1200px) {
+    .word { font-size: 16px; }
+    .image img { max-width: 200px; }
+}
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .word { font-size: 16px; }
+    .image img { max-width: 200px; }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+    .word { font-size: 16px; }
+    .image img { max-width: 150px; }
+}
+
+@media screen and (max-width: 767px) and (min-width: 480px) {
+    .hero {
+        height: 95vh;
+        background-size: 200% 100%;
+        padding: 20px 0;
+        background-attachment: scroll;
+    }
+    .hero h2 { font-size: 36px; }
+    .hero p:first-of-type { 
+        font-size: 18px;
+        white-space: normal; /* Permet de préserver les sauts de ligne */
+    }
+    .hero p:first-of-type::after {
+        content: "From data to insights,\a everything flows naturally*"; /* \a insère un retour à la ligne */
+    }
+    .buttons { margin-top: 20px; }
+    .buttons a {
+        width: 100%;
+        height: 80px;
+        font-size: 18px;
+        left: 0% !important;
+        margin-bottom: 10px;
+    }
+    .buttons a:nth-child(1) { top: 50%; }
+    .buttons a:nth-child(2) { top: 70%; }
+    .buttons a:nth-child(3) { top: 90%; }
+    .hero p:last-of-type {font-size: 10px;}
+    .word { font-size: 14px; }
+    .image img { max-width: 100px; }
+}
+
+@media screen and (max-width: 479px) {
+    .hero {
+        height: 95vh;
+        padding: 10px 0;
+        background-size: 250% 100%;
+    }
+    .hero h2 { font-size: 24px;}
+    .hero p:first-of-type { 
+        font-size: 16px;
+        white-space: normal; /* Permet de préserver les sauts de ligne */
+    }
+    .hero p:first-of-type::after {
+        content: "From data to insights,\a everything flows naturally*"; /* \a insère un retour à la ligne */
+    }
+    .buttons { margin-top: 10px; }
+    .buttons a {
+        width: 80%;
+        height: 60px;
+        font-size: 14px;
+        left: 10% !important;
+        margin-bottom: 10px;
+    }
+    .buttons a:nth-child(1) { top: 50%; }
+    .buttons a:nth-child(2) { top: 70%; }
+    .buttons a:nth-child(3) { top: 90%; }
+    .hero p:last-of-type { font-size: 8px;}
+    .word { font-size: 12px; }
+    .image img { max-width: 80px; }
+}
+
+
+        /* ------------------------------------------------------------------------------Profil */
+        /* Style du conteneur Profil */
+        #profil {
+            position: relative;
+            padding: 30px 10px 10px; /* Augmenté le padding-top pour laisser de la place pour la ligne */
+            background-color: #000000;
+            color: #fff;
+            margin: 20px auto 0; /* Ajouté une marge en haut */
+            max-width: 80%;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
-/* Style du conteneur Profil */
-#profil {
-    position: relative;
-    padding: 30px 10px 10px; /* Augmenté le padding-top pour laisser de la place pour la ligne */
-    background-color: #000000;
-    color: #fff;
-    margin: 20px auto 0; /* Ajouté une marge en haut */
-    max-width: 80%;
-    border-radius: 8px;
+        #profil::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to left, black, #efedec, #000000);
+            z-index: 1;
+        }
+
+        #profil .profile-image {
+            width: 25%; /* Colonne de gauche prend 30% de la largeur */
+            padding: 10px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #profil .profile-image .left-image {
+            max-width: 150%;
+            height: auto;
+            border-radius: 8px; /* Ajoute des coins arrondis à l'image */
+            mask-image: linear-gradient(to right, black 0%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, black 0%, transparent 100%);
+        }
+
+        #profil .profile-content {
+            width: 70%; /* Colonne de droite prend 65% de la largeur */
+            text-align: left; /* Aligner le texte à gauche */
+        }
+
+        #profil h2 {
+            font-size: 28px;
+            margin-bottom: 45px;
+            color: var(--primary-color);
+            margin-top: 55px;
+        }
+        #profil h3 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            text-align: left;
+            color: #6ee7b7;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), 2px 2px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        #profil p {
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .popup-container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-start; /* Aligner le contenu en haut */
+    gap: 20px; /* Espace entre le bouton et le texte */
 }
 
-#profil::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to left, black, #efedec, #000000);
-    z-index: 1;
+.popup-btn-container {
+    text-align: center; /* Centrer le texte et l'image */
 }
 
-#profil .profile-image {
-    width: 25%; /* Colonne de gauche prend 30% de la largeur */
-    padding: 10px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#profil .profile-image .left-image {
-    max-width: 150%;
-    height: auto;
-    border-radius: 8px; /* Ajoute des coins arrondis à l'image */
-    mask-image: linear-gradient(to right, black 0%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, black 0%, transparent 100%);
+
+
+
+        /* Style pour le bouton */
+        .open-popup-btn {
+            display: flex; /* Utiliser flexbox */
+            justify-content: center; /* Centrer horizontalement */
+            align-items: center; /* Centrer verticalement */
+            padding: 10px 10px;
+            font-size: 16px;
+            font-weight: bolder;
+            color: #6ee7b7;
+            background-color: #c8c2c249;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            flex-direction: column; /* Assurer que les éléments sont en colonne */
+        }
+        .open-popup-btn img {
+    display: block;
+    margin: 0 auto; /* Centrer l'image */
 }
 
-#profil .profile-content {
-    width: 70%; /* Colonne de droite prend 65% de la largeur */
-    text-align: left; /* Aligner le texte à gauche */
-}
-
-#profil h2 {
-    font-size: 28px;
-    margin-bottom: 45px;
-    color: var(--primary-color);
-}
-
-#profil p {
+.popup-text {
+    max-width: 80%; /* Limite la largeur du texte pour un bon rendu */
     font-size: 16px;
-    text-align: justify;
+    color: #f9f6f6;
 }
-    /* Style pour le bouton */
-    .open-popup-btn {
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bolder;
-        color: rgb(0, 0, 0);
-        background-color: var(--primary-color);
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-    }
 
-    /* Style pour le pop-up */
-    .popup {
-        display: none;
-        position: fixed;
-        left: 0;
+
+        /* Style pour les écrans inférieurs à 480px */
+@media (max-width: 480px) {
+    #profil {
+        flex-direction: column;
+        padding: 20px 5px;
+        max-width: 100%;
+        background-image: url('Images/Baniere1.png'); /* L'image devient un fond */
+        background-size: contain;
+        background-position: center;
+    }
+    
+        /* Ajouter un overlay sombre par-dessus l'image de fond */
+        #profil::after {
+        content: "";
+        position: absolute;
         top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        
-        justify-content: center;
-        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5); /* Couche sombre */
+        z-index: 1; /* L'overlay sera derrière le texte mais devant l'image de fond */
     }
 
-    /* Style pour le contenu du pop-up */
-    .popup-content {
-        position: relative;
-        width: 80%;
-        max-width: 600px;
-        background-color: rgba(163, 31, 31, 0.5);
-        padding: 20px;
-        border-radius: 10px;
+    #profil .profile-image {
+        display: none; /* On cache l'image car elle est déjà en fond */
+    }
+
+    #profil .profile-content {
+        width: 100%;
+        z-index: 2; /* Le texte est au-dessus de l'overlay */
         text-align: center;
     }
 
-    .popup-content img {
-        max-width: 100%;
-        height: auto;
+    #profil h2 {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #profil h3 {
+        font-size: 16px;
+        margin-bottom: 16px;
+        text-align: left;
+        color: #6ee7b7;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), 2px 2px 3px rgba(0, 0, 0, 0.5);
     }
 
-    .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 20px;
-        cursor: pointer;
+    #profil p {
+        font-size: 12px;
     }
 
+    .open-popup-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 
-
-/* Conteneur du formulaire de contact */
-#contact {
-    position: relative;
-    padding: 10px 10px 10px; /* Augmenté le padding-top pour laisser de la place pour la ligne */
-    background-color: #222;
-    color: #fff;
-    text-align: left;
-    margin-top: 20px; /* Ajouté une marge en haut */
-}
-#contact h2 {
-    margin-bottom: 10px; /* Réduit l'espace sous le titre */
+    .popup-text {
+        max-width: 80%; /* Limite la largeur du texte pour un bon rendu */
+        font-size: 12px;
+    }
 }
 
-#contact p {
-    margin-bottom: 15px; /* Réduit l'espace sous le paragraphe */
+/* Style pour les écrans entre 480px et 768px */
+@media (min-width: 480px) and (max-width: 768px) {
+    #profil {
+        flex-direction: column;
+        padding: 25px 10px;
+        max-width: 90%;
+        background-image: url('Images/Baniere1.png'); /* L'image devient un fond */
+        background-size: contain;
+        background-position: center;
+    }
+
+    #profil .profile-image {
+        display: none; /* On cache l'image car elle est déjà en fond */
+    }
+
+    #profil .profile-content {
+        width: 100%;
+        text-align: left;
+    }
+
+    #profil h2 {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+
+    #profil p {
+        font-size: 15px;
+    }
+
+    .open-popup-btn {
+    display: flex; /* Utiliser flexbox */
+    flex-direction: column; /* Alignement en colonne */
+    align-items: center; /* Centrer horizontalement */
+    background-color: transparent; /* Couleur de fond transparent */
+    border: none; /* Supprimer la bordure */
+    cursor: pointer; /* Changer le curseur au survol */
 }
 
-#contact::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to left, black, #efedec, #000000);
-    z-index: 1;
+.open-popup-btn img {
+    margin-top: 4px; /* Espacement entre le texte et l'image */
+}
 }
 
-/* Style du formulaire */
-#contact form {
-    max-width: 600px;
-    margin: 0; /* Supprime le centrage automatique */
-    padding-left: 20px; /* Ajoute un peu d'espace à gauche */
+/* Style pour les écrans supérieurs à 768px */
+@media (min-width: 768px) {
+    #profil {
+        flex-direction: row;
+        max-width: 80%;
+    }
+
+    #profil .profile-image {
+        width: 25%;
+    }
+
+    #profil .profile-content {
+        width: 70%;
+    }
 }
 
-/* Style des groupes de formulaire */
-.form-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-/* Style des labels */
-.form-group label {
-    width: 100px; /* Ajustez la largeur en fonction de vos besoins */
-    margin-right: 20px;
-    text-align: right; /* Alignement du texte à droite */
-}
-
-/* Style des champs de saisie et textarea */
-.form-group input, 
-.form-group textarea {
-    width: calc(100% - 140px); /* Augmente la largeur en soustrayant l'espace pour le label */
-    max-width: 1000px; /* Ajuste cette valeur selon vos besoins */
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-/* Style pour centrer le bouton uniquement */
-#contact .submit-button {
-    display: block;
-    padding: 10px 20px; 
-    width: 300px; 
-    height: 70px; 
-    background: radial-gradient(ellipse, #ffffffbc, #ffffff78, transparent 35%);
-    color: #000; 
-    font-size: 18px;
-    font-weight: bolder;
-    border: none;
-    margin: 0px auto; /* Centre le bouton horizontalement */
-    margin-left: 190px;
-}
-.email-link {
-    color: #17b1d0; /* Changez la couleur selon vos besoins */
-    text-decoration: none; /* Enlevez le soulignement si vous le souhaitez */
-    text-align: center;
-}
-
-.email-link:hover {
-    color: #f6efed; /* Couleur de survol, ajustez selon vos préférences */
-}
-
-
-
-        .footer {
-            position: relative; /* Assurez-vous que le footer a une position relative */
-            background-color: var(--footer-background);
-            padding: 10px 50px;
-            color: var(--footer-text);
+        /* Style pour le pop-up */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
         }
 
+        /* Style pour le contenu du pop-up */
+        .popup-content {
+            position: relative;
+            width: 80%;
+            max-width: 450px;
+            background-color: rgba(163, 31, 31, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .popup-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none; /* Masqué par défaut */
+            background-color: #b13d3dca; /* Couleur de fond */
+            color: white; /* Couleur du texte */
+            border: black;
+            padding: 5px 5px;
+            font-size: 14px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 1px 2px 3px rgba(253, 253, 253, 0.8); /* Effet d'ombre */
+            z-index: 1000; /* Assurez-vous que le bouton est au-dessus du contenu */
+        }
+        #scrollTopBtn:hover {
+            background-color: #1b383c; /* Changement de couleur au survol */
+        }
+
+
+        /* ------------------------------------------------------------------------------Contact */
+        /* Conteneur du formulaire de contact */
+        #contact {
+            position: relative;
+            padding: 10px 10px 10px; /* Augmenté le padding-top pour laisser de la place pour la ligne */
+            background-color: #222;
+            color: #fff;
+            text-align: left;
+            margin-top: 20px; /* Ajouté une marge en haut */
+        }
+
+        #contact h2 {
+            margin-bottom: 10px; /* Réduit l'espace sous le titre */
+        }
+
+        #contact p {
+            margin-bottom: 15px; /* Réduit l'espace sous le paragraphe */
+        }
+
+        #contact::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to left, black, #efedec, #000000);
+            z-index: 1;
+        }
+
+        /* Style du formulaire */
+        #contact form {
+            max-width: 100%;
+            margin: 0; /* Supprime le centrage automatique */
+            padding-left: 20px; /* Ajoute un peu d'espace à gauche */
+        }
+
+        /* Style des groupes de formulaire */
+        .form-group {
+            display: flex;
+    flex-direction: column; /* Modifié pour empiler les éléments */
+    align-items: center; /* Centre les éléments horizontalement */
+    margin-bottom: 15px;
+    width: 100%; /* Prend toute la largeur du conteneur */
+        }
+
+        /* Style des labels */
+        .form-group label {
+            width: 100%; /* Ajuste la largeur en fonction de vos besoins */
+    text-align: left; /* Alignement du texte à gauche */
+    margin-bottom: 5px; /* Ajoute un peu d'espace sous le label */
+        }
+
+        /* Style des champs de saisie et textarea */
+        .form-group input, 
+        .form-group textarea {
+            width: 90%; /* Ajuste la largeur pour qu'elle soit inférieure à 100% */
+            max-width: 600px; /* Limite la largeur maximale */ /* Ajuste cette valeur selon vos besoins */
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Style pour centrer le bouton uniquement */
+        #contact .submit-button {
+            display: block;
+            padding: 10px 20px; 
+            width: 100%; 
+            height: 70px; 
+            background: radial-gradient(ellipse, #ffffffbc, #ffffff78, transparent 35%);
+            color: #000; 
+            font-size: 18px;
+            font-weight: bolder;
+            border: none;
+            margin: 0px auto; /* Centre le bouton horizontalement */
+           
+        }
+
+        .email-link {
+            color: #17b1d0; /* Changez la couleur selon vos besoins */
+            text-decoration: none; /* Enlevez le soulignement si vous le souhaitez */
+            text-align: center;
+        }
+
+        .email-link:hover {
+            color: underline;  /* Couleur de survol, ajustez selon vos préférences */
+        }
+/* Media queries pour les écrans entre 480px et 768px */
+@media only screen and (max-width: 768px) and (min-width: 480px) {
+    .form-group {
+        width: 100%; /* Prend toute la largeur du conteneur */
+    }
+
+
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 90%; /* Ajuste la largeur pour qu'elle soit inférieure à 100% */
+        max-width: 600px; /* Limite la largeur maximale */
+    }
+
+    #contact .submit-button {
+        
+        width: 100%; /* Largeur à 100% sur les écrans plus petits */
+    }
+
+
+/* Media queries pour les écrans inférieurs à 480px */
+@media only screen and (max-width: 480px) {
+    #contact {
+        padding: 5px; /* Réduit le padding pour les très petits écrans */
+    }
+
+
+    .form-group input,
+    .form-group textarea {
+        width: 90%; /* Ajuste la largeur pour qu'elle soit inférieure à 100% */
+        max-width: 600px; /* Limite la largeur maximale */
+    }
+
+    #contact .submit-button {
+        width: 100%; /* Le bouton occupe toute la largeur */
+        height: auto; /* Ajuste la hauteur pour les petits écrans */
+    }
+
+    #contact::before {
+        height: 1px; /* Minimise la ligne décorative pour ne pas surcharger l'écran */
+    }
+}
+
+
+
+       /* ------------------------------------------------------------------------------FOOTER */
+       .footer {
+            position: relative; /* Assurez-vous que le footer a une position relative */
+            background-color: var(--footer-background);
+            padding: 10px;
+            color: var(--footer-text);
+        }
         .footer::before {
             content: "";
             position: absolute;
@@ -382,170 +797,102 @@
             background: linear-gradient(to left, black,#efedec, #000000); /* Dégradé de droite à gauche */
             z-index: 1; /* Pour être au-dessus du contenu du footer */
         }
-
         .footer-container {
             display: flex;
             justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin-left: 0%;
             flex-wrap: wrap;
         }
-
         .footer-section {
             flex: 1;
-            min-width: 200px;
-            margin: 20px;
+            min-width: 100px;
+            text-align: center; /* texte aligné à gauche */
+    
         }
-
         .footer-section h2 {
             color: var(--text-color);
-            font-size: 14px;
+            font-size: 16px;
             margin-bottom: 10px;
         }
-
         .footer-section p,
         .footer-section ul li {
-            font-size: 12px;
+            font-size: 14px;
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
-
         .footer-section ul {
             list-style: none;
             padding: 0;
             margin: 0;
-            padding-left: 10px;
         }
-
         .footer-section ul li a {
             color: var(--primary-color);
             text-decoration: none;
             display: block;
-            padding-left: 2px;
+            padding: 2px 0;
             transition: text-decoration 0.3s ease;
         }
-
         .footer-section ul li a:hover {
             text-decoration: underline;
         }
-
         .social-icons {
             display: flex;
+            justify-content: center; 
             gap: 10px;
         }
-
         .social-icons a img {
-            width: 32px;
-            height: 32px;
+            width: 30px; /* Réduit la taille des icônes pour les smartphones */
+            height: 30px; /* Réduit la taille des icônes pour les smartphones */
+        }
+    /* Media Queries pour appareils plus petits */
+    @media (max-width: 768px) { /* Tablettes */
+        .footer-section h2 {
+            font-size: 14px;
+        }
+        .footer-section p,
+        .footer-section ul li {
+            font-size: 12px;
         }
 
-        .container {
-            position: absolute;
-            width: 300px;
-            height: 600px;
-            overflow: hidden;
-            border: 2px solid rgba(43, 47, 43, 0);
+    }
+    @media (max-width: 480px) { /* Smartphones */
+        .footer-section h2 {
+            font-size: 12px; /* Réduit la taille de la police des titres */
         }
-        .waterfall {
-            position: absolute;
-            width: 2px;
-            height: 150px;
-            background: linear-gradient(to bottom, rgba(0, 255, 255, 0.8), rgba(0, 255, 255, 0.6), rgba(0, 0, 255, 0.4), rgba(255, 255, 255, 0.2));
-            border-radius: 3px;
-            opacity: 0;
-            animation: cascade 7s linear infinite;
+        .footer-section p,
+        .footer-section ul li {
+            font-size: 10px; /* Réduit la taille de la police des paragraphes */
         }
-        .word {
-            position: absolute;
-            text-align: center;
-            white-space: nowrap;
-            opacity: 0;
-            font-size: 18px;
-            color: rgb(255, 255, 255);
-            font-weight: bold;
-            font-family: Arial, sans-serif;
-            text-shadow: 2px 2px 4px rgb(0, 0, 0);
-        }
-        .image {
-            position: absolute;
-            opacity: 1;
-        }
-        @keyframes cascade {
-            from {
-                transform: translateY(-100px);
-                opacity: 0.5;
-            }
-            to {
-                transform: translateY(600px);
-                opacity: 0;
-            }
-        }
-        @keyframes cascadeWords {
-            from {
-                transform: translateY(-100px);
-                opacity: 1;
-            }
-            to {
-                transform: translateY(600px);
-                opacity: 0;
-            }
-        }
-        @keyframes cascadeImages {
-            from {
-                transform: translateY(-100px);
-                opacity: 1;
-            }
-            to {
-                transform: translateY(600px);
-                opacity: 0;
-            }
-        }
-        #words-container {
-            left: 0;
-        }
-        #images-container {
-            right: 0;
-        }
-
-        #scrollTopBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: none; /* Masqué par défaut */
-    background-color: #24bbaaca; /* Couleur de fond */
-    color: white; /* Couleur du texte */
-    border: black;
-    padding: 10px 15px;
-    font-size: 18px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 2px 4px 5px rgba(253, 253, 253, 0.8); /* Effet d'ombre */
-    z-index: 1000; /* Assurez-vous que le bouton est au-dessus du contenu */
-}
-
-#scrollTopBtn:hover {
-    background-color: #1b383c; /* Changement de couleur au survol */
-}
-
+    }
     </style>
+
 </head>
 <body>
     <header>
-        <h1>Expertise de données: Conseils et solutions Business</h1>
+        <h1>Expertise de données<br> Conseils et Solutions Business</h1>
+
         <nav>
-            <a href="#" class="active" aria-label="Accueil">Accueil</a>
-            <a href="Services.html" aria-label="Services">Savoirs-faire</a>
-            <a href="PortF2.html" aria-label="Portfolio">Portfolio</a>
-            <a href="#contact" aria-label="Contact">Contact</a>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active" aria-label="Accueil">Accueil</a>
+                <a href="Services.html" aria-label="Services">Savoirs-faire</a>
+                <a href="PortF2.html" aria-label="Portfolio">Portfolio</a>
+                <a href="#contact" aria-label="Contact">Contact</a>
+            </div>
         </nav>
     </header>
 
     <main>
         <div class="hero">
             <h2>Bienvenue</h2>
-            <p>From data to insights, everything flows naturally*</p>
+            <p></p>
             <div class="buttons">
-                <a href="#profil">Ce que je suis..</a>
+                <a href="#profil">Qui je suis..</a>
                 <a href="Services.html">Savoirs-faire</a>
                 <a href="PortF2.html">Portfolio</a>
             </div>
@@ -554,6 +901,8 @@
             <div id="images-container" class="container"></div>
         </div>
     </main>
+
+
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Remonter en haut de page">▲</button>
 
     <!-- Conteneur Profil -->
@@ -562,45 +911,75 @@
             <img src="Images/Baniere1.png" alt="Profile Image" class="left-image">
         </div>
         <div class="profile-content">
-            <h2>Ce que je suis...</h2>
-            <p style="text-align: center;">Ma formation et mon expérience professionnelle m'ont permis de développer des compétences approfondies en analyse de données, combinées à une solide compréhension des enjeux commerciaux et technologiques.</p><br>
-            <p style="color: var(--primary-color); font-size: 20px;"><strong>Expérience Professionnelle Solide :</strong></p>
-            <p>Avec un background commercial réussi en tant que :<br>
-        • Attaché de Direction Commercial dans la GED, le marketing, l'imprimerie, le développement informatique<br>
-        • Ingénieur Commercial pour la Pharmaceutique et la Cosmétique ...<br><br>
-        j'ai développé mes compétences en communication et en compréhension des besoins clients.<br>
-        Le pluralisme des clients rencontrés, allant des banques aux organismes publics en passant par les Agences de communication,  me permet de comprendre les besoins métiers et de les traduire en solutions analytiques efficaces.</p><br>
-    <p style="color: var(--primary-color); font-size: 20px;"><strong>Formation Rigoureuse en Analyse de Données :</strong></p>
-    <p>Certification en Data Analyst chez OpenClassrooms : <br>
-        J'ai acquis des compétences avancées en manipulation de DataFrames, en création et gestion de bases de données avec SQL, et en analyse prédictive.<br>
-        Par exemple, j'ai réalisé une étude de santé publique en utilisant des méthodologies d'exploration et d'analyse de données.<br>
-        J'ai aussi conçu un Dashboard avec PowerBI pour une étude sur l'eau potable, démontrant ma capacité à transformer des données complexes en insights clairs pour les clients.</p><br>
-    <!-- Bouton pour ouvrir le pop-up -->
-    <button class="open-popup-btn" onclick="openPopup()">Jury comments</button><br><br>
-    <p style="color: var(--primary-color); font-size: 20px;"><strong>Des Projets Concrets et Réels :</strong></p>
-    <p>J'ai travaillé sur des projets concrets tels que la détection de faux billets en utilisant des techniques de régression linéaire et logistique, et la mise en place de systèmes de classification automatique pour partitionner les données.<br>
-        Ces projets montrent ma capacité à appliquer des modèles analytiques avancés à des problèmes réels.</p><br> 
-    <p style="color: var(--primary-color); font-size: 20px;"><strong>Compétences Techniques Avancées :</strong></p>
-    <p>Manipulation des Données et Utilisation des Outils :<br>
-        J'ai maîtrisé des outils spécialisés comme Knime pour analyser des indicateurs de genre en conformité avec le RGPD, et j'ai utilisé des librairies pour la manipulation de données dans des environnements de développement modernes.</p><br> 
-            <p style="color: var(--primary-color); font-size: 20px;"><strong>Passion et Engagement :</strong></p>
-            <p>Mon intérêt pour la science des données est alimenté par une passion pour l'exploration et l'analyse des données, ainsi que par une curiosité naturelle pour les nouvelles technologies et les méthodes innovantes.<br>
-        Je suis également engagé dans la continuité de mon développement professionnel, ce qui me permet de rester à la pointe des tendances et des pratiques dans le domaine.</p><br> 
-            <p><strong> </strong></p><br>
-            <p style="text-align: center;">En somme, ma combinaison de compétences techniques, d'expérience pratique et d'engagement envers l'excellence fait de moi un acteur particulièrement qualifié pour tout rôle de Data Analyst ou Scientist.</p> 
-    
+            <h2>Qui je suis...</h2>
+            <p style="text-align: center;">Pragmatique, curieux, logique, carthésien - bien sûr. <br>Mais ce qui me caractérise et m'anime est le besoin viscéral de comprendre les tenants et aboutissants afin de proposer des solutions adaptées en utilisant mon empathie et mes capacités d'adapation métier.</p><br>
+            <h3>Data Analyst & BI</h3>
+            <p>Certification en Data Analyst chez OpenClassrooms </p>
+        <!-- Conteneur flex pour le bouton pop-up et le texte à droite -->
+        <div class="popup-container">
+            <div class="popup-btn-container">
+                <button class="open-popup-btn" onclick="openPopup()">
+                    <span>Jury comments</span> <!-- Texte au-dessus de l'image -->
+                    <img src="Images/Certficat_DA.jpeg" alt="Jury comments" style="width: auto; height: 50px;">
+                </button>
+            </div>
+            <div class="popup-text">
+                <p>Formation certifiante pour les postes d'Analyste de données, de Consultant en Business Intelligence ou de Data Scientist.<br><br>
+                Elle permet d'acquérir une méthodologie pour collecter, analyser et interpréter des données afin de fournir des insights pertinents 
+                pour guider les décisions stratégiques.</p>
+            </div>
+        </div>
+        <!-- Conteneur flex pour le bouton pop-up et le texte à droite -->
+        <div class="popup-container">
+            <div class="popup-btn-container">
+                <button class="open-popup-btn" onclick="openPopup()">
+                    <span>Mentors</span> <!-- Texte au-dessus de l'image -->
+                    <img src="Images/Recommandantions Trist.jpg" alt="Jury comments" style="width: auto; height: 50px;">
+                </button>
+            </div>
+            <div class="popup-text">        
+                <p> La formation repose sur des projets concrets permettant de pratiquer les compétences en situation réelle.<br>
+                Mes deux mentors m'ont accompagné et n'ont eu de cesse de me challenger pour aller bien au delà des objectifs à atteindre .</p><br>
+            </div>
+        </div>
+            <h3>Des Projets Concrets</h3>
+            <p> Retrouvez mes projets dans mon Portfolio.<br>
+                    Les projets réalisés lors de la formation sont accompagnés des commantaires de soutenance.<br>
+                    - Détection de faux billets (régression linéaire et logistique, classification).<br>
+                    - Etude de santé publique en utilisant des méthodologies d'exploration et d'analyse de données<br>
+                    - Dashboard avec PowerBI pour une étude sur l'eau potable<br>
+                    - Création et gestion de bases de données avec SQL<br>
+                    - Etude de marché (Jupyter, Python, Pandas, Numpy et les librairies nécessaires)<br>
+                    - Création d'un workflow Knime<br>
+                    Mais aussi des projets personnels<br><br></p>
 
+            <h3>Une expérience Technico-Commercial riche</h3>
+            <p> • <strong>Attaché de Direction Commercial</strong> dans la GED, le marketing, l'imprimerie, le développement informatique<br>
+                • <strong>Ingénieur Commercial</strong> pour la Pharmaceutique, la Cosmétique et l'Automobile ...<br><br>
+                <strong>Compétences transposées aux missions d'Analyste de données </strong><br>
+                - Analyse des besoins clients & Compréhension métiers<br>
+                - Reporting et transmission informations aux équipes internes<br>
+                - Gestion et Suivi de projets<br>
+                - Veille concurrentielle<br><br></p>
+
+            <h3>Passion et Engagement</h3>
+            <p>Mon intérêt pour la science des données est alimenté par une passion pour l'exploration et l'analyse des données, ainsi que par une curiosité naturelle pour les nouvelles technologies et les méthodes innovantes.<br><br>
+                Je suis également engagé dans une continuité de développement professionnel, ce qui me permet de rester à la pointe des tendances et des pratiques dans le domaine.</p><br> 
+            <p><strong> </strong></p>
+            <p style="text-align: center;">En somme, ma combinaison de compétences techniques, d'expérience pratique et d'engagement envers l'excellence fait de moi un acteur particulièrement qualifié pour tout rôle de Data Analyst / Scientist.</p> 
+    
     <!-- Pop-up pour l'image -->
     <div id="image-popup" class="popup">
         <div class="popup-content">
             <span class="close-btn" onclick="closePopup()">&times;</span>
+            <img src="Images/Certficat_DA.jpeg" alt="Description de la seconde image">
             <img src="Images/Comments-JuryFinal.png" alt="Description de l'image">
+
         </div>
     </div>
+    </section>
 
-</section>
 
-<!-- Formulaire de contact -->
 <!-- Formulaire de contact -->
 <section id="contact">
     <h2 style="text-align: center; color: var(--primary-color);">Contactez-moi</h2>
@@ -631,6 +1010,12 @@
         <button type="submit" class="submit-button">Envoyer</button>
     </form>
 </section>
+
+
+
+
+
+
 
     <footer class="footer">
         <div class="footer-container">
@@ -664,168 +1049,204 @@
             </div>
         </div>
     </footer> 
-   
-   <script>
-        // Pour les mots
-        const wordsContainer = document.getElementById('words-container');
-        const words = [
-            "Insights", "Ethique", "Empathie", "Analyse exploratoire - EDA", "Modélisation", 
-            "Collaboratif", "Crédibilité", "Focus Métiers", "Prévisions", "Curiosité", "Régression log",
-            "Pragmatisme", "Rigueur", "Passionné", "Mathématiques", "Probabilités", "Statistiques", "Clustering"
-        ];
-        const wordProbability = 0.0001;
-        let activeWords = [];
+    <script>
 
-        function createWord(word) {
-            const element = document.createElement('div');
-            element.className = 'word';
-            element.textContent = word;
-
-            wordsContainer.appendChild(element);
-            const wordWidth = element.offsetWidth;
-            wordsContainer.removeChild(element);
-
-            const maxWidth = 300;
-            const positionLeft = Math.random() * (maxWidth - wordWidth);
-            element.style.left = `${positionLeft}px`;
-            element.style.animation = `cascadeWords ${Math.random() * 7 + 5}s linear infinite`;
-
-            element.addEventListener('animationend', () => {
-                wordsContainer.removeChild(element);
-                activeWords = activeWords.filter(el => el !== element);
-            });
-
-            wordsContainer.appendChild(element);
-            activeWords.push(element);
+        // -------------------------------------------------------------------------Menu Burger
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+            console.log('Menu toggled'); // Pour le débogage
         }
+        const burger = document.querySelector('.burger');
+        burger.addEventListener('click', function(event) {
+            event.stopPropagation(); // Empêche l'événement de se propager au document
+            toggleMenu();
+        });
+        // Ferme le menu si on clique ailleurs sur la page
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelector('.nav-links');
+    
+            if (!nav.contains(event.target) && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+            }
+        });
 
-        function animateWords() {
-            let usedWords = new Set();
 
-            words.forEach((word, index) => {
-                setTimeout(() => {
-                    createWord(word);
-                    usedWords.add(word);
-                }, index * 1000);
-            });
+        // -------------------------------------------------------------------------Les Animations Cascades 
+// Pour les mots
+const wordsContainer = document.getElementById('words-container');
+const words = [
+    "Insights", "Ethique", "Empathie", "Analyse exploratoire-EDA", "Modélisation", 
+    "Collaboratif", "Crédibilité", "Focus Métiers", "Prévisions", "Curiosité", "Régression log",
+    "Pragmatisme", "Rigueur", "Passionné", "Mathématiques", "Probabilités", "Statistiques", "Clustering"
+];
+const wordInterval = 1000; // Intervalle entre chaque création de mot (en millisecondes)
+let activeWords = [];
 
-            setInterval(() => {
-                if (Math.random() < wordProbability) {
-                    const randomWord = words[Math.floor(Math.random() * words.length)];
-                    createWord(randomWord);
-                }
-            }, 200);
-        }
+function createWord() {
+    const word = words[Math.floor(Math.random() * words.length)];
+    const element = document.createElement('div');
+    element.className = 'word';
+    element.textContent = word;
 
-        animateWords();
+    // Ajouter temporairement l'élément pour mesurer sa largeur
+    element.style.visibility = 'hidden';
+    wordsContainer.appendChild(element);
+    const elementWidth = element.offsetWidth;
+    wordsContainer.removeChild(element);
+    element.style.visibility = 'visible';
 
-        // Pour les images
-        const imagesContainer = document.getElementById('images-container');
-        const images = [
-            'Images/sql-logo1.png', 'Images/seaborn-logo1.png','Images/output_11.png',
-            'Images/Statsmodels-logo1.png', 'Images/output_31.png', 'Images/output_21.png',
-            'Images/powerbi.png', 'Images/output_51.png', 'Images/python-logo1.png', 
-            'Images/Matplot-logo1.png', 'Images/output_61.png', 'Images/output_81.png',
-            'Images/sklearn-logo1.png', 'Images/output_91.png', 'Images/output_71.png',
-            'Images/Numpy-logo1.png', 'Images/scipy1.png','Images/output_41.png','Images/Logo-Panda.png'
-            
-            
-        ];
-        const imageInterval = 3000;
-        const maxImages = 3;
-        const imageWidth = 250;
-        let activeImagesCount = 0;
-        let currentImageIndex = 0;
+    const containerWidth = wordsContainer.offsetWidth;
+    const maxLeft = containerWidth - elementWidth;
+    const positionLeft = Math.random() * maxLeft;
+    element.style.left = `${positionLeft}px`;
 
-        function getNextImage() {
-            const image = images[currentImageIndex];
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            return image;
-        }
+    const animationDuration = Math.random() * 5 + 5; // Entre 5 et 10 secondes
+    element.style.animation = `cascadeWords ${animationDuration}s linear`;
 
-        function createImage(image) {
-            const element = document.createElement('div');
-            element.className = 'image';
-            const img = document.createElement('img');
-            img.src = image;
-            img.style.width = `${imageWidth}px`;
-            img.style.height = 'auto';
-            element.appendChild(img);
+    element.addEventListener('animationend', () => {
+        wordsContainer.removeChild(element);
+        activeWords = activeWords.filter(el => el !== element);
+    });
 
-            imagesContainer.appendChild(element);
-            const imgWidth = img.offsetWidth;
-            imagesContainer.removeChild(element);
+    wordsContainer.appendChild(element);
+    activeWords.push(element);
+}
 
-            const maxWidth = 300;
-            const positionLeft = Math.random() * (maxWidth - imgWidth);
-            element.style.left = `${positionLeft}px`;
+function animateWords() {
+    setInterval(createWord, wordInterval);
+}
+animateWords();
 
-            const animationDuration = Math.random() * 5 + 5;
-            element.style.animation = `cascadeImages ${animationDuration}s linear`;
+// Pour les images
+const imagesContainer = document.getElementById('images-container');
+const images = [
+    'Images/sql-logo1.png', 'Images/seaborn-logo1.png','Images/output_11.png',
+    'Images/Statsmodels-logo1.png', 'Images/output_31.png', 'Images/output_21.png',
+    'Images/powerbi.png', 'Images/output_51.png', 'Images/python-logo1.png', 
+    'Images/Matplot-logo1.png', 'Images/output_61.png', 'Images/output_81.png',
+    'Images/sklearn-logo1.png', 'Images/output_91.png', 'Images/output_71.png',
+    'Images/Numpy-logo1.png', 'Images/scipy1.png','Images/output_41.png','Images/Logo-Panda.png'
+];
+const imageInterval = 1500;
+const maxImages = 5;
+let activeImagesCount = 0;
 
-            element.addEventListener('animationend', () => {
-                imagesContainer.removeChild(element);
-                activeImagesCount--;
-            });
+function createImage() {
+    if (activeImagesCount >= maxImages) return;
 
-            imagesContainer.appendChild(element);
-            activeImagesCount++;
-        }
+    const image = images[Math.floor(Math.random() * images.length)];
+    const element = document.createElement('div');
+    element.className = 'image';
+    const img = document.createElement('img');
+    img.src = image;
+    
+    // Ajouter l'image dans l'élément
+    element.appendChild(img);
 
-        function animateImages() {
-            setInterval(() => {
-                if (activeImagesCount < maxImages) {
-                    const nextImage = getNextImage();
-                    createImage(nextImage);
-                }
-            }, imageInterval);
-        }
+    // Ajouter temporairement l'élément pour mesurer sa largeur
+    element.style.visibility = 'hidden';
+    imagesContainer.appendChild(element);
+    const elementWidth = element.offsetWidth;
+    imagesContainer.removeChild(element);
+    element.style.visibility = 'visible';
 
-        animateImages();
+    const containerWidth = imagesContainer.offsetWidth;
+    const maxLeft = containerWidth - elementWidth;
+    const positionLeft = Math.random() * maxLeft;
 
-        // Ajouter des jets d'eau dans les deux conteneurs
-        function createWaterfall(container) {
-            const element = document.createElement('div');
-            element.className = 'waterfall';
-            element.style.left = `${Math.random() * 300}px`;
-            element.style.animation = `cascade ${Math.random() * 7 + 5}s linear infinite`;
+    // Utilisation de backticks pour inclure la variable dans la chaîne
+    element.style.left = `${positionLeft}px`;
 
-            element.addEventListener('animationend', () => {
-                container.removeChild(element);
-            });
+    const animationDuration = Math.random() * 5 + 5; // Entre 5 et 10 secondes
 
-            container.appendChild(element);
-        }
+    // Utilisation de backticks pour inclure la variable dans la chaîne
+    element.style.animation = `cascadeImages ${animationDuration}s linear`;
 
-        function animateWaterfalls() {
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    createWaterfall(wordsContainer);
-                    createWaterfall(imagesContainer);
-                }, i * 200);
+    element.addEventListener('animationend', () => {
+        imagesContainer.removeChild(element);
+        activeImagesCount--;
+    });
+
+    // Ajouter l'image dans le conteneur
+    imagesContainer.appendChild(element);
+    activeImagesCount++;
+}
+
+function animateImages() {
+    setInterval(createImage, imageInterval);
+}
+animateImages();
+
+
+// Ajouter des jets d'eau dans les deux conteneurs
+function createWaterfall(container) {
+    const element = document.createElement('div');
+    element.className = 'waterfall';
+    const containerWidth = container.offsetWidth;
+    element.style.left = `${Math.random() * containerWidth}px`;
+
+    const animationDuration = Math.random() * 5 + 5; // Entre 5 et 10 secondes
+    element.style.animation = `cascade ${animationDuration}s linear`;
+
+    element.addEventListener('animationend', () => {
+        container.removeChild(element);
+    });
+
+    container.appendChild(element);
+}
+
+function animateWaterfalls() {
+    setInterval(() => {
+        createWaterfall(wordsContainer);
+        createWaterfall(imagesContainer);
+    }, 200);
+}
+animateWaterfalls();
+// Fonction pour ajuster les éléments lors du redimensionnement de la fenêtre
+function adjustOnResize() {
+    const adjustElements = (container) => {
+        const elements = container.children;
+        const containerWidth = container.offsetWidth;
+        for (let element of elements) {
+            const maxLeft = containerWidth - element.offsetWidth;
+            if (parseInt(element.style.left) > maxLeft) {
+                element.style.left = `${maxLeft}px`;
             }
         }
+    };
 
-        animateWaterfalls();
+    adjustElements(wordsContainer);
+    adjustElements(imagesContainer);
+}
+// Écouter l'événement de redimensionnement de la fenêtre
+window.addEventListener('resize', adjustOnResize);
 
-    
-            // Animation douce pour le scroll vers la section Contact
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        function openPopup() {
+    // -------------------------------------------------------------Fonction pour remonter en haut de la page
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    // Afficher le bouton seulement quand le header n'est plus visible
+    window.onscroll = function() {
+        let scrollBtn = document.getElementById("scrollTopBtn");
+        let header = document.querySelector('header');
+        let headerHeight = header.offsetHeight;
+    // Afficher le bouton si l'utilisateur a défilé sous le header
+    if (window.pageYOffset > headerHeight) {
+        scrollBtn.style.display = "block";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+    };
+
+    // -------------------------------------------------------------Fonction Pop up
+    function openPopup() {
         document.getElementById('image-popup').style.display = 'flex';
     }
-
     function closePopup() {
         document.getElementById('image-popup').style.display = 'none';
     }
-
     // Fermer le pop-up en cliquant en dehors de la zone
     window.onclick = function(event) {
         if (event.target == document.getElementById('image-popup')) {
@@ -833,25 +1254,8 @@
         }
     }
 
-    // Fonction pour remonter en haut de la page
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'auto' });
-}
 
-// Afficher le bouton seulement quand le header n'est plus visible
-window.onscroll = function() {
-    let scrollBtn = document.getElementById("scrollTopBtn");
-    let header = document.querySelector('header');
-    let headerHeight = header.offsetHeight;
 
-    // Afficher le bouton si l'utilisateur a défilé sous le header
-    if (window.pageYOffset > headerHeight) {
-        scrollBtn.style.display = "block";
-    } else {
-        scrollBtn.style.display = "none";
-    }
-};
-
-    </script>
+</script>
 </body>
 </html>
