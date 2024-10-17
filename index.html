@@ -274,12 +274,16 @@
     font-family: 'Roboto', sans-serif;
     text-shadow: 2px 2px 4px rgb(0, 0, 0);
 }
-/* Styles pour les images */
 .image img {
-    max-width: 100%; /* S'assurer que l'image ne dépasse pas la largeur de son conteneur */
-    height: auto; /* Préserver les proportions de l'image */
-    display: block; /* Supprimer les espaces blancs autour des images inline */
-    overflow: hidden; /* Éviter que les images débordent */
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image {
+    max-width: 100%;
+    position: absolute;
+    opacity: 0;
 }
 
 @keyframes cascade {
@@ -297,43 +301,49 @@
     to { transform: translateY(100vh); opacity: 0; }
 }
 
-/* -------------------------------------------------Media queries pour la réactivité */
+/* Media queries pour la réactivité */
 @media screen and (min-width: 1200px) {
-    .word { font-size: 16px; }
-    .image img {
-        max-width: 200px;
-        width: 100%; /* S'assurer que l'image ne dépasse jamais du container */
-        
+    .hero {
+        height: 95vh;
+        background-size: cover;
+        padding: 20px 0;
+        background-attachment: scroll;
     }
+    .word { font-size: 16px; }
+    .image img { max-width: 200px; }
 }
 
 @media screen and (max-width: 1199px) and (min-width: 992px) {
-    .word { font-size: 16px; }
-    .image img {
-        max-width: 200px;
-        width: 100%; /* S'assurer que l'image ne dépasse jamais du container */
-        
+    .hero {
+        height: 95vh;
+        background-size: cover;
+        padding: 20px 0;
+        background-attachment: scroll;
     }
+    .word { font-size: 16px; }
+    .image img { max-width: 200px; }
 }
 
 @media screen and (max-width: 991px) and (min-width: 768px) {
-    .word { font-size: 16px; }
-    .image img {
-        max-width: 150px;
-        width: 100%; /* S'assurer que l'image ne dépasse jamais du container */
-        
+    .hero {
+        height: 95vh;
+        background-size: cover;
+        padding: 20px 0;
+        background-attachment: scroll;
     }
+    .word { font-size: 16px; }
+    .image img { max-width: 150px; }
 }
 
 @media screen and (max-width: 767px) and (min-width: 480px) {
     .hero {
         height: 95vh;
-        background-size: 200% 100%;
+        background-size: 150% 100%;
         padding: 20px 0;
         background-attachment: scroll;
     }
     .hero h2 { font-size: 36px; }
-    .hero p:first-of-type {
+    .hero p:first-of-type { 
         font-size: 18px;
         white-space: normal; /* Permet de préserver les sauts de ligne */
     }
@@ -351,13 +361,9 @@
     .buttons a:nth-child(1) { top: 50%; }
     .buttons a:nth-child(2) { top: 70%; }
     .buttons a:nth-child(3) { top: 90%; }
-    .hero p:last-of-type { font-size: 10px; }
+    .hero p:last-of-type {font-size: 10px;}
     .word { font-size: 14px; }
-    .image img {
-        max-width: 160px;
-        width: 100%; /* S'assurer que l'image ne dépasse jamais du container */
-        
-    }
+    .image img { max-width: 150px; }
 }
 
 @media screen and (max-width: 479px) {
@@ -366,8 +372,8 @@
         padding: 10px 0;
         background-size: 250% 100%;
     }
-    .hero h2 { font-size: 24px; }
-    .hero p:first-of-type {
+    .hero h2 { font-size: 24px;}
+    .hero p:first-of-type { 
         font-size: 16px;
         white-space: normal; /* Permet de préserver les sauts de ligne */
     }
@@ -385,15 +391,10 @@
     .buttons a:nth-child(1) { top: 50%; }
     .buttons a:nth-child(2) { top: 70%; }
     .buttons a:nth-child(3) { top: 90%; }
-    .hero p:last-of-type { font-size: 8px; }
+    .hero p:last-of-type { font-size: 8px;}
     .word { font-size: 12px; }
-    .image img {
-        max-width: 100px;
-        width: 100%; /* S'assurer que l'image ne dépasse jamais du container */
-        object-fit: contain; /* Préserver l'échelle de l'image */
-    }
+    .image img { max-width: 80px; }
 }
-
 
 
         /* ------------------------------------------------------------------------------Profil */
@@ -1000,9 +1001,9 @@
     <div id="image-popup" class="popup">
         <div class="popup-content">
             <span class="close-btn" onclick="closePopup()">&times;</span>
-            <img src="Images/Certficat_DA.jpeg" alt="Certficat_DA">
-            <img src="Images/Comments-JuryFinal.png" alt="Commentaires Jury">
-            <img src="Images/Recco.jpg" alt="Commentaires Mentors">
+            <img src="Images/Certficat_DA.jpeg" alt="Description de la seconde image">
+            <img src="Images/Comments-JuryFinal.png" alt="Description de l'image">
+
         </div>
     </div>
     </section>
@@ -1169,42 +1170,59 @@ function createImage() {
     element.className = 'image';
     const img = document.createElement('img');
     img.src = image;
-    
-    // Ajouter l'image dans l'élément
     element.appendChild(img);
 
-    // Ajouter temporairement l'élément pour mesurer sa largeur
+    // Add element temporarily to measure its dimensions
     element.style.visibility = 'hidden';
     imagesContainer.appendChild(element);
-    const elementWidth = element.offsetWidth;
-    imagesContainer.removeChild(element);
-    element.style.visibility = 'visible';
+    
+    // Wait for image to load before calculating dimensions
+    img.onload = () => {
+        const elementWidth = element.offsetWidth;
+        const containerWidth = imagesContainer.offsetWidth;
+        
+        // Calculate maximum left position to ensure image stays within container
+        const maxLeft = Math.max(0, containerWidth - elementWidth);
+        const positionLeft = Math.min(Math.random() * containerWidth, maxLeft);
+        
+        element.style.left = `${positionLeft}px`;
+        element.style.visibility = 'visible';
 
-    const containerWidth = imagesContainer.offsetWidth;
-    const maxLeft = Math.max(0, containerWidth - elementWidth); // Ajustement pour éviter des positions négatives
-    const positionLeft = Math.random() * maxLeft;
-
-    // Utilisation de backticks pour inclure la variable dans la chaîne
-    element.style.left = `${positionLeft}px`;
-
-    const animationDuration = Math.random() * 5 + 5; // Entre 5 et 10 secondes
-
-    // Utilisation de backticks pour inclure la variable dans la chaîne
-    element.style.animation = `cascadeImages ${animationDuration}s linear`;
+        const animationDuration = Math.random() * 5 + 5; // Between 5 and 10 seconds
+        element.style.animation = `cascadeImages ${animationDuration}s linear`;
+    };
 
     element.addEventListener('animationend', () => {
         imagesContainer.removeChild(element);
         activeImagesCount--;
     });
 
-    // Ajouter l'image dans le conteneur
-    imagesContainer.appendChild(element);
     activeImagesCount++;
 }
 
 function animateImages() {
     setInterval(createImage, imageInterval);
 }
+
+// Function to adjust elements on window resize
+function adjustImagesOnResize() {
+    const images = imagesContainer.getElementsByClassName('image');
+    const containerWidth = imagesContainer.offsetWidth;
+    
+    Array.from(images).forEach(element => {
+        const elementWidth = element.offsetWidth;
+        const currentLeft = parseInt(element.style.left);
+        const maxLeft = Math.max(0, containerWidth - elementWidth);
+        
+        if (currentLeft > maxLeft) {
+            element.style.left = `${maxLeft}px`;
+        }
+    });
+}
+
+// Listen for window resize
+window.addEventListener('resize', adjustImagesOnResize);
+
 animateImages();
 
 
