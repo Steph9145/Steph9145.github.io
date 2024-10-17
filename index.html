@@ -274,6 +274,13 @@
     font-family: 'Roboto', sans-serif;
     text-shadow: 2px 2px 4px rgb(0, 0, 0);
 }
+/* Styles pour les images */
+.image img {
+    max-width: 100%; /* S'assurer que l'image ne dépasse pas la largeur de son conteneur */
+    height: auto; /* Préserver les proportions de l'image */
+    display: block; /* Supprimer les espaces blancs autour des images inline */
+    overflow: hidden; /* Éviter que les images débordent */
+}
 
 @keyframes cascade {
     from { transform: translateY(-100px); opacity: 0.5; }
@@ -290,20 +297,32 @@
     to { transform: translateY(100vh); opacity: 0; }
 }
 
-/* Media queries pour la réactivité */
+/* -------------------------------------------------Media queries pour la réactivité */
 @media screen and (min-width: 1200px) {
     .word { font-size: 16px; }
-    .image img { max-width: 200px; }
+    .image img {
+        max-width: 200px;
+        width: 100%; /* S'assurer que l'image ne dépasse jamais du container */
+        
+    }
 }
 
 @media screen and (max-width: 1199px) and (min-width: 992px) {
     .word { font-size: 16px; }
-    .image img { max-width: 200px; }
+    .image img {
+        max-width: 200px;
+        width: 100%; /* S'assurer que l'image ne dépasse jamais du container */
+        
+    }
 }
 
 @media screen and (max-width: 991px) and (min-width: 768px) {
     .word { font-size: 16px; }
-    .image img { max-width: 150px; }
+    .image img {
+        max-width: 150px;
+        width: 100%; /* S'assurer que l'image ne dépasse jamais du container */
+        
+    }
 }
 
 @media screen and (max-width: 767px) and (min-width: 480px) {
@@ -314,7 +333,7 @@
         background-attachment: scroll;
     }
     .hero h2 { font-size: 36px; }
-    .hero p:first-of-type { 
+    .hero p:first-of-type {
         font-size: 18px;
         white-space: normal; /* Permet de préserver les sauts de ligne */
     }
@@ -332,9 +351,13 @@
     .buttons a:nth-child(1) { top: 50%; }
     .buttons a:nth-child(2) { top: 70%; }
     .buttons a:nth-child(3) { top: 90%; }
-    .hero p:last-of-type {font-size: 10px;}
+    .hero p:last-of-type { font-size: 10px; }
     .word { font-size: 14px; }
-    .image img { max-width: 100px; }
+    .image img {
+        max-width: 160px;
+        width: 100%; /* S'assurer que l'image ne dépasse jamais du container */
+        
+    }
 }
 
 @media screen and (max-width: 479px) {
@@ -343,8 +366,8 @@
         padding: 10px 0;
         background-size: 250% 100%;
     }
-    .hero h2 { font-size: 24px;}
-    .hero p:first-of-type { 
+    .hero h2 { font-size: 24px; }
+    .hero p:first-of-type {
         font-size: 16px;
         white-space: normal; /* Permet de préserver les sauts de ligne */
     }
@@ -362,10 +385,15 @@
     .buttons a:nth-child(1) { top: 50%; }
     .buttons a:nth-child(2) { top: 70%; }
     .buttons a:nth-child(3) { top: 90%; }
-    .hero p:last-of-type { font-size: 8px;}
+    .hero p:last-of-type { font-size: 8px; }
     .word { font-size: 12px; }
-    .image img { max-width: 80px; }
+    .image img {
+        max-width: 100px;
+        width: 100%; /* S'assurer que l'image ne dépasse jamais du container */
+        object-fit: contain; /* Préserver l'échelle de l'image */
+    }
 }
+
 
 
         /* ------------------------------------------------------------------------------Profil */
@@ -972,9 +1000,9 @@
     <div id="image-popup" class="popup">
         <div class="popup-content">
             <span class="close-btn" onclick="closePopup()">&times;</span>
-            <img src="Images/Certficat_DA.jpeg" alt="Description de la seconde image">
-            <img src="Images/Comments-JuryFinal.png" alt="Description de l'image">
-
+            <img src="Images/Certficat_DA.jpeg" alt="Certficat_DA">
+            <img src="Images/Comments-JuryFinal.png" alt="Commentaires Jury">
+            <img src="Images/Recco.jpg" alt="Commentaires Mentors">
         </div>
     </div>
     </section>
@@ -1153,7 +1181,7 @@ function createImage() {
     element.style.visibility = 'visible';
 
     const containerWidth = imagesContainer.offsetWidth;
-    const maxLeft = containerWidth - elementWidth;
+    const maxLeft = Math.max(0, containerWidth - elementWidth); // Ajustement pour éviter des positions négatives
     const positionLeft = Math.random() * maxLeft;
 
     // Utilisation de backticks pour inclure la variable dans la chaîne
