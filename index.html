@@ -11,6 +11,7 @@
             --secondary-color: #000000;
             --text-color: #fff;
             --background-color: #000;
+            --tri-color: #1f96b3;
         }
 
         body {
@@ -413,7 +414,6 @@
             justify-content: space-between;
             align-items: flex-start;
         }
-
         #profil::before {
             content: "";
             position: absolute;
@@ -424,15 +424,13 @@
             background: linear-gradient(to left, black, #efedec, #000000);
             z-index: 1;
         }
-
         #profil .profile-image {
-            width: 25%; /* Colonne de gauche prend 30% de la largeur */
+            width: 25%; /* Colonne de gauche prend 25% de la largeur */
             padding: 10px 10px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-
         #profil .profile-image .left-image {
             max-width: 150%;
             height: auto;
@@ -440,12 +438,10 @@
             mask-image: linear-gradient(to right, black 0%, transparent 100%);
             -webkit-mask-image: linear-gradient(to right, black 0%, transparent 100%);
         }
-
         #profil .profile-content {
             width: 70%; /* Colonne de droite prend 65% de la largeur */
             text-align: left; /* Aligner le texte à gauche */
         }
-
         #profil h2 {
             font-size: 28px;
             margin-bottom: 45px;
@@ -459,206 +455,285 @@
             color: #6ee7b7;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), 2px 2px 3px rgba(0, 0, 0, 0.5);
         }
-
-        #profil p {
+        #profil p ul li{
             font-size: 16px;
-            text-align: justify;
+            text-align: left;
+            line-height: 1.4; /* Ajustez la valeur pour la hauteur de l'interligne */
         }
-
+        #profil ul {
+            margin-top: 10px; /* Marge au-dessus de la liste */
+            padding-left: 20px; /* Indentation de la liste */ 
+        }
+        #profil li {
+            margin-bottom: 5px; /* Espace entre les éléments de la liste */
+        }
         .popup-container {
-    display: flex;
-    align-items: flex-start; /* Aligner le contenu en haut */
-    gap: 20px; /* Espace entre le bouton et le texte */
-}
-
-.popup-btn-container {
-    text-align: center; /* Centrer le texte et l'image */
-}
-
-
-
+            display: flex;
+            align-items: flex-start; /* Aligner le contenu en haut */
+            gap: 2px; /* Espace entre le bouton et le texte */
+        }
+        .popup-btn-container {
+            margin-right: 10px; /* Espace entre le bouton et le texte */
+        }
 
         /* Style pour le bouton */
         .open-popup-btn {
             display: flex; /* Utiliser flexbox */
-            justify-content: center; /* Centrer horizontalement */
-            align-items: center; /* Centrer verticalement */
-            padding: 10px 10px;
+            flex-direction: column; /* Permet d'empiler le texte et l'image */
+            align-items: center; /* Aligne le contenu à gauche */
+            padding: 5px 5px;
             font-size: 16px;
             font-weight: bolder;
-            color: #6ee7b7;
+            color: #9a112f;
             background-color: #c8c2c249;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            flex-direction: column; /* Assurer que les éléments sont en colonne */
+        }
+        .open-popup-btn span {
+            margin-bottom: 5px; /* Espace entre le texte et l'image */
         }
         .open-popup-btn img {
-    display: block;
-    margin: 0 auto; /* Centrer l'image */
-}
+            display: block;
+            margin: 0 auto; /* Centrer l'image */
+        }
+        .popup-text {
+            max-width: 80%; /* Limite la largeur du texte pour un bon rendu */
+            font-size: 16px;
+            color: #f9f6f6;
+        }
 
-.popup-text {
-    max-width: 80%; /* Limite la largeur du texte pour un bon rendu */
-    font-size: 16px;
-    color: #f9f6f6;
-}
 
-
-        /* Style pour les écrans inférieurs à 480px */
-@media (max-width: 480px) {
-    #profil {
-        flex-direction: column;
-        padding: 20px 5px;
-        max-width: 100%;
-        background-image: url('Images/Baniere1.png'); /* L'image devient un fond */
-        background-size: contain;
-        background-position: center;
-    }
-    
+    /* Style pour les écrans inférieurs à 480px */
+    @media (max-width: 480px) {
+        #profil {
+            flex-direction: column;
+            padding: 20px 5px;
+            max-width: 100%;
+            background-image: url('Images/Baniere1.png'); /* L'image devient un fond */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
         /* Ajouter un overlay sombre par-dessus l'image de fond */
         #profil::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* Couche sombre */
-        z-index: 1; /* L'overlay sera derrière le texte mais devant l'image de fond */
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Couche sombre */
+            z-index: 1; /* L'overlay sera derrière le texte mais devant l'image de fond */
+        }
+        #profil .profile-image {
+            display: none; /* On cache l'image car elle est déjà en fond */
+        }
+        #profil .profile-content {
+            width: 100%;
+            z-index: 2; /* Le texte est au-dessus de l'overlay */
+            text-align: left;
+        }
+        #profil h2 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        #profil h3 {
+            font-size: 14px;
+            margin-bottom: 12px;
+            text-align: left;
+            color: #6ee7b7;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), 2px 2px 3px rgba(0, 0, 0, 0.5);
+        }
+        #profil p, 
+        #profil ul li,
+        .popup-text p {
+            font-size: 12px !important; /* Utilisation de !important pour surpasser d'autres règles */
+        }
+        .open-popup-btn {
+            font-size: 12px;
+            padding: 8px 6px;
+        }
+        .popup-text {
+            max-width: 90%; /* Limite la largeur du texte pour un bon rendu */
+            font-size: 12px;
+        }
     }
 
-    #profil .profile-image {
-        display: none; /* On cache l'image car elle est déjà en fond */
+    /* Style pour les écrans entre 480px et 768px */
+    @media (min-width: 480px) and (max-width: 768px) {
+        #profil {
+            flex-direction: column;
+            padding: 25px 10px;
+            max-width: 90%;
+            background-image: url('Images/Baniere1.png'); /* L'image devient un fond */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        /* Ajouter un overlay sombre par-dessus l'image de fond */
+        #profil::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Couche sombre */
+            z-index: 1; /* L'overlay sera derrière le texte mais devant l'image de fond */
+        }
+        #profil .profile-image {
+            display: none; /* On cache l'image car elle est déjà en fond */
+        }
+        #profil .profile-content {
+            width: 100%;
+            z-index: 2; /* Le texte est au-dessus de l'overlay */
+            text-align: left;
+        }
+        #profil h2 {
+            font-size: 26px;
+            margin-bottom: 30px;
+        }
+        #profil p ul li {
+            font-size: 15px;
+        }
+        .open-popup-btn {
+            display: flex; /* Utiliser flexbox */
+            flex-direction: column; /* Alignement en colonne */
+            align-items: flex-start; /* Aligne le contenu à gauche */
+            justify-content: flex-start; /* Aligne le contenu en haut */
+            border: none; /* Enlève la bordure par défaut du bouton */
+            background: none; /* Enlève le fond par défaut du bouton */
+            cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+        }
+        .open-popup-btn img {
+            margin-top: 4px; /* Espacement entre le texte et l'image */
+        }
     }
 
-    #profil .profile-content {
-        width: 100%;
-        z-index: 2; /* Le texte est au-dessus de l'overlay */
-        text-align: center;
-    }
+    /* Style pour les écrans supérieurs à 768px */
+    @media (min-width: 768px) {
+        #profil {
+            flex-direction: row;
+            max-width: 80%;
+            padding: 40px 20px; /* Augmentation du padding général */
+        }
 
+        #profil .profile-image {
+            width: 25%;
+        }
+
+        #profil .profile-content {
+            width: 70%;
+        }
+            /* Amélioration de l'espacement des titres */
     #profil h2 {
-        font-size: 16px;
+        font-size: 32px;
+        margin-bottom: 30px;
+        margin-top: 0;
+    }
+
+    #profil h3 {
+        font-size: 20px;
+        margin-top: 35px; /* Espace avant chaque section */
         margin-bottom: 20px;
     }
-    #profil h3 {
-        font-size: 16px;
-        margin-bottom: 16px;
-        text-align: left;
-        color: #6ee7b7;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7), 2px 2px 3px rgba(0, 0, 0, 0.5);
-    }
 
+    /* Amélioration de l'espacement du texte */
     #profil p {
-        font-size: 12px;
+        line-height: 1.4; /* Augmentation de l'interligne */
+        margin-bottom: 25px; /* Espace après chaque paragraphe */
+        font-size: 16px;
     }
 
-    .open-popup-btn {
-        font-size: 14px;
-        padding: 8px 16px;
+    /* Style pour les listes */
+    #profil ul {
+        margin-top: 15px;
+        margin-bottom: 25px;
+        padding-left: 25px;
+    }
+
+    #profil ul li {
+        line-height: 1.4; /* Interligne pour les listes */
+        margin-bottom: 12px; /* Espace entre les éléments de liste */
+        font-size: 16px;
+    }
+
+    /* Style pour les conteneurs de popup */
+    .popup-container {
+        margin-bottom: 30px; /* Espace entre les conteneurs de popup */
     }
 
     .popup-text {
-        max-width: 80%; /* Limite la largeur du texte pour un bon rendu */
-        font-size: 12px;
-    }
-}
-
-/* Style pour les écrans entre 480px et 768px */
-@media (min-width: 480px) and (max-width: 768px) {
-    #profil {
-        flex-direction: column;
-        padding: 25px 10px;
-        max-width: 90%;
-        background-image: url('Images/Baniere1.png'); /* L'image devient un fond */
-        background-size: contain;
-        background-position: center;
+        line-height: 1.4;
+        font-size: 16px;
     }
 
-    #profil .profile-image {
-        display: none; /* On cache l'image car elle est déjà en fond */
+    .popup-text p {
+        margin-bottom: 20px;
     }
 
-    #profil .profile-content {
-        width: 100%;
-        text-align: left;
-    }
-
-    #profil h2 {
-        font-size: 26px;
-        margin-bottom: 30px;
-    }
-
-    #profil p {
-        font-size: 15px;
-    }
-
+    /* Style pour les boutons popup */
     .open-popup-btn {
-    display: flex; /* Utiliser flexbox */
-    flex-direction: column; /* Alignement en colonne */
-    align-items: center; /* Centrer horizontalement */
-    background-color: transparent; /* Couleur de fond transparent */
-    border: none; /* Supprimer la bordure */
-    cursor: pointer; /* Changer le curseur au survol */
-}
-
-.open-popup-btn img {
-    margin-top: 4px; /* Espacement entre le texte et l'image */
-}
-}
-
-/* Style pour les écrans supérieurs à 768px */
-@media (min-width: 768px) {
-    #profil {
-        flex-direction: row;
-        max-width: 80%;
+        margin-bottom: 15px;
+        padding: 8px 12px;
     }
 
-    #profil .profile-image {
-        width: 25%;
+    /* Style spécifique pour le texte centré */
+    p[style*="text-align: center"] {
+        margin: 30px 0;
+        line-height: 2; /* Interligne plus important pour le texte centré */
     }
 
-    #profil .profile-content {
-        width: 70%;
+    /* Style pour les sections avec strong */
+    strong {
+        display: inline-block;
+        margin-bottom: 8px;
     }
-}
 
-        /* Style pour le pop-up */
+    }
+
+        /* --------------------------------------------------Style pour le pop-up Certificat et appréciations*/
         .popup {
-            display: none;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-            align-items: center;
-        }
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
-        /* Style pour le contenu du pop-up */
-        .popup-content {
-            position: relative;
-            width: 80%;
-            max-width: 450px;
-            background-color: rgba(163, 31, 31, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
+.popup-content {
+    position: relative;
+    width: 80%;
+    max-width: 450px;
+    background-color: rgba(163, 31, 31, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
 
-        .popup-content img {
-            max-width: 100%;
-            height: auto;
-        }
+.popup-content img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
 
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 20px;
-            cursor: pointer;
-        }
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+        /* ------------------------------------------------------Style pour le "scroll to the top" bouton*/
         #scrollTopBtn {
             position: fixed;
             bottom: 20px;
@@ -732,21 +807,29 @@
             padding: 10px;
             box-sizing: border-box;
         }
-        /* Style pour centrer le bouton uniquement */
         #contact .submit-button {
             display: block;
-            padding: 10px 20px; 
-            width: 100%; 
-            height: 100px; 
-            background: radial-gradient(ellipse closest-side at center, #ffffffbc, #ffffff78, transparent 35%);
-            color: #b91b1b; 
+            padding: 10px 20px;
+            width: 20%; 
+            height: 5%; 
+            background-color: #000000; /* Couleur de fond unie */
+            color: var(--tri-color); 
             font-size: 20px;
             font-weight: bolder;
-            border: none;
+            border: 2px solid var(--tri-color); /* Ajoute une bordure pour un contour net */
+            border-radius: 15px; /* Arrondit légèrement les coins */
             margin: 0px auto; /* Centre le bouton horizontalement */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Effet de relief (ombre) */
+            cursor: pointer; /* Change le curseur lorsqu'on survole le bouton */
+            transition: box-shadow 0.3s ease; /* Effet de transition pour l'ombre */
+        }
+        /* Effet au survol pour renforcer le relief */
+        #contact .submit-button:hover {
+        box-shadow: 4px 4px 10px rgba(217, 207, 207, 0.4); /* Ombre plus marquée au survol */
+        color: #eaf4f6;
         }
         .email-link {
-            color: #17b1d0; /* Changez la couleur selon vos besoins */
+            color: var(--tri-color); /* Changez la couleur selon vos besoins */
             text-decoration: none; /* Enlevez le soulignement si vous le souhaitez */
             text-align: center;
         }
@@ -764,7 +847,7 @@
             max-width: 300px; /* Limite la largeur maximale */
         }
         #contact .submit-button {
-            width: 100%; /* Largeur à 100% sur les écrans plus petits */
+            width: 25%; /* Largeur à 100% sur les écrans plus petits */
             font-size: 16px;
         }
     }
@@ -780,8 +863,8 @@
             max-width: 200px; /* Limite la largeur maximale */
         }
         #contact .submit-button {
-            width: 100%; /* Le bouton occupe toute la largeur */
-            height: 80px; /* Ajuste la hauteur pour les petits écrans */
+            width: 30%; /* Le bouton occupe toute la largeur */
+            height: 40px; /* Ajuste la hauteur pour les petits écrans */
             font-size: 14px;
         }
         #contact::before {
@@ -916,78 +999,92 @@
 
     <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Remonter en haut de page">▲</button>
 
-    <!-- Conteneur Profil -->
-    <section id="profil">
-        <div class="profile-image">
-            <img src="Images/Baniere1.png" alt="Profile Image" class="left-image">
-        </div>
-        <div class="profile-content">
-            <h2>Qui je suis...</h2>
-            <p style="text-align: center;">Pragmatique, curieux, logique, carthésien - bien sûr. <br>Mais ce qui me caractérise et m'anime est le besoin viscéral de comprendre les tenants et aboutissants afin de proposer des solutions adaptées en utilisant mon empathie et mes capacités d'adapation métier.</p><br>
-            <h3>Data Analyst & BI</h3>
-            <p>Certification en Data Analyst chez OpenClassrooms </p>
+<!-- Conteneur Profil -->
+<section id="profil">
+    <div class="profile-image">
+        <img src="Images/Baniere1.png" alt="Profile Image" class="left-image">
+    </div>
+    <div class="profile-content">
+        <h2>Qui je suis...</h2>
+        <p style="text-align: center;">Pragmatique, curieux, logique, carthésien - bien sûr. <br>Mais ce qui me caractérise et m'anime est le besoin viscéral de comprendre les tenants et aboutissants afin de proposer des solutions adaptées basées sur mon empathie et mes capacités d'adaptation métier.</p>
+        <h3>Data Analyst & BI</h3>
+        <p>Certification en Data Analyst chez OpenClassrooms </p>
+
         <!-- Conteneur flex pour le bouton pop-up et le texte à droite -->
         <div class="popup-container">
             <div class="popup-btn-container">
-                <button class="open-popup-btn" onclick="openPopup()">
-                    <span>Jury comments</span> <!-- Texte au-dessus de l'image -->
-                    <img src="Images/Certficat_DA.jpeg" alt="Jury comments" style="width: auto; height: 50px;">
+                <button class="open-popup-btn" onclick="openPopup('jury-popup')">
+                    <span>Jury comments</span>
+                    <img src="Images/Certficat_DA.jpeg" alt="Jury comments" style="width: 120px; height: 70px;">
                 </button>
             </div>
             <div class="popup-text">
-                <p>Formation certifiante pour les postes d'Analyste de données, de Consultant en Business Intelligence ou de Data Scientist.<br><br>
-                Elle permet d'acquérir une méthodologie pour collecter, analyser et interpréter des données afin de fournir des insights pertinents 
-                pour guider les décisions stratégiques.</p>
+                <p>Formation certifiante pour les postes d'Analyste de données, de Consultant en Business Intelligence ou de Data Scientist.<br>
+                Acquisition d'une méthodologie pour collecter, analyser et interpréter des données afin de fournir des insights pertinents pour guider les décisions stratégiques.</p>
             </div>
         </div>
-        <!-- Conteneur flex pour le bouton pop-up et le texte à droite -->
         <div class="popup-container">
             <div class="popup-btn-container">
-                <button class="open-popup-btn" onclick="openPopup()">
-                    <span>Mentors</span> <!-- Texte au-dessus de l'image -->
-                    <img src="Images/Recommandantions Trist.jpg" alt="Jury comments" style="width: auto; height: 50px;">
+                <button class="open-popup-btn" onclick="openPopup('mentors-popup')">
+                    <span>Mentors</span>
+                    <img src="Images/Recco.jpg" alt="Mentors" style="width: 120px; height: 70px;">
                 </button>
             </div>
             <div class="popup-text">        
-                <p> La formation repose sur des projets concrets permettant de pratiquer les compétences en situation réelle.<br>
-                Mes deux mentors m'ont accompagné et n'ont eu de cesse de me challenger pour aller bien au delà des objectifs à atteindre .</p><br>
+                <p> Des projets concrets permettant de pratiquer les compétences en situation réelle.<br>
+                Mes deux mentors m'ont accompagné et n'ont eu de cesse de me challenger pour aller bien au-delà des objectifs à atteindre.</p>
             </div>
         </div>
-            <h3>Des Projets Concrets</h3>
-            <p> Retrouvez mes projets dans mon Portfolio.<br>
-                    Les projets réalisés lors de la formation sont accompagnés des commantaires de soutenance.<br>
-                    - Détection de faux billets (régression linéaire et logistique, classification).<br>
-                    - Etude de santé publique en utilisant des méthodologies d'exploration et d'analyse de données<br>
-                    - Dashboard avec PowerBI pour une étude sur l'eau potable<br>
-                    - Création et gestion de bases de données avec SQL<br>
-                    - Etude de marché (Jupyter, Python, Pandas, Numpy et les librairies nécessaires)<br>
-                    - Création d'un workflow Knime<br>
-                    Mais aussi des projets personnels<br><br></p>
 
-            <h3>Une expérience Technico-Commercial riche</h3>
-            <p> • <strong>Attaché de Direction Commercial</strong> dans la GED, le marketing, l'imprimerie, le développement informatique<br>
-                • <strong>Ingénieur Commercial</strong> pour la Pharmaceutique, la Cosmétique et l'Automobile ...<br><br>
-                <strong>Compétences transposées aux missions d'Analyste de données </strong><br>
-                - Analyse des besoins clients & Compréhension métiers<br>
-                - Reporting et transmission informations aux équipes internes<br>
-                - Gestion et Suivi de projets<br>
-                - Veille concurrentielle<br><br></p>
+        <h3>Des Projets Concrets</h3>
+        <p>
+            Retrouvez mes projets dans mon 
+            <a href="PortF2.html" style="text-decoration:none; color:#9a112f; font-size: 16px; font-weight: bolder;">Portfolio</a>.
+            <br>
+            Les projets réalisés lors de la formation sont accompagnés des commentaires de soutenance.
+        </p>
+        <ul>
+            <li>Création, gestion de bases de données - SQL.</li>
+            <li>Analyse préparatoire (EDA), régression linéaire et logistique, classification.</li>
+            <li>Jupyter, Python, Pandas, Numpy, et les librairies nécessaires</li>
+            <li>Dashboard Power BI / Création d'un workflow Knime.</li>
+            <li>Prévisions / Etude comportementale</li>
+        </ul>
 
-            <h3>Passion et Engagement</h3>
-            <p>Mon intérêt pour la science des données est alimenté par une passion pour l'exploration et l'analyse des données, ainsi que par une curiosité naturelle pour les nouvelles technologies et les méthodes innovantes.<br><br>
-                Je suis également engagé dans une continuité de développement professionnel, ce qui me permet de rester à la pointe des tendances et des pratiques dans le domaine.</p><br> 
-            <p><strong> </strong></p>
-            <p style="text-align: center;">En somme, ma combinaison de compétences techniques, d'expérience pratique et d'engagement envers l'excellence fait de moi un acteur particulièrement qualifié pour tout rôle de Data Analyst / Scientist.</p> 
-    
-    <!-- Pop-up pour l'image -->
-    <div id="image-popup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup()">&times;</span>
-            <img src="Images/Certficat_DA.jpeg" alt="Certificat OpenClassrooms">
-            <img src="Images/Comments-JuryFinal.png" alt="Jury comments">
-            <img src="Images/Recco.jpg" alt="Mentors comments">
-        </div>
+        <h3>Une expérience riche en Technico-Commercial</h3>
+        <ul>
+            <li><strong>Attaché de Direction Commercial</strong> : Expertise dans la gestion électronique de documents (GED), le marketing, l'imprimerie, et le développement informatique.</li>
+            <li><strong>Ingénieur Commercial</strong> : Expérience dans les secteurs pharmaceutique, cosmétique, et automobile.</li>
+        </ul>
+        
+        <h3>Compétences transposables au métier d'Analyste de données :</h3>
+        <ul>
+            <li>Analyse des besoins clients et compréhension des enjeux métiers.</li>
+            <li>Reporting et transmission d'informations aux équipes internes.</li>
+            <li>Gestion et suivi de projets.</li>
+            <li>Veille concurrentielle et stratégique.</li>
+        </ul>
+
+        <h3>Passion et Engagement</h3>
+        <p>Mon intérêt pour la science des données est alimenté par une passion pour l'exploration et l'analyse des données, ainsi que par une curiosité naturelle pour les nouvelles technologies et les méthodes innovantes.<br>
+            Je suis également engagé dans une continuité de développement professionnel, ce qui me permet de rester à la pointe des tendances et des pratiques dans le domaine.</p>
+        <p style="text-align: center;">La combinaison de compétences techniques, d'expérience pratique et d'engagement envers l'excellence fait de moi un acteur particulièrement qualifié pour tout rôle de Data Analyst / BI / Scientist.</p> 
+
+<!-- Ajouter deux popups distincts -->
+<div id="jury-popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup('jury-popup')">&times;</span>
+        <img src="Images/Certficat_DA.jpeg" alt="Certificat OpenClassrooms">
+        <img src="Images/Comments-JuryFinal.png" alt="Jury comments">
     </div>
+</div>
+
+<div id="mentors-popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup('mentors-popup')">&times;</span>
+        <img src="Images/Recco.jpg" alt="Mentors comments">
+    </div>
+</div>
     </section>
 
 
@@ -1264,18 +1361,19 @@ window.addEventListener('resize', adjustOnResize);
     };
 
     // -------------------------------------------------------------Fonction Pop up
-    function openPopup() {
-        document.getElementById('image-popup').style.display = 'flex';
+    function openPopup(popupId) {
+    document.getElementById(popupId).style.display = 'flex';
+}
+
+function closePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+}
+// Fermer le popup en cliquant en dehors de la zone
+window.onclick = function(event) {
+    if (event.target.classList.contains('popup')) {
+        event.target.style.display = 'none';
     }
-    function closePopup() {
-        document.getElementById('image-popup').style.display = 'none';
-    }
-    // Fermer le pop-up en cliquant en dehors de la zone
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('image-popup')) {
-            closePopup();
-        }
-    }
+}
 
 
 
