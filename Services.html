@@ -9,340 +9,537 @@
     <style>
         /* Styles généraux */
         :root {
-    --background-color: #000;
-    --header-background: #000000;
-    --header-text: #6ee7b7;
-    --nav-link: #fff;
-    --nav-hover: #6ee7b7;
-    --hero-text: #fff;
-    --section-background: #050505;
-    --column-background: #141414;
-    --container-background: #333;
-    --footer-background: #000000;
-    --footer-text: #6ee7b7;
-    --dot-active: #41886b;
-}
+            --primary-color: #6ee7b7;
+            --secondary-color: #000000;
+            --text-color: #fff;
+            --background-color: #000;
+        }
 
-/* Styles généraux pour tout le site */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: var(--background-color);
-    color: var(--nav-link);
-}
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: var(--header-background);
-}
+        /* ----------------------------------------------------------------------------------HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 20px;
+            background-color: var(--secondary-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        header h1 {
+            color: var(--primary-color);
+            font-size: 22px;
+        }
+        nav {
+            display: flex;
+            margin-right: 4%;
+            position: relative;
+        }
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 5px 15px;
+            font-size: 18px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+        }
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        nav a.active {
+            color: var(--primary-color);
+        }
+        /* Styles pour le bouton burger et le menu mobile */
+        .burger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-right: 15%;
+            width: 30px;
+            height: 18px;
+        }
+        .burger div {
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links.show {
+            display: flex;
+        }
+        /* Responsivité HEADER*/
+        @media (max-width: 768px) {
+            header {
+                width: 100%;
+            }
+            header h1 {
+                font-size: 18px; /* Réduction de la taille du titre pour les mobiles */
+                text-align: left;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 60px;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0);
+                width: 200px;
+                text-align: right;
+                z-index: 1001; /* Un z-index plus élevé que le header */
+                max-height: calc(100vh - 60px); /* Hauteur maximale du menu */
+                overflow-y: auto; /* Permet le défilement si le menu est trop long */
+            }
+            .nav-links a {
+                padding: 10px;
+                margin: 0;
+                font-size: 14px; /* Taille plus petite pour les liens */
+                border-bottom: 1px solid var(--primary-color); /* Ligne de séparation */
+                background-color: rgba(36, 34, 34, 0.812);
+                display: block;
+                width: calc(100% - 120px); /* Réduit la largeur pour diminuer la longueur du trait */
+                margin-left: 90px; /* Ajuste la marge à gauche pour centrer les liens */
+            }
+            .nav-links a:last-child {
+                border-bottom: none; /* Supprime la ligne sous le dernier élément */
+            }
+            .burger {
+                display: flex;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+        }
+        @media (max-width: 460px) {
+            header h1 {
+                font-size: 14px; /* Réduction de la taille du titre pour les mobiles */
+            }
+            .nav-links a {
+                font-size: 12px;
+            }
+            .nav-links a:last-child {
+                border-bottom: none; /* Supprime la ligne sous le dernier élément */
+            }
+            .burger {
+                display: flex;
+            }
+            .nav-links.show {
+                display: flex;
+            }            
+        }     
 
-header h1 {
-    color: var(--header-text);
-    font-size: 24px;
-}
 
-nav {
-    display: flex;
-}
 
-nav a {
-    color: var(--nav-link);
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-    position: relative;
-    transition: color 0.3s ease;
-}
 
-nav a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    background-color: var(--nav-hover);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-}
-
-nav a:hover::after,
-nav a.active::after {
-    transform: scaleX(1);
-}
-
-nav a:hover,
-nav a.active {
-    color: var(--nav-hover);
-}
-
-        /* Styles pour la section héroïque */
-.hero {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 31vh;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('Images/Nature.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.hero h2 {
-    font-size: clamp(2rem, 4vw, 4rem); /* Ajuste la taille selon la largeur de l'écran */
-    margin: 0;
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.hero p.hero-main {
-    font-size: 22px;
-    font-style: italic;
-    color: var(--hero-text);
-    margin: 0;
-    position: absolute;
-    top: 140px;
-    left: 54%;
-    transform: translateX(-50%);
-    text-align: center;
-}
-
-.hero p.hero-sub {
-    font-size: 12px;
-    font-style: italic;
-    color: var(--hero-text);
-    position: absolute;
-    bottom: 30px;
-    left: 7%;
-    transform: translateX(-50%);
-    text-align: left;
-    max-width: 80%;
-}
+        /* ----------------------------------------------------------Styles pour la section héroïque */
+        .hero {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 38vh;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('Images/Nature.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .hero h2 {
+            font-size: clamp(2rem, 4vw, 4rem); /* Ajuste la taille selon la largeur de l'écran */
+            margin: 0;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .hero p.hero-main {
+            font-size: 22px;
+            font-style: italic;
+            color: var(--hero-text);
+            margin: 0;
+            position: absolute;
+            top: 60%;
+            left: 54%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        .hero p.hero-sub {
+            font-size: 12px;
+            font-style: italic;
+            color: var(--hero-text);
+            position: absolute;
+            bottom: 0%;
+            left: 10%;
+            transform: translateX(-50%);
+            text-align: left;
+            max-width: 80%;
+        }
         
+        @media screen and (max-width: 479px) {
+            .hero {
+                height: 20vh;
+                padding: 10px 0;
+                background-size: 250% 100%;
+            }
+            .hero h2 { font-size: 24px;}
+            .hero p.hero-main {
+                font-size: 14px;
+            }
+            .hero p.hero-sub {
+                font-size: 10px;
+                left: 20%;
+                white-space: normal; /* Permet de préserver les sauts de ligne */
+            }
+        }
+        @media screen and (max-width: 767px) and (min-width: 480px) {
+            .hero {
+                height: 25vh;
+                background-size: 150% 100%;
+                padding: 20px 0;
+                background-attachment: scroll;
+            }
+            .hero h2 { font-size: 36px; }
+            .hero p.hero-main {
+                font-size: 16px;
+            }
+            .hero p.hero-sub { 
+                font-size: 12px;
+                left: 15%;
+                white-space: normal; /* Permet de préserver les sauts de ligne */
+            }
+        }
+        @media screen and (min-width: 991px)  {
+            .hero p.hero-sub {
+                font-size: 12px;
+                left: 7%;
+                white-space: normal; /* Permet de préserver les sauts de ligne */
+            }
+        }
 
-        /* Section à deux colonnes */
+
+        /* ----------------------------------------------------------------Section à deux colonnes */
         .three-column-section {
             display: flex;
             justify-content: space-between;
             padding: 20px 20px;
+            height: 55vh;
         }
 
         .column {
             padding: 0 5px ;
             background-color: #fff;
-            box-shadow: 0 2px 10px rgba(244, 243, 243, 0.1);
+            box-shadow: 0 2px 10px rgb(244, 243, 243);
         }
 
-        .column-15 {
-            width: 15%;
-            height: auto;
-            background-color: #000000;
-        }
+
         .column-25 {
-            width: 45%;
-            background-color: #2f2c2c;
+            width: 60%;
+            background-color: #2f2c2c00;
+            border-radius: 20px;  /* Bords arrondis */
             
         }
         .column-55 {
-            width: 35%;
+            width: 37%;
             color: #ede6e6;
             background-color: #2f2c2c;
-            line-height: 1.6;  /* Espacement des lignes */
+            line-height: 2;  /* Espacement des lignes */
+            border-radius: 20px;  /* Bords arrondis */
         }
 
         .column h3 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
+            font-size: 1.6em;
+            color: #6ee7b7;
+            text-align: center;
         }
 
         #description-container {
-    background-color: #ffffff80;  /* Couleur de fond douce */
-    border-radius: 8px;  /* Bords arrondis */
-    padding: 0px;  /* Espacement intérieur */
-    margin-top: 20px;  /* Espace au-dessus du conteneur */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Légère ombre pour le relief */
-    font-family: 'Roboto', sans-serif;  /* Police simple */
-    font-size: 16px;  /* Taille de police confortable */
-    text-align: center;
-    font-weight: bold;
-    color: #4b0c0c;  /* Couleur de texte */
-    line-height: 1.6;  /* Espacement des lignes */
-    display: none;  /* Le conteneur est masqué par défaut */
-    transition: all 0.3s ease;  /* Transition douce pour l'apparition */
-}
+            background-color: #ffffff80;  /* Couleur de fond douce */
+            border-radius: 8px;  /* Bords arrondis */
+            padding: 0px;  /* Espacement intérieur */
+            margin-top: 20px;  /* Espace au-dessus du conteneur */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Légère ombre pour le relief */
+            font-family: 'Roboto', sans-serif;  /* Police simple */
+            font-size: 16px;  /* Taille de police confortable */
+            text-align: center;
+            font-weight: bold;
+            color: #4b0c0c;  /* Couleur de texte */
+            line-height: 1.6;  /* Espacement des lignes */
+            display: none;  /* Le conteneur est masqué par défaut */
+            transition: all 0.3s ease;  /* Transition douce pour l'apparition */
+        }
+        #description-container p {
+            margin: 0;  /* Pas d'espacement entre les paragraphes */
+        }
+        #description-container.show {
+            display: block;  /* Affiche le conteneur quand la classe "show" est ajoutée */
+        }
+        #comment-container {
+            background-color: #91131300;  /* Couleur de fond douce */
+            padding: 10px;  /* Espacement intérieur */
+            margin-top: 20px;  /* Espace au-dessus du conteneur */
+            font-family: 'Roboto', sans-serif;  /* Police simple */
+            font-size: 16px;  /* Taille de police confortable */
+            color: #ffffff;  /* Couleur de texte */
+            text-align: left;
+            line-height: 1.6;  /* Espacement des lignes */
+            display: none;  /* Le conteneur est masqué par défaut */
+            transition: all 0.3s ease;  /* Transition douce pour l'apparition */
+        }
+        #comment-container p {
+            margin: 0;  /* Pas d'espacement entre les paragraphes */
+        }
+        a {
+            color: var(--navhover);  /* Couleur des liens */
+            line-height: 1.5;  /* Ajuste l'interligne */
+            text-decoration: none;  /* Enlève la décoration par défaut */
+        }
+        a:hover {
+            color: #6ee7b7;
+        }
 
-#description-container p {
-    margin: 0;  /* Pas d'espacement entre les paragraphes */
-}
+        #gif-container {
+            width: 40%; /* Ajuste la taille du conteneur du GIF */
+            height: auto; /* Garde les proportions du GIF */
+            margin: 0 auto; /* Centre le conteneur horizontalement */
+            display: flex; /* Utilise Flexbox pour centrer le contenu */
+            justify-content: center; /* Centre le GIF horizontalement */
+            align-items: center; /* Centre le GIF verticalement */
+        }
 
-#description-container.show {
-    display: block;  /* Affiche le conteneur quand la classe "show" est ajoutée */
-}
-
-#comment-container {
-    background-color: #0d0d0d00;  /* Couleur de fond douce */
-    padding: 10px;  /* Espacement intérieur */
-    margin-top: 20px;  /* Espace au-dessus du conteneur */
-    font-family: 'Roboto', sans-serif;  /* Police simple */
-    font-size: 16px;  /* Taille de police confortable */
-    color: #ffffff;  /* Couleur de texte */
-    text-align: left;
-    line-height: 1.6;  /* Espacement des lignes */
-    display: none;  /* Le conteneur est masqué par défaut */
-    transition: all 0.3s ease;  /* Transition douce pour l'apparition */
-}
-
-#comment-container p {
-    margin: 0;  /* Pas d'espacement entre les paragraphes */
-}
+        #gif-container img {
+            max-width: 100%; /* Ajuste la taille maximale de l'image (GIF) à la taille du conteneur */
+            height: auto; /* Maintient les proportions du GIF */
+        }
+        #description-container,
+        #comment-container {
+            display: none; /* Les conteneurs de description sont masqués par défaut */
+        }
 
 
-a {
-    color: var(--nav-hover);  /* Couleur des liens */
-    line-height: 1.5;  /* Ajuste l'interligne */
-    text-decoration: none;  /* Enlève la décoration par défaut */
-}
 
-a:hover {
-    color: white;
-}
+        /* Media queries */
 
+/* Écrans inférieurs à 480px */
+@media screen and (max-width: 480px) {
+    .three-column-section {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
 
-        /* Styles pour le pied de page */
-.footer {
-    position: relative; /* Assurez-vous que le footer a une position relative */
-    background-color: var(--footer-background);
-    padding: 10px 50px;
-    color: var(--footer-text);
-}
-
-.footer::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px; /* Hauteur du trait */
-    background: linear-gradient(to left, black,#efedec, #000000); /* Dégradé de droite à gauche */
-    z-index: 1; /* Pour être au-dessus du contenu du footer */
-}
-
-/* Autres styles */
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 200px;
-    margin: 20px;
-}
-
-.footer-section h2 {
-    color: #fff;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.footer-section p,
-.footer-section ul li {
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    padding-left: 10px;
-}
-
-.footer-section ul li a {
-    color: var(--footer-text);
-    text-decoration: none;
-    display: block;
-    padding-left: 2px;
-    transition: text-decoration 0.3s ease;
-}
-
-.footer-section ul li a:hover {
-    text-decoration: underline;
-}
-
-.social-icons {
-    display: flex;
-    gap: 10px;
-}
-
-.social-icons a img {
-    width: 32px;
-    height: 32px;
-}
-
-        /* Responsive */
-        /* Responsive */
-@media (max-width: 768px) {
-    .column-15, .column-25, .column-55 {
+    .column-25, .column-55 {
         width: 100%;
         margin-bottom: 20px;
     }
+
+    .column h3 {
+        font-size: 1em;
+    }
+
+    #gif-container {
+        width: 60%; /* Taille réduite pour les petits écrans */
+    }
 }
 
-@media (max-width: 480px) {
-    .footer-container {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
+/* Écrans entre 480px et 768px */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .three-column-section {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
     }
 
-    .footer-section {
-        flex: 1;
-        margin: 10px;
+    .column-25, .column-55 {
+        width: 100%;
+        margin-bottom: 20px;
     }
-}     
+
+    .column h3 {
+        font-size: 1.4em;
+    }
+
+    #gif-container {
+        width: 40%;
+    }
+}
+
+/* Écrans supérieurs à 768px */
+@media screen and (min-width: 769px) {
+    .three-column-section {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .column-25 {
+        width: 60%;
+    }
+
+    .column-55 {
+        width: 37%;
+    }
+
+    .column h3 {
+        font-size: 1.6em;
+    }
+
+    #gif-container {
+        width: 40%;
+    }
+}
+
+
+       /* ------------------------------------------------------------------------------FOOTER */
+       .footer {
+            position: relative; /* Assurez-vous que le footer a une position relative */
+            background-color: var(--footer-background);
+            padding: 10px;
+            color: var(--footer-text);
+        }
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px; /* Hauteur du trait */
+            background: linear-gradient(to left, black,#efedec, #000000); /* Dégradé de droite à gauche */
+            z-index: 1; /* Pour être au-dessus du contenu du footer */
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 100%;
+            margin-left: 0%;
+            flex-wrap: wrap;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 100px;
+            text-align: center; /* texte aligné à gauche */
+    
+        }
+        .footer-section h2 {
+            color: var(--text-color);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .footer-section p,
+        .footer-section ul li {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-section ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: block;
+            padding: 2px 0;
+            transition: text-decoration 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center; 
+            gap: 10px;
+        }
+        .social-icons a img {
+            width: 30px; /* Réduit la taille des icônes pour les smartphones */
+            height: 30px; /* Réduit la taille des icônes pour les smartphones */
+        }
+    /* Media Queries pour appareils plus petits */
+    @media (max-width: 768px) { /* Tablettes */
+        .footer-section h2 {
+            font-size: 14px;
+        }
+        .footer-section p,
+        .footer-section ul li {
+            font-size: 12px;
+        }
+
+    }
+    @media (max-width: 480px) { /* Smartphones */
+        .footer-section h2 {
+            font-size: 12px; /* Réduit la taille de la police des titres */
+        }
+        .footer-section p,
+        .footer-section ul li {
+            font-size: 10px; /* Réduit la taille de la police des paragraphes */
+        }
+    }   
 
     </style>
 </head>
 <body>
     <!-- En-tête du site -->
     <header>
-        <h1>En développement</h1>
+        <h1>Expertise de données<br> Conseils et Solutions Business</h1>
         <nav>
-            <a href="index.html">Accueil</a>
-            <a href="Services.html" class="active">Savoirs-faire</a>
-            <a href="PortF2.html">Portfolio</a>
-            <a href="index.html#contact">Contact</a>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" aria-label="Accueil">Accueil</a>
+                <a href="#" class="active"  aria-label="Services">Savoirs-faire</a>
+                <a href="PortF2.html" aria-label="Portfolio">Portfolio</a>
+                <a href="index.html#contact" aria-label="Contact">Contact</a>
+            </div>
         </nav>
     </header>
 
+<main>   
     <!-- Section héroïque -->
     <section class="hero">
         <h2 class="section-title">Savoirs-faire</h2>
         <p class="hero-main">Work forward together !*</p>
         <p class="hero-sub">*Ensemble, allons de l'avant !</p>
     </section>
+</main>
+
 
 <!-- Section à trois colonnes pour les projets -->
 <section class="three-column-section">
-    <!-- Colonne de gauche : Carrousel des projets -->
-    <div class="column column-15">
-        <img src="Mur optimise.gif" alt="GIF descriptif" style="width:100%; height:auto;">
-    </div>
+
 
     <!-- Colonne de droite : Description du projet -->
     <div class="column column-55">
+        <h3> Prestations</h3>
         <ul>
             <li><a href="#" id="item1">Gestion de données / bases de données</a></li>
             <li><a href="#" id="item2">Préparation et Analyse de Données</a></li>
@@ -358,8 +555,12 @@ a:hover {
 
     <!-- Colonne de gauche : Autre contenu -->
     <div class="column column-25">
+        <!-- Conteneur pour le GIF -->
+        <div id="gif-container">
+            <img src="Images/Mur optimise.gif" alt="GIF descriptif" style="width:100%; height:auto;">
+        </div>
         <!-- Container pour la description -->
-        <div id="description-container" >
+        <div id="description-container">
             <p id="description-text"></p>
         </div>
         <!-- Container pour les commentaires -->
@@ -373,11 +574,13 @@ a:hover {
     <!-- Pied de page -->
     <footer class="footer">
         <div class="footer-container">
+            <!-- Section A propos -->
             <div class="footer-section">
                 <h2>A PROPOS</h2>
                 <p>Conseils et solutions business via l'expertise de données.</p>
-                <p>&copy; 2024 Tous droits réservés.</p>
+                <p>(c) 2024 Tous droits réservés.</p>
             </div>
+            <!-- Section Menu -->
             <div class="footer-section">
                 <h2>MENU</h2>
                 <ul>
@@ -387,21 +590,49 @@ a:hover {
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
+            <!-- Section Réseaux sociaux -->
             <div class="footer-section">
                 <h2>RÉSEAUX SOCIAUX</h2>
                 <div class="social-icons">
-                    <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer" title="Voir mon profil LinkedIn">
-                        <img src="Images/linkedin.png" alt="LinkedIn">
+                    <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="Images/linkedin.png" alt="Icône LinkedIn">
                     </a>
-                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer" title="Voir mon profil GitHub">
-                        <img src="Images/GHLog.png" alt="GitHub">
+                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <img src="Images/GHLog.png" alt="Icône GitHub">
                     </a>
                 </div>
             </div>
         </div>
     </footer>
     <script>
+        // -------------------------------------------------------------------------Menu Burger
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+            console.log('Menu toggled'); // Pour le débogage
+        }
+        const burger = document.querySelector('.burger');
+        burger.addEventListener('click', function(event) {
+            event.stopPropagation(); // Empêche l'événement de se propager au document
+            toggleMenu();
+        });
+        // Ferme le menu si on clique ailleurs sur la page
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelector('.nav-links');
+    
+            if (!nav.contains(event.target) && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+            }
+        });
+
+
+
         document.addEventListener('DOMContentLoaded', function () {
+            const gifContainer = document.getElementById('gif-container');
+            const descriptionContainer = document.getElementById('description-container');
+            const commentContainer = document.getElementById('comment-container');
+
             const descriptions = {
                 item1: "Gestion de données / bases de données",
                 item2: "Préparation et Analyse de Données",
@@ -476,21 +707,31 @@ a:hover {
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
                     const id = this.id;
+            
+                    // Masquer le GIF et afficher les conteneurs de description
+                    gifContainer.style.display = 'none';
+                    descriptionContainer.style.display = 'block';
+                    commentContainer.style.display = 'block';
+            
+                    // Mettre à jour le contenu
                     document.getElementById('description-text').innerHTML = descriptions[id] || '';
                     document.getElementById('comment-text').innerHTML = comments[id] || '';
-                    document.getElementById('description-container').style.display = 'block';
-                    document.getElementById('comment-container').style.display = 'block';
                 });
             });
     
-            // Optionnel : fermer le conteneur de description lorsque vous cliquez en dehors
-            document.addEventListener('click', function (e) {
-                if (!document.getElementById('description-container').contains(e.target) && !e.target.matches('a[id^="item"]')) {
-                    document.getElementById('description-container').style.display = 'none';
-                    document.getElementById('comment-container').style.display = 'none';
-                }
-            });
-        });
+    // Gestionnaire de clic en dehors
+    document.addEventListener('click', function (e) {
+        if (!descriptionContainer.contains(e.target) && 
+            !commentContainer.contains(e.target) && 
+            !e.target.matches('a[id^="item"]')) {
+            
+            // Masquer les conteneurs de description et afficher le GIF
+            descriptionContainer.style.display = 'none';
+            commentContainer.style.display = 'none';
+            gifContainer.style.display = 'block';
+        }
+    });
+});
     </script>
     
 </body>
