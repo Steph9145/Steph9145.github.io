@@ -4,81 +4,829 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio - Page 2</title>
-    <link rel="stylesheet" href="styles du 05-09 - Copie.css">
+
+<style>
+    /* Variables CSS pour les couleurs réutilisées */
+:root {
+    --background-color: #000;
+    --header-background: #000000;
+    --header-text: #6ee7b7;
+    --nav-link: #fff;
+    --nav-hover: #6ee7b7;
+    --hero-text: #fff;
+    --section-background: #050505;
+    --column-background: #141414;
+    --container-background: #333;
+    --footer-background: #000000;
+    --footer-text: #6ee7b7;
+    --dot-active: #41886b;
+    --primary-color: #6ee7b7;
+    --secondary-color: #000000;
+    --text-color: #fff;
+    --background-color: #000;
+}
+
+/* Bloque le scroll */
+.no-scroll {
+    overflow: hidden;
+  }
+/* Styles généraux pour tout le site */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+        /* ----------------------------------------------------------------------------------HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 20px;
+            background-color: var(--secondary-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        header h1 {
+            color: var(--primary-color);
+            font-size: 22px;
+        }
+        nav {
+            display: flex;
+            margin-right: 4%;
+            position: relative;
+        }
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 5px 15px;
+            font-size: 18px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+        }
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        nav a.active {
+            color: var(--primary-color);
+        }
+        /* Styles pour le bouton burger et le menu mobile */
+        .burger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-right: 15%;
+            width: 30px;
+            height: 18px;
+        }
+        .burger div {
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links.show {
+            display: flex;
+        }
+        /* Responsivité HEADER*/
+        @media (max-width: 768px) {
+            header {
+                width: 100%;
+            }
+            header h1 {
+                font-size: 18px; /* Réduction de la taille du titre pour les mobiles */
+                text-align: left;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 60px;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0);
+                width: 200px;
+                text-align: right;
+                z-index: 1001; /* Un z-index plus élevé que le header */
+                max-height: calc(100vh - 60px); /* Hauteur maximale du menu */
+                overflow-y: auto; /* Permet le défilement si le menu est trop long */
+            }
+            .nav-links a {
+                padding: 10px;
+                margin: 0;
+                font-size: 14px; /* Taille plus petite pour les liens */
+                border-bottom: 1px solid var(--primary-color); /* Ligne de séparation */
+                background-color: rgba(36, 34, 34, 0.812);
+                display: block;
+                width: calc(100% - 120px); /* Réduit la largeur pour diminuer la longueur du trait */
+                margin-left: 90px; /* Ajuste la marge à gauche pour centrer les liens */
+            }
+            .nav-links a:last-child {
+                border-bottom: none; /* Supprime la ligne sous le dernier élément */
+            }
+            .burger {
+                display: flex;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+        }
+        @media (max-width: 460px) {
+            header h1 {
+                font-size: 14px; /* Réduction de la taille du titre pour les mobiles */
+            }
+            .nav-links a {
+                font-size: 12px;
+            }
+            .nav-links a:last-child {
+                border-bottom: none; /* Supprime la ligne sous le dernier élément */
+            }
+            .burger {
+                display: flex;
+            }
+            .nav-links.show {
+                display: flex;
+            }            
+        }     
+
+
+
+
+        /* ----------------------------------------------------------Styles pour la section héroïque */
+        .hero {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 38vh;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('Images/Nature.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .hero h2 {
+            font-size: clamp(2rem, 4vw, 4rem); /* Ajuste la taille selon la largeur de l'écran */
+            margin: 0;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .hero p.hero-main {
+            font-size: 22px;
+            font-style: italic;
+            color: var(--hero-text);
+            margin: 0;
+            position: absolute;
+            top: 60%;
+            left: 54%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        .hero p.hero-sub {
+            font-size: 12px;
+            font-style: italic;
+            color: var(--hero-text);
+            position: absolute;
+            bottom: 0%;
+            left: 12%;
+            transform: translateX(-50%);
+            text-align: left;
+            max-width: 80%;
+        }
+        
+        @media screen and (max-width: 479px) {
+            .hero {
+                height: 20vh;
+                padding: 10px 0;
+                background-size: 250% 100%;
+            }
+            .hero h2 { font-size: 24px;}
+            .hero p.hero-main {
+                font-size: 12px;
+                left: 50%;
+            }
+            .hero p.hero-sub {
+                font-size: 10px;
+                left: 22%;
+                white-space: normal; /* Permet de préserver les sauts de ligne */
+            }
+        }
+        @media screen and (max-width: 767px) and (min-width: 480px) {
+            .hero {
+                height: 25vh;
+                background-size: 150% 100%;
+                padding: 20px 0;
+                background-attachment: scroll;
+            }
+            .hero h2 { font-size: 36px; }
+            .hero p.hero-main {
+                font-size: 16px;
+                left: 50%;
+            }
+            .hero p.hero-sub { 
+                font-size: 12px;
+                left: 20%;
+                white-space: normal; /* Permet de préserver les sauts de ligne */
+            }
+        }
+        @media screen and (min-width: 991px)  {
+            .hero p.hero-sub {
+                font-size: 12px;
+                left: 10%;
+                white-space: normal; /* Permet de préserver les sauts de ligne */
+            }
+        }
+
+
+
+                /* --------------------------------------------------- Styles pour la section à deux colonnes */
+.two-column-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 00px 0;
+    gap: 10px;
+    padding: 0px;
+    background: linear-gradient(to bottom, rgb(0, 0, 0), var(--container-background), white); /* Dégradé */
+    color: var(--nav-link);
+    margin-top: 0px;
+}
+
+.column {
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.column-40 {
+    flex: 0 0 33%;
+    background-color: #33333300;
+    max-width: 33%;
+    height: 400px;
+}
+
+.column-60 {
+    flex: 0 0 65%;
+    background-color: rgba(255, 255, 255, 0);
+    height: 420px;
+    padding: 0px 10px;
+    max-width: 62%;
+}
+
+/* Styles pour les containers */
+/* Styles pour le conteneur Description */
+.description-container {
+    height: 280px; /* Ajuste la hauteur selon tes besoins */
+    padding: 5px 10px;
+    
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.line-spacing {
+    line-height: 1.6; /* Ajustez la valeur selon vos besoins */
+}
+
+.comment-text {
+    white-space: pre-wrap; /* Optionnel pour les espaces et retours à la ligne */
+}
+
+/* Styles pour les containers Outils et Librairies */
+.outils-container,
+.librairies-container {
+    display: flex;
+    justify-content: space-between; /* Sépare le titre à gauche et les logos à droite */
+    align-items: center; /* Centre verticalement le contenu */
+    padding: 0px; /* Ajuste le padding */
+    background: linear-gradient(to right, #1c1c1c, rgb(146, 146, 146) 60%, white);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: var(--nav-hover); /* Couleur verte pour les titres */
+}
+
+
+/* Appliquer ces styles aux titres et logos */
+.outils-container h3,
+.librairies-container h3 {
+    margin: 0; /* Enlève le margin */
+    padding: 10px;
+    flex: 0 0 20%; /* Le titre occupe 20% de la largeur */
+    text-align: left; /* Aligne le titre à gauche */
+}
+
+.project-logos {
+    display: flex;
+    justify-content: flex-start; /* Aligne les logos à droite */
+    
+    padding: 0px 20px;
+    gap: 10px; /* Espace entre les logos */
+    flex: 0 0 70%; /* Les logos prennent 80% de la largeur */
+}
+
+/* Styles pour les titres des sections */
+#project-title,
+.container h3 {
+    color: #6cd6aa; /* Change la couleur */
+    font-size: 22px;
+    font-style: italic;
+    text-align: center; /* Centre le texte */
+    margin-top: 10px;
+}
+
+/* Styles pour le carrousel d'images */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 0px solid var(--nav-hover);
+    border-radius: 10px;
+    z-index: 1; /* Le carousel doit avoir un z-index inférieur */
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    cursor: pointer;
+}
+
+.carousel img.active {
+    opacity: 1;
+    position: relative;
+}
+
+/* Styles pour les contrôles du carrousel */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    color: var(--nav-link);
+}
+
+.control-icon {
+    cursor: pointer;
+    font-size: 1.5rem; /* Ajustez la taille selon vos besoins */
+    user-select: none;
+}
+
+/* Styles pour les indicateurs du carrousel */
+.carousel-indicators {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.carousel-indicators .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #dbdada;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    cursor: pointer;
+}
+
+.carousel-indicators .dot.active {
+    background-color: var(--dot-active);
+}
+
+/* Styles pour les logos des outils et librairies */
+.project-logos img.logo {
+    width: auto;
+    height: 40px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.project-logos img.logo:hover {
+    transform: scale(1.1);
+}
+
+.project-document-container {
+    margin-top: 0px;
+    text-align: center;
+}
+
+#project-document-link {
+    display: inline-flex;
+    padding: 10px 20px;
+    background-color: var(--nav-hover);
+    margin-top: 10px;
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+/* Classe par défaut */
+#project-document-link.default-link {
+    background-color: rgb(170, 51, 73);
+    color: white;
+}
+
+/* Classe pour le lien désactivé */
+#project-document-link.disabled-link {
+    pointer-events: none;
+    background: linear-gradient(to bottom, #b82a2abc, #ec6767bc, #5b1818bc);
+    box-shadow: 5px 5px 10px #000000bc;  
+    cursor: not-allowed;
+    color: rgb(0, 0, 0); /* Assurez-vous que le texte est lisible sur le fond désactivé */
+}
+
+/* Classe pour le lien actif */
+#project-document-link.active-link {
+    background-color: #6ee7b7;
+    background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
+    box-shadow: 5px 5px 10px #000000bc;
+    color: rgb(0, 0, 0);
+}
+
+/* État de survol */
+#project-document-link:hover {
+    background-color: rgb(0, 0, 0);
+    background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
+    box-shadow: 5px 5px 10px #000000bc; 
+    color: #fff;
+}
+
+.Title-Close-container {
+    height: 40px;               /* Hauteur fixe de 80px */
+    background: linear-gradient(to right, #000000, rgb(146, 146, 146) 60%, white);
+    color: var(--header-text);
+    padding: 10px;              /* Espacement interne */
+    margin-top: 20px;           /* Espacement externe */
+    border-radius: 10px;        /* Coins arrondis */
+    display: flex;              /* Utilisation de flexbox pour aligner le contenu */
+    align-items: center;        /* Centrer verticalement le contenu */
+    justify-content: space-between; /* Répartir le contenu horizontalement */
+    box-sizing: border-box;     /* Inclure le padding et la bordure dans la hauteur totale */
+    overflow: hidden;           /* Cacher le contenu qui dépasse la hauteur de 80px */
+}
+
+.Title-Close-container h3 {
+    font-size: 1em;             /* Taille de police adaptée pour tenir dans 80px */
+    margin: 0;                  /* Supprimer les marges par défaut */
+    color: #333;
+}
+
+.Title-Close-container p {
+    font-size: 0.9em;           /* Taille de police réduite */
+    margin: 0;
+    color: #666;
+}
+
+#close-button {
+    background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
+    box-shadow: 5px 5px 10px #000000bc;
+    color: rgb(3, 3, 3);
+    padding: 5px 10px;          /* Espacement réduit pour s'adapter à la hauteur */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;           /* Taille de police réduite pour le bouton */
+    font-weight: bold;
+    transition: background-color 0.3s; /* Transition fluide pour le changement de couleur */
+}
+
+#close-button:hover:not(.disabled-button) {
+    background-color: #13181d; /* Changement de couleur au survol */
+}
+
+/* Styles pour le bouton désactivé */
+#close-button.disabled-button {
+    background-color: grey;  /* Couleur du bouton lorsqu'il est désactivé */
+    cursor: not-allowed;     /* Curseur pour indiquer que le bouton est désactivé */
+    opacity: 0.5;           /* Réduit l'opacité pour indiquer visuellement qu'il est désactivé */
+    pointer-events: none;   /* Désactive les événements de souris */
+}
+
+.disabled-button {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.default-button, .active-button {
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+
+/* Correction de la section deux colonnes pour les appareils mobiles */
+@media (max-width: 768px) {
+    .two-column-section {
+        flex-direction: column;
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .column-40,
+    .column-60 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .description-container {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .carousel {
+        max-width: 100%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .two-column-section {
+        padding: 5px;
+        gap: 15px;
+    }
+
+    .column-40,
+    .column-60 {
+        padding: 5px;
+    }
+
+    .description-container {
+        min-height: 150px;
+    }
+
+    .carousel {
+        height: 150px;
+    }
+
+    .outils-container,
+    .librairies-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .outils-container h3,
+    .librairies-container h3 {
+        flex: 0 0 100%;
+        text-align: center;
+        padding: 5px;
+    }
+
+    .project-logos {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .project-logos img.logo {
+        height: 30px;
+    }
+}
+
+
+
+#document-container.hidden {
+    display: none; /* Masque le conteneur entier quand la classe "hidden" est ajoutée */
+}
+
+#document-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 80%;
+    margin-top: 0px;
+    padding: 20px 0px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff; /* Assurez-vous que le texte est lisible sur le fond noir */
+}
+
+#document-container iframe {
+    width: 100%;
+    height: 750px; /* Ajustez la hauteur si nécessaire */
+    max-height: 750px;
+    background-color: rgb(0, 0, 0);
+    border: none;
+}
+
+#document-container video {
+    width: 100%;
+    height: 80%; /* Ajuste la hauteur automatiquement en fonction de la largeur */
+    display: block; /* Assurez-vous que la vidéo est visible lorsqu'elle est affichée */
+}
+
+
+
+
+
+        
+
+       /* ------------------------------------------------------------------------------FOOTER */
+       .footer {
+        position: relative; /* Assurez-vous que le footer a une position relative */
+        background-color: var(--footer-background);
+        padding: 10px;
+        color: var(--footer-text);
+    }
+    .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px; /* Hauteur du trait */
+        background: linear-gradient(to left, black,#efedec, #000000); /* Dégradé de droite à gauche */
+        z-index: 1; /* Pour être au-dessus du contenu du footer */
+    }
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 100%;
+        margin-left: 0%;
+        flex-wrap: wrap;
+    }
+    .footer-section {
+        flex: 1;
+        min-width: 100px;
+        text-align: center; /* texte aligné à gauche */
+
+    }
+    .footer-section h2 {
+        color: var(--text-color);
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .footer-section p,
+    .footer-section ul li {
+        font-size: 14px;
+        color: var(--primary-color);
+        margin-bottom: 5px;
+    }
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .footer-section ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        display: block;
+        padding: 2px 0;
+        transition: text-decoration 0.3s ease;
+    }
+    .footer-section ul li a:hover {
+        text-decoration: underline;
+    }
+    .social-icons {
+        display: flex;
+        justify-content: center; 
+        gap: 10px;
+    }
+    .social-icons a img {
+        width: 30px; /* Réduit la taille des icônes pour les smartphones */
+        height: 30px; /* Réduit la taille des icônes pour les smartphones */
+    }
+/* Media Queries pour appareils plus petits */
+@media (max-width: 768px) { /* Tablettes */
+    .footer-section h2 {
+        font-size: 14px;
+    }
+    .footer-section p,
+    .footer-section ul li {
+        font-size: 12px;
+    }
+}
+@media (max-width: 480px) { /* Smartphones */
+    .footer-section h2 {
+        font-size: 12px; /* Réduit la taille de la police des titres */
+    }
+    .footer-section p,
+    .footer-section ul li {
+        font-size: 10px; /* Réduit la taille de la police des paragraphes */
+    }
+}   
+</style>
 </head>
+
 <body>
     <!-- En-tête du site -->
     <header>
-        <h1>En développement</h1>
+        <h1>Expertise de données<br> Conseils et Solutions Business</h1>
         <nav>
-            <a href="index.html">Accueil</a>
-            <a href="Services.html">Savoirs-faire</a>
-            <a href="PortF2.html" class="active">Portfolio</a>
-            <a href="index.html#contact">Contact</a>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" aria-label="Accueil">Accueil</a>
+                <a href="Services.html"  aria-label="Services">Savoirs-faire</a>
+                <a href="#" class="active" aria-label="Portfolio">Portfolio</a>
+                <a href="index.html#contact" aria-label="Contact">Contact</a>
+            </div>
         </nav>
     </header>
 
     <!-- Section héroïque -->
+<main>
     <section class="hero">
         <h2 class="section-title">Portfolio</h2>
         <p class="hero-main">Let's make sense of your data !*</p>
         <p class="hero-sub">*Donnons du sens à vos données</p>
     </section>
+</main>
 
-    <!-- Section à deux colonnes pour les projets -->
-    <section class="two-column-section">
-        <!-- Colonne de gauche : Carrousel des projets -->
-        <div class="column column-40">
-            <h3 id="project-title">Titre du Projet</h3>
-            <div class="carousel">
-                <img src="Images/Legislatives2024.png" alt="Projet : Legislatives2024">
-                <img src="Images/Medecin_Generaliste.png" alt="Projet : Analyse des besoins nutritionnels mondiaux">
-                <img src="Images/Faux billets.png" alt="Projet : Détection des faux billets">
-                <img src="Images/Indicarteurs égalités-min.png" alt="Projet : Indicateurs d'Égalité en Entreprise">
-                <img src="Images/Crazy chicken-min.png" alt="Projet : Marketing - Export" class="active">
-                <img src="Images/Eau Afrique.png" alt="Projet : Gestion de l'eau en Afrique">
-                <img src="Images/Boutique vins.png" alt="Projet : Gestion de site internet">
-                <img src="Images/Vente Librairie.png" alt="Projet : Gestion des ventes dans une librairie">
-                               
-                <!-- Contrôles du carrousel -->
-                <div class="carousel-controls">
-                    <span id="play-icon" class="control-icon" title="Démarrer le carrousel">&#9658;</span>
-                    <span id="stop-icon" class="control-icon" title="Arrêter le carrousel" style="display: none;">&#10074;&#10074;</span>
+        <!-- Section à deux colonnes pour les projets -->
+        <section class="two-column-section">
+            <!-- Colonne de gauche : Carrousel des projets -->
+            <div class="column column-40">
+                <h3 id="project-title">Titre du Projet</h3>
+                <div class="carousel">
+                    <img src="Images/Legislatives2024.png" alt="Projet : Legislatives2024">
+                    <img src="Images/Medecin_Generaliste.png" alt="Projet : Analyse des besoins nutritionnels mondiaux">
+                    <img src="Images/Faux billets.png" alt="Projet : Détection des faux billets">
+                    <img src="Images/Indicarteurs égalités-min.png" alt="Projet : Indicateurs d'Égalité en Entreprise">
+                    <img src="Images/Crazy chicken-min.png" alt="Projet : Marketing - Export" class="active">
+                    <img src="Images/Eau Afrique.png" alt="Projet : Gestion de l'eau en Afrique">
+                    <img src="Images/Boutique vins.png" alt="Projet : Gestion de site internet">
+                    <img src="Images/Vente Librairie.png" alt="Projet : Gestion des ventes dans une librairie">
+                                   
+                    <!-- Contrôles du carrousel -->
+                    <div class="carousel-controls">
+                        <span id="play-icon" class="control-icon" title="Démarrer le carrousel">&#9658;</span>
+                        <span id="stop-icon" class="control-icon" title="Arrêter le carrousel" style="display: none;">&#10074;&#10074;</span>
+                    </div>
+                </div>
+                <!-- Indicateurs du carrousel -->
+                <div class="carousel-indicators">
+                    <span class="dot active" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
+                    <span class="dot" onclick="currentSlide(7)"></span>
+                </div>
+                
+                <!-- Lien pour voir le document du projet sous le carrousel -->
+                <div class="project-document-container">
+                    <a id="project-document-link" href="#" target="_blank"></a>
                 </div>
             </div>
-            <!-- Indicateurs du carrousel -->
-            <div class="carousel-indicators">
-                <span class="dot active" onclick="currentSlide(0)"></span>
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-                <span class="dot" onclick="currentSlide(4)"></span>
-                <span class="dot" onclick="currentSlide(5)"></span>
-                <span class="dot" onclick="currentSlide(6)"></span>
-                <span class="dot" onclick="currentSlide(7)"></span>
+    
+            <!-- Colonne de droite : Description du projet -->
+            <div class="column column-60">
+                <div class="description-container">       
+                    <p id="project-description">Description du projet...</p>
+                </div>
+                <div class="outils-container">
+                    <h3>Outils</h3>
+                    <div id="project-tools-logos" class="project-logos"></div>
+                </div>
+                <div class="librairies-container">
+                    <h3>Librairies</h3>
+                    <div id="project-libraries-logos" class="project-logos"></div>
+                </div>
             </div>
-            
-            <!-- Lien pour voir le document du projet sous le carrousel -->
-            <div class="project-document-container">
-                <a id="project-document-link" href="#" target="_blank"></a>
-            </div>
-        </div>
+        </section>
 
-        <!-- Colonne de droite : Description du projet -->
-        <div class="column column-60">
-            <div class="description-container">       
-                <p id="project-description">Description du projet...</p>
-            </div>
-            <div class="outils-container">
-                <h3>Outils</h3>
-                <div id="project-tools-logos" class="project-logos"></div>
-            </div>
-            <div class="librairies-container">
-                <h3>Librairies</h3>
-                <div id="project-libraries-logos" class="project-logos"></div>
-            </div>
-        </div>
-    </section>
 
     <!-- Nouveau container personnalisé -->
     <div class="Title-Close-container">
@@ -97,14 +845,17 @@
             </video>
     </div>
 
+
     <!-- Pied de page -->
     <footer class="footer">
         <div class="footer-container">
+            <!-- Section A propos -->
             <div class="footer-section">
                 <h2>A PROPOS</h2>
                 <p>Conseils et solutions business via l'expertise de données.</p>
-                <p>&copy; 2024 Tous droits réservés.</p>
+                <p>(c) 2024 Tous droits réservés.</p>
             </div>
+            <!-- Section Menu -->
             <div class="footer-section">
                 <h2>MENU</h2>
                 <ul>
@@ -114,21 +865,500 @@
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
+            <!-- Section Réseaux sociaux -->
             <div class="footer-section">
                 <h2>RÉSEAUX SOCIAUX</h2>
                 <div class="social-icons">
-                    <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer" title="Voir mon profil LinkedIn">
-                        <img src="Images/linkedin.png" alt="LinkedIn">
+                    <a href="https://fr.linkedin.com/in/stephane-srsa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="Images/linkedin.png" alt="Icône LinkedIn">
                     </a>
-                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer" title="Voir mon profil GitHub">
-                        <img src="Images/GHLog.png" alt="GitHub">
+                    <a href="https://github.com/Steph9145" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <img src="Images/GHLog.png" alt="Icône GitHub">
                     </a>
                 </div>
             </div>
         </div>
     </footer>
+    <script>
+// -------------------------------------------------------------------------Menu Burger
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('show');
+    console.log('Menu toggled'); // Pour le débogage
+}
 
-    <!-- Inclusion du script JavaScript -->
-    <script src="scripts du 05-09.js"></script>
+const burger = document.querySelector('.burger');
+burger.addEventListener('click', function(event) {
+    event.stopPropagation(); // Empêche l'événement de se propager au document
+    toggleMenu();
+});
+
+document.addEventListener('click', function(event) {
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelector('.nav-links');
+    const carousel = document.querySelector('.carousel');
+
+    if (!nav.contains(event.target)) {
+        console.log('Clicked outside nav');
+    }
+    
+    if (!carousel.contains(event.target)) {
+        console.log('Clicked outside carousel');
+    }
+
+    if (!nav.contains(event.target) && !carousel.contains(event.target) && navLinks.classList.contains('show')) {
+        console.log('Closing menu');
+        navLinks.classList.remove('show');
+    }
+});
+        
+document.addEventListener('DOMContentLoaded', () => {
+    // Scroll automatiquement en haut de la page avec un léger délai
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 100); // 100 millisecondes
+
+    let currentIndex = 0;
+    let isPlaying = false; // État du carrousel
+    let interval;
+    let isDocumentOpen = false; // État du document
+
+    // Sélection des éléments du DOM
+    const images = document.querySelectorAll('.carousel img');
+    const dots = document.querySelectorAll('.carousel-indicators .dot');
+    const playIcon = document.getElementById('play-icon');
+    const stopIcon = document.getElementById('stop-icon');
+    const projectTitle = document.getElementById('project-title');
+    const projectDescription = document.getElementById('project-description');
+    const toolsContainer = document.getElementById('project-tools-logos');
+    const librariesContainer = document.getElementById('project-libraries-logos');
+    const documentLink = document.getElementById('project-document-link');
+    const closeButton = document.getElementById('close-button');
+    const documentContainer = document.getElementById('document-container');
+    const documentFrame = document.getElementById('document-frame');
+    const documentVideo = document.getElementById('document-video');
+    const videoSource = document.getElementById('video-source');
+
+    const documentTitleElement = document.getElementById('document-title'); // Sélectionne l'élément du titre
+
+
+    // Tableau des projets
+    const projects = [
+        {
+            title: "Prévisions Législatives 2024",
+            description: `
+                
+                <p style="text-align: center; font-size: 20px;"><strong>Prévisions basées sur l'analyse comportementale de l'électorat</strong></p>
+                <ul>
+                    <li class='line-spacing'>Collecte résultats Elections Européennes 2024 et Elections Législatives 2022</li>
+                    <li class='line-spacing'>Reprise des résultats définitifs du 1er tour (pour le second tour)</li>
+                    <li class='line-spacing'>Mise en place des hypothèses</li>
+                    <li class='line-spacing'>Mise en concordance des listes électorales</li>
+                    <li class='line-spacing'>Analyses et créations des règles de calcul des prévisions</li>
+                    <li class='line-spacing'>Créations des règles de repport de votes</li>
+                    <li class='line-spacing'>Visualisation des résultats par circonscription</li>   
+                    <li class='line-spacing'>Analyse des erreurs de prévisions</li>
+                    </ul>
+                `,
+                document: "Projets/Leg2024/Leg2024.html",
+            comment: "Commentaires Législatives 2024",
+            toolsLogos: [
+                { src: "Images/Jupyter-logo.png", alt: "Jupyter" },
+                { src: "Images/Logo_Python_NP.png", alt: "Python" },
+                { src: "Images/excel-logo.png", alt: "Excel" },
+                { src: "Images/power-query-banner.png", alt: "Excel" }
+            ],
+            librariesLogos: [
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" },
+                { src: "Images/Logo_folium.png", alt: "Folium" }
+            ]
+        },
+        {
+            title: "Etude Médecins Généralistes",
+            description: `
+            <p style="text-align: center; font-size: 20px;"><strong>Etat des lieux - Médecins Généralistes Libéraux</strong></p>
+            <ul>
+                <li class='line-spacing'>Collecte de données Multi-sources</li>
+                <li class='line-spacing'>Analyse préparatoire des fichiers - EDA</li>
+                <li class='line-spacing'>Analyse de l'évolution démographiques de 2012 à 2023</li>
+                <li class='line-spacing'>Présence sur le territoire en Mars 2024</li>
+                <li class='line-spacing'>Mise en relief d'inisghts</li>
+                <li class='line-spacing'>Restitution des analyses via dashboard Power BI</li>
+            </ul>
+                `,
+            document: "Projets/MedecinsG/MedecinsG.html",
+            comment: "Commentaires Médecins",
+            toolsLogos: [
+                { src: "Images/powerbi-Logo.png", alt: "Power BI"},
+                
+                { src: "Images/excel-logo.png", alt: "Excel" }
+            ],
+            librariesLogos: [
+                { src: "Images/Logo_PBI_DAX.png", alt: "Power BI"},
+                { src: "Images/power-query-banner.png", alt: "Excel"}
+            ]
+        },
+        {
+            title: "Détection de faux billets - Machine Learning",
+            description: `
+                <p style="text-align: center; font-size: 20px;"><strong>Détection de faux billets - Machine Learning</strong></p>
+                <ul>
+                    <li class='line-spacing'>Collecte de données sur les caractéristiques des billets</li>
+                    <li class='line-spacing'>Analyse exploratoire (EDA)</li>
+                    <li class='line-spacing'>Régression linéaire : Modèle prédictif pour remplacer valeurs manquantes</li>
+                    <li class='line-spacing'>Analyses et métriques le modèle</li>
+                    <li class='line-spacing'>Création modèle K-means + PCA</li>
+                    <li class='line-spacing'>Régression Logistique Statsmodels et Sklearn</li>
+                    <li class='line-spacing'>Algorithme: Analyse des résultats et ajustements</li>
+                    <li class='line-spacing'>Outil de définition du seuil d’acceptation</li>
+                </ul>
+                `,
+            document: "Projets/Billets/Billet.html",
+            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            toolsLogos: [
+                { src: "Images/Logo_Python_NP.png", alt: "Python" },
+                { src: "Images/Statsmodels-logo.png", alt: "Statsmodels" },
+                { src: "Images/sklearn-logo.png", alt: "Scikit-learn" }
+            ],
+            librariesLogos: [
+                { src: "Images/Logo_SciPy.png", alt: "SciPy" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" },
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/plotly-logo.png", alt: "plotly" }
+            ]
+        },
+        {
+            title: "Analyse des inégalités",
+            description: `
+                <p style="text-align: center; font-size: 20px;"><strong>Analyse des inégalités de genre en entreprise</strong></p>
+                <ul>
+                    <li class='line-spacing'>Collecte de données sur les écarts de salaire</li>
+                    <li class='line-spacing'>Évaluation des opportunités de carrière</li>
+                    <li class='line-spacing'>Analyse des politiques d'équité en entreprise</li>
+                    <li class='line-spacing'>Proposition de stratégies pour améliorer l'égalité des sexes</li>
+                    <li class='line-spacing'>Suivi des progrès et recommandations</li>
+                </ul>
+                `,
+            document: "Projets/EgaliteHF/EgalitésFH.html",
+            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            toolsLogos: [
+                { src: "Images/sql-logo.png", alt: "SQL" },
+                { src: "Images/knime-logo.png", alt: "KNIME" }
+            ],
+            librariesLogos: [
+                { src: "Images/powerbi-Logo.png", alt: "Power BI" },
+                { src: "Images/excel-logo.png", alt: "Excel" }
+            ]
+        },
+        {
+            title: "Etude de marché - Export",
+            description: `
+                <p style="text-align: center; font-size: 20px;"><strong>Analyse des groupements de pays cibles pour exporter nos poulets</strong></p>
+                <ul>
+                    <li class='line-spacing'>Sélection des données pertinentes sur FAO (open source)</li>
+                    <li class='line-spacing'>Préparation, nettoyage et analyse exploratoire des données</li>
+                    <li class='line-spacing'>Classification ascendante hiérarchique / dendrogramme</li>
+                    <li class='line-spacing'>k-means</li>
+                    <li class='line-spacing'>Comparaison des méthodes de clustering puis ACP</li>
+                    <li class='line-spacing'>Choix du cluster et présentation des résultats</li>
+                </ul>
+            `,
+            document: "Projets/EMexp_poulet/Export_Poul.html",
+            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            toolsLogos: [
+                
+                { src: "Images/Jupyter-logo.png", alt: "Jupyter" },
+                { src: "Images/Logo_Python_NP.png", alt: "Python" },
+                { src: "Images/Logo_Geopandas.png", alt: "Logo_Geopandas" }
+            ],
+            librariesLogos: [
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" },
+                { src: "Images/plotly-logo.png", alt: "plotly" },
+                { src: "Images/Logo_folium.png", alt: "Folium" }
+            ]
+        },
+        {
+            title: "Gestion de l'eau en Afrique",
+            description: `
+                <p style="text-align: center; font-size: 20px;"><strong>Gestion de l'eau en Afrique pour améliorer l'accès</strong></p>
+                <ul>
+                    <li class='line-spacing'>Analyse des besoins en eau potable</li>
+                    <li class='line-spacing'>Conception de systèmes de distribution</li>
+                    <li class='line-spacing'>Évaluation des ressources en eau disponibles</li>
+                    <li class='line-spacing'>Planification des infrastructures nécessaires</li>
+                    <li class='line-spacing'>Coordination avec les autorités locales</li>
+                </ul>
+                `,
+            document: "Projets/Eau_potable/Eau_potable.html",
+            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            toolsLogos: [
+                { src: "Images/powerbi-Logo.png", alt: "Power BI" },
+                { src: "Images/python-logo.png", alt: "Python" } 
+            ],
+            librariesLogos: [
+                { src: "Images/powerbi-Logo.png", alt: "Power BI" },
+                { src: "Images/excel-logo.png", alt: "Excel" }
+            ]
+        },
+        {
+            title: "Optimisation de la gestion de données",
+            description: `
+                <p style="text-align: center; font-size: 20px;"><strong>Optimiser la gestion des données d'une boutique</strong></p>
+                <ul>
+                    <li class='line-spacing'>Analyse exploratoire des fichiers</li
+                    ><li class='line-spacing'>Mise en concordance et jointures des tables</li>
+                    <li class='line-spacing'>Mise à l'écart des valeurs nulles et manquantes</li>
+                    <li class='line-spacing'>Analyse des outliers (valeurs aberrantes) et débrief</li>
+                    <li class='line-spacing'>Réponses aux demandes initiales (CA global, par produit...)</li>
+                    <li class='line-spacing'>Analyse sur l'état des stocks sur les 10% des références les plus vendues</li>
+                </ul>
+                `,
+            document: "Projets/BoutiqueVin/Vins.html",
+            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            toolsLogos: [
+                { src: "Images/Jupyter-logo.png", alt: "Jupyter" },
+                { src: "Images/Logo_Python_NP.png", alt: "Python" }
+            ],
+            librariesLogos: [
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" }
+            ]
+        },
+        {
+            title: "Gestion des ventes dans une librairie",
+            description: `
+                <p style="text-align: center; font-size: 20px;"><strong>Gestion des ventes et inventaire dans une librairie</strong></p>
+                <ul>
+                    <li class='line-spacing'>Suivi des ventes et des inventaires</li>
+                    <li class='line-spacing'>Mise en place d'un système de gestion des commandes</li>
+                    <li class='line-spacing'>Analyse des préférences des clients</li>
+                    <li class='line-spacing'>Optimisation des achats et des stocks</li>
+                    <li class='line-spacing'>Création de promotions ciblées</li>
+                </ul>
+                `,
+            document: "Projets/Librairie/Librairie.html",
+            comment: "Commentaires pour le projet d'étude de marché - Export.",
+            toolsLogos: [
+                { src: "Images/Jupyter-logo.png", alt: "Jupyter" },
+                { src: "Images/Logo_Python_NP.png", alt: "Python" },
+                { src: "Images/Statsmodels-logo.png", alt: "Statsmodels" },
+                { src: "Images/sklearn-logo.png", alt: "Scikit-learn" }
+            ],
+            librariesLogos: [
+                { src: "Images/Logo_Prophet.png", alt: "Prophet" },
+                { src: "Images/Logo_SciPy.png", alt: "SciPy" },
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" }
+            ]
+        }
+    ]
+
+        function updateSlide(index) {
+            if (!projects[index]) {
+                console.error("Projet non trouvé pour l'index : ", index);
+                return;
+            }
+            images.forEach((img, i) => img.classList.toggle('active', i === index));
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            projectTitle.textContent = projects[index].title;
+            projectDescription.innerHTML = projects[index].description;
+            updateLogos(index);
+            documentLink.href = projects[index].document;
+            updateDocumentLinkText();
+            updateCloseButtonState();
+        }
+    
+        function updateLogos(index) {
+            toolsContainer.innerHTML = '';
+            librariesContainer.innerHTML = '';
+            projects[index].toolsLogos.forEach(logo => {
+                const img = document.createElement('img');
+                img.src = logo.src;
+                img.alt = logo.alt;
+                img.classList.add('logo');
+                toolsContainer.appendChild(img);
+            });
+            projects[index].librariesLogos.forEach(logo => {
+                const img = document.createElement('img');
+                img.src = logo.src;
+                img.alt = logo.alt;
+                img.classList.add('logo');
+                librariesContainer.appendChild(img);
+            });
+        }
+    
+        function showNextSlide() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateSlide(currentIndex);
+        }
+    
+        function showPreviousSlide() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateSlide(currentIndex);
+        }
+    
+        function startCarousel() {
+            if (!isPlaying && !isDocumentOpen) {
+                interval = setInterval(showNextSlide, 3000);
+                isPlaying = true;
+                playIcon.style.display = 'none';
+                stopIcon.style.display = 'inline';
+                updateDocumentLinkText();
+            }
+        }
+    
+        function stopCarousel() {
+            if (isPlaying) {
+                clearInterval(interval);
+                isPlaying = false;
+                playIcon.style.display = 'inline';
+                stopIcon.style.display = 'none';
+                updateDocumentLinkText();
+            }
+        }
+    
+        function currentSlide(index) {
+            if (isDocumentOpen) return;
+            clearInterval(interval);
+            isPlaying = false;
+            playIcon.style.display = 'inline';
+            stopIcon.style.display = 'none';
+            currentIndex = index;
+            updateSlide(currentIndex);
+        }
+    
+        function toggleDocumentContainer() {
+            if (documentContainer.classList.contains('hidden')) {
+                documentContainer.classList.remove('hidden');
+                isDocumentOpen = true;
+                stopCarousel();
+                disableCarouselControls(true);
+
+                // Désactive le scroll en ajoutant la classe no-scroll au body
+                document.body.classList.add('no-scroll');
+    
+                // Met à jour le titre du document dans .Title-Close-container
+                const currentProject = projects[currentIndex];
+                if (documentTitleElement) {
+                    documentTitleElement.textContent = currentProject.title;
+                }
+    
+                // Ajoute un délai avant d'exécuter le défilement
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: documentContainer.getBoundingClientRect().top + window.scrollY - 60,
+                        behavior: 'smooth'
+                    });
+                }, 100); // Ajuste le délai si nécessaire
+    
+            } else {
+                documentContainer.classList.add('hidden');
+                isDocumentOpen = false;
+                startCarousel();
+                disableCarouselControls(false);
+                
+                document.body.classList.remove('no-scroll'); // Débloque le scroll
+
+                // Efface le titre dans .Title-Close-container
+                if (documentTitleElement) {
+                    documentTitleElement.textContent = '';
+                }
+    
+                // Défilement vers le haut après la fermeture du document
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            updateDocumentLinkText();
+            updateCloseButtonState();
+        }
+    
+        function loadDocument() {
+            const currentProject = projects[currentIndex];
+            console.log('Chargement du document : ', currentProject.document); // Vérifiez ce que vous obtenez ici
+            if (currentProject.document.endsWith('.html')) {
+                updateDocumentContent(currentProject.document, false);
+            } else if (currentProject.document.endsWith('.mp4')) {
+                updateDocumentContent(currentProject.document, true);
+            } else {
+                console.error('Type de document non pris en charge');
+            }
+        }
+    
+        function updateDocumentContent(url, isVideo) {
+            if (isVideo) {
+                documentFrame.style.display = 'none';
+                documentVideo.style.display = 'block';
+                videoSource.src = url;
+                documentVideo.load();
+            } else {
+                documentVideo.style.display = 'none';
+                documentFrame.style.display = 'block';
+                documentFrame.src = url;
+            }
+        }
+    
+        function updateDocumentLinkText() {
+            if (isDocumentOpen) {
+                documentLink.textContent = 'Fermer le document';
+                documentLink.classList.add('default-link');
+                documentLink.classList.remove('active-link', 'disabled-link');
+            } else if (isPlaying) {
+                documentLink.textContent = 'Choisir un projet';
+                documentLink.classList.add('disabled-link');
+                documentLink.classList.remove('active-link', 'default-link');
+            } else {
+                documentLink.textContent = 'En savoir plus';
+                documentLink.classList.add('active-link');
+                documentLink.classList.remove('disabled-link', 'default-link');
+            }
+        }
+    
+        function disableCarouselControls(disable) {
+            images.forEach(img => img.style.pointerEvents = disable ? 'none' : 'auto');
+            dots.forEach(dot => dot.style.pointerEvents = disable ? 'none' : 'auto');
+        }
+    
+        images.forEach(img => img.addEventListener('click', () => {
+            if (!isDocumentOpen) {
+                isPlaying ? stopCarousel() : startCarousel();
+            }
+        }));
+
+        dots.forEach((dot, i) => dot.addEventListener('click', () => {
+            currentSlide(i);
+        }));
+    
+        documentLink.addEventListener('click', (event) => {
+            event.preventDefault(); // Éviter le comportement par défaut du lien
+            toggleDocumentContainer();
+            if (isDocumentOpen) {
+                loadDocument(); // Charger le document lors de l'ouverture
+            }
+        });
+    
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                if (isDocumentOpen) {
+                    toggleDocumentContainer(); // Appelle la même fonction que pour 'Fermer le document'
+                }
+            });
+        }
+    
+        function updateCloseButtonState() {
+            if (isDocumentOpen) {
+                closeButton.classList.remove('disabled-button'); // Rendre le bouton cliquable
+            } else {
+                closeButton.classList.add('disabled-button'); // Rendre le bouton non cliquable
+            }
+        }
+    
+        updateSlide(currentIndex);
+        startCarousel();
+    });
+    </script>
 </body>
 </html>
