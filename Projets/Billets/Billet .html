@@ -6,7 +6,7 @@
     <title>Deux containers avec boutons et contenu dynamique</title>
     <style>
         html, body {
-            height: 85vh;
+            height: 90vh;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -15,13 +15,13 @@
 
         .page-wrapper {
             display: flex;
-            height: 85vh;
+            height: 90vh;
             overflow: hidden;
         }
 
         .container-left {
             width: 30%;
-            height: 85vh;
+            height: 90vh;
             background-color: rgb(0, 0, 0);
             color: rgb(255, 255, 255);
             font-size: 18px;
@@ -53,7 +53,7 @@
 
         .container-1 {
             background-color: rgb(0, 0, 0);
-            height: 50px;
+            height: 5vh;
             position: relative;
             z-index: 1;
             padding: 5px 0;
@@ -72,7 +72,7 @@
         /* Nouveau style pour le bouton popup */
         #popup-button {
             position: relative; /* Gardez le bouton visible */
-            bottom: 10px;
+            bottom: 10%;
             left: 15%;
             transform: translateX(-50%);
             padding: 10px 20px;
@@ -87,6 +87,8 @@
             cursor: pointer; /* Curseur en forme de main */
             transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+
 
         #popup-button:hover {
             background-color: transparent;
@@ -213,6 +215,70 @@
             margin-bottom: 20px;
             font-weight: bold;
         }
+        /* Media queries */
+
+        /* Pour les écrans inférieurs à 460px */
+        @media (max-width: 460px) {
+            .page-wrapper {
+                flex-direction: column;
+            }
+
+            .container-left {
+                width: 100%;
+                height: auto;
+                font-size: 14px;
+                border-right: none;
+                border-bottom: 2px solid darkturquoise;
+            }
+            .container-2 {
+                height: 40vh;
+            }
+            .main-content {
+                width: 100%;
+            }
+
+            .buttons a {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+
+            #popup-button {
+                bottom:1%;
+                left: 50%;
+                font-size: 10px;
+            }
+        } 
+
+        /* Pour les écrans entre 460px et 768px */
+        @media (min-width: 460px) and (max-width: 768px) {
+            .container-left {
+                width: 40%;
+            }
+
+            .main-content {
+                width: 60%;
+            }
+
+            .buttons a {
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+        }
+
+        /* Pour les écrans supérieurs à 768px */
+        @media (min-width: 768px) {
+            .container-left {
+                width: 30%;
+            }
+
+            .main-content {
+                width: 70%;
+            }
+
+            .buttons a {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -258,13 +324,13 @@
             });
             selectedButton.classList.add('active');
         }
-
+    
         const contentMap = {
             button1: {
-                dynamic: '<iframe src="P10_Srsa_Stéphane_Détecter des faux billets.pdf" title="Présentation Billet"></iframe>',
+                dynamic: '<iframe src="P10_Srsa_Stéphane_Détecter des faux billets.pdf#toolbar=0" title="Présentation Billet"></iframe>',
                 left: `
-                    <div style="font-size:24px; font-weight: bold ;color: rgb(32, 115, 167); font-family: Roboto, sans-serif; text-align: center">Projet certifiant OpenClassrooms (RNCP)</div><br><br>
-                    <div class="title">👉 Détection de faux billets 👈</div><br>
+                    <div style="font-size: 18px; font-weight: bold ;color: rgb(32, 115, 167); font-family: Roboto, sans-serif; text-align: center">Projet certifiant OpenClassrooms (RNCP)</div><br><br>
+                    <div class="title">Détection de faux billets</div><br>
                 
                     Construisez un modèle de prédiction pour détecter des faux billets grâce à du clustering et de la régression logistique.<br><br><br>
                     <strong>Compétences cibles</strong> <br><br>
@@ -277,8 +343,8 @@
             button2: {
                 dynamic: '<iframe src="OCSS_P10_DA_GITHUB.html" title="Notebook"></iframe>',
                 left: `
-                    <div style="font-size:24px; font-weight: bold; color: rgb(32, 115, 167); font-family: Roboto, sans-serif; text-align: center">Projet certifiant OpenClassrooms (RNCP)</div><br><br>
-                    <div class="title">👉 Détection de faux billets 👈</div><br>
+                    <div style="font-size: 18px; font-weight: bold; color: rgb(32, 115, 167); font-family: Roboto, sans-serif; text-align: center">Projet certifiant OpenClassrooms (RNCP)</div><br><br>
+                    <div class="title">Détection de faux billets</div><br>
                     Construisez un modèle de prédiction pour détecter des faux billets grâce à du clustering et de la régression logistique.<br><br><br>
                     <strong>Compétences cibles</strong> <br><br>
                     <ul>
