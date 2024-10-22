@@ -23,23 +23,19 @@
     --primary-color: #6ee7b7;
     --secondary-color: #000000;
     --text-color: #fff;
+    --background-color: #000;
 }
-
 
 /* Bloque le scroll */
 .no-scroll {
     overflow: hidden;
   }
-.hidden {
-    display: none;
-}
 /* Styles généraux pour tout le site */
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
-    overflow-x: hidden;
 }
 
         /* ----------------------------------------------------------------------------------HEADER */
@@ -47,7 +43,7 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0px 20px;
             background-color: var(--secondary-color);
             position: fixed;
             top: 0;
@@ -66,9 +62,9 @@ body {
         nav a {
             color: var(--text-color);
             text-decoration: none;
-            padding: 5px 15px;
+            margin: 5px 15px;
             font-size: 18px;
-            position: relative;;
+            position: relative;
             transition: color 0.3s ease;
         }
         nav a::after {
@@ -185,25 +181,27 @@ body {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 30vh;
-            padding: 2rem;
+            height: 38vh;
             background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('Images/Nature.jpg');
             background-size: cover;
             background-position: center;
-            margin-top: 40px;
+            background-repeat: no-repeat;
         }
         .hero h2 {
-            font-size: clamp(1.5rem, 4vw, 4rem); /* Ajuste la taille selon la largeur de l'écran */
-            text-align: center;
-            margin-bottom: 1rem;
+            font-size: clamp(2rem, 4vw, 4rem); /* Ajuste la taille selon la largeur de l'écran */
+            margin: 0;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .hero p.hero-main {
-            font-size: clamp(0.875rem, 2vw, 1.25rem);
+            font-size: 22px;
             font-style: italic;
             color: var(--hero-text);
-            margin: 0 auto;
+            margin: 0;
             position: absolute;
-            top: 70%;
+            top: 60%;
             left: 54%;
             transform: translateX(-50%);
             text-align: center;
@@ -258,7 +256,7 @@ body {
         @media screen and (min-width: 991px)  {
             .hero p.hero-sub {
                 font-size: 12px;
-                left: 7%;
+                left: 10%;
                 white-space: normal; /* Permet de préserver les sauts de ligne */
             }
         }
@@ -268,17 +266,18 @@ body {
                 /* --------------------------------------------------- Styles pour la section à deux colonnes */
 .two-column-section {
     display: flex;
-    height: 65vh;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 2rem;
-    padding: 2rem;
+    margin: 00px 0;
+    gap: 10px;
+    padding: 0px;
     background: linear-gradient(to bottom, rgb(0, 0, 0), var(--container-background), white); /* Dégradé */
+    color: var(--nav-link);
+    margin-top: 0px;
 }
 
 .column {
-    flex: 1;
-    padding: 1rem;
+    padding: 10px;
     border-radius: 8px;
 }
 
@@ -286,11 +285,13 @@ body {
     flex: 0 0 33%;
     background-color: #33333300;
     max-width: 33%;
+    height: 400px;
 }
 
 .column-60 {
     flex: 0 0 65%;
     background-color: rgba(255, 255, 255, 0);
+    height: 420px;
     padding: 0px 10px;
     max-width: 62%;
 }
@@ -298,14 +299,17 @@ body {
 /* Styles pour les containers */
 /* Styles pour le conteneur Description */
 .description-container {
-    height: 70%; /* Ajuste la hauteur selon tes besoins */
-    padding: 1rem;
+    height: 280px; /* Ajuste la hauteur selon tes besoins */
+    padding: 5px 10px;
+    
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
 }
+
 .line-spacing {
     line-height: 1.6; /* Ajustez la valeur selon vos besoins */
 }
+
 .comment-text {
     white-space: pre-wrap; /* Optionnel pour les espaces et retours à la ligne */
 }
@@ -314,11 +318,12 @@ body {
 .outils-container,
 .librairies-container {
     display: flex;
-    flex-wrap: wrap; /* Permet le retour à la ligne sur mobile */
-    background: linear-gradient(to right, #3f3f3f, rgba(146, 146, 146, 0.503) 60%, rgba(255, 255, 255, 0));
-    padding: 0rem;
+    justify-content: space-between; /* Sépare le titre à gauche et les logos à droite */
+    align-items: center; /* Centre verticalement le contenu */
+    padding: 0px; /* Ajuste le padding */
+    background: linear-gradient(to right, #1c1c1c, rgb(146, 146, 146) 60%, white);
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
     color: var(--nav-hover); /* Couleur verte pour les titres */
 }
 
@@ -328,16 +333,18 @@ body {
 .librairies-container h3 {
     margin: 0; /* Enlève le margin */
     padding: 10px;
-    flex: 0 0 15%; /* Le titre occupe 20% de la largeur */
+    flex: 0 0 20%; /* Le titre occupe 20% de la largeur */
     text-align: left; /* Aligne le titre à gauche */
 }
+
 .project-logos {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem; /* Espace entre les logos */
-    flex: 0 0 80%; /* Les logos prennent --% de la largeur */
+    justify-content: flex-start; /* Aligne les logos à droite */
+    
+    padding: 0px 20px;
+    gap: 10px; /* Espace entre les logos */
+    flex: 0 0 70%; /* Les logos prennent 80% de la largeur */
 }
-
 
 /* Styles pour les titres des sections */
 #project-title,
@@ -349,14 +356,15 @@ body {
     margin-top: 10px;
 }
 
-/* --------------------------------------------------------Styles pour le carrousel d'images */
+/* Styles pour le carrousel d'images */
 .carousel {
     position: relative;
     width: 100%;
-    aspect-ratio: 16/9;
-    margin: 0 auto;
+    max-width: 400px;
+    height: 250px;
     overflow: hidden;
     margin: 0 auto;
+    border: 0px solid var(--nav-hover);
     border-radius: 10px;
     z-index: 1; /* Le carousel doit avoir un z-index inférieur */
 }
@@ -387,18 +395,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 48px;
     color: var(--nav-link);
 }
+
 .control-icon {
     cursor: pointer;
-    font-size: 1.5rem; /* taille du play/pause */
+    font-size: 1.5rem; /* Ajustez la taille selon vos besoins */
     user-select: none;
 }
+
 /* Styles pour les indicateurs du carrousel */
 .carousel-indicators {
     text-align: center;
     padding: 10px 0;
 }
+
 .carousel-indicators .dot {
     height: 15px;
     width: 15px;
@@ -414,21 +426,23 @@ body {
     background-color: var(--dot-active);
 }
 
-/* -------------------------------------------------------Styles pour les logos des outils et librairies */
+/* Styles pour les logos des outils et librairies */
 .project-logos img.logo {
-    height: clamp(1.2rem, 4vw, 2.2rem);
     width: auto;
+    height: 40px;
     object-fit: contain;
+    transition: transform 0.3s ease;
 }
+
 .project-logos img.logo:hover {
     transform: scale(1.1);
 }
 
-/* -------------------------------------------------------------------Classe bouton de sélection sous carrousel */
 .project-document-container {
     margin-top: 0px;
     text-align: center;
 }
+
 #project-document-link {
     display: inline-flex;
     padding: 10px 20px;
@@ -441,11 +455,13 @@ body {
     border-radius: 50px;
     transition: background-color 0.3s ease;
 }
+
 /* Classe par défaut */
 #project-document-link.default-link {
     background-color: rgb(170, 51, 73);
     color: white;
 }
+
 /* Classe pour le lien désactivé */
 #project-document-link.disabled-link {
     pointer-events: none;
@@ -454,6 +470,7 @@ body {
     cursor: not-allowed;
     color: rgb(0, 0, 0); /* Assurez-vous que le texte est lisible sur le fond désactivé */
 }
+
 /* Classe pour le lien actif */
 #project-document-link.active-link {
     background-color: #6ee7b7;
@@ -461,6 +478,7 @@ body {
     box-shadow: 5px 5px 10px #000000bc;
     color: rgb(0, 0, 0);
 }
+
 /* État de survol */
 #project-document-link:hover {
     background-color: rgb(0, 0, 0);
@@ -469,15 +487,12 @@ body {
     color: #fff;
 }
 
-/* -------------------------------------------------------------------Classe container titre + bouton fermeture */
 .Title-Close-container {
-    height: 3vh;               /* Hauteur fixe de 80px */
+    height: 40px;               /* Hauteur fixe de 80px */
     background: linear-gradient(to right, #000000, rgb(146, 146, 146) 60%, white);
-    color: #f9f2f2;
-    font-size: 1.1em;
-    text-shadow: 2px 2px 4px rgba(231, 222, 222, 0.5); /* Ombre pour le relief */
-    padding-left: 40%;
-    padding-right: 4%;
+    color: var(--header-text);
+    padding: 10px;              /* Espacement interne */
+    margin-top: 20px;           /* Espacement externe */
     border-radius: 10px;        /* Coins arrondis */
     display: flex;              /* Utilisation de flexbox pour aligner le contenu */
     align-items: center;        /* Centrer verticalement le contenu */
@@ -499,20 +514,20 @@ body {
 }
 
 #close-button {
-    background: linear-gradient(to bottom, #761920bc, #f7afb2bc, #581515bc);
+    background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
     box-shadow: 5px 5px 10px #000000bc;
     color: rgb(3, 3, 3);
     padding: 5px 10px;          /* Espacement réduit pour s'adapter à la hauteur */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1.2em;           /* Taille de police réduite pour le bouton */
+    font-size: 1em;           /* Taille de police réduite pour le bouton */
     font-weight: bold;
     transition: background-color 0.3s; /* Transition fluide pour le changement de couleur */
 }
 
 #close-button:hover:not(.disabled-button) {
-    background-color: #000000; /* Changement de couleur au survol */
+    background-color: #13181d; /* Changement de couleur au survol */
 }
 
 /* Styles pour le bouton désactivé */
@@ -534,118 +549,113 @@ body {
 }
 
 
+
+/* Correction de la section deux colonnes pour les appareils mobiles */
+@media (max-width: 768px) {
+    .two-column-section {
+        flex-direction: column;
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .column-40,
+    .column-60 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .description-container {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .carousel {
+        max-width: 100%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .two-column-section {
+        padding: 5px;
+        gap: 15px;
+    }
+
+    .column-40,
+    .column-60 {
+        padding: 5px;
+    }
+
+    .description-container {
+        min-height: 150px;
+    }
+
+    .carousel {
+        height: 150px;
+    }
+
+    .outils-container,
+    .librairies-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .outils-container h3,
+    .librairies-container h3 {
+        flex: 0 0 100%;
+        text-align: center;
+        padding: 5px;
+    }
+
+    .project-logos {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .project-logos img.logo {
+        height: 30px;
+    }
+}
+
+
+
 #document-container.hidden {
     display: none; /* Masque le conteneur entier quand la classe "hidden" est ajoutée */
 }
+
 #document-container {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 80%;
     margin-top: 0px;
-    padding: 1rem;
+    padding: 20px 0px;
     background-color: rgba(0, 0, 0, 0);
     color: #fff; /* Assurez-vous que le texte est lisible sur le fond noir */
 }
+
 #document-container iframe {
     width: 100%;
-    height: 90vh; /* Ajustez la hauteur si nécessaire */
-    max-height: 90vh;
+    height: 750px; /* Ajustez la hauteur si nécessaire */
+    max-height: 750px;
     background-color: rgb(0, 0, 0);
     border: none;
 }
+
 #document-container video {
     width: 100%;
-    height: 90vh; /* Ajuste la hauteur automatiquement en fonction de la largeur */
+    height: 80%; /* Ajuste la hauteur automatiquement en fonction de la largeur */
     display: block; /* Assurez-vous que la vidéo est visible lorsqu'elle est affichée */
 }
 
-/* Correction de la section deux colonnes pour les appareils mobiles */
-/* Media Queries */
-@media screen and (max-width: 991px) {
-    .column-40,
-    .column-60 {
-        flex: 0 0 100%;
-        max-width: 100%;
-        padding: 1rem;
-    }
-    .two-column-section {
-        flex-direction: column;
-        height: auto;
-    }
-    .project-logos img.logo {
-        height: 35px;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .hero {
-        min-height: 25vh;
-    }
-    .project-logos img.logo {
-        height: 25px;
-    }
-    .outils-container,
-    .librairies-container {
-        flex-direction: column;
-    }
-    .outils-container h3,
-    .librairies-container h3 {
-        width: 100%;
-        justify-content: center;
-        padding: 0.5rem;
-    }
-    .Title-Close-container {
-        height: auto;    
-        padding-left: 35%;
-        padding-right: 4%;
-        font-size: 0.5em;
-    }
-    .project-logos {
-        width: 100%;
-        justify-content: center;
-    }
-    #document-container iframe {
-        height: 500px;
-    }
-}
-
-@media screen and (max-width: 479px) {
-    .hero {
-        min-height: 20vh;
-    }
-    .project-logos img.logo {
-        height: 15px;
-    }
-    .project-logos {
-        justify-content: center;
-    }
-    .Title-Close-container {
-        height: auto;    
-        padding-left: 10%;
-        padding-right: 2%;
-        font-size: 0.5em;
-    }
-    #document-container {
-        padding: 0.5rem;
-    }
-    #document-container iframe {
-        height: 60vh;
-    }
-    .carousel-controls {
-        font-size: 20px;
-    }
-    .carousel-indicators .dot {
-        height: 10px;
-        width: 10px;
-    }
-}
 
 
 
 
-
-
+        
 
        /* ------------------------------------------------------------------------------FOOTER */
        .footer {
@@ -939,7 +949,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: `
                 
                 <p style="text-align: center; font-size: 20px;"><strong>Prévisions basées sur l'analyse comportementale de l'électorat</strong></p>
-                <ul><br>
+                <ul>
                     <li class='line-spacing'>Collecte résultats Elections Européennes 2024 et Elections Législatives 2022</li>
                     <li class='line-spacing'>Reprise des résultats définitifs du 1er tour (pour le second tour)</li>
                     <li class='line-spacing'>Mise en place des hypothèses</li>
@@ -968,7 +978,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Etude Médecins Généralistes",
             description: `
             <p style="text-align: center; font-size: 20px;"><strong>Etat des lieux - Médecins Généralistes Libéraux</strong></p>
-            <ul><br>
+            <ul>
                 <li class='line-spacing'>Collecte de données Multi-sources</li>
                 <li class='line-spacing'>Analyse préparatoire des fichiers - EDA</li>
                 <li class='line-spacing'>Analyse de l'évolution démographiques de 2012 à 2023</li>
@@ -993,7 +1003,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Détection de faux billets - Machine Learning",
             description: `
                 <p style="text-align: center; font-size: 20px;"><strong>Détection de faux billets - Machine Learning</strong></p>
-                <ul><br>
+                <ul>
                     <li class='line-spacing'>Collecte de données sur les caractéristiques des billets</li>
                     <li class='line-spacing'>Analyse exploratoire (EDA)</li>
                     <li class='line-spacing'>Régression linéaire : Modèle prédictif pour remplacer valeurs manquantes</li>
@@ -1022,7 +1032,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Analyse des inégalités",
             description: `
                 <p style="text-align: center; font-size: 20px;"><strong>Analyse des inégalités de genre en entreprise</strong></p>
-                <ul><br>
+                <ul>
                     <li class='line-spacing'>Collecte de données sur les écarts de salaire</li>
                     <li class='line-spacing'>Évaluation des opportunités de carrière</li>
                     <li class='line-spacing'>Analyse des politiques d'équité en entreprise</li>
@@ -1045,7 +1055,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Etude de marché - Export",
             description: `
                 <p style="text-align: center; font-size: 20px;"><strong>Analyse des groupements de pays cibles pour exporter nos poulets</strong></p>
-                <ul><br>
+                <ul>
                     <li class='line-spacing'>Sélection des données pertinentes sur FAO (open source)</li>
                     <li class='line-spacing'>Préparation, nettoyage et analyse exploratoire des données</li>
                     <li class='line-spacing'>Classification ascendante hiérarchique / dendrogramme</li>
@@ -1073,7 +1083,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Gestion de l'eau en Afrique",
             description: `
                 <p style="text-align: center; font-size: 20px;"><strong>Gestion de l'eau en Afrique pour améliorer l'accès</strong></p>
-                <ul><br>
+                <ul>
                     <li class='line-spacing'>Analyse des besoins en eau potable</li>
                     <li class='line-spacing'>Conception de systèmes de distribution</li>
                     <li class='line-spacing'>Évaluation des ressources en eau disponibles</li>
@@ -1096,7 +1106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Optimisation de la gestion de données",
             description: `
                 <p style="text-align: center; font-size: 20px;"><strong>Optimiser la gestion des données d'une boutique</strong></p>
-                <ul><br>
+                <ul>
                     <li class='line-spacing'>Analyse exploratoire des fichiers</li
                     ><li class='line-spacing'>Mise en concordance et jointures des tables</li>
                     <li class='line-spacing'>Mise à l'écart des valeurs nulles et manquantes</li>
@@ -1120,7 +1130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Gestion des ventes dans une librairie",
             description: `
                 <p style="text-align: center; font-size: 20px;"><strong>Gestion des ventes et inventaire dans une librairie</strong></p>
-                <ul><br>
+                <ul>
                     <li class='line-spacing'>Suivi des ventes et des inventaires</li>
                     <li class='line-spacing'>Mise en place d'un système de gestion des commandes</li>
                     <li class='line-spacing'>Analyse des préférences des clients</li>
@@ -1238,7 +1248,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajoute un délai avant d'exécuter le défilement
                 setTimeout(() => {
                     window.scrollTo({
-                        top: documentContainer.getBoundingClientRect().top + window.scrollY - 114,
+                        top: documentContainer.getBoundingClientRect().top + window.scrollY - 60,
                         behavior: 'smooth'
                     });
                 }, 100); // Ajuste le délai si nécessaire
