@@ -24,12 +24,8 @@
     --secondary-color: #000000;
     --text-color: #fff;
 }
-/* Base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
+
 /* Bloque le scroll */
 .no-scroll {
     overflow: hidden;
@@ -51,7 +47,7 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem;
+            padding: 0 20px;
             background-color: var(--secondary-color);
             position: fixed;
             top: 0;
@@ -60,7 +56,7 @@ body {
         }
         header h1 {
             color: var(--primary-color);
-            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-size: 22px;
         }
         nav {
             display: flex;
@@ -70,8 +66,8 @@ body {
         nav a {
             color: var(--text-color);
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+            padding: 5px 15px;
+            font-size: 18px;
             position: relative;;
             transition: color 0.3s ease;
         }
@@ -477,7 +473,7 @@ body {
 .Title-Close-container {
     height: 3vh;               /* Hauteur fixe de 80px */
     background: linear-gradient(to right, #000000, rgb(146, 146, 146) 60%, white);
-    color: #4f1111;
+    color: #f9f2f2;
     font-size: 1.1em;
     text-shadow: 2px 2px 4px rgba(231, 222, 222, 0.5); /* Ombre pour le relief */
     padding-left: 40%;
