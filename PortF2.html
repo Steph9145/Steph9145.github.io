@@ -181,7 +181,7 @@ body {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 35vh;
+            height: 38vh;
             background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('Images/Nature.jpg');
             background-size: cover;
             background-position: center;
@@ -267,7 +267,6 @@ body {
 .two-column-section {
     display: flex;
     flex-wrap: wrap;
-    height: 65vh;
     justify-content: space-between;
     margin: 00px 0;
     gap: 10px;
@@ -286,13 +285,13 @@ body {
     flex: 0 0 33%;
     background-color: #33333300;
     max-width: 33%;
-    height: 65vh;
+    height: 400px;
 }
 
 .column-60 {
     flex: 0 0 65%;
     background-color: rgba(255, 255, 255, 0);
-    height: 65vh;
+    height: 420px;
     padding: 0px 10px;
     max-width: 62%;
 }
@@ -489,12 +488,11 @@ body {
 }
 
 .Title-Close-container {
-    height: 4vh;               /* Hauteur fixe de 80px */
+    height: 40px;               /* Hauteur fixe de 80px */
     background: linear-gradient(to right, #000000, rgb(146, 146, 146) 60%, white);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour le relief */
     color: var(--header-text);
-    padding-left: 30%;
-    padding-right: 4%;
+    padding: 10px;              /* Espacement interne */
+    margin-top: 20px;           /* Espacement externe */
     border-radius: 10px;        /* Coins arrondis */
     display: flex;              /* Utilisation de flexbox pour aligner le contenu */
     align-items: center;        /* Centrer verticalement le contenu */
@@ -1250,7 +1248,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajoute un délai avant d'exécuter le défilement
                 setTimeout(() => {
                     window.scrollTo({
-                        top: documentContainer.getBoundingClientRect().top + window.scrollY - 110,
+                        top: documentContainer.getBoundingClientRect().top + window.scrollY - 60,
                         behavior: 'smooth'
                     });
                 }, 100); // Ajuste le délai si nécessaire
