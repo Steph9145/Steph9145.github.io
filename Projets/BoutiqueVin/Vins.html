@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deux containers avec boutons et contenu dynamique</title>
     <style>
+            /* Variables CSS pour les couleurs réutilisées */
+        :root {
+            --background-color: #000;
+            --header-background: #000000;
+            --Turquoise: darkturquoise;
+            --nav-link: white;
+            --Marron: #90253a;
+        }
         html, body {
             height: 85vh;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: rgb(0, 0, 0);
+            background-color: var(--background-color);
         }
 
         .page-wrapper {
@@ -21,17 +29,23 @@
 
         .container-left {
             width: 30%;
-            height: 85vh;
-            background-color: rgb(0, 0, 0);
-            color: rgb(255, 255, 255);
+            height: 80vh;
+            background-color: var(--background-color);
+            color: var(--nav-link);
             font-size: 18px;
             padding: 20px;
-            border-right: 2px solid darkturquoise;
+            border-right: 2px solid var(--Turquoise);
             box-sizing: border-box;
             overflow-y: auto;
             line-height: 1.4; /* Ajuste ici l'interligne */
         }
-
+        .container-left p {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--Marron);
+            font-family: Roboto, sans-serif;
+            text-align: center;
+        }
         .main-content {
             width: 70%;
             display: flex;
@@ -52,15 +66,15 @@
         }
 
         .container-1 {
-            background-color: rgb(0, 0, 0);
-            height: 50px;
+            background-color: var(--background-color);
+            height: 5vh;
             position: relative;
             z-index: 1;
             padding: 5px 0;
         }
 
         .container-2 {
-            background-color: rgb(0, 0, 0);
+            background-color: var(--background-color);
             flex-grow: 1;
             display: flex;
             justify-content: center;
@@ -72,14 +86,14 @@
         /* Nouveau style pour le bouton popup */
         #popup-button {
             position: relative; /* Gardez le bouton visible */
-            bottom: 20px;
+            bottom: 10%;
             left: 15%;
             transform: translateX(-50%);
             padding: 10px 20px;
             border-radius: 50px;
-            background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);   
-            box-shadow: 5px 5px 10px #000000bc;         
-            color: rgb(255, 255, 255); /* Couleur du texte */
+            background: linear-gradient(to bottom, black, #486b87bc, var(--Turquoise));        
+            box-shadow: 5px 5px 10px black;
+            color: var(--nav-link); /* Couleur du texte */
             border: none; /* Pas de bordure */
             border-radius: 50px; /* Coins arrondis */
             font-size: 16px; /* Taille du texte */
@@ -90,7 +104,7 @@
 
         #popup-button:hover {
             background-color: transparent;
-            color: #000000;
+            color: black;
         }
 
         .popup {
@@ -146,11 +160,10 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            padding: 10px 25px;
-            background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
-            color: #ffffff;
+            padding: 5px 20px;
+            background: linear-gradient(to bottom, black, #486b87bc, var(--Turquoise));
+            color: white;
             border-radius: 50px;
-            box-shadow: 5px 5px 10px #305a62bc;
             font-size: 20px;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
             font-weight: bold;
@@ -159,7 +172,7 @@
 
         .buttons a:hover {
             background-color: transparent;
-            color: #000000;
+            color: black;
             box-shadow: none;
             transform: scale(1.05);
         }
@@ -168,7 +181,7 @@
             background-color: transparent;
             background: none;
             box-shadow:none;
-            color: #20cea8;
+            color:var(--Turquoise);
         }
 
         .dynamic-content img {
@@ -212,6 +225,71 @@
             font-size: 24px;
             margin-bottom: 20px;
             font-weight: bold;
+        }
+
+            /* Media queries */
+
+        /* Pour les écrans inférieurs à 460px */
+        @media (max-width: 460px) {
+            .page-wrapper {
+                flex-direction: column;
+            }
+
+            .container-left {
+                width: 100%;
+                height: auto;
+                font-size: 14px;
+                border-right: none;
+                border-bottom: 2px solid darkturquoise;
+            }
+            .container-2 {
+                height: 40vh;
+            }
+            .main-content {
+                width: 100%;
+            }
+
+            .buttons a {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+
+            #popup-button {
+                bottom:1%;
+                left: 50%;
+                font-size: 10px;
+            }
+        } 
+
+        /* Pour les écrans entre 460px et 768px */
+        @media (min-width: 460px) and (max-width: 768px) {
+            .container-left {
+                width: 40%;
+            }
+
+            .main-content {
+                width: 60%;
+            }
+
+            .buttons a {
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+        }
+
+        /* Pour les écrans supérieurs à 768px */
+        @media (min-width: 768px) {
+            .container-left {
+                width: 30%;
+            }
+
+            .main-content {
+                width: 70%;
+            }
+
+            .buttons a {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -261,13 +339,13 @@
 
         const contentMap = {
             button1: {
-                dynamic: '<iframe src="Projet 5 - PPT.pdf" title="Présentation Billet"></iframe>',
+                dynamic: '<iframe src="Projet 5 - PPT.pdf#toolbar=0"" title="Présentation Billet"></iframe>',
                 left: `
-                    <div style="font-size:24px; font-weight: bold ;color: rgb(32, 115, 167); font-family: Roboto, sans-serif; text-align: center">Projet certifiant OpenClassrooms (RNCP)</div><br><br>
+                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br><br>
                 
-                    <p>L'ERP actuel n'est pas relié au site de vente en ligne, rendant la gestion des stocks et l'analyse des ventes complexes.</p>
-                    <p>Une solution centralisée est attendue, mais un rapprochement manuel des bases ERP et CMS serait utile.</p>
-                    <strong>Missions : </strong> <br>
+                    <div>L'ERP actuel n'est pas relié au site de vente en ligne, rendant la gestion des stocks et l'analyse des ventes complexes.</div>
+                    Une solution centralisée est attendue, mais un rapprochement manuel des bases ERP et CMS serait utile.<br><br>
+                    <p>Objectifs du projet</strong></p>
                     <ul>
                         <li>rapprocher deux exports (ERP avec références, prix et stock + CMS avec infos produits et nombre de ventes).</li>
                         <ul>
@@ -277,17 +355,17 @@
                         <li>calculer le chiffre d’affaires par produit et le chiffre d’affaires total en ligne.</li>
                         <li>analyser les prix des produits pour détecter des erreurs et créer une représentation graphique des valeurs aberrantes.</li>
                     </ul>
-                    <p>Les résultats seront présentés à la réunion de COPIL via une présentation ou un notebook.</p>
+                    <div>Les résultats seront présentés à la réunion de COPIL via une présentation ou un notebook.</div>
                 `
             },
             button2: {
                 dynamic: '<iframe src="OCSS_P5_DA-GITHUB.html" title="Notebook"></iframe>',
                 left: `
-                    <div style="font-size:24px; font-weight: bold ;color: rgb(32, 115, 167); font-family: Roboto, sans-serif; text-align: center">Projet certifiant OpenClassrooms (RNCP)</div><br><br>
+                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br><br>
                 
-                    <p>L'ERP actuel n'est pas relié au site de vente en ligne, rendant la gestion des stocks et l'analyse des ventes complexes.</p>
-                    <p>Une solution centralisée est attendue, mais un rapprochement manuel des bases ERP et CMS serait utile.</p>
-                    <strong>Missions : </strong> <br>
+                    <div>L'ERP actuel n'est pas relié au site de vente en ligne, rendant la gestion des stocks et l'analyse des ventes complexes.</div>
+                    Une solution centralisée est attendue, mais un rapprochement manuel des bases ERP et CMS serait utile.<br><br>
+                    <strong style="text-align: center;">Objectifs du projet</strong><br>
                     <ul>
                         <li>rapprocher deux exports (ERP avec références, prix et stock + CMS avec infos produits et nombre de ventes).</li>
                         <ul>
@@ -297,7 +375,7 @@
                         <li>calculer le chiffre d’affaires par produit et le chiffre d’affaires total en ligne.</li>
                         <li>analyser les prix des produits pour détecter des erreurs et créer une représentation graphique des valeurs aberrantes.</li>
                     </ul>
-                    <p>Les résultats seront présentés à la réunion de COPIL via une présentation ou un notebook.</p>
+                    <div>Les résultats seront présentés à la réunion de COPIL via une présentation ou un notebook.</div><br>
                 `
             }
         };
