@@ -5,33 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deux containers avec boutons et contenu dynamique</title>
     <style>
+        /* Variables CSS pour les couleurs réutilisées */
+        :root {
+            --background-color: #000;
+            --header-background: #000000;
+            --Turquoise: darkturquoise;
+            --nav-link: white;
+            --Marron: #90253a;
+        }
         html, body {
-            height: 90vh;
+            height: 85vh;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: rgb(0, 0, 0);
+            background-color: var(--background-color);
         }
 
         .page-wrapper {
             display: flex;
-            height: 90vh;
+            height: 85vh;
             overflow: hidden;
         }
 
         .container-left {
             width: 30%;
-            height: 90vh;
-            background-color: rgb(0, 0, 0);
-            color: rgb(255, 255, 255);
+            height: 85vh;
+            background-color: var(--background-color);
+            color: var(--nav-link);
             font-size: 18px;
             padding: 20px;
-            border-right: 2px solid darkturquoise;
+            border-right: 2px solid var(--Turquoise);
             box-sizing: border-box;
             overflow-y: auto;
             line-height: 1.4; /* Ajuste ici l'interligne */
         }
-
+        .container-left p {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--Marron);
+            font-family: Roboto, sans-serif;
+            text-align: center;
+        }
         .main-content {
             width: 70%;
             display: flex;
@@ -52,7 +66,7 @@
         }
 
         .container-1 {
-            background-color: rgb(0, 0, 0);
+            background-color: var(--background-color);
             height: 5vh;
             position: relative;
             z-index: 1;
@@ -60,7 +74,7 @@
         }
 
         .container-2 {
-            background-color: rgb(0, 0, 0);
+            background-color: var(--background-color);
             flex-grow: 1;
             display: flex;
             justify-content: center;
@@ -77,9 +91,9 @@
             transform: translateX(-50%);
             padding: 10px 20px;
             border-radius: 50px;
-            background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);   
-            box-shadow: 5px 5px 10px #000000bc;         
-            color: rgb(255, 255, 255); /* Couleur du texte */
+            background: linear-gradient(to bottom, black, #486b87bc, var(--Turquoise));   
+            box-shadow: 5px 5px 10px black;         
+            color: var(--nav-link); /* Couleur du texte */
             border: none; /* Pas de bordure */
             border-radius: 50px; /* Coins arrondis */
             font-size: 16px; /* Taille du texte */
@@ -88,11 +102,9 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-
-
         #popup-button:hover {
             background-color: transparent;
-            color: #000000;
+            color: black;
         }
 
         .popup {
@@ -131,8 +143,6 @@
             max-height: 100%;
         }
 
-        
-
         .buttons {
             display: flex;
             justify-content: center;
@@ -148,11 +158,10 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            padding: 10px 25px;
-            background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
-            color: #ffffff;
+            padding: 5px 20px;
+            background: linear-gradient(to bottom, black, #486b87bc, var(--Turquoise));
+            color: white;
             border-radius: 50px;
-            box-shadow: 5px 5px 10px #305a62bc;
             font-size: 20px;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
             font-weight: bold;
@@ -161,7 +170,7 @@
 
         .buttons a:hover {
             background-color: transparent;
-            color: #000000;
+            color: black;
             box-shadow: none;
             transform: scale(1.05);
         }
@@ -170,7 +179,7 @@
             background-color: transparent;
             background: none;
             box-shadow:none;
-            color: #20cea8;
+            color: var(--Turquoise);
         }
 
         .dynamic-content img {
@@ -329,10 +338,10 @@
             button1: {
                 dynamic: '<iframe src="P10_Srsa_Stéphane_Détecter des faux billets.pdf#toolbar=0" title="Présentation Billet"></iframe>',
                 left: `
-                    <div style="font-size: 18px; font-weight: bold ;color: rgb(32, 115, 167); font-family: Roboto, sans-serif; text-align: center">Projet certifiant OpenClassrooms (RNCP)</div><br><br>
-                    <div class="title">Détection de faux billets</div><br>
+                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br><br>
+                    <div class="title">Objectifs du projet</div><br>
                 
-                    Construisez un modèle de prédiction pour détecter des faux billets grâce à du clustering et de la régression logistique.<br><br><br>
+                    Construisez un modèle de prédiction pour détecter des faux billets grâce au clustering et à la régression logistique.<br><br><br>
                     <strong>Compétences cibles</strong> <br><br>
                     <ul>
                         <li>Entraîner un modèle d'apprentissage non supervisé pour exploiter le modèle.</li>
