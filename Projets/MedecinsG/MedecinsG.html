@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deux containers avec boutons et contenu dynamique</title>
     <style>
+        :root {
+            --background-color: black;
+            --header-background: black;
+            --Turquoise: darkturquoise;
+            --nav-link: white;
+            --Marron: #90253a;
+        }          
         html, body {
             height: 85vh;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: rgb(0, 0, 0);
+            background-color: var(--background-color);
         }
 
         .page-wrapper {
@@ -22,15 +29,22 @@
         .container-left {
             width: 30%;
             height: 85vh;
-            background-color: rgb(0, 0, 0);
-            color: rgb(255, 255, 255);
+            background-color: var(--background-color);
+            color: var(--nav-link);
             font-size: 17px;
             padding: 20px;
-            border-right: 2px solid darkturquoise;
+            border-right: 2px solid var(--Turquoise);
             box-sizing: border-box;
             overflow-y: auto;
+            line-height: 1.15; /* Ajuste ici l'interligne */
         }
-
+        .container-left p {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--Marron);
+            font-family: Roboto, sans-serif;
+            text-align: center;
+        }
         .main-content {
             width: 70%;
             display: flex;
@@ -51,7 +65,7 @@
         }
 
         .container-1 {
-            background-color: rgb(0, 0, 0);
+            background-color: var(--background-color);
             height: 50px;
             position: relative;
             z-index: 1;
@@ -59,7 +73,7 @@
         }
 
         .container-2 {
-            background-color: rgb(0, 0, 0);
+            background-color: var(--background-color);
             flex-grow: 1;
             display: flex;
             justify-content: center;
@@ -67,13 +81,11 @@
             position: relative;
             overflow: hidden;
         }
-        
-    
 
         .buttons {
             display: flex;
             justify-content: center;
-            gap: 100px;
+            gap: 5%;
             margin: 0px;
             position: relative;
             left: 50%;
@@ -86,11 +98,10 @@
             justify-content: center;
             text-decoration: none;
             padding: 10px 25px;
-            background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
-            color: #ffffff;
+            background: linear-gradient(to bottom, black, #486b87bc, var(--Turquoise));
+            color: white;
             border-radius: 50px;
-            box-shadow: 5px 5px 10px #305a62bc;
-            font-size: 20px;
+            font-size: 18px;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
             font-weight: bold;
             text-align: center;
@@ -98,7 +109,7 @@
 
         .buttons a:hover {
             background-color: transparent;
-            color: #000000;
+            color: black;
             box-shadow: none;
             transform: scale(1.05);
         }
@@ -107,7 +118,7 @@
             background-color: transparent;
             background: none;
             box-shadow:none;
-            color: #20cea8;
+            color: var(--Turquoise);
         }
 
         .dynamic-content img {
@@ -152,6 +163,61 @@
             margin-bottom: 20px;
             font-weight: bold;
         }
+                /* Media queries */
+        /* Styles communs pour les écrans jusqu'à 768px */
+@media (max-width: 768px) {
+    .page-wrapper {
+        flex-direction: column;
+    }
+    .container-left {
+        width: 100%;
+        height: 40vh;
+        font-size: 14px;
+        border-right: none;
+        border-bottom: 2px solid var(--Turquoise);
+    }
+    .container-2 {
+        height: 40vh;
+    }
+    .main-content {
+        width: 100%;
+    }
+    .buttons {
+        gap: 10%;
+    }
+}
+
+    /* Ajustements pour les écrans inférieurs à 460px */
+    @media (max-width: 460px) {
+        .buttons a {
+            font-size: 12px;
+            padding: 8px 15px;
+    }
+        .buttons {
+            gap: 3%;
+    }
+    /* Ajustements pour les écrans de 461px à 768px */
+    @media (min-width: 461px) and (max-width: 768px) {
+        .buttons a {
+            font-size: 14px;
+            padding: 8px 15px;
+        }
+    }
+
+        /* Pour les écrans supérieurs à 768px */
+        @media (min-width: 768px) {
+            .container-left {
+                width: 30%;
+            }
+
+            .main-content {
+                width: 70%;
+            }
+
+            .buttons a {
+                font-size: 20px;
+            }
+        }  
     </style>
 </head>
 <body>
@@ -210,23 +276,24 @@
                     </video>
                 `,
                 left: `
-                    <div class="title">👉 Médecins Généralistes 👈</div>
-                            <div class="title"> Libéraux </div><br><br><br>
-                            <p>Les Chiffres Clés, ce que je voulais voir:</p>
+                    <div class="title">Médecins Généralistes Libéraux</div><br>
+                            
+                            <p>Les Chiffres Clés</p>
                             <ul>
-                                <li>👉 Evolution de 2012 à 2023 des médecins et de la population</li>
-                                <li>👉 Evolution de N-1 à N (année choisie) des médecins et de la population</li>
-                            </ul>
-                            <p>👉 Comparer 2012 à l'année choisie:</p>
+                                <li>Evolution de 2012 à 2023 des médecins et de la population</li>
+                                <li>Evolution de N-1 à N (année choisie) des médecins et de la population</li>
+                            </ul><br>
+                            <p>Comparaison 2012 vs année choisie</p>
                             <ul>
-                                <li>➡ Population</li>
-                                <li>➡ Médecin</li>
-                                <li>➡ Patientèle moyenne par médecin</li>
-                                <li>➡ Parité Femmes/Hommes médecins</li>
-                            </ul>
-                            <p>🖼️ Utilisation de visuels en courbe, en histogramme et géographique pour illustrer les chiffres et les lieux concernés.</p>
-                            <p>🪄 Utilisation de filtres pour l'année, la région et le département pour affiner l'analyse.</p>
-                            <p>🎁 Ajout d'une animation montrant l'évolution de la sélection (Régions + Départements) entre 2012 et 2023</p>
+                                <li>Population</li>
+                                <li>Médecin</li>
+                                <li>Patientèle moyenne par médecin</li>
+                                <li>Parité Femmes/Hommes médecins</li>
+                            </ul><br>
+                          
+                            - Utilisation de visuels en courbe, en histogramme et géographique pour illustrer les chiffres et les lieux concernés.<br><br>
+                            - Utilisation de filtres pour l'année, la région et le département pour affiner l'analyse.<br><br>
+                            - Ajout d'une animation montrant l'évolution de la sélection (Régions + Départements) entre 2012 et 2023<br>                            
                 `
             },
             button2: {
@@ -237,21 +304,24 @@
                     </video>
                 `,
                 left: `
-                    <div class="title">👉 Evolution 2012-2023 👈</div><br><br><br>
-                            <p>Je ne vais pas mettre mon analyse complète dans ce post, juste 2 ou 3 faits à retenir sur la période 2012-2023:</p>
-                            <ul>
-                                <li>👉 La France a perdu 7 400 médecins (-11,5%) pendant que la population augmentait de 4% et est passée de 1020 Habs à 1200 Habs par médecins</li>
-                                <li>👉 Si le bassin méditerranéen reste bien couvert (PACA+ Occitanie), l'évolution des médecins a baissé de plus de 14% et est passée de 830 Habs à 1030 Habs par médecins</li>
-                                <li>👉 La côte Atlantique (Bretagne, Pays de la Loire et Nouvelle-Aquitaine) reste stable, passant de 980 Habs à 1061 Habs par médecins</li>
-                            </ul>
-                            <p>La bonne nouvelle, d'une façon générale, est que la France a quasiment atteint la parité dans cette profession.</p>
-                            <p>La seconde partie de mon projet concerne la présence géolocalisée d'une base de 48,5k médecins généralistes et leur densité par cantons (plus pertinent que les communes) en 2024.</p>
+                    <div class="title">Evolution 2012 - 2023</div><br>
                             
-                            ➕ <b>Avantage</b>:<br>
-                            Les choix pris permettent d'obtenir des prévisions cohérentes comparées aux résultats réels du 1er tour.<br><br>
-                            ➖ <b>Biais</b>:<br>
-                            J'ai "sacrifié" les LR en les splittant sur 3 listes (Ensemble, LR et RN) pour toutes les circonscriptions, ce qui a eu pour effet de minimiser les résultats des candidats LR sans alliance.
-                        
+                            <p>Les Chiffres Clés</p>
+                            <ul>
+                                <li>Evolution de 2012 à 2023 des médecins et de la population</li>
+                                <li>Evolution de N-1 à N (année choisie) des médecins et de la population</li>
+                            </ul><br>
+                            <p>Comparaison 2012 vs année choisie</p>
+                            <ul>
+                                <li>Population</li>
+                                <li>Médecin</li>
+                                <li>Patientèle moyenne par médecin</li>
+                                <li>Parité Femmes/Hommes médecins</li>
+                            </ul><br>
+                          
+                            - Utilisation de visuels en courbe, en histogramme et géographique pour illustrer les chiffres et les lieux concernés.<br><br>
+                            - Utilisation de filtres pour l'année, la région et le département pour affiner l'analyse.<br><br>
+                            - Ajout d'une animation montrant l'évolution de la sélection (Régions + Départements) entre 2012 et 2023<br>         
                 `
             },
             button3: {
@@ -262,15 +332,24 @@
                     </video>
                 `,
                 left: `
-                    <div class="title">👉 Présence - Mars 2024 👈</div><br><br><br>
-                            J'ai expliqué ma démarche basée sur les résultats du 1er tour (data.gouv.fr), les désistements, les différentes répartitions des voix en fonction des duels….<br><br>
-                            Je n’ai hélas pas eu le temps d’analyser les circonscriptions pour lesquelles les deux premiers candidats étaient au coude à coude.<br>
-                            Il est possible que cela explique la quarantaine de sièges manquantes au RN et à priori reportés sur l’UG!<br><br>
-                            <div class="title">- voir "Analyse erreurs" -</div><br>
-                            <b>Le bilan :</b><br>
-                            👉 Mes projections positionnent les 3 principales listes dans le bon ordre.<br>
-                            👉 Elles sont plus proches de la réalité que celles annoncées par les médias (230 sièges pour le RN)<br>
-                            👉 Analyse comportementale/Electorale cohérente`
+                    <div class="title">Présence - Mars 2024</div><br><br><br>
+                            <p>Les Chiffres Clés</p>
+                            <ul>
+                                <li>Evolution de 2012 à 2023 des médecins et de la population</li>
+                                <li>Evolution de N-1 à N (année choisie) des médecins et de la population</li>
+                            </ul><br>
+                            <p>Comparaison 2012 vs année choisie</p>
+                            <ul>
+                                <li>Population</li>
+                                <li>Médecin</li>
+                                <li>Patientèle moyenne par médecin</li>
+                                <li>Parité Femmes/Hommes médecins</li>
+                            </ul><br>
+                          
+                            - Utilisation de visuels en courbe, en histogramme et géographique pour illustrer les chiffres et les lieux concernés.<br><br>
+                            - Utilisation de filtres pour l'année, la région et le département pour affiner l'analyse.<br><br>
+                            - Ajout d'une animation montrant l'évolution de la sélection (Régions + Départements) entre 2012 et 2023<br>   
+                    `
             }
         };
 
