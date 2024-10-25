@@ -10,17 +10,17 @@
 :root {
     --background-color: #000;
     --header-background: #000000;
-    --header-text: #6ee7b7;
+    --header-text: darkturquoise;
     --nav-link: #fff;
-    --nav-hover: #6ee7b7;
+    --nav-hover: darkturquoise;
     --hero-text: #fff;
     --section-background: #050505;
     --column-background: #141414;
     --container-background: #333;
     --footer-background: #000000;
-    --footer-text: #6ee7b7;
-    --dot-active: #41886b;
-    --primary-color: #6ee7b7;
+    --footer-text: darkturquoise;
+    --dot-active: #ae0011;
+    --primary-color: darkturquoise;
     --secondary-color: #000000;
     --text-color: #fff;
 }
@@ -117,7 +117,7 @@ body {
             header h1 {
                 font-size: 18px; /* Réduction de la taille du titre pour les mobiles */
             }
-        }    
+        }   
 
         @media (max-width: 768px) {
             header {
@@ -126,7 +126,6 @@ body {
             header h1 {
                 font-size: 18px; /* Réduction de la taille du titre pour les mobiles */
             }
-            
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -145,7 +144,7 @@ body {
                 margin: 0;
                 font-size: 14px; /* Taille plus petite pour les liens */
                 border-bottom: 1px solid var(--primary-color); /* Ligne de séparation */
-                background-color: rgba(36, 34, 34, 0.812);
+                background-color: rgba(0, 0, 0, 0.812);
                 display: block;
                 width: calc(100% - 120px); /* Réduit la largeur pour diminuer la longueur du trait */
                 margin-left: 90px; /* Ajuste la marge à gauche pour centrer les liens */
@@ -159,7 +158,8 @@ body {
             .nav-links.show {
                 display: flex;
             }
-        }
+    }
+
         @media (max-width: 479px) {
             header h1 {
                 font-size: 14px; /* Réduction de la taille du titre pour les mobiles */
@@ -351,7 +351,7 @@ body {
 /* Styles pour les titres des sections */
 #project-title,
 .container h3 {
-    color: #6cd6aa; /* Change la couleur */
+    color: var(--primary-color); /* Change la couleur */
     font-size: 22px;
     font-style: italic;
     text-align: center; /* Centre le texte */
@@ -1393,7 +1393,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 documentLink.classList.remove('active-link', 'disabled-link');
             } else if (isPlaying) {
                 // Utilisez innerHTML pour inclure la balise <br>
-                documentLink.innerHTML = 'Veuillez sélectionner un projet<br> pour accéder aux documents';
+                documentLink.innerHTML = 'Sélectionner un projet<br> pour accéder aux documents';
                 documentLink.classList.add('disabled-link');
                 documentLink.classList.remove('active-link', 'default-link');
             } else {
