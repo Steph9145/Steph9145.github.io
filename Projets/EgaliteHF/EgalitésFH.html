@@ -5,33 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deux containers avec boutons et contenu dynamique</title>
     <style>
+        /* Variables CSS pour les couleurs réutilisées */
+        :root {
+            --background-color: black;
+            --header-background: black;
+            --Turquoise: darkturquoise;
+            --nav-link: white;
+            --Marron: #90253a;
+        }        
         html, body {
-            height: 85vh;
+            height: 90vh;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: rgb(0, 0, 0);
+            background-color: var(--background-color);
         }
 
         .page-wrapper {
             display: flex;
-            height: 85vh;
+            height: 90vh;
             overflow: hidden;
         }
 
         .container-left {
             width: 30%;
-            height: 85vh;
-            background-color: rgb(0, 0, 0);
-            color: rgb(255, 255, 255);
-            font-size: 17px;
+            height: 90vh;
+            background-color:  var(--background-color);
+            color: var(--nav-link);
+            font-size: 18px;
             padding: 20px;
-            border-right: 2px solid darkturquoise;
+            border-right: 2px solid var(--Turquoise);
             box-sizing: border-box;
             overflow-y: auto;
             line-height: 1.15; /* Ajuste ici l'interligne */
         }
-
+        .container-left p {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--Marron);
+            font-family: Roboto, sans-serif;
+            text-align: center;
+        }
         .main-content {
             width: 70%;
             display: flex;
@@ -52,7 +66,7 @@
         }
 
         .container-1 {
-            background-color: rgb(0, 0, 0);
+            background-color: var(--background-color);
             height: 50px;
             position: relative;
             z-index: 1;
@@ -60,7 +74,7 @@
         }
 
         .container-2 {
-            background-color: rgb(0, 0, 0);
+            background-color: var(--background-color);
             flex-grow: 1;
             display: flex;
             justify-content: center;
@@ -72,14 +86,14 @@
         /* Nouveau style pour le bouton popup */
         #popup-button {
             position: relative; /* Gardez le bouton visible */
-            bottom: 10px;
+            bottom: 14%;
             left: 15%;
             transform: translateX(-50%);
             padding: 10px 20px;
             border-radius: 50px;
-            background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);   
-            box-shadow: 5px 5px 10px #000000bc;         
-            color: rgb(255, 255, 255); /* Couleur du texte */
+            background: linear-gradient(to bottom, black, #486b87bc, var(--Turquoise));   
+            box-shadow: 5px 5px 10px black;           
+            color: var(--nav-link); /* Couleur du texte */
             border: none; /* Pas de bordure */
             border-radius: 50px; /* Coins arrondis */
             font-size: 16px; /* Taille du texte */
@@ -90,7 +104,7 @@
 
         #popup-button:hover {
             background-color: transparent;
-            color: #000000;
+            color: black;
         }
 
         .popup {
@@ -129,8 +143,6 @@
             max-height: 100%;
         }
 
-        
-
         .buttons {
             display: flex;
             justify-content: center;
@@ -147,10 +159,9 @@
             justify-content: center;
             text-decoration: none;
             padding: 10px 25px;
-            background: linear-gradient(to bottom, #1d8da4bc, #afeaf7bc, #305a62bc);
-            color: #ffffff;
+            background: linear-gradient(to bottom, black, #486b87bc, var(--Turquoise));
+            color: white;
             border-radius: 50px;
-            box-shadow: 5px 5px 10px #305a62bc;
             font-size: 20px;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
             font-weight: bold;
@@ -159,7 +170,7 @@
 
         .buttons a:hover {
             background-color: transparent;
-            color: #000000;
+            color: black;
             box-shadow: none;
             transform: scale(1.05);
         }
@@ -168,7 +179,7 @@
             background-color: transparent;
             background: none;
             box-shadow:none;
-            color: #20cea8;
+            color: var(--Turquoise);
         }
 
         .dynamic-content img {
@@ -213,6 +224,58 @@
             margin-bottom: 20px;
             font-weight: bold;
         }
+        /* Media queries */
+
+        /* Pour les écrans inférieurs à 460px */
+        @media (max-width: 768px) {
+            .page-wrapper {
+                flex-direction: column;
+            }
+
+            .container-left {
+                width: 100%;
+                height: auto;
+                font-size: 14px;
+                border-right: none;
+                border-bottom: 2px solid darkturquoise;
+            }
+            .container-2 {
+                height: 40vh;
+            }
+            .main-content {
+                width: 100%;
+            }
+            .buttons {
+                gap: 20px;
+            }    
+            .buttons a {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+
+            #popup-button {
+                bottom:1%;
+                left: 50%;
+                font-size: 10px;
+            }
+        } 
+
+
+
+        /* Pour les écrans supérieurs à 768px */
+        @media (min-width: 768px) {
+            .container-left {
+                width: 30%;
+            }
+
+            .main-content {
+                width: 70%;
+            }
+
+            .buttons a {
+                font-size: 20px;
+            }
+        }  
     </style>
 </head>
 <body>
@@ -262,13 +325,14 @@
 
         const contentMap = {
             button1: {
-                dynamic: '<iframe src="3_Slide_Présentation_082023.pdf" title="Présentation index égalité femmes-hommes"></iframe>',
+                dynamic: '<iframe src="P7_Egalite.pdf#toolbar=0" title="Présentation index égalité femmes-hommes"></iframe>',
                 left: `
-                    <div class="title">Index de l'égalité femmes-hommes</div><br/>
-                    <p><strong>Contexte :</strong></p>
-                    <p>Les entreprises de plus de 50 salariés doivent publier leur index de l'égalité femmes-hommes chaque année avant le 1er mars.</p>
-                    <p>Il est importance de développer une politique volontariste pour l'égalité femmes-hommes afin de renforcer la marque employeur et attirer des talents.</p>
-                    <p><strong>Étapes du projet :</strong></p>
+                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br><br>
+                    <div class="title">Contexte</div><br>
+                
+                    Les entreprises de plus de 50 salariés doivent publier leur index de l'égalité femmes-hommes chaque année avant le 1er mars.<br>
+                    Il est importance de développer une politique volontariste pour l'égalité femmes-hommes afin de renforcer la marque employeur et attirer des talents.<br>
+                    <p><strong>Objectifs du projet</strong></p>
                     <ul>
                         <li>Collecte des données : Récupérer les fichiers de données depuis le SIRH.</li>
                         <li>Exploration du document de diagnostic : Identifier les indicateurs clés à extraire</li>
@@ -288,9 +352,8 @@
                     </video>
                 `,
                 left: `
-                    <div class="title">Index de l'égalité femmes-hommes</div><br/>
-                    <p><strong>Flux Knime</strong></p><br>
-                    <p>Le flux se déroule ainsi :</p>
+                    <div class="title">Flux Knime</strong></div>
+                    <p>Déroulé du flux</p>
                     <ul>
                         <li>Lecture et jointures des fichiers</li>
                         <li>Création de colonnes liées à l'âge</li>
@@ -303,7 +366,7 @@
                         <li>Indicateur Rénumération Effective</li>
                         <li>Analyse du Top 10 des salaires</li>
                     </ul>
-                    <p>Une Analyse du Top 10 des salaires a également été réalisée.</p>
+                    Une Analyse du Top 10 des salaires a également été réalisée.
                 `
             },
             button3: {
@@ -314,9 +377,8 @@
                     </video>
                 `,
                 left: `
-                    <div class="title">Index de l'égalité femmes-hommes</div><br/>
-                    <p><strong>Flux Knime</strong></p><br>
-                    <p>Le flux se déroule ainsi :</p>
+                    <div class="title">Flux Knime</strong></div>
+                    <p>Déroulé du flux</p>
                     <ul>
                         <li>Lecture et jointures des fichiers</li>
                         <li>Création de colonnes liées à l'âge</li>
@@ -329,7 +391,7 @@
                         <li>Indicateur Rénumération Effective</li>
                         <li>Analyse du Top 10 des salaires</li>
                     </ul>
-                    <p>Une Analyse du Top 10 des salaires a également été réalisée.</p>
+                    Une Analyse du Top 10 des salaires a également été réalisée.
                 `
             }
         };
