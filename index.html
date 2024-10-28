@@ -476,6 +476,24 @@
         .popup-btn-container {
             margin-right: 10px; /* Espace entre le bouton et le texte */
         }
+        .intro-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.intro-container .intro-image {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.intro-container p {
+    flex: 1;
+    margin: 0;
+}
 
         /* Style pour le bouton */
         .open-popup-btn {
@@ -543,6 +561,15 @@
             font-size: 14px;
             margin-bottom: 12px;
         }
+        .intro-container {
+
+        align-items: center;
+        gap: 5px;
+    }
+
+    .intro-container .intro-image {
+        width: 60px;
+    }
         #profil p, 
         #profil ul li,
         .popup-text p {
@@ -588,6 +615,13 @@
             z-index: 2; /* Le texte est au-dessus de l'overlay */
             text-align: left;
         }
+        .intro-container {
+        gap: 15px;
+    }
+
+    .intro-container .intro-image {
+        width: 120px;
+    }
         #profil h2 {
             font-size: 26px;
             margin-bottom: 30px;
@@ -1004,7 +1038,10 @@
     </div>
     <div class="profile-content">
         <h2>Qui je suis...</h2>
-        <p style="text-align: center;">Pragmatique, curieux, logique, carthésien - bien sûr. <br>Mais ce qui me caractérise et m'anime est le besoin viscéral de comprendre les tenants et aboutissants afin de proposer des solutions adaptées basées sur mon empathie et mes capacités d'adaptation métier.</p>
+        <div class="intro-container">
+            <img src="Images/photo.png" alt="Image descriptive" class="intro-image">
+            <p style="text-align: center;">Pragmatique, curieux, logique, carthésien - bien sûr. <br>Mais ce qui me caractérise et m'anime est le besoin viscéral de comprendre les tenants et aboutissants afin de proposer des solutions adaptées basées sur mon empathie et mes capacités d'adaptation métier.</p>
+        </div>
         <h3>Data Analyst & BI</h3>
         <p>Certification en Data Analyst chez OpenClassrooms </p>
 
