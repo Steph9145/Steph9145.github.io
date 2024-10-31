@@ -30,7 +30,7 @@
         .container-left {
             width: 30%;
             height: 85vh;
-            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url('../images/fond_projet.jpg');
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url('../../Images/fond_projet.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -229,11 +229,125 @@
             font-weight: bold;
         }
     /* Media queries */
-    /* Styles communs pour les écrans jusqu'à 768px */
-    @media (max-width: 768px) {
+        /*  ----------------------------------------------------------------Media queries */
+/* Grands écrans de bureau */
+@media (min-width: 1367px) {
+    /* Styles pour grands écrans */
+    .container-left {
+        width: 40%;
+        height: auto;
+        font-size: 16px;
+    }
+    
+    .container-left p {
+        font-size: 16px;
+    }
+    
+    .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    .buttons {
+        gap: 10%;
+    }
+    
+    .buttons a {
+        font-size: 18px;
+        padding: 8px 15px;
+    }
+    
+    #popup-button {
+        bottom: 10%;
+        font-size: 14px;
+    }
+}
+
+/* Petits ordinateurs de bureau et grands ordinateurs portables */
+@media (min-width: 1025px) and (max-width: 1366px) {
+    /* Styles pour petits ordinateurs de bureau et grands ordinateurs portables */
+    .container-left {
+        width: 45%;
+        height: auto;
+        font-size: 14px;
+    }
+    
+    .container-left p {
+        font-size: 16px;
+    }
+    
+    .title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    .buttons {
+        gap: 10%;
+    }
+    
+    .buttons a {
+        font-size: 18px;
+        padding: 8px 15px;
+    }
+    
+    #popup-button {
+        bottom: 10%;
+        font-size: 14px;
+    }
+}
+
+/* Tablettes */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Styles pour tablettes */
+    .container-left {
+        width: 40%;
+        height: auto;
+        font-size: 12px;
+    }
+    
+    .container-left p {
+        font-size: 14px;
+    }
+    
+    .title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    .buttons {
+        gap: 10%;
+    }
+    
+    .buttons a {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+    
+    #popup-button {
+        bottom: 10%;
+        font-size: 14px;
+    }
+}
+
+/* Petites tablettes */
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Styles pour petites tablettes */
     .page-wrapper {
         flex-direction: column;
     }
+    
     .container-left {
         width: 100%;
         height: auto;
@@ -241,53 +355,73 @@
         border-right: none;
         border-bottom: 2px solid var(--Turquoise);
     }
+    
     .container-2 {
         height: 40vh;
     }
+    
     .main-content {
         width: 100%;
     }
+    
     .buttons {
         gap: 10%;
     }
+    
     .buttons a {
         font-size: 14px;
         padding: 8px 15px;
     }
+    
     #popup-button {
         left: 50%;
+        bottom: 0%;
         font-size: 10px;
     }
 }
 
-    /* Ajustements pour les écrans inférieurs à 460px */
-    @media (max-width: 460px) {
-        #popup-button {
-            bottom: -5%;
-        }
+/* Smartphones */
+@media (max-width: 480px) {
+    /* Styles pour écrans de smartphone */
+    .page-wrapper {
+        flex-direction: column;
     }
-    /* Ajustements pour les écrans de 461px à 768px */
-    @media (min-width: 461px) and (max-width: 768px) {
-        #popup-button {
-            bottom: 60%;
-            font-size: 12px;
-        }
+    
+    .container-left {
+        width: 100%;
+        height: auto;
+        font-size: 12px;
+        border-right: none;
+        border-bottom: 2px solid var(--Turquoise);
     }
-
-        /* Pour les écrans supérieurs à 768px */
-        @media (min-width: 768px) {
-            .container-left {
-                width: 30%;
-            }
-
-            .main-content {
-                width: 70%;
-            }
-
-            .buttons a {
-                font-size: 20px;
-            }
-        }
+    
+    .container-left p {
+        font-size: 14px;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    .container-2 {
+        height: 30vh;
+    }
+    
+    .buttons {
+        gap: 10%;
+    }
+    
+    .buttons a {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+    
+    #popup-button {
+        left: 50%;
+        bottom: 0%;
+        font-size: 12px;
+    }
+}   
     </style>
 </head>
 <body>

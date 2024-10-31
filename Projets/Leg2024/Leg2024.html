@@ -13,7 +13,7 @@
             --Marron: #90253a;
         }           
         html, body {
-            height: 90vh;
+            height: 85vh;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -22,14 +22,17 @@
 
         .page-wrapper {
             display: flex;
-            height: 90vh;
+            height: 85vh;
             overflow: hidden;
         }
 
         .container-left {
             width: 30%;
-            height: 90vh;
-            background-color: var(--background-color);
+            height: 85vh;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url('../../Images/fond_projet.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: var(--nav-link);
             font-size: 17px;
             padding: 20px;
@@ -42,6 +45,7 @@
             font-size: 18px;
             font-weight: bold;
             color: var(--Marron);
+            text-shadow: 2px 2px 4px rgb(0, 0, 0); /* ombre pour le relief */
             font-family: Roboto, sans-serif;
             text-align: center;
         }
@@ -163,18 +167,100 @@
             margin-bottom: 20px;
             font-weight: bold;
         }
-                        /* Media queries */
-        /* Styles communs pour les écrans jusqu'à 768px */
-@media (max-width: 768px) {
+        /*  ----------------------------------------------------------------Media queries */
+/* Grands écrans de bureau */
+@media (min-width: 1367px) {
+    /* Styles pour grands écrans */
+    .container-left {
+        width: 40%;
+        height: auto;
+        font-size: 18px;
+    }
+    .container-left p {
+        font-size: 24px;
+    }
+    .title {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+    .main-content {
+        width: 100%;
+    }
+    .buttons {
+        gap: 5%;
+    }
+    .buttons a {
+        font-size: 18px;
+    }
+}
+
+/* Petits ordinateurs de bureau et grands ordinateurs portables */
+@media (min-width: 1025px) and (max-width: 1366px) {
+    /* Styles pour petits ordinateurs de bureau et grands ordinateurs portables */
+    .container-left {
+        width: 40%;
+        height: auto;
+        font-size: 18px;
+    }
+    .container-left p {
+        font-size: 20px;
+    }
+    .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .main-content {
+        width: 100%;
+    }
+    .buttons {
+        gap: 4%;
+    }
+    .buttons a {
+        font-size: 16px;
+    }
+}
+
+/* Tablettes */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Styles pour tablettes */
+    .container-left {
+        width: 40%;
+        height: auto;
+        font-size: 14px;
+    }
+    .container-left p {
+        font-size: 18px;
+    }
+    .title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .main-content {
+        width: 100%;
+    }
+    .buttons {
+        gap: 3%;
+    }
+    .buttons a {
+        font-size: 16px;
+    }
+}
+
+/* Petites tablettes */
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Styles pour petites tablettes */
     .page-wrapper {
         flex-direction: column;
     }
     .container-left {
         width: 100%;
-        height: 40vh;
+        height: auto;
         font-size: 14px;
         border-right: none;
         border-bottom: 2px solid var(--Turquoise);
+    }
+    .container-left p {
+        font-size: 14px;
     }
     .container-2 {
         height: 40vh;
@@ -183,45 +269,46 @@
         width: 100%;
     }
     .buttons {
-        gap: 10%;
+        gap: 3%;
+    }
+    .buttons a {
+        font-size: 14px;
+        padding: 4px 4px;
     }
 }
 
-    /* Ajustements pour les écrans inférieurs à 460px */
-    @media (max-width: 460px) {
-        .buttons a {
-            font-size: 10px;
-            padding: 4px 4px;
+/* Smartphones */
+@media (max-width: 480px) {
+    /* Styles pour écrans de smartphone */
+    .page-wrapper {
+        flex-direction: column;
     }
-        .buttons {
-            gap: 2%;
+    
+    .container-left {
+        width: 100%;
+        height: auto;
+        font-size: 12px;
+        border-right: none;
+        border-bottom: 2px solid var(--Turquoise);
     }
+    .container-left p {
+        font-size: 14px;
     }
-    /* Ajustements pour les écrans de 461px à 768px */
-    @media (min-width: 461px) and (max-width: 768px) {
-        .buttons a {
-            font-size: 12px;
-            padding: 4px 4px;
-        }
-        .buttons {
-            gap: 3%;
+    .main-content {
+        width: 100%;
     }
+    .container-2 {
+        height: 30vh;
     }
+    .buttons {
+        gap: 2%;
+    }
+    .buttons a {
+        font-size: 10px;
+        padding: 4px 4px;
+    }
+}
 
-        /* Pour les écrans supérieurs à 768px */
-        @media (min-width: 768px) {
-            .container-left {
-                width: 30%;
-            }
-
-            .main-content {
-                width: 70%;
-            }
-
-            .buttons a {
-                font-size: 20px;
-            }
-        }  
     </style>
 </head>
 <body>
@@ -275,8 +362,8 @@
             button1: {
                 dynamic: '<img src="RésultatLeg.jpg" title="Résultats des Circonscriptions"></img>',
                 left: `
-                    <div class="title">Législatives 2024</div>
-                    <p>Contexte</p>
+                    <div class="title">Législatives 2024</div><br><br>
+                    <p>Contexte</p><br>
                     Après les Européennes 2024, à l'organisation d'élections législatives anticipées et tendances / prévisions annoncées,
                     j'ai décidé de réaliser une étude prédictive des résultats pour les 1er et 2nd tour de l'élection.<br><br>
                     Vous pouvez, en naviguant, découvrir les notebooks, prédictions et analyses de l'étude.<br><br>
@@ -286,7 +373,7 @@
             button2: {
                 dynamic: '<iframe src="carte_Legis_1erTour.html" title="Carte du 1er Tour"></iframe>',
                 left: `
-                     <div class="title">Démarches pour le 1er Tour</div>
+                     <div class="title">Démarches pour le 1er Tour</div><br>
 
                     <ul>
                         <li>Utilisation des résultats des Législatives 2022 et surtout des Européennes 2024.</li>
