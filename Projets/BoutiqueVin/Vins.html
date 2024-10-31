@@ -29,8 +29,11 @@
 
         .container-left {
             width: 30%;
-            height: 80vh;
-            background-color: var(--background-color);
+            height: 85vh;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url('../../images/fond_projet.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: var(--nav-link);
             font-size: 18px;
             padding: 20px;
@@ -44,6 +47,7 @@
             font-weight: bold;
             color: var(--Marron);
             font-family: Roboto, sans-serif;
+            text-shadow: 2px 2px 4px rgb(0, 0, 0); /* ombre pour le relief */
             text-align: center;
         }
         .main-content {
@@ -337,8 +341,8 @@
             button1: {
                 dynamic: '<iframe src="P5_Vins.pdf#toolbar=0"" title="Présentation Billet"></iframe>',
                 left: `
-                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br><br>
-                
+                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br>
+                    <p>Contexte</strong></p>
                     <div>L'ERP actuel n'est pas relié au site de vente en ligne, rendant la gestion des stocks et l'analyse des ventes complexes.</div>
                     Une solution centralisée est attendue, mais un rapprochement manuel des bases ERP et CMS serait utile.<br><br>
                     <p>Objectifs du projet</strong></p>
@@ -357,11 +361,11 @@
             button2: {
                 dynamic: '<iframe src="OCSS_P5_DA-GITHUB.html" title="Notebook"></iframe>',
                 left: `
-                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br><br>
-                
+                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br>
+                    <p>Contexte</strong></p>
                     <div>L'ERP actuel n'est pas relié au site de vente en ligne, rendant la gestion des stocks et l'analyse des ventes complexes.</div>
                     Une solution centralisée est attendue, mais un rapprochement manuel des bases ERP et CMS serait utile.<br><br>
-                    <strong style="text-align: center;">Objectifs du projet</strong><br>
+                    <p>Objectifs du projet</strong></p>
                     <ul>
                         <li>rapprocher deux exports (ERP avec références, prix et stock + CMS avec infos produits et nombre de ventes).</li>
                         <ul>
