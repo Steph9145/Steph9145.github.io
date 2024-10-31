@@ -30,7 +30,10 @@
         .container-left {
             width: 30%;
             height: 90vh;
-            background-color: var(--background-color);
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url('../../images/fond_projet.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color:var(--nav-link);
             font-size: 18px;
             padding: 20px;
@@ -43,6 +46,7 @@
             font-size: 18px;
             font-weight: bold;
             color: var(--Marron);
+            text-shadow: 2px 2px 4px rgb(0, 0, 0); /* ombre pour le relief */
             font-family: Roboto, sans-serif;
             text-align: center;
         }
@@ -86,12 +90,12 @@
         /* Nouveau style pour le bouton popup */
         #popup-button {
             position: relative; /* Gardez le bouton visible */
-            bottom: 8%;
+            bottom: 10%;
             left: 15%;
             transform: translateX(-50%);
             padding: 10px 20px;
             border-radius: 50px;
-            background: linear-gradient(to bottom, black, #486b87bc, var(--Turquoise));   
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #486b8744, rgba(64, 224, 208, 0.5));   
             box-shadow: 5px 5px 10px black;      
             color: var(--nav-link); /* Couleur du texte */
             border: none; /* Pas de bordure */
@@ -254,6 +258,7 @@
     }
     #popup-button {
         left: 50%;
+        bottom: 0%;
         font-size: 10px;
     }
 }
@@ -261,7 +266,10 @@
     /* Ajustements pour les écrans inférieurs à 460px */
     @media (max-width: 460px) {
         #popup-button {
-            bottom: -5%;
+            bottom: 0%;
+        }
+        .container-left p {
+            font-size: 14px;
         }
     }
     /* Ajustements pour les écrans de 461px à 768px */
@@ -336,7 +344,7 @@
             button1: {
                 dynamic: '<iframe src="P9_Poulet.pdf#toolbar=0" title="Présentation EDM"></iframe>',
                 left: `
-                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br><br>
+                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br>
                     <div class="title">Objectifs du projet</div><br>
                 
                     <div>Etude de marché utilisant le clustering et l'ACP pour faire des recommandations stratégiques.</div>
@@ -353,7 +361,7 @@
             button2: {
                 dynamic: '<iframe src="SS_OC_P9_Clustering.html" title="Notebook"></iframe>',
                 left: `
-                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br><br>
+                    <p>Projet certifiant (RNCP) - OpenClassrooms</p><br>
                     <div class="title">Objectifs du projet</div><br>
                 
                     <div>Etude de marché utilisant le clustering et l'ACP pour faire des recommandations stratégiques.</div>
@@ -364,7 +372,7 @@
                         <li>Réduction de la dimension du dataset pour optimiser le temps d'apprentissage des modèles</li>
                         <li>Sélection des variables pertinentes du modèle d'apprentissage</li>
                         <li>Algorithmes non supervisés par clustering (k-means, DBSCAN, clustering hiérarchique) et la réduction dimensionnelle (ACP, MDS, t-SNE)</li>
-                    </ul><br>
+                    </ul><br><br>
                 `
             }
         };
