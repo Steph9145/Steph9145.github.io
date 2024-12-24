@@ -22,12 +22,19 @@
         }
 
         /* ----------------------------------------------------------------------------------HEADER */
+
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0px 20px;
-            background-color: var(--secondary-color);
+            background-image: url('Images/Logo_Poulpe_16-9eme.png');
+            background-color: #000000;
+            background-size: contain;
+            background-position: left;
+            background-repeat: no-repeat;
+            text-align: center;
+            
             position: fixed;
             top: 0;
             width: 100%;
@@ -35,7 +42,15 @@
         }
         header h1 {
             color: var(--primary-color);
-            font-size: 22px;
+            font-size: 70px;
+        }
+        /* Stylisation de l'image du logo */
+        .logo {
+            display: block;
+            max-width: 100%; /* Empêche que l'image dépasse la largeur du conteneur */
+            height: auto; /* Garde les proportions de l'image */
+            width: 400px; /* Ajustez cette valeur pour définir une largeur personnalisée */
+            margin: 0 left; /* Centre l'image si nécessaire */
         }
         nav {
             display: flex;
@@ -99,7 +114,7 @@
                 width: 100%;
             }
             header h1 {
-                font-size: 18px; /* Réduction de la taille du titre pour les mobiles */
+                font-size: 50px; /* Réduction de la taille du titre pour les mobiles */
                 text-align: left;
             }
             
@@ -138,7 +153,7 @@
         }
         @media (max-width: 460px) {
             header h1 {
-                font-size: 14px; /* Réduction de la taille du titre pour les mobiles */
+                font-size: 35px; /* Réduction de la taille du titre pour les mobiles */
             }
             .nav-links a {
                 font-size: 12px;
@@ -161,9 +176,9 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.221), rgba(0, 0, 0, 0.648), rgba(0, 0, 0, 1)), 
-                  url('Images/DataWall1.jpg');
-    background-size: contain;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1)), 
+                  url('Images/mu ocean.jpg.');
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -174,11 +189,12 @@
 }
 
 .hero h2 {
-    font-size: 48px;
+    font-size: 30px;
     margin: 0;
-    color: white;
+    text-align: left;
+    color: darkturquoise;
     position: absolute; /* Relatif au conteneur parent */
-    top: 20%; /* Ajustez cette valeur pour ajuster l'espacement */
+    top: 25%; /* Ajustez cette valeur pour ajuster l'espacement */
     z-index: 10;
 }
 
@@ -188,7 +204,7 @@
     color: var(--text-color);
     margin: 0;
     white-space: normal;
-    top: 35%;
+    top: 40%;
     position: absolute;
     text-align: center;
 }
@@ -343,7 +359,7 @@
         padding: 20px 0;
         background-attachment: scroll;
     }
-    .hero h2 { font-size: 36px; }
+    .hero h2 { font-size: 30px; }
     .hero p:first-of-type { 
         font-size: 18px;
         white-space: normal; /* Permet de préserver les sauts de ligne */
@@ -374,7 +390,7 @@
         padding: 10px 0;
         background-size: 250% 100%;
     }
-    .hero h2 { font-size: 24px;}
+    .hero h2 { font-size: 18px;}
     .hero p:first-of-type { 
         font-size: 16px;
         white-space: normal; /* Permet de préserver les sauts de ligne */
@@ -485,7 +501,7 @@
     margin-bottom: 30px;
 }
 .intro-image {
-    opacity: 0.5; /* Ajustez la valeur entre 0 (transparent) et 1 (opaque) */
+    opacity: 1; /* Ajustez la valeur entre 0 (transparent) et 1 (opaque) */
 }
 .intro-image:hover {
     opacity: 1; /* Image complètement opaque au survol */
@@ -1004,8 +1020,7 @@
 </head>
 <body>
     <header>
-        <h1>Expertise de données<br> Conseils et Solutions Business</h1>
-
+        <h1> </h1>
         <nav>
             <div class="burger">
                 <div></div>
@@ -1023,7 +1038,7 @@
 
     <main>
         <div class="hero">
-            <h2>Bienvenue</h2>
+            <h2>Business Optimisation <br> Expertise de données </h2>
             <p></p>
             <div class="buttons">
                 <a href="#profil">Qui je suis..</a>
