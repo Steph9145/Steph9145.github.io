@@ -43,7 +43,12 @@ body {
             justify-content: space-between;
             align-items: center;
             padding: 0px 20px;
-            background-color: var(--secondary-color);
+            background-image: url('Images/Logo_Poulpe_16-9eme.png');
+            background-color: #000000;
+            background-size: contain;
+            background-position: left;
+            background-repeat: no-repeat;
+            text-align: center;
             position: fixed;
             top: 0;
             width: 100%;
@@ -51,7 +56,7 @@ body {
         }
         header h1 {
             color: var(--primary-color);
-            font-size: 22px;
+            font-size: 70px;
         }
         nav {
             display: flex;
@@ -124,7 +129,7 @@ body {
                 width: 100%;
             }
             header h1 {
-                font-size: 18px; /* Réduction de la taille du titre pour les mobiles */
+                font-size: 50px; /* Réduction de la taille du titre pour les mobiles */
             }
             .nav-links {
                 display: none;
@@ -160,9 +165,9 @@ body {
             }
     }
 
-        @media (max-width: 479px) {
+        @media (max-width: 460px) {
             header h1 {
-                font-size: 14px; /* Réduction de la taille du titre pour les mobiles */
+                font-size: 35px; /* Réduction de la taille du titre pour les mobiles */
             }
             .nav-links a {
                 font-size: 12px;
@@ -179,8 +184,6 @@ body {
         }     
 
 
-
-
         /* ----------------------------------------------------------Styles pour la section héroïque */
         .hero {
             display: flex;
@@ -189,7 +192,7 @@ body {
             justify-content: center;
             align-items: center;
             height: 35vh;
-            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('Images/Nature.jpg');
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('Images/mu ocean.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -198,7 +201,7 @@ body {
             font-size: clamp(2rem, 4vw, 4rem); /* Ajuste la taille selon la largeur de l'écran */
             margin: 0;
             position: absolute;
-            top: 35%;
+            top: 45%;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -210,7 +213,7 @@ body {
 
 .hero p.hero-main {
     font-size: 22px;
-    top: 60%;
+    top: 70%;
     left: 54%;
     transform: translateX(-50%);
     text-align: center;
@@ -830,7 +833,7 @@ body {
 <body>
     <!-- En-tête du site -->
     <header>
-        <h1>Expertise de données<br> Conseils et Solutions Business</h1>
+        <h1></h1>
         <nav>
             <div class="burger">
                 <div></div>
@@ -861,7 +864,7 @@ body {
             <div class="column column-40">
                 <h3 id="project-title">Titre du Projet</h3>
                 <div class="carousel">
-                    <img src="Images/Legislatives2024.png" alt="Projet : Legislatives2024">
+                    <img src="Images/Legislatives20241.png" alt="Projet : Legislatives2024">
                     <img src="Images/Medecin_Generaliste.png" alt="Projet : Analyse des besoins nutritionnels mondiaux">
                     <img src="Images/Faux billets.png" alt="Projet : Détection des faux billets">
                     <img src="Images/Indicarteurs égalités-min.png" alt="Projet : Indicateurs d'Égalité en Entreprise">
@@ -1021,7 +1024,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const documentFrame = document.getElementById('document-frame');
     const documentVideo = document.getElementById('document-video');
     const videoSource = document.getElementById('video-source');
-
     const documentTitleElement = document.getElementById('document-title'); // Sélectionne l'élément du titre
 
 
@@ -1037,10 +1039,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li class='line-spacing'>Reprise des résultats définitifs du 1er tour (pour le second tour)</li>
                     <li class='line-spacing'>Mise en place des hypothèses</li>
                     <li class='line-spacing'>Mise en concordance des listes électorales</li>
-                    <li class='line-spacing'>Analyses et créations des règles de calcul des prévisions</li>
-                    <li class='line-spacing'>Créations des règles de repport de votes</li>
+                    <li class='line-spacing'>Analyses et créations des règles de calcul de prévisions</li>
+                    <li class='line-spacing'>Créations des règles de report de votes</li>
                     <li class='line-spacing'>Visualisation des résultats par circonscription</li>   
-                    <li class='line-spacing'>Analyse des erreurs de prévisions</li>
+                    <li class='line-spacing'>Analyse des erreurs de prévisions (second Tour)</li>
                     </ul>
                 `,
                 document: "Projets/Leg2024/Leg2024.html",
@@ -1281,6 +1283,14 @@ document.addEventListener('DOMContentLoaded', () => {
             currentIndex = (currentIndex - 1 + images.length) % images.length;
             updateSlide(currentIndex);
         }
+
+        playIcon.addEventListener('click', () => {
+            startCarousel();
+        });
+
+        stopIcon.addEventListener('click', () => {
+            stopCarousel();
+        });
     
         function startCarousel() {
             if (!isPlaying && !isDocumentOpen) {
@@ -1320,7 +1330,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 disableCarouselControls(true);
 
                 // Désactive le scroll uniquement pour les écrans de 480px ou plus
-                if (window.innerWidth >= 480) {
+                if (window.innerWidth >= 768) {
                 document.body.classList.add('no-scroll');
                 }
                 // Met à jour le titre du document dans .Title-Close-container
@@ -1336,8 +1346,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         behavior: 'smooth'
                     });
                 }, 100); // Ajuste le délai si nécessaire
-    
-            } else {
+
+            
+            } 
+            else {
                 documentContainer.classList.add('hidden');
                 isDocumentOpen = false;
                 startCarousel();

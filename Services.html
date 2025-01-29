@@ -28,7 +28,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 0px 20px;
-            background-color: var(--secondary-color);
+            background-image: url('Images/Logo_Poulpe_16-9eme.png');
+            background-color: #000000;
+            background-size: contain;
+            background-position: left;
+            background-repeat: no-repeat;
+            text-align: center;
             position: fixed;
             top: 0;
             width: 100%;
@@ -36,7 +41,7 @@
         }
         header h1 {
             color: var(--primary-color);
-            font-size: 22px;
+            font-size: 70px;
         }
         nav {
             display: flex;
@@ -100,7 +105,7 @@
                 width: 100%;
             }
             header h1 {
-                font-size: 18px; /* Réduction de la taille du titre pour les mobiles */
+                font-size: 50px; /* Réduction de la taille du titre pour les mobiles */
                 text-align: left;
             }
             
@@ -139,7 +144,7 @@
         }
         @media (max-width: 460px) {
             header h1 {
-                font-size: 14px; /* Réduction de la taille du titre pour les mobiles */
+                font-size: 35px; /* Réduction de la taille du titre pour les mobiles */
             }
             .nav-links a {
                 font-size: 12px;
@@ -166,7 +171,7 @@
             justify-content: center;
             align-items: center;
             height: 38vh;
-            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('Images/Nature.jpg');
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)), url('Images/mu ocean.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -175,7 +180,7 @@
             font-size: clamp(2rem, 4vw, 4rem); /* Ajuste la taille selon la largeur de l'écran */
             margin: 0;
             position: absolute;
-            top: 35%;
+            top: 45%;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -185,7 +190,7 @@
             color: var(--hero-text);
             margin: 0;
             position: absolute;
-            top: 60%;
+            top: 70%;
             left: 54%;
             transform: translateX(-50%);
             text-align: center;
@@ -321,12 +326,12 @@
             text-decoration: none;  /* Enlève la décoration par défaut */
         }
         a:hover {
-            color: #6ee7b7;
+            color: darkturquoise;
         }
 
         #gif-container {
             width: 40%; /* Ajuste la taille du conteneur du GIF */
-            height: auto; /* Garde les proportions du GIF */
+            height:  55vh; /* Garde les proportions du GIF */
             margin: 0 auto; /* Centre le conteneur horizontalement */
             display: flex; /* Utilise Flexbox pour centrer le contenu */
             justify-content: center; /* Centre le GIF horizontalement */
@@ -335,7 +340,7 @@
 
         #gif-container img {
             max-width: 100%; /* Ajuste la taille maximale de l'image (GIF) à la taille du conteneur */
-            height: auto; /* Maintient les proportions du GIF */
+            height: 55vh; /* Maintient les proportions du GIF */
         }
         #description-container,
         #comment-container {
@@ -510,7 +515,7 @@
 <body>
     <!-- En-tête du site -->
     <header>
-        <h1>Expertise de données<br> Conseils et Solutions Business</h1>
+        <h1></h1>
         <nav>
             <div class="burger">
                 <div></div>
@@ -731,7 +736,7 @@
             // Masquer les conteneurs de description et afficher le GIF
             descriptionContainer.style.display = 'none';
             commentContainer.style.display = 'none';
-            gifContainer.style.display = 'block';
+            gifContainer.style.display = 'flex';
         }
     });
 });
