@@ -31,6 +31,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tableau des projets
     const projects = [
         {
+            title: "Marketing Analytics",
+            description: `
+                
+                <p style="text-align: center; font-size: 20px;"><strong>Exploration de données et application Streamlit</strong></p>
+                <ul>
+                    <li class='line-spacing'>E.D.A., Clustering & Prediction Modeling</li>
+                    <li class='line-spacing'></li>
+                    <li class='line-spacing'></li>
+                    <li class='line-spacing'></li>
+                    </ul>
+                `,
+                document: "Projets/M_Campaigns/Mc_camp.html",
+            comment: "Commentaires Marketing Analytics",
+            toolsLogos: [
+                { src: "Images/Logo_Streamlit.png", alt: "Streamlit" },
+                { src: "Images/Jupyter-logo.png", alt: "Jupyter" },
+                { src: "Images/Logo_Python_NP.png", alt: "Python" },
+                { src: "Images/Statsmodels-logo.png", alt: "Statsmodels" },
+                { src: "Images/sklearn-logo.png", alt: "SKlearn" }
+            ],
+            librariesLogos: [
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" },
+                { src: "Images/plotly-logo.png", alt: "potlyb" }
+            ]
+        },
+        {
             title: "Prévisions Législatives 2024",
             description: `
                 
@@ -189,15 +216,16 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         {
-            title: "Gestion d'une boutique de vins",
+            title: "Optimisation de la gestion de données",
             description: `
-                <p style="text-align: center; font-size: 20px;"><strong>Gestion d'une boutique de vins en ligne</strong></p>
+                <p style="text-align: center; font-size: 20px;"><strong>Optimiser la gestion des données d'une boutique</strong></p>
                 <ul>
-                    <li class='line-spacing'>Création d'un catalogue de produits</li
-                    ><li class='line-spacing'>Développement de fonctionnalités de recherche</li>
-                    <li class='line-spacing'>Mise en place d'un système de paiement sécurisé</li>
-                    <li class='line-spacing'>Gestion des stocks et des commandes</li>
-                    <li class='line-spacing'>Analyse des tendances de vente et retour client</li>
+                    <li class='line-spacing'>Analyse exploratoire des fichiers</li
+                    ><li class='line-spacing'>Mise en concordance et jointures des tables</li>
+                    <li class='line-spacing'>Mise à l'écart des valeurs nulles et manquantes</li>
+                    <li class='line-spacing'>Analyse des outliers (valeurs aberrantes) et débrief</li>
+                    <li class='line-spacing'>Réponses aux demandes initiales (CA global, par produit...)</li>
+                    <li class='line-spacing'>Analyse sur l'état des stocks sur les 10% des références les plus vendues</li>
                 </ul>
                 `,
             document: "Projets/BoutiqueVin/Vins.html",

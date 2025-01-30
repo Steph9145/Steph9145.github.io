@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deux containers avec boutons et contenu dynamique</title>
+    <style>
+        /* Variables CSS pour les couleurs réutilisées */
+        :root {
+            --background-color: #000;
+            --header-background: #000000;
+            --Turquoise: darkturquoise;
+            --nav-link: white;
+            --Marron: #90253a;
+        }
+        html, body {
+            height: 85vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--background-color);
+        }
+
+        .page-wrapper {
+            display: flex;
+            height: 85vh;
+            overflow: hidden;
+        }
+
+        .container-left {
+            width: 30%;
+            height: 85vh;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url('../../Images/fond_projet.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--nav-link);
+            font-size: 22px;
+            padding: 20px;
+            border-right: 2px solid var(--Turquoise);
+            box-sizing: border-box;
+            overflow-y: auto;
+            line-height: 1.4; /* Ajuste ici l'interligne */
+        }
+        .container-left p {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--Marron);
+            text-shadow: 2px 2px 4px rgb(0, 0, 0); /* ombre pour le relief */
+            font-family: Roboto, sans-serif;
+            text-align: center;
+        }
+        .main-content {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container-1, .container-2 {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            padding: 20px;
+            margin-bottom: 0;
+            border-radius: 8px;
+            box-sizing: border-box
+        }
+
+        .container-1 {
+            background-color: var(--background-color);
+            height: 5vh;
+            position: relative;
+            z-index: 1;
+            padding: 5px 0;
+        }
+
+        .container-2 {
+            background-color: var(--background-color);
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            margin: 0px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .buttons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            padding: 5px 20px;
+            background: linear-gradient(to bottom, black, #486b87bc, var(--Turquoise));
+            color: white;
+            border-radius: 50px;
+            font-size: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .buttons a:hover {
+            background-color: transparent;
+            color: black;
+            box-shadow: none;
+            transform: scale(1.05);
+        }
+
+        .buttons a.active {
+            background-color: transparent;
+            background: none;
+            box-shadow:none;
+            color: var(--Turquoise);
+        }
+
+        .dynamic-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .dynamic-content video {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            width: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .dynamic-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .dynamic-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            color: white;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: opacity 0.5s ease;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+    /* Media queries */
+        /*  ----------------------------------------------------------------Media queries */
+/* Grands écrans de bureau */
+@media (min-width: 1367px) {
+    /* Styles pour grands écrans */
+    .container-left {
+        width: 40%;
+        height: auto;
+        font-size: 20px;
+    }
+    
+    .container-left p {
+        font-size: 22px;
+    }
+    
+    .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    .buttons {
+        gap: 10%;
+    }
+    
+    .buttons a {
+        font-size: 18px;
+        padding: 8px 15px;
+    }
+    
+}
+
+/* Petits ordinateurs de bureau et grands ordinateurs portables */
+@media (min-width: 1025px) and (max-width: 1366px) {
+    /* Styles pour petits ordinateurs de bureau et grands ordinateurs portables */
+    .container-left {
+        width: 45%;
+        height: auto;
+        font-size: 14px;
+    }
+    
+    .container-left p {
+        font-size: 16px;
+    }
+    
+    .title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    .buttons {
+        gap: 10%;
+    }
+    
+    .buttons a {
+        font-size: 18px;
+        padding: 8px 15px;
+    }
+    
+}
+
+/* Tablettes */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Styles pour tablettes */
+    .container-left {
+        width: 40%;
+        height: auto;
+        font-size: 12px;
+    }
+    
+    .container-left p {
+        font-size: 14px;
+    }
+    
+    .title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    .buttons {
+        gap: 10%;
+    }
+    
+    .buttons a {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+}
+
+/* Petites tablettes */
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Styles pour petites tablettes */
+    .page-wrapper {
+        flex-direction: column;
+    }
+    
+    .container-left {
+        width: 100%;
+        height: auto;
+        font-size: 14px;
+        border-right: none;
+        border-bottom: 2px solid var(--Turquoise);
+    }
+    
+    .container-2 {
+        height: 40vh;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    .buttons {
+        gap: 10%;
+    }
+    
+    .buttons a {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+    
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+    /* Styles pour écrans de smartphone */
+    .page-wrapper {
+        flex-direction: column;
+    }
+    
+    .container-left {
+        width: 100%;
+        height: auto;
+        font-size: 12px;
+        border-right: none;
+        border-bottom: 2px solid var(--Turquoise);
+    }
+    
+    .container-left p {
+        font-size: 14px;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    .container-2 {
+        height: 30vh;
+    }
+    
+    .buttons {
+        gap: 10%;
+    }
+    
+    .buttons a {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+    
+}   
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container-left" id="container-left">
+            
+        </div>
+
+        <div class="main-content">
+            <div class="container container-1">
+                <div class="buttons">
+                    <a href="#" id="button1" class="active">Notebook</a>
+                    <a href="#" id="button2">Appli Streamlit</a>
+                </div>
+            </div>
+
+            <div class="container container-2">
+                <div id="dynamic-content" class="dynamic-content">
+                    <!-- Le contenu sera chargé ici -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.buttons a');
+        const dynamicContent = document.getElementById('dynamic-content');
+        const containerLeft = document.getElementById('container-left');
+
+        // Activer button1 au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            const button3 = document.getElementById('button1');
+            button3.click(); // Simule un clic sur button3
+        });
+
+        function changeContent(content) {
+            dynamicContent.innerHTML = content;
+        }
+
+        function setActiveButton(selectedButton) {
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            selectedButton.classList.add('active');
+        }
+    
+        const contentMap = {
+            button1: {
+                dynamic: '<iframe src="Marketing Campain.html#toolbar=0" title="Notebook"></iframe>',
+                left: `
+                    <p>Source: Dataset Kaggle</p><br>
+                    <div class="title">Objectifs du projet</div><br>
+                
+                    Construire un modèle de prédiction pour détecter les foyers susceptibles de répondre positivement aux 6 différentes campagnes marketing.<br><br><br>
+                    <strong>Structure du notebook</strong>
+                    <ul>
+                        <li>Analyses univariée et multivariée</li>
+                        <li>E.D.A.</li>
+                        <li>Préparation du Dataset (Clustering/Modelisation)</li>
+                        <li>Clustering / Construction du modèle</li>
+                        <li>Réalisation d'une application avec Streamlit.</li>
+                    </ul><br>
+                `
+            },
+            button2: {
+                dynamic: '<iframe style="display:none" onload="window.open(\'https://marketing-campaigns-appli.streamlit.app/\', \'_blank\')" src="about:blank"></iframe>',
+                left: `
+                    <p>Source: Dataset Kaggle</p><br>
+                    <div class="title">Objectifs du projet</div> <br>
+                
+                    Construire un modèle de prédiction pour détecter les foyers susceptibles de répondre positivement aux 6 différentes campagnes marketing.<br><br><br>
+                    <strong>Structure du notebook</strong>
+                    <ul>
+                        <li>Analyses univariée et multivariée</li>
+                        <li>E.D.A.</li>
+                        <li>Préparation du Dataset (Clustering/Modelisation)</li>
+                        <li>Clustering / Construction du modèle</li>
+                        <li>Réalisation d'une application avec Streamlit.</li>
+                    </ul><br>  
+                `
+            }
+        };
+
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                const selectedButton = event.target;
+                const buttonId = selectedButton.id;
+                setActiveButton(selectedButton);
+                changeContent(contentMap[buttonId].dynamic);
+                containerLeft.innerHTML = contentMap[buttonId].left;
+            });
+        });
+
+    </script>
+</body>
+</html>

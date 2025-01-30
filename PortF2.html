@@ -864,6 +864,7 @@ body {
             <div class="column column-40">
                 <h3 id="project-title">Titre du Projet</h3>
                 <div class="carousel">
+                    <img src="Images/Legislatives20241.png" alt="Projet : marketing-campaigns-appli">
                     <img src="Images/Legislatives20241.png" alt="Projet : Legislatives2024">
                     <img src="Images/Medecin_Generaliste.png" alt="Projet : Analyse des besoins nutritionnels mondiaux">
                     <img src="Images/Faux billets.png" alt="Projet : Détection des faux billets">
@@ -889,6 +890,7 @@ body {
                     <span class="dot" onclick="currentSlide(5)"></span>
                     <span class="dot" onclick="currentSlide(6)"></span>
                     <span class="dot" onclick="currentSlide(7)"></span>
+                    <span class="dot" onclick="currentSlide(8)"></span>
                 </div>
                 
                 <!-- Lien pour voir le document du projet sous le carrousel -->
@@ -1029,6 +1031,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Tableau des projets
     const projects = [
+    {
+            title: "Marketing Analytics",
+            description: `
+                
+                <p style="text-align: center; font-size: 20px;"><strong>Réponses aux campagnes marketing: De l'Exploration à la Prédiction</strong></p>
+                <ul>
+                    <li class='line-spacing'>Fichier contenant la composition et les habitudes d'achats de foyers clients</li>
+                    <li class='line-spacing'>Exploration et visualisation : Analyse des données avec des graphiques interactifs</li>
+                    <li class='line-spacing'>Segmentation client : Identification de groupes de clients via le clustering</li>
+                    <li class='line-spacing'>Modélisation prédictive : Utilisation couplée de Random Forest/GXBoost pour prédire des comportements</li>
+                    <li class='line-spacing'>Tableau de bord Streamlit interactif : Navigation fluide entre les étapes d'analyse</li>
+                    </ul>
+                `,
+                document: "Projets/M_Campaigns/Mc_camp.html",
+            comment: "Commentaires Marketing Analytics",
+            toolsLogos: [
+                { src: "Images/Logo_Streamlit.png", alt: "Streamlit" },
+                { src: "Images/Jupyter-logo.png", alt: "Jupyter" },
+                { src: "Images/Logo_Python_NP.png", alt: "Python" },
+                { src: "Images/Statsmodels-logo.png", alt: "Statsmodels" },
+                { src: "Images/sklearn-logo.png", alt: "SKlearn" }
+            ],
+            librariesLogos: [
+                { src: "Images/Matplot-logo.png", alt: "Matplotlib" },
+                { src: "Images/seaborn-logo.png", alt: "Seaborn" },
+                { src: "Images/plotly-logo.png", alt: "potlyb" }
+            ]
+        },
         {
             title: "Prévisions Législatives 2024",
             description: `
